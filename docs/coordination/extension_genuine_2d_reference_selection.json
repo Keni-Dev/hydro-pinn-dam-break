@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T22:02:27.751461+00:00",
+  "state": "released_additive_reference_implementation_and_necessary_small_checks_only",
+  "authority": "Human authorized core then feasible extensions on M5 and existing implementation-chat coordination without routine approval. Core and selected viscosity execution/snapshot/replay are accepted. Root adopts the finite genuine2D independent reference route; no neural work or canonical matrix run is released by this record.",
+  "owner_thread_id": "01a1749e-f8d5-7cf3-ae7a-97e03e4a53a2",
+  "dependencies": {
+    "docs/coordination/phase_11_1_completion_review.json": "534e52ae58a32ef9fe260ea1d5d210172570b5064513a8b1f1636e651b53d61b",
+    "docs/coordination/phase_10_2_reference_gate_plan_v01.json": "34b109f80db906316bfdc534006244837b8edba38153df523220ed74236fd1a4",
+    "docs/coordination/phase_10_2_reference_plan_review_v01.json": "0283a65e9d2cde6ffe63fe0bebb8c88601eeb1a99280e7b05948881f6eda1b56",
+    "docs/coordination/phase_10_2_source_preflight_v01.json": "b45bc836b4af62c44494d0de29026c7ac62e9e372ce0e07e19029c3d0d28d4bf"
+  },
+  "scope": "One genuinely y-dependent wet rectangular-reservoir numerical reference. Implement/check the finite frozen plan before any new neural pilot or fit. Retain incomplete planar recovery as a separate result.",
+  "adopted_case": "Centered 2m by1m high-depth reservoir on[-5,5]^2, h1/.1m, qx=qy0, g9.81, flat/frictionless/no rain, four reflective slip walls, T.25s and initial+50positive .005*k snapshots, exact11.8m3 volume; Lc10m/Hc1m. No geometry/horizon/method tuning.",
+  "ownership": {
+    "new_module": "src/hydro_pinn/extensions/reference_2d.py",
+    "new_config": "configs/extensions/case_2d.json",
+    "new_test": "tests/test_reference_2d.py",
+    "new_docs": "docs/extensions/genuine_2d_reference_*",
+    "new_evidence": "docs/evidence/phase_10/genuine_reference_v01/",
+    "new_results": "results/extensions/two_dimensional/reference_v01/",
+    "fresh_runs": "New exclusive ref_rect80_c045_v01/ref_rect160_c045_v01/ref_rect320_c045_v01/ref_rect320_c0225_v01 namespaces only after their own root releases; focused fixture namespaces must be distinct.",
+    "existing_file_exception": "Only named additive extension-2d-reference CLI parser/dispatch blocks; preserve every old CLI line and order. No __init__, schema, records, existing2D or1D module changes. Do not register neural run/evaluate yet.",
+    "root_owns": [
+      "coordination",
+      "global status",
+      "Git"
+    ]
+  },
+  "protected_nonCLI_sha256": {
+    "src/hydro_pinn/__init__.py": "7018c26707fca1706efdca11406f591574bcc31abe072bb34edb74a288021a16",
+    "src/hydro_pinn/__main__.py": "49c2417a76f6589478d8efa1c5e9b36191384f423ddf86cfff40c9deeb1dbaef",
+    "src/hydro_pinn/benchmark.py": "2f1e52d0dacf43c2cc3ec1e17bd403ab53fc76fcee46bf82dc704393b043addd",
+    "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+    "src/hydro_pinn/conservation.py": "b06bc773ff67a5b28ffa744a095c99a41e0ee3137c14eaed0a849cdf3e3f3931",
+    "src/hydro_pinn/devices.py": "24305922b64927e41fd85b300f34b08622ec78c60f7f69aacf3b48fda1ae8aa8",
+    "src/hydro_pinn/evaluate.py": "31aa5c9b466c874819b89a15856b7f731d87172a2bbd5cf98acc1172ce663fe2",
+    "src/hydro_pinn/evaluation_workflow.py": "0b9307dbe569d52880f4aa83920993bc8fb0509a534c1144bbffd4a5c40e3bc3",
+    "src/hydro_pinn/experiments.py": "ba7b2d3c968a75a6df4fe276e0e2d96d98a2bf33bc8b5e30a0856a07ad4077c1",
+    "src/hydro_pinn/extensions/__init__.py": "65b2ea146bc3e6cfbb814aad73eb180d1fe85dc173401c12879326e848a0867e",
+    "src/hydro_pinn/extensions/friction_experiment.py": "42e63f008711d64c7d8471a21eb14c55c9b08070da3eb15378108c00e3d6ca60",
+    "src/hydro_pinn/extensions/friction_physics.py": "eed3acce02188253da77864ab11dd55597d1de6af8d57c4c815b66bbbe06bf6d",
+    "src/hydro_pinn/extensions/friction_reference.py": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+    "src/hydro_pinn/extensions/hybrid_data.py": "bf72a5163e66197f57bcc875a6314b6d3b1b7ea3a98e3514aa77bcc9315fd4a3",
+    "src/hydro_pinn/extensions/hybrid_experiment.py": "409fb7a6f5e594eb8dc14889806e573eb8f9b1b68b134fcdc698d8b232307145",
+    "src/hydro_pinn/extensions/inverse_sensitivity.py": "6691e019adc2402fc58b1490e40e766b0d8648af462bcc8d73fc8cae05859d94",
+    "src/hydro_pinn/extensions/model_2d.py": "06b381e659c7a3a3e9aa2a9867f04cef119873a16b588a63f603584718162459",
+    "src/hydro_pinn/extensions/physics_2d.py": "238d322f617df0488500978716186683c3d3e4ff56a213edf4c0f571c56c9339",
+    "src/hydro_pinn/extensions/planar_2d.py": "1e5009b31b24fc7673c428aa421870c38546ac55692ca8dd409bb6d98bc78c4a",
+    "src/hydro_pinn/extensions/viscosity_experiment.py": "208159821abb8fa6269cd539f7f8351babfdf39c0204d44ed4b4509537f50cab",
+    "src/hydro_pinn/extensions/viscosity_physics.py": "7118ecb0304de0e50a2ace26c22d0ec4ddb02020aa30706dbe4620896533ff09",
+    "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+    "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+    "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+    "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+    "src/hydro_pinn/plot.py": "74df4c54c87cd2d403d91a6c5fec7f5978df6de072f826c6b9ec8e3487ea616c",
+    "src/hydro_pinn/protocol.py": "85009bc307facc04decc86c490ce0f578c7576d480ed50137605511912d62a33",
+    "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40",
+    "src/hydro_pinn/references.py": "9e23dd1a97f3f63df7be9d493382d263305e233c3be45980fac3c36fd5d9a547",
+    "src/hydro_pinn/reproduce.py": "5675837142ac9de69854289d8b6330568b43ab0f0d04e43227e5779d4a6d6778",
+    "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+    "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+  },
+  "CLI_before_sha256": "1ac2c77f88a748891ef1c441f4b19b517aab33a5f3a6562392f1c84f7ccfa0e6",
+  "protected_archives": {
+    "results/packages/p07_core_candidate_v02.zip": "2888f733ac1245e6ded97c89d9ae1de4a2fa7483a8974967c19ede02d02a7bba",
+    "results/extensions/hybrid/hybrid_e1_seed11_v01.zip": "f5c5bd34f3619374c98fd1f0d1c2896bcbeac215a163c878e1133f1c8bd05f3a",
+    "results/extensions/planar_2d/planar_e1_seed11_v01.zip": "3926c7ace882fd59da416cb6bc7bcf7de7b9e1cf48c4448d7d0029fc0bb103f2",
+    "results/extensions/friction/friction_e1_seed11_v01.zip": "95370247dbe7ecfa33f9c3f02d1bda6b111c8ed026651edd0abfaa7bdaf19427",
+    "results/extensions/viscosity/viscosity_e1_seed11_v01.zip": "860f9f421a2cbba8b25ff91fbc957a5a9ff4e3059fdb299c1e844aa935f1e0cf"
+  },
+  "conditions": [
+    "Preserve foundations00/01, all unrelated work, every prior run, failed attempt and raw provenance. No deletions, resets, overwrites, cleanup or old guard changes. Old replay uses accepted frozen executable archives after a later CLI edit.",
+    "Use only the M5 CPU float64 NumPy reference route. No GPU/cloud/new environment or dependency changes are needed. Serialize heavy numerical execution.",
+    "Adapt the pinned Clawpack wet normal-interface construction with same-commit BSD-3-Clause notice/source attribution. The local unsplit update, sum-CFL, boundary ghosts, exact initial averages and conservative area operator are local choices, not an execution of PyClaw.",
+    "Perform only necessary R1\u2013R5 small deterministic checks in the adopted plan, including signed transverse flux/axis rotation, identical-dt planar reduction with compatible ghosts, all-component four-edge bookkeeping/projection, and one invalid intermediate/update persistence fixture. No new full1D studies or broad old suites.",
+    "Strict positivity applies to depth h and HLLE intermediate depth only. Both discharge components may be signed or zero and must be finite; do not reject valid negative/reflected momentum or zero initial momenta.",
+    "Address all P1\u2013P6 definitions in the independent plan review before source/config/operator/axes/protocol freeze. Preserve authoritative2D labels/units, numerical tolerances fixed before actual runs, and observed raw defects alongside pass/fail. Do not modify core metadata/schema to add the case.",
+    "Freeze D_x=sum(dt*a_x), D_y=sum(dt*a_y), D_max=sum(dt*max(a_x,a_y)); D_max<4m and each scaled outer-strip departure<1e-10 are discrete early-time diagnostics, not analytical speed/error bounds. Preserve a failure rather than crop/redefine the case.",
+    "Use native/common(time,y,x) h/qx/qy cell averages and edge/area metadata. Area-integrated discharges have m4/s units; vector boundary rates m3/s,m4/s2,m4/s2. Do not substitute cell-centre samples or claim exact/reference uncertainty bounds.",
+    "Freeze exact source/config/pinned source/license/input/axes/operator/protocol hashes and exclusive destinations before any canonical solve. CLI may run only an explicitly released matrix cell; do not auto-launch the four-cell matrix.",
+    "Return a ready packet after source/check/protocol readback: exact commands/exits, focused checks, source/provenance/adaptation notes, frozen candidate config/protocol, initial arithmetic/source-preservation and proposed80x80 command. Do not execute the canonical80x80 cell yet."
+  ],
+  "canonical_execution_released": false,
+  "first_cell_later_gate": {
+    "id": "ref_rect80_c045_v01",
+    "grid": [
+      80,
+      80
+    ],
+    "sum_CFL": 0.45,
+    "T_s": 0.25,
+    "numerical_wall_cap_s": 60,
+    "timer": "Freeze included setup/init/loop/diagnostics/persistence origin; check before each next step, report final actual wall even if a step/final write overshoots. Persist last valid state/completed outputs/step diagnostics on cap, interrupt or failure.",
+    "release_requires": "Independent implementation/necessary-check/frozen-protocol readback; root technical release, not human approval."
+  },
+  "unreleased": [
+    "Actual80x80 canonical run",
+    "Other three matrix cells until measured coarse cost decision",
+    "Reference acceptance without complete valid refinement records",
+    "Neural source/trainer/validation/final data, pilot or full fit",
+    "Alternative geometry, horizon, method or coefficients",
+    "Further inverse or viscosity fitting"
+  ],
+  "future_comparison": "Follow adopted plan: common80x80 conservative area means, signed coupled-mesh/time and separate fixed-grid time differences, sensitivity envelope qualified as indicator. Later separately selected NN comparison would use3x3Gauss area means plus5x5 sensitivity and separately costed four-edge mass diagnostics.",
+  "work_performed_at_release": "Root planning/preservation hash readback and scope decision only; no genuine2D numerical or neural execution yet."
+}
