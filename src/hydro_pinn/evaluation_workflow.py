@@ -47,6 +47,35 @@ def _json(path: Path) -> dict:
     return json.loads(path.read_text())
 
 
+def _manifest_protocol_path(manifest: dict, project_root: str | Path) -> Path:
+    root = Path(project_root).absolute()
+    recorded = Path(manifest["protocol_path"])
+    if ".." in recorded.parts:
+        raise EvaluationError("recorded protocol path contains parent traversal")
+    local = recorded
+    if recorded.is_absolute() and not recorded.is_relative_to(root):
+        local = Path("configs/final_protocol.json")
+    return _path(root, local)
+
+
+def resolve_manifest_protocol(
+    manifest: dict, project_root: str | Path
+) -> tuple[Path, dict]:
+    """Resolve a relocated protocol locally, preserving the manifest's digest.
+
+    Absolute paths outside this checkout are historical provenance. They are
+    never read, even if the original checkout remains accessible. A relocated
+    package must contain its protocol at the canonical local location; ordinary
+    strict loading still verifies structure, environment, inputs and sources.
+    """
+    root = Path(project_root).absolute()
+    source = _manifest_protocol_path(manifest, root)
+    protocol = load_protocol(source, project_root=root)
+    if manifest["protocol_sha256"] != protocol["protocol_sha256"]:
+        raise EvaluationError("manifest belongs to another protocol")
+    return source, protocol
+
+
 def validated_manifest(
     manifest_path: str | Path, project_root: str | Path
 ) -> tuple[dict, dict]:
@@ -58,9 +87,7 @@ def validated_manifest(
         "completed_with_diagnostics",
     }:
         raise EvaluationError("final evaluation requires the complete terminal matrix")
-    protocol = load_protocol(manifest["protocol_path"], project_root=root)
-    if manifest["protocol_sha256"] != protocol["protocol_sha256"]:
-        raise EvaluationError("manifest belongs to another protocol")
+    _, protocol = resolve_manifest_protocol(manifest, root)
     execution = manifest["execution"]
     if execution["namespace"] is None:
         expected_execution = execution_plan(protocol)
@@ -271,6 +298,7 @@ def evaluate_manifest(
     if output.exists() or csv_path.exists():
         raise FileExistsError("preserve prior metrics; choose a new output path")
     manifest, protocol = validated_manifest(manifest_path, root)
+    protocol_source = _manifest_protocol_path(manifest, root)
     torch.set_num_threads(protocol["settings"]["cpu_threads"])
     datasets = saved_datasets(manifest, protocol, root)
     references = {
@@ -346,7 +374,14 @@ def evaluate_manifest(
         "evaluation": protocol["resolved"]["evaluation"],
         "provenance": {
             "protocol_sha256": protocol["protocol_sha256"],
-            "protocol_file_sha256": file_sha256(_path(root, manifest["protocol_path"])),
+            "protocol_file_sha256": file_sha256(protocol_source),
+            "protocol_resolution": {
+                "recorded_path": manifest["protocol_path"],
+                "resolved_local_path": str(protocol_source.relative_to(root)),
+                "relocated": Path(manifest["protocol_path"]).is_absolute()
+                and not Path(manifest["protocol_path"]).is_relative_to(root),
+                "original_manifest_unchanged": True,
+            },
             "manifest_path": str(_path(root, manifest_path)),
             "manifest_sha256": file_sha256(_path(root, manifest_path)),
             "execution": manifest["execution"],
@@ -396,6 +431,7 @@ def plot_manifest(
 
     root = Path(project_root).absolute() if project_root else ROOT
     manifest, protocol = validated_manifest(manifest_path, root)
+    protocol_source = _manifest_protocol_path(manifest, root)
     metrics_file = _path(root, metrics_path)
     report = _json(metrics_file)
     if report["provenance"]["manifest_sha256"] != file_sha256(
@@ -404,6 +440,8 @@ def plot_manifest(
         raise EvaluationError("metrics were produced from another manifest revision")
     if report["provenance"]["protocol_sha256"] != protocol["protocol_sha256"]:
         raise EvaluationError("metrics were produced from another frozen protocol")
+    if report["provenance"]["protocol_file_sha256"] != file_sha256(protocol_source):
+        raise EvaluationError("local protocol bytes differ from metric provenance")
     for source in report["provenance"]["source_files"]:
         if file_sha256(_path(root, source["path"])) != source["sha256"]:
             raise EvaluationError("figure source changed after metric generation")
