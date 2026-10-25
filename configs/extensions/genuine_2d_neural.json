@@ -1,0 +1,101 @@
+{
+  "adam_lr": 0.001,
+  "budget": {
+    "new_full_decision_s": 1200,
+    "type": "prelaunch_decision_not_runtime_cap",
+    "unmeasured_one_time_allowance_s": 120
+  },
+  "case_path": "configs/extensions/case_2d.json",
+  "cpu_threads": 4,
+  "depth_floor_nd": 1e-06,
+  "device": "cpu",
+  "dtype": "float32",
+  "experiment": "genuine_2d_wet_rectangle_physics_only_v01",
+  "full_steps": 10000,
+  "hidden_layers": [
+    64,
+    64,
+    64,
+    64
+  ],
+  "interop_threads": 4,
+  "pilot_steps": 25,
+  "precision": {
+    "element_atol": 2e-05,
+    "element_rtol": 0.002,
+    "gradient_relative_L2_lt": 0.0002,
+    "objective_relative_lt": 2e-05,
+    "pde": 32,
+    "per_wall": 32,
+    "strata_counts": [
+      2,
+      40,
+      40,
+      9,
+      9
+    ],
+    "zero_objective_absolute_le": 2e-05
+  },
+  "query": {
+    "batch_size": 20000,
+    "common_n": 80,
+    "gauss_orders": [
+      3,
+      5
+    ],
+    "mass": [
+      {
+        "id": "base",
+        "n": 80,
+        "time_nodes": 501
+      },
+      {
+        "id": "spatial",
+        "n": 160,
+        "time_nodes": 501
+      },
+      {
+        "id": "temporal",
+        "n": 80,
+        "time_nodes": 1001
+      }
+    ],
+    "positive_dt_s": 0.005,
+    "positive_times": 50
+  },
+  "sampling": {
+    "training": {
+      "ic": 1000,
+      "pde": 10000,
+      "per_wall": 500,
+      "seed": 110201,
+      "strata_counts": [
+        20,
+        400,
+        400,
+        90,
+        90
+      ]
+    },
+    "validation": {
+      "ic": 400,
+      "pde": 2000,
+      "per_wall": 200,
+      "seed": 110202,
+      "strata_counts": [
+        8,
+        160,
+        160,
+        36,
+        36
+      ]
+    }
+  },
+  "schema_version": 1,
+  "seed": 11,
+  "weights": {
+    "bc": 10.0,
+    "ic": 10.0,
+    "pde": 1.0
+  }
+}

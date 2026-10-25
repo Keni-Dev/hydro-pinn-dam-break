@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "owner": "root",
+  "recorded_at_utc": "2026-10-25T23:29:10.926719+00:00",
+  "state": "single_actual25_update_cost_pilot_accepted_for_bounded_full_consideration",
+  "scope": "Seven focused checks, one prescribed precision comparison, frozen inputs/protocol, actual25updates and complete rawquery pass with no quality screening; independent science/integrity/cost and root131binding review.",
+  "bound_acceptance_inputs": {
+    "docs/coordination/phase_10_2_neural_prelaunch_science_review_v01.json": "37f30d4e41fe87481bcf3c4f8bcb653ceaad3aaf54dd685c1d6e8f4db153c432",
+    "docs/coordination/phase_10_2_neural_prelaunch_foundation_review_v01.json": "a05b53f829c10891170403d41fad721786ac600dcf2d9abe5ba95d6050f9bba6",
+    "docs/coordination/phase_10_2_neural_pilot_cost_review_v01.json": "572ebbf9365e8aa6ae73b2657cfb6c03e1dd3f7266bc1c1c9a16a79272bdf1f2",
+    "docs/coordination/phase_10_2_neural_mass_totals_prelaunch_review_v01.json": "9a70022c9f88cacc9cff2cc2cea8b8f1335bbe10f770d36192f210695bc4b8ed",
+    "docs/coordination/phase_10_2_neural_prelaunch_root_readback_v01.json": "776ee5ba67fd55e2d19952d6d9074412d2684e29627ccb60014fcc06b0f6fdfb",
+    "docs/coordination/phase_10_2_neural_mass_totals_completion_contract_v01.json": "b476d9cdfaf89910f72c1e1068785f4222b6332cd1ea074397675eb4dd2db22b",
+    "docs/coordination/phase_10_2_neural_replay_context_contract_v01.json": "60fc558636fed2f22deae315487d8efddd5db21fe96a24efe875c67b87262922",
+    "docs/evidence/phase_10/genuine_neural_v01/full_mass_totals_postprocess_v01.py": "92a3e865a1bb97b5818659ab6fcf5edd2fd40a3c4b12b246f0ee657e1d79c7e4",
+    "docs/evidence/phase_10/genuine_neural_v01/full_mass_totals_contract_v01.json": "9071959576225e31a3a0eed812bd615a89fd7d82a99a556ebc26f44e0b04fc70",
+    "docs/extensions/genuine_2d_neural_pilot_handoff_v01.json": "48f592852572f2e46998ac4b6df18729b9d20c0f75dfce7f6c7651722b663014",
+    "docs/extensions/genuine_2d_neural_replay_context_addendum_v01.json": "207a1291463a05962670b92834d039c791c5e06205f22452f313f02eaaba18b8"
+  },
+  "protocol_file_sha256": "4b2b4d658e85e61c6923ae896ccfa3232509d05e97ff58bb7e1c7a0408080e2c",
+  "protocol_content_digest": "82fd15b84fbc4333d1bb1953f137e47a172b98cf3826493db2aa4111d4ad5bd4",
+  "initial_identity": "114e22041a69a32bb81b2ef9f657916ad39b1dab65b083a4432f9270876fd2c5",
+  "pilot_updates": 25,
+  "validation_history_states": 26,
+  "extra_trusted_reload_validation": 1,
+  "extra_checkpoint_reload_probe_states": 32,
+  "raw_query_states": 13639680,
+  "pilot_parent_wall_s": 10.781703333021142,
+  "raw_query_IO_wall_s": 7.7312731250422075,
+  "full_proxies_s": {
+    "mean": 556.9078203027602,
+    "median": 510.34255569963716,
+    "observed_max": 824.290886285482
+  },
+  "decision_budget_s": 1200,
+  "cost_limit": "Proxies, not runtime or physical accuracy bounds. Includes two query/reload passes and120s unmeasured one-time allowance; actual full closeout costs must replace the allowance.",
+  "resolved_reporting_requirements": [
+    "Mass aggregate output completion is frozen as a separate saved-data script/contract, no source edit or requery.",
+    "Future replay uses a separately labelled derived analysis context after exact fresh-array verification, changing only summary.raw_queries and transparent work-copy inventory. Original archive/run/summary/report/guards remain immutable; actual replay report retained."
+  ],
+  "unresolved_acceptance": "No full model accuracy, sustained cost or extracted positive-checkpoint replay has been observed. Human/native/course delivery acceptance remains separate.",
+  "replay_route_handoff": "Owner static trace confirms unchanged guards consume the explicitly derived analysis view; no execution before full release. Original and fresh provenance remain distinct."
+}
