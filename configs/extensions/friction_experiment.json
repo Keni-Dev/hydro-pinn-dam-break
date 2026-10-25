@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "extension": "wet_flat_manning_forward_v01",
+  "case": "configs/cases/e1_wet.json",
+  "training_template": "configs/training/baseline.json",
+  "reference_packet": "results/extensions/friction/reference_v01",
+  "manning_n_s_m_minus_one_third": 0.03,
+  "bed_elevation_m": 0.0,
+  "rainfall": 0.0,
+  "seed": 11,
+  "sampling_seed": 11,
+  "device": "cpu",
+  "dtype": "float32",
+  "cpu_threads": 4,
+  "hidden_layers": [64, 64, 64, 64],
+  "depth_floor_nd": 0.000001,
+  "adam_lr": 0.001,
+  "full_steps": 10000,
+  "pilot_steps": 25,
+  "weights": {"pde": 1.0, "ic": 10.0, "bc": 10.0},
+  "sampling": {"pde": 10000, "ic": 1000, "per_boundary": 500},
+  "evaluation": {
+    "common_cells": 400,
+    "times_s": [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.20, 0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29, 0.30, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.40, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.50],
+    "pinn_cell_gauss_orders": [3, 5],
+    "reference_wet_threshold_m": 0.001,
+    "mass_midpoint_cells": [800, 1600],
+    "boundary_trapezoid_nodes_before_disjoint_filter": [1001, 2001],
+    "query_chunk_size": 8192
+  }
+}

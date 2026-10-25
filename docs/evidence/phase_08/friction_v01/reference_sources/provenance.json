@@ -1,0 +1,52 @@
+[
+  {
+    "repo": "riemann_book",
+    "path": "Shallow_water_approximate.ipynb",
+    "commit": "6dd68c1819de67de8e44e141ebec666f67e2fa2e",
+    "url": "https://raw.githubusercontent.com/clawpack/riemann_book/6dd68c1819de67de8e44e141ebec666f67e2fa2e/Shallow_water_approximate.ipynb",
+    "sha256": "f3f0106c76a006e2e54d8ce27c4fc4cc68d62188854e391251d6b9d334100985",
+    "saved_path": "docs/evidence/phase_08/friction_v01/reference_sources/riemann_book_Shallow_water_approximate.ipynb"
+  },
+  {
+    "repo": "riemann_book",
+    "path": "LICENSE-CODE",
+    "commit": "c6601c71c64fc7ef09399b70eda3bdb28df74ade",
+    "url": "https://raw.githubusercontent.com/clawpack/riemann_book/c6601c71c64fc7ef09399b70eda3bdb28df74ade/LICENSE-CODE",
+    "sha256": "82e755a0379339dd6d1d9464ebe7cf5f4bdbf1c45af77d45d58b4c0cc7a2a07e",
+    "saved_path": "docs/evidence/phase_08/friction_v01/reference_sources/riemann_book_LICENSE-CODE"
+  },
+  {
+    "repo": "geoclaw",
+    "path": "src/2d/shallow/src2.f90",
+    "commit": "e2ef985e314e8609200cb67a7c15ef56b07f7828",
+    "url": "https://raw.githubusercontent.com/clawpack/geoclaw/e2ef985e314e8609200cb67a7c15ef56b07f7828/src/2d/shallow/src2.f90",
+    "sha256": "ef2c4fd07774494f1a70a0a6b0a10d4a41e10f82b7365892e6d1eb074c93bc1d",
+    "saved_path": "docs/evidence/phase_08/friction_v01/reference_sources/geoclaw_src2.f90"
+  },
+  {
+    "repo": "geoclaw",
+    "path": "LICENSE",
+    "commit": "8c3fd5c8121137c889e28a3e20eae59cb0ab75fa",
+    "url": "https://raw.githubusercontent.com/clawpack/geoclaw/8c3fd5c8121137c889e28a3e20eae59cb0ab75fa/LICENSE",
+    "sha256": "668317944192d8217d63c0fd0730f889bd07f759b69ed6b657e1fb9902145ebe",
+    "saved_path": "docs/evidence/phase_08/friction_v01/reference_sources/geoclaw_LICENSE"
+  },
+  {
+    "repo": "riemann_book",
+    "path": "LICENSE-CODE",
+    "commit": "6dd68c1819de67de8e44e141ebec666f67e2fa2e",
+    "url": "https://raw.githubusercontent.com/clawpack/riemann_book/6dd68c1819de67de8e44e141ebec666f67e2fa2e/LICENSE-CODE",
+    "sha256": "82e755a0379339dd6d1d9464ebe7cf5f4bdbf1c45af77d45d58b4c0cc7a2a07e",
+    "saved_path": "docs/evidence/phase_08/friction_v01/reference_sources/riemann_book_source_version_LICENSE-CODE",
+    "relationship": "license at the same commit as consulted source"
+  },
+  {
+    "repo": "geoclaw",
+    "path": "LICENSE",
+    "commit": "e2ef985e314e8609200cb67a7c15ef56b07f7828",
+    "url": "https://raw.githubusercontent.com/clawpack/geoclaw/e2ef985e314e8609200cb67a7c15ef56b07f7828/LICENSE",
+    "sha256": "668317944192d8217d63c0fd0730f889bd07f759b69ed6b657e1fb9902145ebe",
+    "saved_path": "docs/evidence/phase_08/friction_v01/reference_sources/geoclaw_source_version_LICENSE",
+    "relationship": "license at the same commit as consulted source"
+  }
+]

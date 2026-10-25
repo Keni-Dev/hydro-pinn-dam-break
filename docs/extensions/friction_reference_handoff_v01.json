@@ -1,0 +1,164 @@
+{
+  "API": {
+    "conservative_project": "(averages,source_edges,target_edges)->cell averages; last dimension is cell axis",
+    "load_reference": "(packet directory or NPZ path)->dict arrays; packet directory loads common_reference.npz",
+    "run_reference": "(config_path,output_dir)->summary; rejects an existing output directory",
+    "solve_reference": "(case,n,cells,cfl,times)->dict of numpy arrays"
+  },
+  "file_hashes": {
+    "configs/extensions/friction_reference.json": "6528c32b40264a0054e5e7197b237cd3d755ca08d43c04feb6415eb324eac52f",
+    "docs/evidence/phase_08/friction_v01/reference_tests_stdout.log": "aa9e087b22ffa19cba7c67de660443d09a48fcc53f39fc5646d334be0f7b6c4e",
+    "docs/evidence/phase_08/friction_v01/zero_n_reference_check.json": "b2d8734221eeadc3af0445533cb63f3c1ed8843ce8086e1dbc18c4a3732074c3",
+    "docs/extensions/friction_reference_checks.md": "74c45ec79e3556bfeb4192595092432c512c671c4bbdf72f6cec099906b80f8b",
+    "results/extensions/friction/reference_v01/common_reference.npz": "36b44a1cc4cde5183e051fe5eba357113443a8d6594efc915292a375cfdde91c",
+    "results/extensions/friction/reference_v01/protocol.json": "de949da992106dd6247046e3432bccd94a74c5d94847ba35370d74ca19c82a4b",
+    "results/extensions/friction/reference_v01/reference_provenance.json": "9fe1826528ab73d8999bca48dd9f534dd276d92a263f1553dcb99b0fad115806",
+    "results/extensions/friction/reference_v01/summary.json": "d0788d7e7c0e34e970ff8306d9e9ce852a6f255c4d506f2e1ffbe1e12c031387",
+    "src/hydro_pinn/extensions/friction_reference.py": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+    "tests/test_friction_reference.py": "e9f25948519cb36ee5f3118fb235477a09d79e6330e0aa8e803537f622d353c7"
+  },
+  "full_PINN_fit_released": false,
+  "limits": [
+    "Strictly wet flat bed/no rain; no dry or nonflat validation",
+    "Measured numerical uncertainty retained; no ground truth claim",
+    "No neural accuracy evaluated",
+    "No inverse/sensor dataset or fit"
+  ],
+  "necessary_tests": {
+    "command": "rtk proxy uv run --frozen pytest -q tests/test_friction_reference.py",
+    "receipt": "docs/evidence/phase_08/friction_v01/reference_tests_stdout.log",
+    "result": "5 passed"
+  },
+  "numerical_summary": {
+    "common_sha256": "36b44a1cc4cde5183e051fe5eba357113443a8d6594efc915292a375cfdde91c",
+    "comparison_operator": "Conservative overlap integration of native piecewise-constant averages onto 400 equal cells; PINN integrates over same cells",
+    "front_max_half_width_m": 0.1,
+    "front_max_uncertainty_m": 0.02187499999999982,
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "reference_is_ground_truth": false,
+    "refinement": [
+      {
+        "front_max_difference_m": 0.018749999999999822,
+        "h_m": {
+          "max_abs": 0.036755506530888604,
+          "rmse": 0.0027553443806519772
+        },
+        "pair": "spatial800_1600",
+        "q_m2_s": {
+          "max_abs": 0.1449934720409709,
+          "rmse": 0.007836326302739834
+        }
+      },
+      {
+        "front_max_difference_m": 0.0031250000000007105,
+        "h_m": {
+          "max_abs": 0.026312074860897483,
+          "rmse": 0.0015974952043213665
+        },
+        "pair": "spatial1600_3200",
+        "q_m2_s": {
+          "max_abs": 0.10384406717797612,
+          "rmse": 0.004820849790887158
+        }
+      },
+      {
+        "front_max_difference_m": 0.0031250000000007105,
+        "h_m": {
+          "max_abs": 0.005014849549631523,
+          "rmse": 0.00031448755443968493
+        },
+        "pair": "time3200",
+        "q_m2_s": {
+          "max_abs": 0.017485730952522704,
+          "rmse": 0.0008892785949587667
+        }
+      }
+    ],
+    "runs": [
+      {
+        "boundary_h_max_mismatch_m": 0.0,
+        "boundary_q_max_mismatch_m2_s": 0.0,
+        "cells": 800,
+        "cfl": 0.45,
+        "dt_max_s": 0.001795924284789659,
+        "dt_min_s": 0.0003218080185083162,
+        "dx_m": 0.0125,
+        "final_cumulative_source_impulse_m3_s": -0.029376733740937258,
+        "id": "n800_cfl0p45",
+        "max_mass_budget_defect_m2": 4.529709940470639e-14,
+        "max_momentum_budget_defect_m3_s": 4.055783486833775e-15,
+        "minimum_h_m": 0.1,
+        "outputs_sha256": "eaba3e67178670b86cec2a66bcfe055ca0e9ba9107e961a2cbb6a9e63783308e",
+        "solve_wall_s": 0.050675999955274165,
+        "steps": 399
+      },
+      {
+        "boundary_h_max_mismatch_m": 0.0,
+        "boundary_q_max_mismatch_m2_s": 0.0,
+        "cells": 1600,
+        "cfl": 0.45,
+        "dt_max_s": 0.0008979621423948295,
+        "dt_min_s": 5.561729218648767e-05,
+        "dx_m": 0.00625,
+        "final_cumulative_source_impulse_m3_s": -0.0297126899823529,
+        "id": "n1600_cfl0p45",
+        "max_mass_budget_defect_m2": 4.618527782440651e-14,
+        "max_momentum_budget_defect_m3_s": 4.871103520542874e-15,
+        "minimum_h_m": 0.1,
+        "outputs_sha256": "700d937595f67c7089f3804672352e06d5be653e18aeccc13a71dfde28d8526c",
+        "solve_wall_s": 0.0941423749900423,
+        "steps": 798
+      },
+      {
+        "boundary_h_max_mismatch_m": 0.0,
+        "boundary_q_max_mismatch_m2_s": 0.0,
+        "cells": 3200,
+        "cfl": 0.45,
+        "dt_max_s": 0.00044898107119741476,
+        "dt_min_s": 0.00010022354887795348,
+        "dx_m": 0.003125,
+        "final_cumulative_source_impulse_m3_s": -0.029922313892863095,
+        "id": "n3200_cfl0p45",
+        "max_mass_budget_defect_m2": 1.616484723854228e-13,
+        "max_momentum_budget_defect_m3_s": 6.522560269672795e-15,
+        "minimum_h_m": 0.1,
+        "outputs_sha256": "6de131027d1ab599ce6e45a8e814bd6065ed9bf0bd3d04e882d39cbb1b494f42",
+        "solve_wall_s": 0.3092490829876624,
+        "steps": 1548
+      },
+      {
+        "boundary_h_max_mismatch_m": 0.0,
+        "boundary_q_max_mismatch_m2_s": 0.0,
+        "cells": 3200,
+        "cfl": 0.225,
+        "dt_max_s": 0.00022449053559870738,
+        "dt_min_s": 0.00010177744495143415,
+        "dx_m": 0.003125,
+        "final_cumulative_source_impulse_m3_s": -0.02989962979610077,
+        "id": "n3200_cfl0p225",
+        "max_mass_budget_defect_m2": 1.6076029396572267e-13,
+        "max_momentum_budget_defect_m3_s": 6.581540867856006e-15,
+        "minimum_h_m": 0.1,
+        "outputs_sha256": "620b80ccf2d25296b6a853361c9e10b36949c3273a82dc95c8b0761c785d4822",
+        "solve_wall_s": 0.6509929590392858,
+        "steps": 3046
+      }
+    ],
+    "selected_reference": "n3200_cfl0p225",
+    "state": "complete_reference_with_measured_uncertainty",
+    "uncertainty_h_m": {
+      "max_abs": 0.03060210998562307,
+      "rmse": 0.0018684941791235307
+    },
+    "uncertainty_q_m2_s": {
+      "max_abs": 0.12131054277150266,
+      "rmse": 0.005650060587106191
+    },
+    "wall_s_including_output": 1.311370374984108
+  },
+  "reference_packet": "results/extensions/friction/reference_v01",
+  "source_version_snapshot": "docs/evidence/phase_08/friction_v01/friction_reference_source_v01.py",
+  "state": "reference_implementation_and_four_level_packet_complete",
+  "static_check": "rtk proxy uv run --frozen ruff check src/hydro_pinn/extensions/friction_reference.py tests/test_friction_reference.py; passed"
+}
