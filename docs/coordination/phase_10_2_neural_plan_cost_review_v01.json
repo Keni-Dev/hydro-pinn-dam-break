@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T23:00:32.941800+00:00",
+  "review_scope": "Read-only plan review using integer workload arithmetic and existing receipts. No model/reference/test/query execution or new pilot.",
+  "plan_path": "docs/coordination/phase_10_2_neural_study_plan_v01.json",
+  "plan_sha256": "d2326214203774278330f0c7e832f852653dfbbe3e27baf30fd4730a1a60a27c",
+  "verdict": "qualified_planning_only_counts_correct_no_execution_release; clarify mandatory replay and 1200s scope, then freeze concrete query/output strategy before the one pilot",
+  "query_counts": {
+    "all_declared_counts_correct": true,
+    "states": {
+      "Gauss3": 2880000,
+      "Gauss5": 8000000,
+      "volume": 1958400,
+      "boundary": 801280,
+      "total": 13639680
+    },
+    "formulas": {
+      "Gauss3": "80*80*50*9",
+      "Gauss5": "80*80*50*25",
+      "volume": "51*(80*80+160*160+80*80)",
+      "boundary": "4*(80*501+160*501+80*1001)"
+    },
+    "Gauss_shared_centres": 320000,
+    "volume_duplicate_policy": "Both identical base/temporal 80x80 passes are counted independently, as required by no-dedup policy.",
+    "boundary_condition": "Correct if frozen replacement schedules contain exactly 501/501/1001 distinct nodes. Recompute from actual arrays/hashes; do not silently union extra near-coincident output times.",
+    "original_plus_full_extracted_forward_operator_replay_states": 27279360,
+    "scope": "27279360 covers two equivalent no-dedup inference passes only. Training/validation derivatives, the earlier pilot and non-inference work are additional."
+  },
+  "material_findings": [
+    {
+      "id": "COST-01",
+      "priority": "material_before_full_release",
+      "issue": "Mandatory extracted fresh-forward/operator replay is not explicitly included in the 1200s new-full projection.",
+      "resolution": "Include a second 13639680-state pass, checkpoint loading, query/reduction/export I/O and integrity comparison if all raw scientific outputs are reproduced. The measured one-pass pilot cost can be a labelled replay proxy, not a bound. No cached neural-output replay."
+    },
+    {
+      "id": "COST-02",
+      "priority": "material_before_budget_decision",
+      "issue": "candidate_new_full_budget_s=1200 has no explicit inclusion/exclusion equation or overrun interpretation.",
+      "resolution": "Declare whether 1200 is a prelaunch feasibility decision budget or an actual runtime cap. At minimum project 10000 complete update cycles, step-zero validation/setup, original reload/query/output and mandatory extracted pass. List final error/mass/parity/region/operator analysis, readbacks, startup, figures, snapshot/archive/extraction and replay-comparison costs separately when unmeasured. Excluded work cannot support complete-study-under-1200 wording. Mean/median/max 25-step extrapolations are not guaranteed bounds. If a hard cap is intended, preserve interrupted/failed status and checkpoint rather than claiming 10000 completed updates."
+    },
+    {
+      "id": "COST-03",
+      "priority": "freeze_requirement_before_pilot",
+      "issue": "Batch size, reduction/serialization precision/schema and membership-check algorithm remain deferred, so memory/output cost is not concrete yet.",
+      "resolution": "Freeze deterministic positive batch size, lazy ordered query generation, inference/no-gradient mode, accumulator/output dtypes, area-mean reduction/flush, volume/edge field schemas and compression/file schedule. Memory should scale with a chunk plus reduced outputs. Avoid materializing a 10.56-million-entry Python tuple union solely for membership checks: tensor-product x/y/time node-axis membership per Gauss rule and execution representation can implement the same intersections. Include chosen freeze/membership work in setup timing/RSS."
+    }
+  ],
+  "storage_arithmetic_not_measurement": {
+    "all_query_states_three_float64_fields_if_materialized_bytes": 327352320,
+    "two_Gauss_mean_h_qx_qy_float64_arrays_bytes": 15360000,
+    "illustrative_compact_payload_bytes": 37437440,
+    "illustrative_compact_schema": "Both three-field Gauss-mean arrays, h-only volume probes, signed-normal-q-only edge probes. This is an example, not a selected schema or compressed-size prediction.",
+    "three_fields_for_all_volume_boundary_plus_Gauss_means_bytes": 81592320,
+    "limits": "Bare payload excludes axes/weights, metadata/provenance, checkpoints/optimizer/history, temporary buffers, figures and archive duplicates. Individual Gauss point states need not persist; reduced scientific arrays must persist for replay."
+  },
+  "pilot_timing_requirements": [
+    "Inclusive outer wall plus separate setup/init/partition-membership/hash costs. There are 25 Adam updates but 26 validations/history states including step zero.",
+    "Objective/coordinate derivatives, backward/all-parameter gradients, Adam, validation/selection, history and latest/selected checkpoint persistence need non-overlapping timers and actual write counts. Pilot selection-write frequency need not match full fitting.",
+    "Time trusted reload, deterministic coordinate generation/conversion, both Gauss rules, all three volume/edge schedules, reduction, transfer and compression/output I/O. Preserve duplicate base/temporal volume work and count actual queries.",
+    "One complete raw final-query/output pilot pass is consistent with the plan. Do not calculate reference-versus-neural error, mass/parity/region quality or use raw outputs for selection.",
+    "Record process-lifetime RSS and unavailable current-memory/allocator/system-pressure telemetry explicitly; no capacity inference from absent probes. Save actual output bytes and temporary/archive observations.",
+    "Project using measured complete-step mean/median/observed maximum plus recurring fixed work; avoid summing overlapping timers or scaling one-time startup 10000 times. Keep 1200s decision scope explicit before full release."
+  ],
+  "prior_planar_receipts": {
+    "sources": [
+      "docs/extensions/planar_2d_handoff_v01.json",
+      "docs/extensions/planar_2d_checks.md"
+    ],
+    "prior_query_states": 8944312,
+    "prior_query_output_wall_s": 14.78121149999788,
+    "prior_query_output_bytes": 105562053,
+    "use_limit": "Historical category/completeness evidence only. Different operators, schedules, fields/compression and host conditions prohibit exact genuine2D runtime extrapolation or a 1200s guarantee."
+  },
+  "execution_notes": [
+    "Initial builtin-only text/arithmetic script used system Python3.9, which lacks datetime.UTC; it failed before creating a file. Corrected using existing Python3.12 environment; no scientific dependency or model was imported."
+  ],
+  "preservation": {
+    "only_written_path": "docs/coordination/phase_10_2_neural_plan_cost_review_v01.json",
+    "existing_files_modified": false,
+    "model_reference_tests_queries_executed": false,
+    "new_pilot_or_full_release": false,
+    "cross_chat_messages_sent": false
+  },
+  "decision_owner": "root",
+  "plan_unchanged_during_review": true
+}

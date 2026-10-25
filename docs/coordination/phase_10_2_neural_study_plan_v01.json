@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "state": "planning_only_no_neural_execution_release",
+  "owner": "root",
+  "recorded_at_utc": "2026-10-25 22:55:12 UTC",
+  "scope": "One bounded genuinely2D wet rectangular-reservoir physics-only PINN study after numerical-reference archive/replay acceptance. Not a matched superiority comparison to planar/1D, not all Phase10.",
+  "prerequisite": "Root acceptance of four checked/refined reference records, frozen R6 with material mesh sensitivity, preserved executable reference archive and one extracted saved-data replay.",
+  "ownership": {
+    "new_modules": [
+      "src/hydro_pinn/extensions/experiment_2d.py",
+      "src/hydro_pinn/extensions/evaluate_2d.py"
+    ],
+    "new_config": "configs/extensions/genuine_2d_neural.json",
+    "new_test": "tests/test_genuine_2d_experiment.py",
+    "new_namespaces": [
+      "runs/p10_genuine_2d_*",
+      "results/extensions/two_dimensional/neural_*",
+      "docs/extensions/genuine_2d_neural_*",
+      "docs/evidence/phase_10/genuine_neural_v01"
+    ],
+    "only_existing_edit": "Named additive extension-2d-run and extension-2d-evaluate CLI registrations; preserve every older line/order/AST. No __init__ edit.",
+    "protected": "33 older nonCLI scientific modules including reference_2d; all existing accepted archives, frozen source/config/protocol/axes/results/failed attempts. Root owns coordination/global status/Git."
+  },
+  "case": {
+    "reference": "Unchanged configs/extensions/case_2d.json rectangle case; numerical selected ref_rect320_c0225_v01.",
+    "H_m": 1,
+    "L_m": 10,
+    "U_m_s": 3.132091952673165,
+    "T_scale_s": 3.1927542840705043,
+    "physical_domain": "[-5,5]\u00b2; t\u2208[0,.25]s; scaled[-.5,.5]\u00b2 and t*=.0783022988",
+    "initial": "Exact rectangle h1m inside x\u2208[-1,1],y\u2208[-.5,.5],else .1m; qx=qy0. No smoothing.",
+    "boundary": "Four reflective slip walls enforced with soft normal-discharge-only penalties; left/right qx=0, bottom/top qy=0. No depth/tangential-discharge labels.",
+    "physics": "Flat frictionless rain-free three conserved shallow-water residuals; no artificial viscosity/Manning/neural interior solution labels/hard symmetry."
+  },
+  "model": {
+    "reuse": "Existing generic PlanarPINN and physics_2d.residuals with direct Scales(H=1,L=10); no E1/1D case wrappers.",
+    "seed": 11,
+    "device": "M5 CPU",
+    "dtype": "float32",
+    "threads": 4,
+    "hidden_layers": 4,
+    "width": 64,
+    "activation": "tanh",
+    "parameters": 12931,
+    "depth_floor_star": 1e-06,
+    "outputs": "h*=softplus(raw_h)+floor; qx*=h*u*,qy*=h*v*",
+    "initialization": "Common fresh seed11 model tensors frozen before pilot; fresh Adam. Full fit starts at these same initial tensors, never pilot selected/latest.",
+    "optimizer": "Adam lr=.001, exactly10000 updates if separately released; no LBFGS/adaptation/chunking/resampling/early stop."
+  },
+  "partitions": {
+    "rng": "Independent PCG64 train110201 and validation110202 streams; freeze explicit generation order. No result-driven seed changes.",
+    "train": {
+      "PDE": 10000,
+      "IC": 1000,
+      "each_wall": 500
+    },
+    "validation": {
+      "PDE": 2000,
+      "IC": 400,
+      "each_wall": 200
+    },
+    "PDE": "Uniform physical interior x/y and 0<t<.25, no solution labels.",
+    "IC_strata": [
+      {
+        "region": "deep2m\u00b2",
+        "fraction": 0.02,
+        "train": 20,
+        "validation": 8
+      },
+      {
+        "region": "left40m\u00b2",
+        "fraction": 0.4,
+        "train": 400,
+        "validation": 160
+      },
+      {
+        "region": "right40m\u00b2",
+        "fraction": 0.4,
+        "train": 400,
+        "validation": 160
+      },
+      {
+        "region": "middle_below9m\u00b2",
+        "fraction": 0.09,
+        "train": 90,
+        "validation": 36
+      },
+      {
+        "region": "middle_above9m\u00b2",
+        "fraction": 0.09,
+        "train": 90,
+        "validation": 36
+      }
+    ],
+    "IC_weights": "Ordinary global MSE preserves exact geometric area fractions; uniform within each stratum, fixed shuffle. Record half-open geometry and execution-dtype IC classification. Small deep-sample counts are a limitation.",
+    "membership": "Save SI64/scaled64/actual SIcast32-divided model-input32 arrays; reject train-validation duplicates/intersections and training/validation intersection with union of final3x3/5x5 coordinates at each execution representation. No favorable regeneration. IC must retain rectangle classification after actual float32 transform.",
+    "overlap_qualification": "3x3 and5x5 final Gauss rules intentionally share320000 cell-centre coordinates. Imposed IC/BC and mass auxiliary probes may overlap and are diagnostics, not independent heldout labels."
+  },
+  "objective": {
+    "training": "Sum MSE of three residual components +10*sum of three IC component MSEs +10*mean of four wall normal-discharge MSEs; all dimensionless. Freeze exact reductions.",
+    "validation": "Same component/reduction rule on separate frozen validation memberships, labels only imposedIC/BC.",
+    "checkpoint": "Earliest strict minimum validation objective including step0; reference errors, gradient-region errors, mass, symmetry and final-label data never select checkpoint.",
+    "history": "0..10000 contiguous rows; full optimizer state; components/validation/selection/persistence at every step. Pilot exactly0..25."
+  },
+  "evaluation": {
+    "reference": "Numerical 320\u00b2/.225 projected80\u00b2 means at50 positive times; t0 separate. Bind actual exact archive/reference/R6/mask hashes. Numerical sensitivity disclosed, never exact truth.",
+    "primary": "Conserved NN area means via tensor-product3x3 Gauss per80\u00b2cell/time;5x5 rule separate sensitivity, compared to same conservative reference operator.",
+    "fields": "hbar,qxbar,qybar and qxbar/hbar,qybar/hbar cell-ratio velocities. No point/mean-point velocity claim.",
+    "metrics": "Area/equal-time MAE,RMSE,relativeL2 with explicit zero-reference nulls; whole/numerical-gradient-region/complement using frozen reference-only mask; preserve per-time/pooled/operator discrepancies. Compare errors alongside frozen Dspace/Dtime/Dsum indicators without confidence/accuracy bounds.",
+    "symmetry": "Report saved common-mean parity for even h, oddx/eveny qx and evenx/oddy qy; no x-y exchange expectation for rectangle.",
+    "mass": "Four outward signed q edge fluxes plus absolute normal-discharge mismatch; B=M\u221211.8+time-integral(outward q); raw initial bias and bias-subtracted change. No momentum budget.",
+    "mass_quadrature": [
+      {
+        "id": "base",
+        "area_midpoints": "80\u00b2",
+        "output_times": 51,
+        "wall_midpoints_per_edge": 80,
+        "time_nodes": 501
+      },
+      {
+        "id": "spatial",
+        "area_midpoints": "160\u00b2",
+        "output_times": 51,
+        "wall_midpoints_per_edge": 160,
+        "time_nodes": 501
+      },
+      {
+        "id": "temporal",
+        "area_midpoints": "80\u00b2",
+        "output_times": 51,
+        "wall_midpoints_per_edge": 80,
+        "time_nodes": 1001
+      }
+    ],
+    "mass_time_rule": "Freeze output-time node replacement and trapezoidal integration, actual distinct node schedules/hash; spatial/time changes separately, not certified bounds.",
+    "raw_queries_without_dedup": {
+      "Gauss3": 2880000,
+      "Gauss5": 8000000,
+      "volume": 1958400,
+      "boundary": 801280,
+      "total": 13639680
+    },
+    "query_storage": "Freeze deterministic evaluation batch size/query generation/order before pilot. Query the identical base/temporal volume operator separately: this no-dedup plan counts all three volume passes (1,958,400 states). Save exact axes/weights and computed area/volume/boundary arrays/provenance; millions of individual Gauss point states need not persist. Do not change queried workload or reuse policy after freeze."
+  },
+  "necessary_checks": [
+    "Three residual signs and H1/L10 scaling with smooth manufactured fields; reuse prior tested helpers without broad retesting.",
+    "Exact rectangle area strata/IC classifications; four edge normal masks/signs/tangential exclusions.",
+    "Float32 actual membership disjointness/finite positive output and manufactured area Gauss mean/operator consistency; deterministic init/checkpoint/optimizer reload.",
+    "Small fixed matched-state CPU32/64 residual/objective/all-parameter-gradient discrepancy with explicit arithmetic/relative-null criteria frozen before comparison; no accuracy-based architecture/precision tuning."
+  ],
+  "pilot": {
+    "release": "Not yet released by this plan. After reference acceptance release implementation/checks and ONE25-update complete-workload CPU32 pilot only; full10000 separate rootrelease after actual review.",
+    "freeze": "Source/config/protocol/initial tensors/Adam/partitions/final and mass axes/masks/operators/query batch/history/output schedule before pilot.",
+    "work": "25 full backward/Adam/validation/history/checkpoint cycles, selected checkpoint trusted reload, entire final raw query/output workload ONCE; no reference-vs-neural quality/mass/parity/gradient-region screening or favorable repeats.",
+    "cost": "Inclusive outerwall, scoped training/validation/selection/persistence/reload/finalquery+IO/categories/RSS/outputbytes; mean/median/max observed step projections plus measured full query costs. Report unmeasured finalanalysis/startup/archive separately; proxies not bounds.",
+    "candidate_new_full_budget_s": 1200,
+    "full_release": "Only after actual reference/data/source/operator/precision/cost review; one fresh10000 update fit if feasible, no hardware wait."
+  },
+  "completion": "Preserve all unfavorable findings/few saved-data figures. Freeze executable archive before later CLI edits; ONE fresh selected-checkpoint extracted forward/operator replay must reproduce raw scientific outputs, not a cache-only analysis rerun. Same-M5 environment limitations explicit."
+}

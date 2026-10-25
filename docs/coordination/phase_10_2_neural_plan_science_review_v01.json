@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25 23:00:27 UTC",
+  "state": "coherent_successor_design_with_required_pre_freeze_sampling_precision_and_metric_definitions",
+  "owner": "science_audit",
+  "owned_path": "docs/coordination/phase_10_2_neural_plan_science_review_v01.json",
+  "scope": "Bounded static scientific successor-plan review only. No source/CLI/config edit, sampling, dataset creation, execution, tests, model queries, fitting, replay or release.",
+  "reviewed_sha256": {
+    "docs/coordination/phase_10_2_neural_study_plan_v01.json": "d2326214203774278330f0c7e832f852653dfbbe3e27baf30fd4730a1a60a27c",
+    "docs/coordination/phase_10_2_reference_matrix_science_review_v01.json": "5e5dd3ababae7e5d466982f396eb76b31c9936c237fcff3b97ad67249ac18804",
+    "src/hydro_pinn/extensions/model_2d.py": "06b381e659c7a3a3e9aa2a9867f04cef119873a16b588a63f603584718162459",
+    "src/hydro_pinn/extensions/physics_2d.py": "238d322f617df0488500978716186683c3d3e4ff56a213edf4c0f571c56c9339",
+    "src/hydro_pinn/extensions/planar_2d.py": "1e5009b31b24fc7673c428aa421870c38546ac55692ca8dd409bb6d98bc78c4a",
+    "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79"
+  },
+  "decision": {
+    "material_design_blockers": [],
+    "conclusion": "The single-seed genuine2D physics-only study is mathematically coherent and preserves the numerical-reference limits. Necessary definitions below must be bound in the plan or implementation protocol before the corresponding sampling/check/pilot freeze; they require no extra experiment or performance/accuracy gate.",
+    "execution_authority": "None. Extracted reference saved-data replay acceptance remains a prerequisite outside this review. A later implementation/check/pilot lease and any full10000-update release remain root decisions."
+  },
+  "accepted_design": {
+    "scales": "H=1m,L=10m,U=sqrt(9.81)m/s,T=L/U; scaled domain[-.5,.5]^2 and t_max*=.25/T. Derive scales/axes from these identities rather than rounded display literals.",
+    "residuals": "The accepted generic helper uses (x*,y*,t*) and scaled(h*,qx*,qy*) with g*=1. Its three conservative equations and cross-fluxes are appropriate; no new residual derivation or broad retest is needed.",
+    "model": "Four width64 hidden layers,3inputs/3outputs give12931parameters. Positive softplus depth plus1e-6 scaled floor and signed h*u/h*v momenta impose neither y-invariance nor hard symmetry.",
+    "IC_area_weights": "The five disjoint areas2/40/40/9/9m2 sum to100m2. Counts20/400/400/90/90 and8/160/160/36/36 have exactly.02/.40/.40/.09/.09 fractions, so one ordinary global IC sample MSE per component estimates the intended uniform-area objective. Do not subsequently give equal weight to five stratum means, which would over-weight the2m2 deep region. The20/8deep counts are a disclosed limitation, not a reason to invent a new quality gate.",
+    "wall_objective": "Left/right penalize only qx*, bottom/top only qy*. Equal wall means are appropriate because all four edge lengths and time horizons are equal. No h/tangential labels or corner normal-vector averaging are needed.",
+    "partitions": "Independent frozen RNG streams and disjoint train/validation/primary-final coordinates at SI64,scaled64 and the actual SIcast32-then-divide model-input32 representations support the declared strict partition. Gauss3/5 intentionally share320000 positive-time centres; mass/IC/BC auxiliary overlap is not independent-label holdout evidence.",
+    "operators": "Primary fields are conserved cell means; velocities are qxbar/hbar and qybar/hbar, with the same ratio convention for the numerical reference. A tensor-product Gauss mean uses(1/4)*sum_i,j(w_i*w_j*U(xc+dx*xi_i/2,yc+dy*xi_j/2,t)); do not average point velocities or multiply a mean by area twice.",
+    "mass": "Outward rates are-left qx,+right qx,-bottom qy,+top qy integrated over edge length. B(t)=M(t)-11.8+Iout(t); B(0)=M(0)-11.8; bias-subtracted balance is B(t)-B(0)=M(t)-M(0)+Iout(t). Volume/balance/edge-flux time integrals have m3 units. No momentum budget is claimed.",
+    "pilot_and_fullfit": "One25-update representative CPU32/four-thread pilot plus one complete raw final-query workload is appropriate for feasibility. Physics-only validation may select the pilot checkpoint; no numerical-reference-error, mass-quality, symmetry or gradient-region screening may choose architecture/data/steps. A full fit, if released, starts from frozen fresh initial tensors and fresh Adam, not the pilot endpoint."
+  },
+  "required_pre_freeze_definitions": [
+    {
+      "id": "S1_wall_sampling_and_execution_support",
+      "applies_before": "Any partition generation/freeze.",
+      "gap": "PDE and IC laws/counts are stated, but the wall free-coordinate/time sampling law and all actual-execution support checks are not yet explicit.",
+      "concrete_required_definition": "For each named wall, fix its SI normal coordinate exactly at-5 or+5; sample the tangential coordinate uniformly in(-5,5) and time uniformly in(0,.25), excluding corners and t0 unless a different explicitly frozen convention is adopted. Use the existing500/200per-wall counts and declared train/validation RNG streams; freeze call order/shuffle/index metadata before draws. Save wall names and normal-component selectors.",
+      "IC_point_convention": "Write the five actual rectangles explicitly. One consistent half-open convention is deep[-1,1)x[-.5,.5), left[-5,-1)x[-5,5), right[1,5]x[-5,5), middle-below[-1,1)x[-5,-.5), middle-above[-1,1)x[.5,5], with domain-endpoint handling stated. Point-edge convention has zero-area effect on the accepted reference averages, but one convention must govern all imposed IC labels.",
+      "execution_check": "Besides IC label stability and row disjointness, verify actual model-input32 coordinates still represent declared PDE interior/time support, exact wall normal support and noncorner/t>0 wall support. Derive the actual input arrays through the same Torch SIcast32/division sequence used by execution, rather than assuming scaled64.cast32 is identical. On a failed fixed-membership check preserve the failed evidence; do not draw a favorable replacement silently."
+    },
+    {
+      "id": "S2_fixed_precision_subset_and_numeric_criteria",
+      "applies_before": "The single CPU32/64 precision comparison and pilot release.",
+      "gap": "The plan requires numerical criteria but does not provide the promised fixed subset/threshold/null specification. Blindly copying the planar first32 shuffledIC subset can omit the deep region.",
+      "proposed_small_subset": "Freeze saved training indices for32PDE points,32points from each wall, and100IC points with strata2/40/40/9/9. These exact proportions retain the study's global IC area weights and include deep points; select indices deterministically before any precision result. No new RNG search or reference labels.",
+      "matched_state_and_inputs": "Construct the CPU32 initial model once, copy the exact tensors to CPU64 by casting, and use the same fixed SI64 coordinates/IC targets with each declared execution transform. Keep identical component reductions/weights and explicit dtype constants. Compare all parameters in one frozen named order.",
+      "existing_thresholds_to_adopt": "Use the pre-existing planar precision thresholds: absolute objective discrepancy divided by abs(CPU64 objective)<2e-5; all-parameter gradient relativeL2<2e-4; gradient element allclose rtol2e-3,atol2e-5. Record raw/component discrepancies and denominators, not just passed=true.",
+      "residual_and_null_completion": "Because the new plan explicitly promises residual comparison, freeze its per-element dimensionless tolerance before use; a concrete compatible option is allclose rtol2e-3,atol2e-5 for each residual component. For exactly zero CPU64 objective/gradient/residual norm, report relative=null with a zero_cpu64_norm reason; a concrete fallback is absolute objective discrepancy<=2e-5 and the stated elementwise atol2e-5 for zero gradient/residual arrays. Do not add epsilon to a denominator. Freeze these choices rather than choosing them from observed differences.",
+      "rationale": "These are one fixed arithmetic/autograd sanity check, not long-trajectory equivalence or a physics-accuracy target. No precision/device sweep, extra training or result-driven threshold adjustment is requested."
+    },
+    {
+      "id": "S3_mass_nodes_weights_and_absolute_wall_diagnostic",
+      "applies_before": "Pilot final-query/operator freeze.",
+      "gap": "The plan promises output-node replacement and an absolute wall mismatch but leaves their exact operations to implementation.",
+      "concrete_schedule": "Let t_out[k]=.005*k,k=0..50. Start the501-node schedule at .25*j/500,j=0..500 and replace indices10*k with exact frozen t_out[k]. Start the1001-node schedule at .25*j/1000 and replace indices20*k likewise. Verify/hash increasing SI64 and actual execution time arrays, endpoints0/.25 and exact output-node membership; integrate each prefix to those exact indices using trapezoidal weights from actual frozen SI node differences. No interpolation or extra nodes.",
+      "concrete_spatial_rule": "For volume use midpoint area weights100/n^2 at each of51times; for each wall use midpoint edge weights10/n. State that quadrature weights/accumulation are float64 SI geometry while queried model inputs/outputs follow the frozen CPU32 path.",
+      "absolute_wall_quantity": "Retain each signed normal-q edge array/rate and define Qabs_edge(t)=sum(length_weight*abs(q_normal)) in m3/s, with its trapezoidal cumulative integral in m3; optionally the already available maxabs normal q has m2/s units. This prevents opposite signed wall errors from disappearing inside a net rate. It requires no additional queries.",
+      "refinement_interpretation": "Spatial changes both volume and edge spatial rules; temporal changes the time rule while retaining the base volume operator. Save/report deltaM and deltaIout separately as well as deltaB. Do not label the combined spatial balance difference an isolated volume-error estimate."
+    },
+    {
+      "id": "S4_changing_region_area_and_field_metric_definitions",
+      "applies_before": "Frozen evaluation/analysis contract; no pilot accuracy analysis is needed.",
+      "gap": "The numerical-gradient mask area varies with time, so 'area/equal-time' alone does not determine pooled regional reductions. The existing whole-domain R6 formulas coincide under constant area but some regional alternatives do not.",
+      "concrete_option": "For regionR_t, let A_t=sum_Rt A. Compute per-time MAE=sum_Rt(A*abs(d))/A_t and RMSE=sqrt(sum_Rt(A*d^2)/A_t). Use mean_t(MAE_t) and sqrt(mean_t(RMSE_t^2)) for equally weighted area-mean pooled values. For a pooled integral relativeL2 consistent with R6 use100*sqrt(sum_t,Rt(A*d^2)/sum_t,Rt(A*reference^2)); name it explicitly, since with changingA_t it is not the ratio of equally time-weighted area-normalized RMS values. Freeze the same formulas for the complement.",
+      "nulls": "Return null+reason on an empty region or zero reference norm; preserve SI errors when only relative norm is undefined. Do not silently omit times or add a denominator epsilon. The frozen current reference masks are nonempty at all50times, so no extra empty-region test campaign is requested.",
+      "velocity_and_sensitivity": "The accepted wet reference has hbar>=.1m, so all reference cells can be included for the cell-ratio velocity metrics; never drop a cell because the NN predicts low depth or a large error. Dspace/Dtime/Dsum frozen in R6 belong to h/qx/qy. Do not attach a discharge-valued indicator to a velocity error; either state those indicators are conserved-field-only or separately predeclare ratio-derived velocity differences from the same saved reference records."
+    }
+  ],
+  "exact_interface_and_cost_freeze_notes": {
+    "scales_constructor": "Scales requires H_m,Lc_m,Uc_m_s,Tc_s, not a literal two-argument Scales(H=1,L=10) call. Construct all four fields directly with the stated identities; avoid Scales.from_case on the incompatible new dedicated case schema.",
+    "autograd_interface": "Call physics_2d.residuals(model.forward,coords_nd) with dimensionless coordinates/states. model.physical_state consumes SI coordinates. Do not pass physical_state as the scaled state function or nondimensionalize twice.",
+    "evaluation_workload_counts": {
+      "Gauss3": 2880000,
+      "Gauss5": 8000000,
+      "volume": 1958400,
+      "boundary": 801280,
+      "total": 13639680
+    },
+    "resolved_count_adjustment": "Root corrected the earlier planning-only1,632,000volume/13,313,280total ambiguity before this reviewed hash. The current no-dedup plan queries all three volume passes separately, including identical base/temporal geometry. No executed dataset was affected.",
+    "count_scope": "The9/25Gauss rules cover50positive times. The three mass volume passes cover51initial-inclusive times. No separate t0 Gauss error query is counted; t0 is IC/mass evidence. Intentional final-rule centre overlap and base/temporal query repetition remain counted.",
+    "step_and_IO_cost": "Freeze/count step0 training-component+validation/history/setup work in addition to25actual pilot backward/Adam cycles; full proposal includes step0 plus10000cycles. Specify selected/latest optimizer-checkpoint persistence policy and query batch/order before pilot, then use that same policy for the full cost projection. Reuse data does not authorize reuse of pilot-trained weights.",
+    "budget_scope": "State which stages the proposed1200s new-full budget includes. Add measured full-query/reload/output work once to the10000-cycle projection and include setup/terminal/persistence scope. Keep unmeasured later analysis/archive/startup or extracted-replay work explicitly separate; do not call an incomplete stage sum an inclusive bound. Mean/median/max step projections remain estimates, not runtime guarantees."
+  },
+  "preserved_limits": [
+    "One seed, synthetic idealized imposed IC/BC, physics-only collocation; no human/field/generalization evidence or trained model exists under this planning review.",
+    "Numerical-reference mesh/time sensitivity remains material, particularly discharge. NN comparison must preserve that limit rather than treating selected reference as exact truth.",
+    "No hard symmetry, artificial viscosity, Manning friction, label fitting or model-quality gate is added.",
+    "Only this named review JSON is written. Every source, prior reference result/archive, failed attempt and prior review remains unchanged. No cross-chat tool message was sent."
+  ]
+}
