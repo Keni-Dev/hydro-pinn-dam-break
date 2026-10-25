@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T21:27:01.713645+00:00",
+  "state": "immutable_official_source_and_same_commit_license_preserved",
+  "repository": "https://github.com/clawpack/riemann",
+  "observed_tag": "v5.12.0",
+  "immutable_commit": "c29dcab4af30913fc16e4406fe56fe5f0a322b1f",
+  "commit_url": "https://github.com/clawpack/riemann/commit/c29dcab4af30913fc16e4406fe56fe5f0a322b1f",
+  "commit_tree_sha1": "57a677689169aa63cb72021100c266eb8b56235d",
+  "official_resolution_evidence": [
+    "Successful public git ls-remote reported v5.12.0 at the pinned object.",
+    "Official GitHub tag-ref API identifies that object as a commit, not an unresolved annotated tag.",
+    "Official commit API identifies the same commit and its tree.",
+    "Official recursive tree is untruncated; computed Git blob object IDs for both preserved files equal their entries in that pinned commit tree."
+  ],
+  "source_url": "https://raw.githubusercontent.com/clawpack/riemann/c29dcab4af30913fc16e4406fe56fe5f0a322b1f/src/rpn2_shallow_hlle.f90",
+  "license_url": "https://raw.githubusercontent.com/clawpack/riemann/c29dcab4af30913fc16e4406fe56fe5f0a322b1f/LICENSE",
+  "source_git_blob_sha1": "88bbed1245db21945fc5bcaa39d2d8bebba17711",
+  "license_git_blob_sha1": "365333317ebd84cf87ddb4e5205943ca5883af73",
+  "files_excluding_this_manifest": {
+    "LICENSE": {
+      "bytes": 1524,
+      "sha256": "668317944192d8217d63c0fd0730f889bd07f759b69ed6b657e1fb9902145ebe"
+    },
+    "commit.json": {
+      "bytes": 2603,
+      "sha256": "855edc4f29948cbad492be908bf907d624b8c9865546ee8ceaa172343d5f2986"
+    },
+    "retrieval_receipts.json": {
+      "bytes": 8937,
+      "sha256": "f608dc1fba6551a3f843a1c3be284a02803eefff5fc8d17685799ad9d9803453"
+    },
+    "rpn2_shallow_hlle.f90": {
+      "bytes": 3147,
+      "sha256": "9d2b334c8d5056ca8ec99e444237ba8d5ec4a554a86228d91c4e8ce598e2280f"
+    },
+    "source_interpretation.json": {
+      "bytes": 5085,
+      "sha256": "89ce3563d6a45692ec6d9b6852093093e0eb1057f2990af2d78a6e79315690b4"
+    },
+    "tag_ref.json": {
+      "bytes": 343,
+      "sha256": "bc03d697affa6dc94718bbb693efb150ea03dc8ef9f14fd7896b2a8f2dd7a350"
+    },
+    "tree.json": {
+      "bytes": 41219,
+      "sha256": "4a8f1d753d272be7fe65b4af0cdacc2548dfb55ddc0bf3311c60184a7fa5e444"
+    },
+    "tree_bindings.json": {
+      "bytes": 1718,
+      "sha256": "3340f7bfcf0a29809c27f3f9f52a76d99852ec65b97c038382a52b07256ae1aa"
+    },
+    "tree_retrieval_receipt.json": {
+      "bytes": 2021,
+      "sha256": "aefe3a4b23a1e5421697d205285f4041cde57250d45feed941efe86f9b593be3"
+    }
+  },
+  "preservation": "HTTP response bodies were written as exact raw bytes using exclusive creation, with no newline normalization, decoding/re-encoding or execution. Source/license SHA256 values were read back locally and also bound to the commit-tree Git blob identities. API JSON response bodies and retrieval headers/receipts are preserved.",
+  "remaining_release": "This closes only the source-access/pinning item in the proposed reference plan. It grants no reference implementation, CLI change, solver/test/model launch or genuine2D numerical gate release."
+}

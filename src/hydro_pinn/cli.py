@@ -394,6 +394,30 @@ def build_parser() -> argparse.ArgumentParser:
     )
     friction_evaluate.add_argument("--manifest", type=Path, required=True)
     friction_evaluate.add_argument("--output-dir", type=Path, required=True)
+    viscosity_run = subparsers.add_parser(
+        "extension-viscosity-run",
+        help="Run the single 25-update artificial momentum diffusion cost pilot.",
+        description=(
+            "Freeze E1 seed11/nu*=.001, verify the zero limit and precision, "
+            "then measure training and complete raw queries without accuracy "
+            "screening. Full10000updates require frozen --protocol and --release."
+        ),
+    )
+    viscosity_run.add_argument("--config", type=Path, required=True)
+    viscosity_run.add_argument("--manifest", type=Path, required=True)
+    viscosity_run.add_argument("--protocol", type=Path)
+    viscosity_run.add_argument("--release", type=Path)
+    viscosity_evaluate = subparsers.add_parser(
+        "extension-viscosity-evaluate",
+        help="Analyze a released full fit and its cached historical zero control.",
+        description=(
+            "Write pointwise inviscid-reference comparisons and two-boundary "
+            "mass diagnostics in a new output directory. Refuses pilots before "
+            "quality analysis; no fitting or checkpoint reselection."
+        ),
+    )
+    viscosity_evaluate.add_argument("--manifest", type=Path, required=True)
+    viscosity_evaluate.add_argument("--output-dir", type=Path, required=True)
     return parser
 
 
@@ -401,6 +425,28 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command in {"extension-viscosity-run", "extension-viscosity-evaluate"}:
+        try:
+            if args.command == "extension-viscosity-run":
+                from hydro_pinn.extensions.viscosity_experiment import run_experiment
+
+                output = run_experiment(
+                    args.config, args.manifest, args.protocol, args.release
+                )
+            else:
+                from hydro_pinn.extensions.viscosity_experiment import (
+                    evaluate_experiment,
+                )
+
+                output = evaluate_experiment(args.manifest, args.output_dir)
+        except KeyboardInterrupt:
+            print("Viscosity stage interrupted; evidence retained.", file=sys.stderr)
+            return 130
+        except (ValueError, OSError, RuntimeError, KeyError) as exc:
+            print(f"Viscosity stage failed: {exc}", file=sys.stderr)
+            return 2
+        print(json.dumps({"completed": True, "output": str(output)}))
+        return 0
     if args.command in {
         "extension-friction-reference",
         "extension-friction-run",

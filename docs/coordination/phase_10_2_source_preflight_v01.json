@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T21:27:01.713926+00:00",
+  "state": "provenance_preflight_complete_genuine_2d_gate_unreleased",
+  "owned_paths": [
+    "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/",
+    "docs/coordination/phase_10_2_source_preflight_v01.json"
+  ],
+  "basis": {
+    "plan": "docs/coordination/phase_10_2_reference_gate_plan_v01.json",
+    "plan_sha256": "34b109f80db906316bfdc534006244837b8edba38153df523220ed74236fd1a4",
+    "original_plan_preserved": true,
+    "resolved_item": "Exact primary-source commit, same-version license and raw-byte pin requested by independent_reference_route.additional_primary_source.pin_status."
+  },
+  "immutable_source": {
+    "repository": "https://github.com/clawpack/riemann",
+    "observed_tag": "v5.12.0",
+    "commit": "c29dcab4af30913fc16e4406fe56fe5f0a322b1f",
+    "commit_date_utc": "2024-12-05T20:27:47Z",
+    "tree_sha1": "57a677689169aa63cb72021100c266eb8b56235d",
+    "tag_ref_object_type": "commit",
+    "source_url": "https://raw.githubusercontent.com/clawpack/riemann/c29dcab4af30913fc16e4406fe56fe5f0a322b1f/src/rpn2_shallow_hlle.f90",
+    "source_local_path": "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/rpn2_shallow_hlle.f90",
+    "source_bytes": 3147,
+    "source_sha256": "9d2b334c8d5056ca8ec99e444237ba8d5ec4a554a86228d91c4e8ce598e2280f",
+    "source_git_blob_sha1": "88bbed1245db21945fc5bcaa39d2d8bebba17711",
+    "license_url": "https://raw.githubusercontent.com/clawpack/riemann/c29dcab4af30913fc16e4406fe56fe5f0a322b1f/LICENSE",
+    "license_local_path": "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/LICENSE",
+    "license_bytes": 1524,
+    "license_sha256": "668317944192d8217d63c0fd0730f889bd07f759b69ed6b657e1fb9902145ebe",
+    "license_git_blob_sha1": "365333317ebd84cf87ddb4e5205943ca5883af73",
+    "license": "BSD-3-Clause",
+    "copyright": "Copyright (c) 1994-2018, Clawpack Developers"
+  },
+  "verification": {
+    "public_tag_resolved": true,
+    "official_tag_api_confirms_real_commit": true,
+    "official_commit_api_matches": true,
+    "tree_untruncated": true,
+    "raw_source_matches_commit_tree_blob": true,
+    "raw_license_matches_same_commit_tree_blob": true,
+    "all_raw_retrieval_file_hashes_read_back": true,
+    "local_cryptographic_signature_verification_performed": false,
+    "signature_note": "The raw commit API preserves GitHub verification metadata; this preflight did not independently verify the signature with a local keyring."
+  },
+  "evidence_manifest": {
+    "path": "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/manifest.json",
+    "sha256": "f162b410a555b48a7a22f09a8b2b3ea459f33fa08058d582b3f64fb96a158300",
+    "payload_files": 9,
+    "payload_bytes": 66597
+  },
+  "interpretation": {
+    "path": "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/source_interpretation.json",
+    "sha256": "89ce3563d6a45692ec6d9b6852093093e0eb1057f2990af2d78a6e79315690b4",
+    "summary": "Three-state normal wet shallow-water HLLE, with axis-dependent normal/tangential momentum and full-vector wave fluctuations. Exact speed/middle-state formulas and the distinction between fluctuations and conservative boundary flux are recorded with source line anchors. The file does not supply or validate the planned multidimensional time advance/CFL/boundaries/refinement."
+  },
+  "access_history": {
+    "first_sandbox_attempt": "Public git ls-remote failed DNS resolution; failure retained in retrieval_receipts.json.",
+    "recovery": "Authorized public read with network escalation succeeded for official git, tag/commit/tree API and commit-pinned raw URLs. All five HTTP responses were200.",
+    "unresolved_source_access_gap": null
+  },
+  "limits": [
+    "Provenance is ready; reference implementation, positivity, wall safety, exact geometry, operator and refinement checks remain unrun.",
+    "No cost or feasibility result follows from downloading source. The candidate has not been called infeasible.",
+    "No downloaded source was executed; only public retrieval, file reading/hashing and provenance writing were performed.",
+    "No CLI/source/selection/global-status or prior planning/evidence files changed; only the two owned paths were written.",
+    "No message was sent to another chat."
+  ],
+  "next_action": "Root may consider a separately scoped implementation/check lease using this immutable source packet. This preflight does not release that work or alter the original proposed scientific plan."
+}
