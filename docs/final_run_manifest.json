@@ -1,0 +1,4260 @@
+{
+  "created_at_utc": "2026-10-25T15:02:43.435869+00:00",
+  "entries": [
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-reference",
+      "attempts": [
+        {
+          "elapsed_s": 0.5564362090080976,
+          "finished_at_utc": "2026-10-25T15:02:44.060190+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "checks.json": "1a6aa8362164ac1c5a64e3ada1d911b6abc87c2fe2efe18011648c4a47906288",
+              "metadata.json": "e21c31e57a97a5d11dbaf243923f325f8a28f66646bc8701de5a4c989f5041a3",
+              "outputs.npz": "5e8816b6f20fb3caa930fe3c8d62ca4821ab61db2043e18596099947311f4516",
+              "protocol_binding.json": "3de44aae474dd235872a91cbe33876c5137ee2ff80f232a2725c55206922d370",
+              "reference_provenance.json": "bbb852babf57122dde943bb5fdf8351c652d0255bff72737c544970a04949065",
+              "resolved_config.json": "6512ef29484cb673c8ea10b75461cd59a8c97a5c4716a7317b135c74df912df6",
+              "status.json": "a5a704b9227a315288b061b86e8e075ccd9592e2ba532302a91419a2f6e26e77"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-reference/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-reference/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "6512ef29484cb673c8ea10b75461cd59a8c97a5c4716a7317b135c74df912df6",
+            "run_id": "core-v1-pilot-a03-e1-reference",
+            "run_path": "runs/core-v1-pilot-a03-e1-reference",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {},
+            "stop_reason": "analytical values and reference diagnostics saved"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-reference",
+          "started_at_utc": "2026-10-25T15:02:43.503738+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [],
+        "run_id": "core-v1-pilot-a03-e1-reference",
+        "stage": "reference",
+        "stage_id": "core-v1-pilot-a03-e1-reference"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "checks.json": "1a6aa8362164ac1c5a64e3ada1d911b6abc87c2fe2efe18011648c4a47906288",
+          "metadata.json": "e21c31e57a97a5d11dbaf243923f325f8a28f66646bc8701de5a4c989f5041a3",
+          "outputs.npz": "5e8816b6f20fb3caa930fe3c8d62ca4821ab61db2043e18596099947311f4516",
+          "protocol_binding.json": "3de44aae474dd235872a91cbe33876c5137ee2ff80f232a2725c55206922d370",
+          "reference_provenance.json": "bbb852babf57122dde943bb5fdf8351c652d0255bff72737c544970a04949065",
+          "resolved_config.json": "6512ef29484cb673c8ea10b75461cd59a8c97a5c4716a7317b135c74df912df6",
+          "status.json": "a5a704b9227a315288b061b86e8e075ccd9592e2ba532302a91419a2f6e26e77"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-reference/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-reference/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "6512ef29484cb673c8ea10b75461cd59a8c97a5c4716a7317b135c74df912df6",
+        "run_id": "core-v1-pilot-a03-e1-reference",
+        "run_path": "runs/core-v1-pilot-a03-e1-reference",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {},
+        "stop_reason": "analytical values and reference diagnostics saved"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-reference",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-solve-n100",
+      "attempts": [
+        {
+          "elapsed_s": 0.6352362909819931,
+          "finished_at_utc": "2026-10-25T15:02:44.821451+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "diagnostics.json": "2f7bcd2d4cdaa39aff8c315fcff00bd3ad65fdaf225a187c4476f710f740e8f2",
+              "metadata.json": "baeeb98c6eaa9d44da0e9669241c0790a75e9e3a0ab9023be1f601ebc49cda0a",
+              "outputs.npz": "14f76a680443101d34fde3b5ac5f8fcc756c15fc00114edcbf95d2815f1408fe",
+              "protocol_binding.json": "321ddeb4e6e4154059365cdf8a12c6cd57a9bed9cf9716b6b2a8c4e191eec934",
+              "resolved_config.json": "49e26818f1e5395b96ed74363b99c49207ef8b4347f6dbfb32534b9c6d44dcb1",
+              "status.json": "4ca3d69763221efabf936852bd2fe4b276a5a07255128471a5ca13522d34f794"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-solve-n100/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-solve-n100/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "49e26818f1e5395b96ed74363b99c49207ef8b4347f6dbfb32534b9c6d44dcb1",
+            "run_id": "core-v1-pilot-a03-e1-solve-n100",
+            "run_path": "runs/core-v1-pilot-a03-e1-solve-n100",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+              "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+              "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+              "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+              "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+            },
+            "stop_reason": "all requested native snapshots and final time reached"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-solve-n100",
+          "started_at_utc": "2026-10-25T15:02:44.186195+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "cells": 100,
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "run_id": "core-v1-pilot-a03-e1-solve-n100",
+        "stage": "solve",
+        "stage_id": "core-v1-pilot-a03-e1-solve-n100"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "diagnostics.json": "2f7bcd2d4cdaa39aff8c315fcff00bd3ad65fdaf225a187c4476f710f740e8f2",
+          "metadata.json": "baeeb98c6eaa9d44da0e9669241c0790a75e9e3a0ab9023be1f601ebc49cda0a",
+          "outputs.npz": "14f76a680443101d34fde3b5ac5f8fcc756c15fc00114edcbf95d2815f1408fe",
+          "protocol_binding.json": "321ddeb4e6e4154059365cdf8a12c6cd57a9bed9cf9716b6b2a8c4e191eec934",
+          "resolved_config.json": "49e26818f1e5395b96ed74363b99c49207ef8b4347f6dbfb32534b9c6d44dcb1",
+          "status.json": "4ca3d69763221efabf936852bd2fe4b276a5a07255128471a5ca13522d34f794"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-solve-n100/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-solve-n100/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "49e26818f1e5395b96ed74363b99c49207ef8b4347f6dbfb32534b9c6d44dcb1",
+        "run_id": "core-v1-pilot-a03-e1-solve-n100",
+        "run_path": "runs/core-v1-pilot-a03-e1-solve-n100",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+          "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+          "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+          "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+          "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+        },
+        "stop_reason": "all requested native snapshots and final time reached"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-solve-n100",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-solve-n200",
+      "attempts": [
+        {
+          "elapsed_s": 0.7164025829988532,
+          "finished_at_utc": "2026-10-25T15:02:45.623222+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "diagnostics.json": "83ed11898c0e0d11c6bda90429bfe90b000429b602f5aba3beda265c520aece8",
+              "metadata.json": "3fdd1fa9724a411d8b483eace493c19e9bf6daf3c516071282051c99b5b2fe32",
+              "outputs.npz": "ea44f88de35e54a329ead1d55794f6f31961967845c3b3dbb93507525759c2d7",
+              "protocol_binding.json": "11c101b05b9c5bcd3436d3247b2c63d5afd9bc6f4fe771534b40f0555fabdf3c",
+              "resolved_config.json": "a841a8f09fcdd09e847a1559bdb43d6c617ff5c4c5569e9548f2f93306c1830d",
+              "status.json": "d60474094e082848cfe97f63735b0ed63c550adbf8d783edf6c0d6342c2b0290"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-solve-n200/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-solve-n200/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "a841a8f09fcdd09e847a1559bdb43d6c617ff5c4c5569e9548f2f93306c1830d",
+            "run_id": "core-v1-pilot-a03-e1-solve-n200",
+            "run_path": "runs/core-v1-pilot-a03-e1-solve-n200",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+              "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+              "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+              "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+              "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+            },
+            "stop_reason": "all requested native snapshots and final time reached"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-solve-n200",
+          "started_at_utc": "2026-10-25T15:02:44.906807+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "cells": 200,
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "run_id": "core-v1-pilot-a03-e1-solve-n200",
+        "stage": "solve",
+        "stage_id": "core-v1-pilot-a03-e1-solve-n200"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "diagnostics.json": "83ed11898c0e0d11c6bda90429bfe90b000429b602f5aba3beda265c520aece8",
+          "metadata.json": "3fdd1fa9724a411d8b483eace493c19e9bf6daf3c516071282051c99b5b2fe32",
+          "outputs.npz": "ea44f88de35e54a329ead1d55794f6f31961967845c3b3dbb93507525759c2d7",
+          "protocol_binding.json": "11c101b05b9c5bcd3436d3247b2c63d5afd9bc6f4fe771534b40f0555fabdf3c",
+          "resolved_config.json": "a841a8f09fcdd09e847a1559bdb43d6c617ff5c4c5569e9548f2f93306c1830d",
+          "status.json": "d60474094e082848cfe97f63735b0ed63c550adbf8d783edf6c0d6342c2b0290"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-solve-n200/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-solve-n200/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "a841a8f09fcdd09e847a1559bdb43d6c617ff5c4c5569e9548f2f93306c1830d",
+        "run_id": "core-v1-pilot-a03-e1-solve-n200",
+        "run_path": "runs/core-v1-pilot-a03-e1-solve-n200",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+          "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+          "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+          "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+          "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+        },
+        "stop_reason": "all requested native snapshots and final time reached"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-solve-n200",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-solve-n400",
+      "attempts": [
+        {
+          "elapsed_s": 0.6824819169705734,
+          "finished_at_utc": "2026-10-25T15:02:46.435313+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "diagnostics.json": "8dd6acccfbdd494e67013d7111db41746bf62add5428855fb0386bdcc3acf161",
+              "metadata.json": "affb7d141dd3452fb3de5347c8b9950b39f44078418a95426b608b4d41ea32d5",
+              "outputs.npz": "f8fa73a95431564b610e22f443aa4363056e74dc2010be2a0737f3f31dbec8a0",
+              "protocol_binding.json": "e933ded8d70df24cf834114cb3b8f59150a8dfb048f8cc506ff11d5bd98571a7",
+              "resolved_config.json": "94856e151ac3bedb25ab5f727a79308dacddb785ea76936f2f2b847c78cbc6b3",
+              "status.json": "c579d65c788002e8bf76919763579e9370e691a5dd9ad3274ed7b2205caebda2"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-solve-n400/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-solve-n400/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "94856e151ac3bedb25ab5f727a79308dacddb785ea76936f2f2b847c78cbc6b3",
+            "run_id": "core-v1-pilot-a03-e1-solve-n400",
+            "run_path": "runs/core-v1-pilot-a03-e1-solve-n400",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+              "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+              "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+              "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+              "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+            },
+            "stop_reason": "all requested native snapshots and final time reached"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-solve-n400",
+          "started_at_utc": "2026-10-25T15:02:45.752826+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "cells": 400,
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "run_id": "core-v1-pilot-a03-e1-solve-n400",
+        "stage": "solve",
+        "stage_id": "core-v1-pilot-a03-e1-solve-n400"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "diagnostics.json": "8dd6acccfbdd494e67013d7111db41746bf62add5428855fb0386bdcc3acf161",
+          "metadata.json": "affb7d141dd3452fb3de5347c8b9950b39f44078418a95426b608b4d41ea32d5",
+          "outputs.npz": "f8fa73a95431564b610e22f443aa4363056e74dc2010be2a0737f3f31dbec8a0",
+          "protocol_binding.json": "e933ded8d70df24cf834114cb3b8f59150a8dfb048f8cc506ff11d5bd98571a7",
+          "resolved_config.json": "94856e151ac3bedb25ab5f727a79308dacddb785ea76936f2f2b847c78cbc6b3",
+          "status.json": "c579d65c788002e8bf76919763579e9370e691a5dd9ad3274ed7b2205caebda2"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-solve-n400/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-solve-n400/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "94856e151ac3bedb25ab5f727a79308dacddb785ea76936f2f2b847c78cbc6b3",
+        "run_id": "core-v1-pilot-a03-e1-solve-n400",
+        "run_path": "runs/core-v1-pilot-a03-e1-solve-n400",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+          "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+          "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+          "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+          "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+        },
+        "stop_reason": "all requested native snapshots and final time reached"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-solve-n400",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-solve-n800",
+      "attempts": [
+        {
+          "elapsed_s": 0.6899006249732338,
+          "finished_at_utc": "2026-10-25T15:02:47.215912+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "diagnostics.json": "750c85c30f91b5334740a6657e07777e2365495bb8d8dc92bf1699e6f63a7aee",
+              "metadata.json": "18f73aba530c638e01c4df9fa814da3c613fa497700d912c410f62b5f7868406",
+              "outputs.npz": "182bc7a06d84d29944837ad561174267ea77917605f2a5e75fd52940aa1ee573",
+              "protocol_binding.json": "4c72f56ad71866e55bbc5e040f2f7cd3a56d66281c7bb2c2d91552673e3b0604",
+              "resolved_config.json": "c960eb003fa32395f45ee00f4c209f3afb3791c4a427d94196b819fba80fd5d4",
+              "status.json": "a91c231aeab3b6b97be30a26b815eb1cedf4ee8c5fa2eec365999f08ef5c7460"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-solve-n800/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-solve-n800/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "c960eb003fa32395f45ee00f4c209f3afb3791c4a427d94196b819fba80fd5d4",
+            "run_id": "core-v1-pilot-a03-e1-solve-n800",
+            "run_path": "runs/core-v1-pilot-a03-e1-solve-n800",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+              "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+              "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+              "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+              "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+            },
+            "stop_reason": "all requested native snapshots and final time reached"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-solve-n800",
+          "started_at_utc": "2026-10-25T15:02:46.526002+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "cells": 800,
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "run_id": "core-v1-pilot-a03-e1-solve-n800",
+        "stage": "solve",
+        "stage_id": "core-v1-pilot-a03-e1-solve-n800"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "diagnostics.json": "750c85c30f91b5334740a6657e07777e2365495bb8d8dc92bf1699e6f63a7aee",
+          "metadata.json": "18f73aba530c638e01c4df9fa814da3c613fa497700d912c410f62b5f7868406",
+          "outputs.npz": "182bc7a06d84d29944837ad561174267ea77917605f2a5e75fd52940aa1ee573",
+          "protocol_binding.json": "4c72f56ad71866e55bbc5e040f2f7cd3a56d66281c7bb2c2d91552673e3b0604",
+          "resolved_config.json": "c960eb003fa32395f45ee00f4c209f3afb3791c4a427d94196b819fba80fd5d4",
+          "status.json": "a91c231aeab3b6b97be30a26b815eb1cedf4ee8c5fa2eec365999f08ef5c7460"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-solve-n800/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-solve-n800/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "c960eb003fa32395f45ee00f4c209f3afb3791c4a427d94196b819fba80fd5d4",
+        "run_id": "core-v1-pilot-a03-e1-solve-n800",
+        "run_path": "runs/core-v1-pilot-a03-e1-solve-n800",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+          "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+          "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+          "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+          "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+        },
+        "stop_reason": "all requested native snapshots and final time reached"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-solve-n800",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e2-reference",
+      "attempts": [
+        {
+          "elapsed_s": 0.4056949589867145,
+          "finished_at_utc": "2026-10-25T15:02:47.678768+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "checks.json": "41aa9d546777f64b227e4579e8cbf0609b605859c2dcb58b8b4dc4815c4376f4",
+              "metadata.json": "30778763b8f516eb1a41946e868f54ce691294a51904a4b94ec9cd7d503bba2a",
+              "outputs.npz": "0d35da4b6b7cea3adfa6d548898ab986dc8660f92143083e30dbfdc541dd6b29",
+              "protocol_binding.json": "7e984a89acd4f78cbe76393db0ec6b88de3e941feb6ece98dca3a7bf436229cf",
+              "reference_provenance.json": "bbb852babf57122dde943bb5fdf8351c652d0255bff72737c544970a04949065",
+              "resolved_config.json": "e2945b756b02bb44d014d8216f66d66ad537cced4f387d640c6efe466bd558a2",
+              "status.json": "435cf79de52b9469c064a43115d1a3f1214425919da4aab4f8ff08b9e678d007"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e2-reference/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e2-reference/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "e2945b756b02bb44d014d8216f66d66ad537cced4f387d640c6efe466bd558a2",
+            "run_id": "core-v1-pilot-a03-e2-reference",
+            "run_path": "runs/core-v1-pilot-a03-e2-reference",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {},
+            "stop_reason": "analytical values and reference diagnostics saved"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e2-reference",
+          "started_at_utc": "2026-10-25T15:02:47.273068+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E2",
+        "depends_on": [],
+        "run_id": "core-v1-pilot-a03-e2-reference",
+        "stage": "reference",
+        "stage_id": "core-v1-pilot-a03-e2-reference"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "checks.json": "41aa9d546777f64b227e4579e8cbf0609b605859c2dcb58b8b4dc4815c4376f4",
+          "metadata.json": "30778763b8f516eb1a41946e868f54ce691294a51904a4b94ec9cd7d503bba2a",
+          "outputs.npz": "0d35da4b6b7cea3adfa6d548898ab986dc8660f92143083e30dbfdc541dd6b29",
+          "protocol_binding.json": "7e984a89acd4f78cbe76393db0ec6b88de3e941feb6ece98dca3a7bf436229cf",
+          "reference_provenance.json": "bbb852babf57122dde943bb5fdf8351c652d0255bff72737c544970a04949065",
+          "resolved_config.json": "e2945b756b02bb44d014d8216f66d66ad537cced4f387d640c6efe466bd558a2",
+          "status.json": "435cf79de52b9469c064a43115d1a3f1214425919da4aab4f8ff08b9e678d007"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e2-reference/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e2-reference/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "e2945b756b02bb44d014d8216f66d66ad537cced4f387d640c6efe466bd558a2",
+        "run_id": "core-v1-pilot-a03-e2-reference",
+        "run_path": "runs/core-v1-pilot-a03-e2-reference",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {},
+        "stop_reason": "analytical values and reference diagnostics saved"
+      },
+      "stage_id": "core-v1-pilot-a03-e2-reference",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e2-solve-n100",
+      "attempts": [
+        {
+          "elapsed_s": 0.3912055410328321,
+          "finished_at_utc": "2026-10-25T15:02:48.141505+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "diagnostics.json": "67b9260905096b87f7bbd804aa6000b545026716ccfbc6aa3129dba706d8e303",
+              "metadata.json": "87fd9962a8823140fa936adc872e856d3f5dc0490c5ba1070bd7aabdcad806f5",
+              "outputs.npz": "d4404e1060cf784dc377c5aabf054ec6242baae5a37e7d770cd0103236e6912b",
+              "protocol_binding.json": "3e0bd8a5a260bfb33efccd2ed6363b4a04404581841228db33800d82573956f2",
+              "resolved_config.json": "a0788019f6286272d00a1f32395779bd804efb40969fcd36465b96a8332a3854",
+              "status.json": "3ae736469b225d41d1db66df13b7526e7baf84b2fa776eb2d2b4aa3180538baa"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e2-solve-n100/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e2-solve-n100/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "a0788019f6286272d00a1f32395779bd804efb40969fcd36465b96a8332a3854",
+            "run_id": "core-v1-pilot-a03-e2-solve-n100",
+            "run_path": "runs/core-v1-pilot-a03-e2-solve-n100",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+              "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+              "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+              "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+              "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+            },
+            "stop_reason": "all requested native snapshots and final time reached"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e2-solve-n100",
+          "started_at_utc": "2026-10-25T15:02:47.750271+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E2",
+        "cells": 100,
+        "depends_on": [
+          "core-v1-pilot-a03-e2-reference"
+        ],
+        "run_id": "core-v1-pilot-a03-e2-solve-n100",
+        "stage": "solve",
+        "stage_id": "core-v1-pilot-a03-e2-solve-n100"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "diagnostics.json": "67b9260905096b87f7bbd804aa6000b545026716ccfbc6aa3129dba706d8e303",
+          "metadata.json": "87fd9962a8823140fa936adc872e856d3f5dc0490c5ba1070bd7aabdcad806f5",
+          "outputs.npz": "d4404e1060cf784dc377c5aabf054ec6242baae5a37e7d770cd0103236e6912b",
+          "protocol_binding.json": "3e0bd8a5a260bfb33efccd2ed6363b4a04404581841228db33800d82573956f2",
+          "resolved_config.json": "a0788019f6286272d00a1f32395779bd804efb40969fcd36465b96a8332a3854",
+          "status.json": "3ae736469b225d41d1db66df13b7526e7baf84b2fa776eb2d2b4aa3180538baa"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e2-solve-n100/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e2-solve-n100/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "a0788019f6286272d00a1f32395779bd804efb40969fcd36465b96a8332a3854",
+        "run_id": "core-v1-pilot-a03-e2-solve-n100",
+        "run_path": "runs/core-v1-pilot-a03-e2-solve-n100",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+          "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+          "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+          "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+          "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+        },
+        "stop_reason": "all requested native snapshots and final time reached"
+      },
+      "stage_id": "core-v1-pilot-a03-e2-solve-n100",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e2-solve-n200",
+      "attempts": [
+        {
+          "elapsed_s": 0.494754874962382,
+          "finished_at_utc": "2026-10-25T15:02:48.711983+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "diagnostics.json": "e16d165802b5974270f33f9198b93842b5e9c23d1bae86e4f6a99b35c6d16bac",
+              "metadata.json": "203b0206f22be41d6d2516088b8c07b5dd49c5de00edb1a391fc216410c1276f",
+              "outputs.npz": "3920250b47565f24316b205e49b884e3fb8055f56cf0457f90756f7adeb3b408",
+              "protocol_binding.json": "2738ab46e6672fd9d2c9329b803c3c918f3fa36132898a1d001bc3710aaba54d",
+              "resolved_config.json": "b9c5775a2e719dbefe2d3d44b3105acce774f3985eccce345ce9877fcc102ecb",
+              "status.json": "fbfc587f8ba1793ec02e94eac91b2ba0e17014d4622cf0f7c0fe16bd22579b6b"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e2-solve-n200/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e2-solve-n200/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "b9c5775a2e719dbefe2d3d44b3105acce774f3985eccce345ce9877fcc102ecb",
+            "run_id": "core-v1-pilot-a03-e2-solve-n200",
+            "run_path": "runs/core-v1-pilot-a03-e2-solve-n200",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+              "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+              "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+              "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+              "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+            },
+            "stop_reason": "all requested native snapshots and final time reached"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e2-solve-n200",
+          "started_at_utc": "2026-10-25T15:02:48.217218+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E2",
+        "cells": 200,
+        "depends_on": [
+          "core-v1-pilot-a03-e2-reference"
+        ],
+        "run_id": "core-v1-pilot-a03-e2-solve-n200",
+        "stage": "solve",
+        "stage_id": "core-v1-pilot-a03-e2-solve-n200"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "diagnostics.json": "e16d165802b5974270f33f9198b93842b5e9c23d1bae86e4f6a99b35c6d16bac",
+          "metadata.json": "203b0206f22be41d6d2516088b8c07b5dd49c5de00edb1a391fc216410c1276f",
+          "outputs.npz": "3920250b47565f24316b205e49b884e3fb8055f56cf0457f90756f7adeb3b408",
+          "protocol_binding.json": "2738ab46e6672fd9d2c9329b803c3c918f3fa36132898a1d001bc3710aaba54d",
+          "resolved_config.json": "b9c5775a2e719dbefe2d3d44b3105acce774f3985eccce345ce9877fcc102ecb",
+          "status.json": "fbfc587f8ba1793ec02e94eac91b2ba0e17014d4622cf0f7c0fe16bd22579b6b"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e2-solve-n200/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e2-solve-n200/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "b9c5775a2e719dbefe2d3d44b3105acce774f3985eccce345ce9877fcc102ecb",
+        "run_id": "core-v1-pilot-a03-e2-solve-n200",
+        "run_path": "runs/core-v1-pilot-a03-e2-solve-n200",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+          "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+          "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+          "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+          "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+        },
+        "stop_reason": "all requested native snapshots and final time reached"
+      },
+      "stage_id": "core-v1-pilot-a03-e2-solve-n200",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e2-solve-n400",
+      "attempts": [
+        {
+          "elapsed_s": 0.4802245830069296,
+          "finished_at_utc": "2026-10-25T15:02:49.248389+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "diagnostics.json": "240ba7accbcf208c1d5a45b4c70a6eed6d30417c3c2b124bda52244eb720dd68",
+              "metadata.json": "e437968d2e5c618813bdeb9c12c802ab5bfdd498ed5793f5526e6e17415cb09f",
+              "outputs.npz": "307aafae5491efc4e27eac5fec56b6c7781598561afa1e61b33b22f1aff9a82b",
+              "protocol_binding.json": "1a913763e4a039290b75862771d6efecd74a2a3842352ba64ee7af483b880901",
+              "resolved_config.json": "ff0525d44f52c028124ee68d9283889c057ea088c302aa58fa0d03cf1dd89d36",
+              "status.json": "3cf70e0b56cdc068206828193febbda8ea65862287d4d852737bbb4eda0d459d"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e2-solve-n400/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e2-solve-n400/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "ff0525d44f52c028124ee68d9283889c057ea088c302aa58fa0d03cf1dd89d36",
+            "run_id": "core-v1-pilot-a03-e2-solve-n400",
+            "run_path": "runs/core-v1-pilot-a03-e2-solve-n400",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+              "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+              "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+              "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+              "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+            },
+            "stop_reason": "all requested native snapshots and final time reached"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e2-solve-n400",
+          "started_at_utc": "2026-10-25T15:02:48.768156+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E2",
+        "cells": 400,
+        "depends_on": [
+          "core-v1-pilot-a03-e2-reference"
+        ],
+        "run_id": "core-v1-pilot-a03-e2-solve-n400",
+        "stage": "solve",
+        "stage_id": "core-v1-pilot-a03-e2-solve-n400"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "diagnostics.json": "240ba7accbcf208c1d5a45b4c70a6eed6d30417c3c2b124bda52244eb720dd68",
+          "metadata.json": "e437968d2e5c618813bdeb9c12c802ab5bfdd498ed5793f5526e6e17415cb09f",
+          "outputs.npz": "307aafae5491efc4e27eac5fec56b6c7781598561afa1e61b33b22f1aff9a82b",
+          "protocol_binding.json": "1a913763e4a039290b75862771d6efecd74a2a3842352ba64ee7af483b880901",
+          "resolved_config.json": "ff0525d44f52c028124ee68d9283889c057ea088c302aa58fa0d03cf1dd89d36",
+          "status.json": "3cf70e0b56cdc068206828193febbda8ea65862287d4d852737bbb4eda0d459d"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e2-solve-n400/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e2-solve-n400/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "ff0525d44f52c028124ee68d9283889c057ea088c302aa58fa0d03cf1dd89d36",
+        "run_id": "core-v1-pilot-a03-e2-solve-n400",
+        "run_path": "runs/core-v1-pilot-a03-e2-solve-n400",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+          "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+          "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+          "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+          "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+        },
+        "stop_reason": "all requested native snapshots and final time reached"
+      },
+      "stage_id": "core-v1-pilot-a03-e2-solve-n400",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e2-solve-n800",
+      "attempts": [
+        {
+          "elapsed_s": 0.8014050000347197,
+          "finished_at_utc": "2026-10-25T15:02:50.099719+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "diagnostics.json": "67422064911d3f129d8a9e4ff1ad1039fc4a3c3471c485e980f5287da5cce790",
+              "metadata.json": "30c672a3a122e8c162faff3fbb7b7a99e505cb169aba73cff7e7091dc734f103",
+              "outputs.npz": "e4fc84f64cf0c3f462bd9a257a9f7553fc90fc60f1189714f8d98c847b7a574e",
+              "protocol_binding.json": "8f668ec4fea0beaafce6927614c8516ab58425937a29b88115a9205527887ca2",
+              "resolved_config.json": "637c2e9cd193b035355f19068cf41d9744882271c653b474e18f43b61ece15a0",
+              "status.json": "bbefc4381b5d8d6827c3fa2e4603db051a0ac65485ccc7567ef0a8c24124ad3a"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e2-solve-n800/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e2-solve-n800/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "637c2e9cd193b035355f19068cf41d9744882271c653b474e18f43b61ece15a0",
+            "run_id": "core-v1-pilot-a03-e2-solve-n800",
+            "run_path": "runs/core-v1-pilot-a03-e2-solve-n800",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+              "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+              "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+              "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+              "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+            },
+            "stop_reason": "all requested native snapshots and final time reached"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e2-solve-n800",
+          "started_at_utc": "2026-10-25T15:02:49.298303+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E2",
+        "cells": 800,
+        "depends_on": [
+          "core-v1-pilot-a03-e2-reference"
+        ],
+        "run_id": "core-v1-pilot-a03-e2-solve-n800",
+        "stage": "solve",
+        "stage_id": "core-v1-pilot-a03-e2-solve-n800"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "diagnostics.json": "67422064911d3f129d8a9e4ff1ad1039fc4a3c3471c485e980f5287da5cce790",
+          "metadata.json": "30c672a3a122e8c162faff3fbb7b7a99e505cb169aba73cff7e7091dc734f103",
+          "outputs.npz": "e4fc84f64cf0c3f462bd9a257a9f7553fc90fc60f1189714f8d98c847b7a574e",
+          "protocol_binding.json": "8f668ec4fea0beaafce6927614c8516ab58425937a29b88115a9205527887ca2",
+          "resolved_config.json": "637c2e9cd193b035355f19068cf41d9744882271c653b474e18f43b61ece15a0",
+          "status.json": "bbefc4381b5d8d6827c3fa2e4603db051a0ac65485ccc7567ef0a8c24124ad3a"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e2-solve-n800/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e2-solve-n800/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "637c2e9cd193b035355f19068cf41d9744882271c653b474e18f43b61ece15a0",
+        "run_id": "core-v1-pilot-a03-e2-solve-n800",
+        "run_path": "runs/core-v1-pilot-a03-e2-solve-n800",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+          "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+          "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+          "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+          "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+        },
+        "stop_reason": "all requested native snapshots and final time reached"
+      },
+      "stage_id": "core-v1-pilot-a03-e2-solve-n800",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-baseline-s11-train",
+      "attempts": [
+        {
+          "elapsed_s": 2227.3839934169664,
+          "finished_at_utc": "2026-10-25T15:39:57.621229+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "checkpoint_sha256": "dafe3d7ee298cc2eab8d72d8655338e231d5244f7445450bd5a1280ef503ce47",
+            "completed_adam_steps": 10000,
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "checkpoint.pt": "dafe3d7ee298cc2eab8d72d8655338e231d5244f7445450bd5a1280ef503ce47",
+              "checkpoint_manifest.json": "cc5c4e6e546b98da42e9e4bb2e46a96a9a50f2b77da6e3308e13607f3e961f6a",
+              "history.csv": "5829d7cde1862cfd4894de2457f31f77ae55740f64dffda2972fa494f952036c",
+              "metadata.json": "556ccc93abae4097c71b2deff017949b5021576d29c1ab32222ddf5fb9b2bd73",
+              "protocol_binding.json": "b4bc1e7e46777b855e19a58dbc174340b3d9c6acb6d0de09dbfc50181133b56e",
+              "resolved_config.json": "7fe69c46cdfec64be104626b6edb9d5ecf9f1d12df68e60eceead69909e102e7",
+              "sampling.npz": "b9bfc53062db02cf2f4c16580e0d3d855100b92a2ff947f642ff9d2259565bbb",
+              "status.json": "185d575df22e57c2423ded775c0bb07ad266f5b21373fbe811524a9426646031",
+              "training_diagnostics.json": "f56a47dfd08775c02bef28edabdd915ceffaf860adb258759a5e4ea3e20f4768",
+              "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s11-train/metadata.json",
+            "partition_content_sha256": {
+              "sampling.npz": "491d2836a5f9a0fd9bdfabc335e4e7d309e756070cbeec9ca5ecf5e12861a06d",
+              "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+            },
+            "record_state": "completed",
+            "resolved_config_sha256": "7fe69c46cdfec64be104626b6edb9d5ecf9f1d12df68e60eceead69909e102e7",
+            "run_id": "core-v1-pilot-a03-e1-baseline-s11-train",
+            "run_path": "runs/core-v1-pilot-a03-e1-baseline-s11-train",
+            "selected_step": 6512,
+            "selected_validation_score": 0.004653292116927332,
+            "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+              "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+              "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+              "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+              "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+            },
+            "stop_reason": "finite Adam budget exhausted; convergence not established"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-baseline-s11-train",
+          "started_at_utc": "2026-10-25T15:02:50.219181+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s11",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s11-train",
+        "seed": 11,
+        "stage": "train",
+        "stage_id": "core-v1-pilot-a03-e1-baseline-s11-train",
+        "variant": "baseline"
+      },
+      "progress": {
+        "checkpoint_io_s": 0.012033875042106956,
+        "checkpoint_manifest": {
+          "filename": "checkpoint.pt",
+          "partition_hashes": {
+            "sampling.npz": "b9bfc53062db02cf2f4c16580e0d3d855100b92a2ff947f642ff9d2259565bbb",
+            "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+          },
+          "resolved_config_sha256": "7fe69c46cdfec64be104626b6edb9d5ecf9f1d12df68e60eceead69909e102e7",
+          "run_id": "core-v1-pilot-a03-e1-baseline-s11-train",
+          "schema_version": 1,
+          "selected_step": 6512,
+          "sha256": "dafe3d7ee298cc2eab8d72d8655338e231d5244f7445450bd5a1280ef503ce47",
+          "step": 10000
+        },
+        "compute_s": 0.10049829096533358,
+        "gradient_rms": {
+          "bc": 6.034792846051126e-05,
+          "ic": 5.714244439086902e-05,
+          "pde": 0.0014500351531472487
+        },
+        "loss_total": 0.003564997605622011,
+        "stage_elapsed_s": 2227.105575499998,
+        "step": 10000,
+        "total_adam_steps": 10000,
+        "total_s": 0.11253216600744054,
+        "weights": {
+          "bc": 10.0,
+          "ic": 10.0,
+          "pde": 1.0
+        },
+        "weights_updated": false
+      },
+      "reason": null,
+      "result": {
+        "checkpoint_sha256": "dafe3d7ee298cc2eab8d72d8655338e231d5244f7445450bd5a1280ef503ce47",
+        "completed_adam_steps": 10000,
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "checkpoint.pt": "dafe3d7ee298cc2eab8d72d8655338e231d5244f7445450bd5a1280ef503ce47",
+          "checkpoint_manifest.json": "cc5c4e6e546b98da42e9e4bb2e46a96a9a50f2b77da6e3308e13607f3e961f6a",
+          "history.csv": "5829d7cde1862cfd4894de2457f31f77ae55740f64dffda2972fa494f952036c",
+          "metadata.json": "556ccc93abae4097c71b2deff017949b5021576d29c1ab32222ddf5fb9b2bd73",
+          "protocol_binding.json": "b4bc1e7e46777b855e19a58dbc174340b3d9c6acb6d0de09dbfc50181133b56e",
+          "resolved_config.json": "7fe69c46cdfec64be104626b6edb9d5ecf9f1d12df68e60eceead69909e102e7",
+          "sampling.npz": "b9bfc53062db02cf2f4c16580e0d3d855100b92a2ff947f642ff9d2259565bbb",
+          "status.json": "185d575df22e57c2423ded775c0bb07ad266f5b21373fbe811524a9426646031",
+          "training_diagnostics.json": "f56a47dfd08775c02bef28edabdd915ceffaf860adb258759a5e4ea3e20f4768",
+          "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s11-train/metadata.json",
+        "partition_content_sha256": {
+          "sampling.npz": "491d2836a5f9a0fd9bdfabc335e4e7d309e756070cbeec9ca5ecf5e12861a06d",
+          "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+        },
+        "record_state": "completed",
+        "resolved_config_sha256": "7fe69c46cdfec64be104626b6edb9d5ecf9f1d12df68e60eceead69909e102e7",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s11-train",
+        "run_path": "runs/core-v1-pilot-a03-e1-baseline-s11-train",
+        "selected_step": 6512,
+        "selected_validation_score": 0.004653292116927332,
+        "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "30c99abc56b3b040af3012ab9cb81bb3e2efd36de2a3d00d241e48b262f8574e",
+          "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+          "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+          "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+          "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+        },
+        "stop_reason": "finite Adam budget exhausted; convergence not established"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-baseline-s11-train",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-baseline-s11-predict",
+      "attempts": [
+        {
+          "elapsed_s": 0.2731444590026513,
+          "finished_at_utc": "2026-10-25T15:39:57.958921+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "metadata.json": "9dab2b15d05909931431fa98671e6760756fc7b821281d7e39b985e2850610e5",
+              "outputs.npz": "be586e2fbba7f7b3b71b7c830dd5690967cb691d88e5c7a9fdec252988ad4d21",
+              "protocol_binding.json": "98a445114e0811934d957563ceb26d15eb3464cf13a840e72ca25da51d8ca0c3",
+              "resolved_config.json": "0e2d741d789b739b5ac7e628a9daea7b11eb13e6f6bf7ff82a2066f6e00391ce",
+              "status.json": "03e43b0a5f06e6fd2c21254c3095cca0a3e3017d7f2293987cd5a24792c067e9"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s11-predict/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-baseline-s11-predict/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "0e2d741d789b739b5ac7e628a9daea7b11eb13e6f6bf7ff82a2066f6e00391ce",
+            "run_id": "core-v1-pilot-a03-e1-baseline-s11-predict",
+            "run_path": "runs/core-v1-pilot-a03-e1-baseline-s11-predict",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {},
+            "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-baseline-s11-predict",
+          "started_at_utc": "2026-10-25T15:39:57.685765+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-baseline-s11-train"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s11",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s11-predict",
+        "seed": 11,
+        "stage": "predict",
+        "stage_id": "core-v1-pilot-a03-e1-baseline-s11-predict",
+        "training_stage_id": "core-v1-pilot-a03-e1-baseline-s11-train",
+        "variant": "baseline"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "metadata.json": "9dab2b15d05909931431fa98671e6760756fc7b821281d7e39b985e2850610e5",
+          "outputs.npz": "be586e2fbba7f7b3b71b7c830dd5690967cb691d88e5c7a9fdec252988ad4d21",
+          "protocol_binding.json": "98a445114e0811934d957563ceb26d15eb3464cf13a840e72ca25da51d8ca0c3",
+          "resolved_config.json": "0e2d741d789b739b5ac7e628a9daea7b11eb13e6f6bf7ff82a2066f6e00391ce",
+          "status.json": "03e43b0a5f06e6fd2c21254c3095cca0a3e3017d7f2293987cd5a24792c067e9"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s11-predict/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-baseline-s11-predict/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "0e2d741d789b739b5ac7e628a9daea7b11eb13e6f6bf7ff82a2066f6e00391ce",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s11-predict",
+        "run_path": "runs/core-v1-pilot-a03-e1-baseline-s11-predict",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {},
+        "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-baseline-s11-predict",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-adaptive-s11-train",
+      "attempts": [
+        {
+          "elapsed_s": 1492.6736461250111,
+          "finished_at_utc": "2026-10-25T16:04:50.689648+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "checkpoint_sha256": "55c9d719d3d011a53b4344cb4a5f74cad4910d9e3039c6559b8872fab73b8610",
+            "completed_adam_steps": 10000,
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "checkpoint.pt": "55c9d719d3d011a53b4344cb4a5f74cad4910d9e3039c6559b8872fab73b8610",
+              "checkpoint_manifest.json": "4689e91b285210150fb0a66c0d110bdf6afd2412ed6ed1fb8e1611d27a387d61",
+              "history.csv": "ceeaec0f64e5714ce1159181601a078f76ac983354f4ab4668dff45f474ca8d2",
+              "metadata.json": "cf4b31f6e84a2bcf64135d0605bb7efa396f1c92060d8c8ee941cdec0df037ac",
+              "protocol_binding.json": "c3f2275ab2aef511ac7c0dbdc371a541073a51d6252907662faec0175872b1c9",
+              "resolved_config.json": "0259632559e5174f5e949638d2551273dccbfeae37cf03a912f6018f971d912c",
+              "sampling.npz": "b9bfc53062db02cf2f4c16580e0d3d855100b92a2ff947f642ff9d2259565bbb",
+              "status.json": "c68eebddaca82c345922bbd4488f4bc4c32fb1f9b69950947141dee7b02170c3",
+              "training_diagnostics.json": "9bec43f2fcc35bf4d1c508566881749de2cf9579fb618a67989cfb96ce7de6c1",
+              "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-train/metadata.json",
+            "partition_content_sha256": {
+              "sampling.npz": "491d2836a5f9a0fd9bdfabc335e4e7d309e756070cbeec9ca5ecf5e12861a06d",
+              "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+            },
+            "record_state": "completed",
+            "resolved_config_sha256": "0259632559e5174f5e949638d2551273dccbfeae37cf03a912f6018f971d912c",
+            "run_id": "core-v1-pilot-a03-e1-adaptive-s11-train",
+            "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-train",
+            "selected_step": 8626,
+            "selected_validation_score": 0.0047156027731034555,
+            "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+              "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+              "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+              "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+              "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+            },
+            "stop_reason": "finite Adam budget exhausted; convergence not established"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-adaptive-s11-train",
+          "started_at_utc": "2026-10-25T15:39:58.002455+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s11",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s11-train",
+        "seed": 11,
+        "stage": "train",
+        "stage_id": "core-v1-pilot-a03-e1-adaptive-s11-train",
+        "variant": "adaptive"
+      },
+      "progress": {
+        "checkpoint_io_s": 0.005553791008424014,
+        "checkpoint_manifest": {
+          "filename": "checkpoint.pt",
+          "partition_hashes": {
+            "sampling.npz": "b9bfc53062db02cf2f4c16580e0d3d855100b92a2ff947f642ff9d2259565bbb",
+            "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+          },
+          "resolved_config_sha256": "0259632559e5174f5e949638d2551273dccbfeae37cf03a912f6018f971d912c",
+          "run_id": "core-v1-pilot-a03-e1-adaptive-s11-train",
+          "schema_version": 1,
+          "selected_step": 8626,
+          "sha256": "55c9d719d3d011a53b4344cb4a5f74cad4910d9e3039c6559b8872fab73b8610",
+          "step": 10000
+        },
+        "compute_s": 0.043504417000804096,
+        "gradient_rms": {
+          "bc": 1.0259519419198902e-05,
+          "ic": 5.476071817017735e-05,
+          "pde": 0.000931179634737733
+        },
+        "loss_total": 0.004500607480910392,
+        "stage_elapsed_s": 1492.5061579170288,
+        "step": 10000,
+        "total_adam_steps": 10000,
+        "total_s": 0.04905820800922811,
+        "weights": {
+          "bc": 56.5244346933396,
+          "ic": 14.595383007913977,
+          "pde": 1.0
+        },
+        "weights_updated": true
+      },
+      "reason": null,
+      "result": {
+        "checkpoint_sha256": "55c9d719d3d011a53b4344cb4a5f74cad4910d9e3039c6559b8872fab73b8610",
+        "completed_adam_steps": 10000,
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "checkpoint.pt": "55c9d719d3d011a53b4344cb4a5f74cad4910d9e3039c6559b8872fab73b8610",
+          "checkpoint_manifest.json": "4689e91b285210150fb0a66c0d110bdf6afd2412ed6ed1fb8e1611d27a387d61",
+          "history.csv": "ceeaec0f64e5714ce1159181601a078f76ac983354f4ab4668dff45f474ca8d2",
+          "metadata.json": "cf4b31f6e84a2bcf64135d0605bb7efa396f1c92060d8c8ee941cdec0df037ac",
+          "protocol_binding.json": "c3f2275ab2aef511ac7c0dbdc371a541073a51d6252907662faec0175872b1c9",
+          "resolved_config.json": "0259632559e5174f5e949638d2551273dccbfeae37cf03a912f6018f971d912c",
+          "sampling.npz": "b9bfc53062db02cf2f4c16580e0d3d855100b92a2ff947f642ff9d2259565bbb",
+          "status.json": "c68eebddaca82c345922bbd4488f4bc4c32fb1f9b69950947141dee7b02170c3",
+          "training_diagnostics.json": "9bec43f2fcc35bf4d1c508566881749de2cf9579fb618a67989cfb96ce7de6c1",
+          "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-train/metadata.json",
+        "partition_content_sha256": {
+          "sampling.npz": "491d2836a5f9a0fd9bdfabc335e4e7d309e756070cbeec9ca5ecf5e12861a06d",
+          "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+        },
+        "record_state": "completed",
+        "resolved_config_sha256": "0259632559e5174f5e949638d2551273dccbfeae37cf03a912f6018f971d912c",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s11-train",
+        "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-train",
+        "selected_step": 8626,
+        "selected_validation_score": 0.0047156027731034555,
+        "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+          "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+          "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+          "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+          "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+        },
+        "stop_reason": "finite Adam budget exhausted; convergence not established"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-adaptive-s11-train",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-adaptive-s11-predict",
+      "attempts": [
+        {
+          "elapsed_s": 0.1585130410385318,
+          "finished_at_utc": "2026-10-25T16:04:50.880036+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "metadata.json": "a02b8a7ca27df251ab80045e9fb9dbf8222e28f3e3f11094b1a7d91f2e119a56",
+              "outputs.npz": "9f89059cddaad5d7646cd358d44a4b95da2529e455b7cd0505e55a18cdd6c845",
+              "protocol_binding.json": "b600a3d9e6790ae5ea08ed3770e6948632c7e55b3ecf5dad81550ec636a44365",
+              "resolved_config.json": "f0b4ede252665d6b988def252875b099c49470005dd3646aa288d7ceff11b5d1",
+              "status.json": "d1498c8b5ff1739c2a5361dc4493145416e2b1e6d5cf6d220fcbd0c1d9e39e81"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-predict/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-predict/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "f0b4ede252665d6b988def252875b099c49470005dd3646aa288d7ceff11b5d1",
+            "run_id": "core-v1-pilot-a03-e1-adaptive-s11-predict",
+            "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-predict",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {},
+            "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-adaptive-s11-predict",
+          "started_at_utc": "2026-10-25T16:04:50.721520+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-adaptive-s11-train"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s11",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s11-predict",
+        "seed": 11,
+        "stage": "predict",
+        "stage_id": "core-v1-pilot-a03-e1-adaptive-s11-predict",
+        "training_stage_id": "core-v1-pilot-a03-e1-adaptive-s11-train",
+        "variant": "adaptive"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "metadata.json": "a02b8a7ca27df251ab80045e9fb9dbf8222e28f3e3f11094b1a7d91f2e119a56",
+          "outputs.npz": "9f89059cddaad5d7646cd358d44a4b95da2529e455b7cd0505e55a18cdd6c845",
+          "protocol_binding.json": "b600a3d9e6790ae5ea08ed3770e6948632c7e55b3ecf5dad81550ec636a44365",
+          "resolved_config.json": "f0b4ede252665d6b988def252875b099c49470005dd3646aa288d7ceff11b5d1",
+          "status.json": "d1498c8b5ff1739c2a5361dc4493145416e2b1e6d5cf6d220fcbd0c1d9e39e81"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-predict/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-predict/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "f0b4ede252665d6b988def252875b099c49470005dd3646aa288d7ceff11b5d1",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s11-predict",
+        "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s11-predict",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {},
+        "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-adaptive-s11-predict",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-baseline-s22-train",
+      "attempts": [
+        {
+          "elapsed_s": 469.8991827919963,
+          "finished_at_utc": "2026-10-25T16:12:40.804116+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "checkpoint_sha256": "966446f300086a3fe1c8b89b568896c2c30d3bc9c9a844fc6cedf0dbc6c1eae0",
+            "completed_adam_steps": 10000,
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "checkpoint.pt": "966446f300086a3fe1c8b89b568896c2c30d3bc9c9a844fc6cedf0dbc6c1eae0",
+              "checkpoint_manifest.json": "cadd55e8a85c761682367a73b2d5474c67bfb102602952ac8465ea6fa59d44c1",
+              "history.csv": "a1f463eb12e09d1d687304590fc7b4ff80550856ea704f5fda34528349c8fd9b",
+              "metadata.json": "c3b509c0df1f7bdba8dc2d7b77ab7f519f5b8e99b5da47153165ebf4b4738aff",
+              "protocol_binding.json": "0f284ae9ad288ad42fc96a15051e8313b2a4f8a09eb4de6967603afe7af5aa11",
+              "resolved_config.json": "1adce5cc8add4629a3c45468f0ec847aa6f9e79df4138fb29dcd8593e0e792c3",
+              "sampling.npz": "6721a7855a6b02db4e68814e266a7e1175fe93311de75e81c5335b70faf4bdf4",
+              "status.json": "425a3d656455a016d105d737b8aad9407bbb511d2a315213de148203399555a3",
+              "training_diagnostics.json": "1667723de7053802a0071b5fff4e9dc081cf8c62908746baa291c32b3d6675ce",
+              "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s22-train/metadata.json",
+            "partition_content_sha256": {
+              "sampling.npz": "cfa2d04c8ad7117575213fbfad580c87d5850adbea0d916a8de954fa34206e1a",
+              "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+            },
+            "record_state": "completed",
+            "resolved_config_sha256": "1adce5cc8add4629a3c45468f0ec847aa6f9e79df4138fb29dcd8593e0e792c3",
+            "run_id": "core-v1-pilot-a03-e1-baseline-s22-train",
+            "run_path": "runs/core-v1-pilot-a03-e1-baseline-s22-train",
+            "selected_step": 1387,
+            "selected_validation_score": 0.012457914624974364,
+            "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+              "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+              "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+              "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+              "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+            },
+            "stop_reason": "finite Adam budget exhausted; convergence not established"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-baseline-s22-train",
+          "started_at_utc": "2026-10-25T16:04:50.901347+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s22",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s22-train",
+        "seed": 22,
+        "stage": "train",
+        "stage_id": "core-v1-pilot-a03-e1-baseline-s22-train",
+        "variant": "baseline"
+      },
+      "progress": {
+        "checkpoint_io_s": 0.006537374982144684,
+        "checkpoint_manifest": {
+          "filename": "checkpoint.pt",
+          "partition_hashes": {
+            "sampling.npz": "6721a7855a6b02db4e68814e266a7e1175fe93311de75e81c5335b70faf4bdf4",
+            "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+          },
+          "resolved_config_sha256": "1adce5cc8add4629a3c45468f0ec847aa6f9e79df4138fb29dcd8593e0e792c3",
+          "run_id": "core-v1-pilot-a03-e1-baseline-s22-train",
+          "schema_version": 1,
+          "selected_step": 1387,
+          "sha256": "966446f300086a3fe1c8b89b568896c2c30d3bc9c9a844fc6cedf0dbc6c1eae0",
+          "step": 10000
+        },
+        "compute_s": 0.07966683304402977,
+        "gradient_rms": {
+          "bc": 2.3869161896852818e-05,
+          "ic": 6.064403970250105e-05,
+          "pde": 0.0009344311629414189
+        },
+        "loss_total": 0.0036869607801008897,
+        "stage_elapsed_s": 469.704377542017,
+        "step": 10000,
+        "total_adam_steps": 10000,
+        "total_s": 0.08620420802617446,
+        "weights": {
+          "bc": 10.0,
+          "ic": 10.0,
+          "pde": 1.0
+        },
+        "weights_updated": false
+      },
+      "reason": null,
+      "result": {
+        "checkpoint_sha256": "966446f300086a3fe1c8b89b568896c2c30d3bc9c9a844fc6cedf0dbc6c1eae0",
+        "completed_adam_steps": 10000,
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "checkpoint.pt": "966446f300086a3fe1c8b89b568896c2c30d3bc9c9a844fc6cedf0dbc6c1eae0",
+          "checkpoint_manifest.json": "cadd55e8a85c761682367a73b2d5474c67bfb102602952ac8465ea6fa59d44c1",
+          "history.csv": "a1f463eb12e09d1d687304590fc7b4ff80550856ea704f5fda34528349c8fd9b",
+          "metadata.json": "c3b509c0df1f7bdba8dc2d7b77ab7f519f5b8e99b5da47153165ebf4b4738aff",
+          "protocol_binding.json": "0f284ae9ad288ad42fc96a15051e8313b2a4f8a09eb4de6967603afe7af5aa11",
+          "resolved_config.json": "1adce5cc8add4629a3c45468f0ec847aa6f9e79df4138fb29dcd8593e0e792c3",
+          "sampling.npz": "6721a7855a6b02db4e68814e266a7e1175fe93311de75e81c5335b70faf4bdf4",
+          "status.json": "425a3d656455a016d105d737b8aad9407bbb511d2a315213de148203399555a3",
+          "training_diagnostics.json": "1667723de7053802a0071b5fff4e9dc081cf8c62908746baa291c32b3d6675ce",
+          "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s22-train/metadata.json",
+        "partition_content_sha256": {
+          "sampling.npz": "cfa2d04c8ad7117575213fbfad580c87d5850adbea0d916a8de954fa34206e1a",
+          "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+        },
+        "record_state": "completed",
+        "resolved_config_sha256": "1adce5cc8add4629a3c45468f0ec847aa6f9e79df4138fb29dcd8593e0e792c3",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s22-train",
+        "run_path": "runs/core-v1-pilot-a03-e1-baseline-s22-train",
+        "selected_step": 1387,
+        "selected_validation_score": 0.012457914624974364,
+        "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+          "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+          "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+          "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+          "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+        },
+        "stop_reason": "finite Adam budget exhausted; convergence not established"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-baseline-s22-train",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-baseline-s22-predict",
+      "attempts": [
+        {
+          "elapsed_s": 0.20122308295685798,
+          "finished_at_utc": "2026-10-25T16:12:41.042990+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "metadata.json": "69b6a6453978de4f28e6ef10934cab8c05bbc163ef9b8a6466189bc4a4321e2f",
+              "outputs.npz": "30e28f49def5df3a8b07b9279bf663cfd213b4e890db9a35381f008bf59acf34",
+              "protocol_binding.json": "6807dfd068e111b3f860575f927aee809a64a9f5f405284555a18af5dd761f34",
+              "resolved_config.json": "ba187569405a3034b562a256cb532e816f75e26810dbc34522a6f48f854d1e1a",
+              "status.json": "4e788b45ca3a4a6b68e69cdc6aabfde5517e81a03fc1317e787b7935843e26e7"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s22-predict/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-baseline-s22-predict/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "ba187569405a3034b562a256cb532e816f75e26810dbc34522a6f48f854d1e1a",
+            "run_id": "core-v1-pilot-a03-e1-baseline-s22-predict",
+            "run_path": "runs/core-v1-pilot-a03-e1-baseline-s22-predict",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {},
+            "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-baseline-s22-predict",
+          "started_at_utc": "2026-10-25T16:12:40.841754+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-baseline-s22-train"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s22",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s22-predict",
+        "seed": 22,
+        "stage": "predict",
+        "stage_id": "core-v1-pilot-a03-e1-baseline-s22-predict",
+        "training_stage_id": "core-v1-pilot-a03-e1-baseline-s22-train",
+        "variant": "baseline"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "metadata.json": "69b6a6453978de4f28e6ef10934cab8c05bbc163ef9b8a6466189bc4a4321e2f",
+          "outputs.npz": "30e28f49def5df3a8b07b9279bf663cfd213b4e890db9a35381f008bf59acf34",
+          "protocol_binding.json": "6807dfd068e111b3f860575f927aee809a64a9f5f405284555a18af5dd761f34",
+          "resolved_config.json": "ba187569405a3034b562a256cb532e816f75e26810dbc34522a6f48f854d1e1a",
+          "status.json": "4e788b45ca3a4a6b68e69cdc6aabfde5517e81a03fc1317e787b7935843e26e7"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s22-predict/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-baseline-s22-predict/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "ba187569405a3034b562a256cb532e816f75e26810dbc34522a6f48f854d1e1a",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s22-predict",
+        "run_path": "runs/core-v1-pilot-a03-e1-baseline-s22-predict",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {},
+        "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-baseline-s22-predict",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-adaptive-s22-train",
+      "attempts": [
+        {
+          "elapsed_s": 484.46405783400405,
+          "finished_at_utc": "2026-10-25T16:20:45.539646+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "checkpoint_sha256": "d61c09a73885b39a423498026d6e12c62ae3b3b090b8e1bf57f99e236c4a0004",
+            "completed_adam_steps": 10000,
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "checkpoint.pt": "d61c09a73885b39a423498026d6e12c62ae3b3b090b8e1bf57f99e236c4a0004",
+              "checkpoint_manifest.json": "354b4ed1a5e3986acad1f63fb96c96fb34129ba1abd347cdebc620a2d8565ddf",
+              "history.csv": "f3677fac712cef2968f45beed4a8fa2b9c9e7be50ec6bdc1a6c986b4f09af0d6",
+              "metadata.json": "68c14705da753c9b9e9faa12c67f552f19ca851a08ddf4c672c748a9832779f6",
+              "protocol_binding.json": "aeb355a9b98b4bce4be5886109484763122a60161b166e742744e3f3bbc4132a",
+              "resolved_config.json": "e851d2ce47918b11e5e834f8532986d7c23fb46b2ff7092df6f84556d3e02519",
+              "sampling.npz": "6721a7855a6b02db4e68814e266a7e1175fe93311de75e81c5335b70faf4bdf4",
+              "status.json": "46dea72ba9df2e12aa76509647b02303e3703deddd9302d11bd71a29adaf3819",
+              "training_diagnostics.json": "849b94fc564dcf3101b8be2c3f45f23eaa77df08802f0bdca9150f48fe03ffbb",
+              "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-train/metadata.json",
+            "partition_content_sha256": {
+              "sampling.npz": "cfa2d04c8ad7117575213fbfad580c87d5850adbea0d916a8de954fa34206e1a",
+              "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+            },
+            "record_state": "completed",
+            "resolved_config_sha256": "e851d2ce47918b11e5e834f8532986d7c23fb46b2ff7092df6f84556d3e02519",
+            "run_id": "core-v1-pilot-a03-e1-adaptive-s22-train",
+            "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-train",
+            "selected_step": 8385,
+            "selected_validation_score": 0.005258597957492839,
+            "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+              "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+              "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+              "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+              "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+            },
+            "stop_reason": "finite Adam budget exhausted; convergence not established"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-adaptive-s22-train",
+          "started_at_utc": "2026-10-25T16:12:41.074953+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s22",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s22-train",
+        "seed": 22,
+        "stage": "train",
+        "stage_id": "core-v1-pilot-a03-e1-adaptive-s22-train",
+        "variant": "adaptive"
+      },
+      "progress": {
+        "checkpoint_io_s": 0.0054229170200414956,
+        "checkpoint_manifest": {
+          "filename": "checkpoint.pt",
+          "partition_hashes": {
+            "sampling.npz": "6721a7855a6b02db4e68814e266a7e1175fe93311de75e81c5335b70faf4bdf4",
+            "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+          },
+          "resolved_config_sha256": "e851d2ce47918b11e5e834f8532986d7c23fb46b2ff7092df6f84556d3e02519",
+          "run_id": "core-v1-pilot-a03-e1-adaptive-s22-train",
+          "schema_version": 1,
+          "selected_step": 8385,
+          "sha256": "d61c09a73885b39a423498026d6e12c62ae3b3b090b8e1bf57f99e236c4a0004",
+          "step": 10000
+        },
+        "compute_s": 0.04558987496420741,
+        "gradient_rms": {
+          "bc": 2.1603373006375837e-05,
+          "ic": 4.9899445296758564e-05,
+          "pde": 0.0014408393862055675
+        },
+        "loss_total": 0.00617649545527715,
+        "stage_elapsed_s": 484.3180717920186,
+        "step": 10000,
+        "total_adam_steps": 10000,
+        "total_s": 0.051012791984248906,
+        "weights": {
+          "bc": 71.76379888889345,
+          "ic": 20.140253874049655,
+          "pde": 1.0
+        },
+        "weights_updated": true
+      },
+      "reason": null,
+      "result": {
+        "checkpoint_sha256": "d61c09a73885b39a423498026d6e12c62ae3b3b090b8e1bf57f99e236c4a0004",
+        "completed_adam_steps": 10000,
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "checkpoint.pt": "d61c09a73885b39a423498026d6e12c62ae3b3b090b8e1bf57f99e236c4a0004",
+          "checkpoint_manifest.json": "354b4ed1a5e3986acad1f63fb96c96fb34129ba1abd347cdebc620a2d8565ddf",
+          "history.csv": "f3677fac712cef2968f45beed4a8fa2b9c9e7be50ec6bdc1a6c986b4f09af0d6",
+          "metadata.json": "68c14705da753c9b9e9faa12c67f552f19ca851a08ddf4c672c748a9832779f6",
+          "protocol_binding.json": "aeb355a9b98b4bce4be5886109484763122a60161b166e742744e3f3bbc4132a",
+          "resolved_config.json": "e851d2ce47918b11e5e834f8532986d7c23fb46b2ff7092df6f84556d3e02519",
+          "sampling.npz": "6721a7855a6b02db4e68814e266a7e1175fe93311de75e81c5335b70faf4bdf4",
+          "status.json": "46dea72ba9df2e12aa76509647b02303e3703deddd9302d11bd71a29adaf3819",
+          "training_diagnostics.json": "849b94fc564dcf3101b8be2c3f45f23eaa77df08802f0bdca9150f48fe03ffbb",
+          "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-train/metadata.json",
+        "partition_content_sha256": {
+          "sampling.npz": "cfa2d04c8ad7117575213fbfad580c87d5850adbea0d916a8de954fa34206e1a",
+          "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+        },
+        "record_state": "completed",
+        "resolved_config_sha256": "e851d2ce47918b11e5e834f8532986d7c23fb46b2ff7092df6f84556d3e02519",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s22-train",
+        "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-train",
+        "selected_step": 8385,
+        "selected_validation_score": 0.005258597957492839,
+        "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+          "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+          "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+          "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+          "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+        },
+        "stop_reason": "finite Adam budget exhausted; convergence not established"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-adaptive-s22-train",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-adaptive-s22-predict",
+      "attempts": [
+        {
+          "elapsed_s": 0.14507395902182907,
+          "finished_at_utc": "2026-10-25T16:20:45.712985+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "metadata.json": "e8f9b2dd460c4c74f615bd02c0117621adf27798cd00b97d984b0876f9524971",
+              "outputs.npz": "e8c77444636846d70a604dce3de5d8722fdc622185d0dd9f639d3d63977e558a",
+              "protocol_binding.json": "5f94247ef18ec64cebb29df5f5dff15a7f1801e4238c64aa3a5ed3c48105fd97",
+              "resolved_config.json": "416691a24ef6306bc90a620a00650f6b31b8e1a16bcc626b239d8616f7774db8",
+              "status.json": "f7ff81e0f4e1e66428724fad2606b749ebf867b1b6edee69be743390acf1a761"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-predict/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-predict/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "416691a24ef6306bc90a620a00650f6b31b8e1a16bcc626b239d8616f7774db8",
+            "run_id": "core-v1-pilot-a03-e1-adaptive-s22-predict",
+            "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-predict",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {},
+            "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-adaptive-s22-predict",
+          "started_at_utc": "2026-10-25T16:20:45.567904+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-adaptive-s22-train"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s22",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s22-predict",
+        "seed": 22,
+        "stage": "predict",
+        "stage_id": "core-v1-pilot-a03-e1-adaptive-s22-predict",
+        "training_stage_id": "core-v1-pilot-a03-e1-adaptive-s22-train",
+        "variant": "adaptive"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "metadata.json": "e8f9b2dd460c4c74f615bd02c0117621adf27798cd00b97d984b0876f9524971",
+          "outputs.npz": "e8c77444636846d70a604dce3de5d8722fdc622185d0dd9f639d3d63977e558a",
+          "protocol_binding.json": "5f94247ef18ec64cebb29df5f5dff15a7f1801e4238c64aa3a5ed3c48105fd97",
+          "resolved_config.json": "416691a24ef6306bc90a620a00650f6b31b8e1a16bcc626b239d8616f7774db8",
+          "status.json": "f7ff81e0f4e1e66428724fad2606b749ebf867b1b6edee69be743390acf1a761"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-predict/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-predict/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "416691a24ef6306bc90a620a00650f6b31b8e1a16bcc626b239d8616f7774db8",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s22-predict",
+        "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s22-predict",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {},
+        "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-adaptive-s22-predict",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-baseline-s33-train",
+      "attempts": [
+        {
+          "elapsed_s": 796.4210379999713,
+          "finished_at_utc": "2026-10-25T16:34:02.160557+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "checkpoint_sha256": "77279cdad6405b3d9f35de6e6b0d80a9c839dab00719151e23749d704196e19c",
+            "completed_adam_steps": 10000,
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "checkpoint.pt": "77279cdad6405b3d9f35de6e6b0d80a9c839dab00719151e23749d704196e19c",
+              "checkpoint_manifest.json": "f1ed19783b3c24fe1ead157cb4d2b595fc7f429fd53904cdacbf6e8afa4f501f",
+              "history.csv": "acc2f5605ffaddc62800f10ae00cac5147e2e694f3acf2fc46b287177838c904",
+              "metadata.json": "308526addc1057397010ade9b98dd841695ae02ed8595e748587f4eac613ea26",
+              "protocol_binding.json": "9c4dc9d09937db2b3d76e6f945c9b552ce4fd4d812530098ac7e4fa44ce4ac9f",
+              "resolved_config.json": "992c9487aa768955a012b37e4a893cb6a93b518db8f987949382c7ea085b012d",
+              "sampling.npz": "b604bbfe1cea6951f1267005189e24573f5f77bd4bd2c752c93b6332108a4385",
+              "status.json": "9fa0d50f6646ed75601b53321279913094ea545ad70bd20171b48eb517c67bc1",
+              "training_diagnostics.json": "0f6a9c89cc2a21ae5630dbae8761ef4ae4a70a469f75a4214891c2a6e6985778",
+              "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s33-train/metadata.json",
+            "partition_content_sha256": {
+              "sampling.npz": "3ec47f3b69462b61a2e4437adb5cbb9955ecdb08b809d88c54d71b6c6497cca7",
+              "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+            },
+            "record_state": "completed",
+            "resolved_config_sha256": "992c9487aa768955a012b37e4a893cb6a93b518db8f987949382c7ea085b012d",
+            "run_id": "core-v1-pilot-a03-e1-baseline-s33-train",
+            "run_path": "runs/core-v1-pilot-a03-e1-baseline-s33-train",
+            "selected_step": 4126,
+            "selected_validation_score": 0.006295208318078949,
+            "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+              "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+              "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+              "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+              "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+            },
+            "stop_reason": "finite Adam budget exhausted; convergence not established"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-baseline-s33-train",
+          "started_at_utc": "2026-10-25T16:20:45.733317+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s33",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s33-train",
+        "seed": 33,
+        "stage": "train",
+        "stage_id": "core-v1-pilot-a03-e1-baseline-s33-train",
+        "variant": "baseline"
+      },
+      "progress": {
+        "checkpoint_io_s": 0.007491583004593849,
+        "checkpoint_manifest": {
+          "filename": "checkpoint.pt",
+          "partition_hashes": {
+            "sampling.npz": "b604bbfe1cea6951f1267005189e24573f5f77bd4bd2c752c93b6332108a4385",
+            "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+          },
+          "resolved_config_sha256": "992c9487aa768955a012b37e4a893cb6a93b518db8f987949382c7ea085b012d",
+          "run_id": "core-v1-pilot-a03-e1-baseline-s33-train",
+          "schema_version": 1,
+          "selected_step": 4126,
+          "sha256": "77279cdad6405b3d9f35de6e6b0d80a9c839dab00719151e23749d704196e19c",
+          "step": 10000
+        },
+        "compute_s": 0.04560479201609269,
+        "gradient_rms": {
+          "bc": 6.635592368847091e-07,
+          "ic": 7.595344583906653e-05,
+          "pde": 0.0007419985463009329
+        },
+        "loss_total": 0.0037271525629645197,
+        "stage_elapsed_s": 796.1419094169978,
+        "step": 10000,
+        "total_adam_steps": 10000,
+        "total_s": 0.05309637502068654,
+        "weights": {
+          "bc": 10.0,
+          "ic": 10.0,
+          "pde": 1.0
+        },
+        "weights_updated": false
+      },
+      "reason": null,
+      "result": {
+        "checkpoint_sha256": "77279cdad6405b3d9f35de6e6b0d80a9c839dab00719151e23749d704196e19c",
+        "completed_adam_steps": 10000,
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "checkpoint.pt": "77279cdad6405b3d9f35de6e6b0d80a9c839dab00719151e23749d704196e19c",
+          "checkpoint_manifest.json": "f1ed19783b3c24fe1ead157cb4d2b595fc7f429fd53904cdacbf6e8afa4f501f",
+          "history.csv": "acc2f5605ffaddc62800f10ae00cac5147e2e694f3acf2fc46b287177838c904",
+          "metadata.json": "308526addc1057397010ade9b98dd841695ae02ed8595e748587f4eac613ea26",
+          "protocol_binding.json": "9c4dc9d09937db2b3d76e6f945c9b552ce4fd4d812530098ac7e4fa44ce4ac9f",
+          "resolved_config.json": "992c9487aa768955a012b37e4a893cb6a93b518db8f987949382c7ea085b012d",
+          "sampling.npz": "b604bbfe1cea6951f1267005189e24573f5f77bd4bd2c752c93b6332108a4385",
+          "status.json": "9fa0d50f6646ed75601b53321279913094ea545ad70bd20171b48eb517c67bc1",
+          "training_diagnostics.json": "0f6a9c89cc2a21ae5630dbae8761ef4ae4a70a469f75a4214891c2a6e6985778",
+          "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s33-train/metadata.json",
+        "partition_content_sha256": {
+          "sampling.npz": "3ec47f3b69462b61a2e4437adb5cbb9955ecdb08b809d88c54d71b6c6497cca7",
+          "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+        },
+        "record_state": "completed",
+        "resolved_config_sha256": "992c9487aa768955a012b37e4a893cb6a93b518db8f987949382c7ea085b012d",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s33-train",
+        "run_path": "runs/core-v1-pilot-a03-e1-baseline-s33-train",
+        "selected_step": 4126,
+        "selected_validation_score": 0.006295208318078949,
+        "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+          "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+          "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+          "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+          "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+        },
+        "stop_reason": "finite Adam budget exhausted; convergence not established"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-baseline-s33-train",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-baseline-s33-predict",
+      "attempts": [
+        {
+          "elapsed_s": 0.31274058297276497,
+          "finished_at_utc": "2026-10-25T16:34:02.522915+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "metadata.json": "96366a8d2c04a42a690ea122647e9783691daa07a16598e0fef6a24bb9151835",
+              "outputs.npz": "7fb290749a911f77280c2492020dd97da0187b5c17a763a10d41bd0ba454f06c",
+              "protocol_binding.json": "774fa51f0aaa897c6cb320f7e59db70916cdb9e923ab5669f02deeb6a2467f6f",
+              "resolved_config.json": "6db41d8f637ae0ac051df96465f8802e2eceb7987efe28a8520f627a563ec471",
+              "status.json": "9539039d41cf7e87a15794ad57455ca093e00e1c66d8ff56222571f3ff9741a9"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s33-predict/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-baseline-s33-predict/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "6db41d8f637ae0ac051df96465f8802e2eceb7987efe28a8520f627a563ec471",
+            "run_id": "core-v1-pilot-a03-e1-baseline-s33-predict",
+            "run_path": "runs/core-v1-pilot-a03-e1-baseline-s33-predict",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {},
+            "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-baseline-s33-predict",
+          "started_at_utc": "2026-10-25T16:34:02.210186+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-baseline-s33-train"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s33",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s33-predict",
+        "seed": 33,
+        "stage": "predict",
+        "stage_id": "core-v1-pilot-a03-e1-baseline-s33-predict",
+        "training_stage_id": "core-v1-pilot-a03-e1-baseline-s33-train",
+        "variant": "baseline"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "metadata.json": "96366a8d2c04a42a690ea122647e9783691daa07a16598e0fef6a24bb9151835",
+          "outputs.npz": "7fb290749a911f77280c2492020dd97da0187b5c17a763a10d41bd0ba454f06c",
+          "protocol_binding.json": "774fa51f0aaa897c6cb320f7e59db70916cdb9e923ab5669f02deeb6a2467f6f",
+          "resolved_config.json": "6db41d8f637ae0ac051df96465f8802e2eceb7987efe28a8520f627a563ec471",
+          "status.json": "9539039d41cf7e87a15794ad57455ca093e00e1c66d8ff56222571f3ff9741a9"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-baseline-s33-predict/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-baseline-s33-predict/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "6db41d8f637ae0ac051df96465f8802e2eceb7987efe28a8520f627a563ec471",
+        "run_id": "core-v1-pilot-a03-e1-baseline-s33-predict",
+        "run_path": "runs/core-v1-pilot-a03-e1-baseline-s33-predict",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {},
+        "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-baseline-s33-predict",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-adaptive-s33-train",
+      "attempts": [
+        {
+          "elapsed_s": 699.1843442500103,
+          "finished_at_utc": "2026-10-25T16:45:41.749998+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "checkpoint_sha256": "e4ff1aad2fc55eae7fa52c92d5eaec7802849b464b9391fdbe79aea0b9e77fb4",
+            "completed_adam_steps": 10000,
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "checkpoint.pt": "e4ff1aad2fc55eae7fa52c92d5eaec7802849b464b9391fdbe79aea0b9e77fb4",
+              "checkpoint_manifest.json": "ff433d465035ffab562f0f300cd296cef9faefaacd8d164961932353ce11c047",
+              "history.csv": "95c8083a02255b679925bac2a79e9cd437fafde9ec5d70ec87995dfa534f2af9",
+              "metadata.json": "b20d4d98881afbb2ce0e0a177edbab1630b8cdd20da5a35d7a94c8663916e3fe",
+              "protocol_binding.json": "de154d2d6299bd4338739da69011ec8f5d6b25e0566c9c2ee1751e527d39989f",
+              "resolved_config.json": "579dc93c8a30521841e1b2ec3abda0c1951a18d6920abb0555df5d54e30d649f",
+              "sampling.npz": "b604bbfe1cea6951f1267005189e24573f5f77bd4bd2c752c93b6332108a4385",
+              "status.json": "8ebc6ad1890c17f5247c50fc7fa832e205c7e3ddc15d13f8bfd1d61feb448683",
+              "training_diagnostics.json": "c1e03729ed7ff64160d051678e20f22f772036612e5d230f78769fc235c591af",
+              "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-train/metadata.json",
+            "partition_content_sha256": {
+              "sampling.npz": "3ec47f3b69462b61a2e4437adb5cbb9955ecdb08b809d88c54d71b6c6497cca7",
+              "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+            },
+            "record_state": "completed",
+            "resolved_config_sha256": "579dc93c8a30521841e1b2ec3abda0c1951a18d6920abb0555df5d54e30d649f",
+            "run_id": "core-v1-pilot-a03-e1-adaptive-s33-train",
+            "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-train",
+            "selected_step": 4516,
+            "selected_validation_score": 0.008122181757329372,
+            "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+              "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+              "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+              "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+              "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+            },
+            "stop_reason": "finite Adam budget exhausted; convergence not established"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-adaptive-s33-train",
+          "started_at_utc": "2026-10-25T16:34:02.559187+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-reference"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s33",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s33-train",
+        "seed": 33,
+        "stage": "train",
+        "stage_id": "core-v1-pilot-a03-e1-adaptive-s33-train",
+        "variant": "adaptive"
+      },
+      "progress": {
+        "checkpoint_io_s": 0.005255541007500142,
+        "checkpoint_manifest": {
+          "filename": "checkpoint.pt",
+          "partition_hashes": {
+            "sampling.npz": "b604bbfe1cea6951f1267005189e24573f5f77bd4bd2c752c93b6332108a4385",
+            "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+          },
+          "resolved_config_sha256": "579dc93c8a30521841e1b2ec3abda0c1951a18d6920abb0555df5d54e30d649f",
+          "run_id": "core-v1-pilot-a03-e1-adaptive-s33-train",
+          "schema_version": 1,
+          "selected_step": 4516,
+          "sha256": "e4ff1aad2fc55eae7fa52c92d5eaec7802849b464b9391fdbe79aea0b9e77fb4",
+          "step": 10000
+        },
+        "compute_s": 0.03394154197303578,
+        "gradient_rms": {
+          "bc": 3.511923099116536e-07,
+          "ic": 8.573059539146263e-05,
+          "pde": 0.0009132692982900796
+        },
+        "loss_total": 0.004037705133410982,
+        "stage_elapsed_s": 699.0472982079955,
+        "step": 10000,
+        "total_adam_steps": 10000,
+        "total_s": 0.039197082980535924,
+        "weights": {
+          "bc": 80.91851960055148,
+          "ic": 11.627101110385118,
+          "pde": 1.0
+        },
+        "weights_updated": true
+      },
+      "reason": null,
+      "result": {
+        "checkpoint_sha256": "e4ff1aad2fc55eae7fa52c92d5eaec7802849b464b9391fdbe79aea0b9e77fb4",
+        "completed_adam_steps": 10000,
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "checkpoint.pt": "e4ff1aad2fc55eae7fa52c92d5eaec7802849b464b9391fdbe79aea0b9e77fb4",
+          "checkpoint_manifest.json": "ff433d465035ffab562f0f300cd296cef9faefaacd8d164961932353ce11c047",
+          "history.csv": "95c8083a02255b679925bac2a79e9cd437fafde9ec5d70ec87995dfa534f2af9",
+          "metadata.json": "b20d4d98881afbb2ce0e0a177edbab1630b8cdd20da5a35d7a94c8663916e3fe",
+          "protocol_binding.json": "de154d2d6299bd4338739da69011ec8f5d6b25e0566c9c2ee1751e527d39989f",
+          "resolved_config.json": "579dc93c8a30521841e1b2ec3abda0c1951a18d6920abb0555df5d54e30d649f",
+          "sampling.npz": "b604bbfe1cea6951f1267005189e24573f5f77bd4bd2c752c93b6332108a4385",
+          "status.json": "8ebc6ad1890c17f5247c50fc7fa832e205c7e3ddc15d13f8bfd1d61feb448683",
+          "training_diagnostics.json": "c1e03729ed7ff64160d051678e20f22f772036612e5d230f78769fc235c591af",
+          "validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-train/metadata.json",
+        "partition_content_sha256": {
+          "sampling.npz": "3ec47f3b69462b61a2e4437adb5cbb9955ecdb08b809d88c54d71b6c6497cca7",
+          "validation.npz": "b1492a43096754ffc923ee979395bbd0a7ca760041c6869be0d64e08fb36a84b"
+        },
+        "record_state": "completed",
+        "resolved_config_sha256": "579dc93c8a30521841e1b2ec3abda0c1951a18d6920abb0555df5d54e30d649f",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s33-train",
+        "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-train",
+        "selected_step": 4516,
+        "selected_validation_score": 0.008122181757329372,
+        "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+          "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+          "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+          "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+          "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+        },
+        "stop_reason": "finite Adam budget exhausted; convergence not established"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-adaptive-s33-train",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e1-adaptive-s33-predict",
+      "attempts": [
+        {
+          "elapsed_s": 0.17232795897871256,
+          "finished_at_utc": "2026-10-25T16:45:41.949735+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "metadata.json": "b46821c86ed164dcfd136a2d5b5c1dc28f51479c90661b63b67c4e771dfbf6c1",
+              "outputs.npz": "4e3cdf0e64167bbd850346440f968b82b636e19b23d580fcf67fa86622b0e97e",
+              "protocol_binding.json": "3c7f50121cc0f7622e7a229814ed22e355f8c2cf613f9a2056828bfcdac8c203",
+              "resolved_config.json": "ee2377f60b1d8bb71cd92912fbcf1ac834f7aa25a56a75df77865a9293685f64",
+              "status.json": "79da4c3610284e2756ade6e0c0a635c63f68b5a86cd9b96aa819cf35feeefcdd"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-predict/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-predict/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "ee2377f60b1d8bb71cd92912fbcf1ac834f7aa25a56a75df77865a9293685f64",
+            "run_id": "core-v1-pilot-a03-e1-adaptive-s33-predict",
+            "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-predict",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {},
+            "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e1-adaptive-s33-predict",
+          "started_at_utc": "2026-10-25T16:45:41.777403+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E1",
+        "depends_on": [
+          "core-v1-pilot-a03-e1-adaptive-s33-train"
+        ],
+        "pair_id": "core-v1-pilot-a03-e1-s33",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s33-predict",
+        "seed": 33,
+        "stage": "predict",
+        "stage_id": "core-v1-pilot-a03-e1-adaptive-s33-predict",
+        "training_stage_id": "core-v1-pilot-a03-e1-adaptive-s33-train",
+        "variant": "adaptive"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "metadata.json": "b46821c86ed164dcfd136a2d5b5c1dc28f51479c90661b63b67c4e771dfbf6c1",
+          "outputs.npz": "4e3cdf0e64167bbd850346440f968b82b636e19b23d580fcf67fa86622b0e97e",
+          "protocol_binding.json": "3c7f50121cc0f7622e7a229814ed22e355f8c2cf613f9a2056828bfcdac8c203",
+          "resolved_config.json": "ee2377f60b1d8bb71cd92912fbcf1ac834f7aa25a56a75df77865a9293685f64",
+          "status.json": "79da4c3610284e2756ade6e0c0a635c63f68b5a86cd9b96aa819cf35feeefcdd"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-predict/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-predict/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "ee2377f60b1d8bb71cd92912fbcf1ac834f7aa25a56a75df77865a9293685f64",
+        "run_id": "core-v1-pilot-a03-e1-adaptive-s33-predict",
+        "run_path": "runs/core-v1-pilot-a03-e1-adaptive-s33-predict",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {},
+        "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+      },
+      "stage_id": "core-v1-pilot-a03-e1-adaptive-s33-predict",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e2-baseline-s11-train",
+      "attempts": [
+        {
+          "elapsed_s": 762.5878677499713,
+          "finished_at_utc": "2026-10-25T16:58:24.569745+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "checkpoint_sha256": "72fa1157d9d8d6b02b1b588fc49e02fc9f4611d850d8b56468a389c4504c9d17",
+            "completed_adam_steps": 10000,
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "checkpoint.pt": "72fa1157d9d8d6b02b1b588fc49e02fc9f4611d850d8b56468a389c4504c9d17",
+              "checkpoint_manifest.json": "fe4cf0d19b89fe1773830aa0cc0f234fe398e8c3966d072650bdeaa1a037517b",
+              "history.csv": "26526146a74af430b1c27a612b65326e985d23bade7051a9a6d5fdf6f33ba7af",
+              "metadata.json": "0c12fc0131c84224727da55f633cb03e724e490e831783fa3ebe57d0c53ed68f",
+              "protocol_binding.json": "696d9df17aa8a4990ab18988426a61f30be13788c18b007c009ab129a4a4d4f6",
+              "resolved_config.json": "f57d2280522b4d41d9e7658affd452a1b6b050fd44022eeaa0c669f35588993f",
+              "sampling.npz": "179face93067afb8bef587fe951970db62ab9d950f58497d55b4a0b9f066d7fd",
+              "status.json": "4629f42dce616152065e3fa4632827f4fb94b7586a61fff75e4899c16b1521fe",
+              "training_diagnostics.json": "4a36c87fbb4ee86e75aca343c3372a655378f3db0b956f37c72e81ac5ab4197f",
+              "validation.npz": "c88e1f7c162f54c9c5b68d922c04aa0c643c201201ac7f95bd03d2daede2838e"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e2-baseline-s11-train/metadata.json",
+            "partition_content_sha256": {
+              "sampling.npz": "0846fff1cf89d8e4f5049322244b1d267696c57aff56b1fef6b059689e277fa0",
+              "validation.npz": "3b4f98ab1cc8e7aeb0950fadd355801bae95fba9cdcf224a3e80b82e89e2b333"
+            },
+            "record_state": "completed",
+            "resolved_config_sha256": "f57d2280522b4d41d9e7658affd452a1b6b050fd44022eeaa0c669f35588993f",
+            "run_id": "core-v1-pilot-a03-e2-baseline-s11-train",
+            "run_path": "runs/core-v1-pilot-a03-e2-baseline-s11-train",
+            "selected_step": 9405,
+            "selected_validation_score": 0.00014329688383440953,
+            "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {
+              "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+              "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+              "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+              "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+              "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+            },
+            "stop_reason": "finite Adam budget exhausted; convergence not established"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e2-baseline-s11-train",
+          "started_at_utc": "2026-10-25T16:45:41.976124+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E2",
+        "depends_on": [
+          "core-v1-pilot-a03-e2-reference"
+        ],
+        "pair_id": null,
+        "run_id": "core-v1-pilot-a03-e2-baseline-s11-train",
+        "seed": 11,
+        "stage": "train",
+        "stage_id": "core-v1-pilot-a03-e2-baseline-s11-train",
+        "variant": "baseline"
+      },
+      "progress": {
+        "checkpoint_io_s": 0.00515224999981001,
+        "checkpoint_manifest": {
+          "filename": "checkpoint.pt",
+          "partition_hashes": {
+            "sampling.npz": "179face93067afb8bef587fe951970db62ab9d950f58497d55b4a0b9f066d7fd",
+            "validation.npz": "c88e1f7c162f54c9c5b68d922c04aa0c643c201201ac7f95bd03d2daede2838e"
+          },
+          "resolved_config_sha256": "f57d2280522b4d41d9e7658affd452a1b6b050fd44022eeaa0c669f35588993f",
+          "run_id": "core-v1-pilot-a03-e2-baseline-s11-train",
+          "schema_version": 1,
+          "selected_step": 9405,
+          "sha256": "72fa1157d9d8d6b02b1b588fc49e02fc9f4611d850d8b56468a389c4504c9d17",
+          "step": 10000
+        },
+        "compute_s": 0.039700834022369236,
+        "gradient_rms": {
+          "bc": 5.7407812519196545e-05,
+          "ic": 5.894354099244759e-05,
+          "pde": 0.0003749941271997427
+        },
+        "loss_total": 6.533203463732207e-05,
+        "stage_elapsed_s": 762.4021105829743,
+        "step": 10000,
+        "total_adam_steps": 10000,
+        "total_s": 0.044853084022179246,
+        "weights": {
+          "bc": 10.0,
+          "ic": 10.0,
+          "pde": 1.0
+        },
+        "weights_updated": false
+      },
+      "reason": null,
+      "result": {
+        "checkpoint_sha256": "72fa1157d9d8d6b02b1b588fc49e02fc9f4611d850d8b56468a389c4504c9d17",
+        "completed_adam_steps": 10000,
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "checkpoint.pt": "72fa1157d9d8d6b02b1b588fc49e02fc9f4611d850d8b56468a389c4504c9d17",
+          "checkpoint_manifest.json": "fe4cf0d19b89fe1773830aa0cc0f234fe398e8c3966d072650bdeaa1a037517b",
+          "history.csv": "26526146a74af430b1c27a612b65326e985d23bade7051a9a6d5fdf6f33ba7af",
+          "metadata.json": "0c12fc0131c84224727da55f633cb03e724e490e831783fa3ebe57d0c53ed68f",
+          "protocol_binding.json": "696d9df17aa8a4990ab18988426a61f30be13788c18b007c009ab129a4a4d4f6",
+          "resolved_config.json": "f57d2280522b4d41d9e7658affd452a1b6b050fd44022eeaa0c669f35588993f",
+          "sampling.npz": "179face93067afb8bef587fe951970db62ab9d950f58497d55b4a0b9f066d7fd",
+          "status.json": "4629f42dce616152065e3fa4632827f4fb94b7586a61fff75e4899c16b1521fe",
+          "training_diagnostics.json": "4a36c87fbb4ee86e75aca343c3372a655378f3db0b956f37c72e81ac5ab4197f",
+          "validation.npz": "c88e1f7c162f54c9c5b68d922c04aa0c643c201201ac7f95bd03d2daede2838e"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e2-baseline-s11-train/metadata.json",
+        "partition_content_sha256": {
+          "sampling.npz": "0846fff1cf89d8e4f5049322244b1d267696c57aff56b1fef6b059689e277fa0",
+          "validation.npz": "3b4f98ab1cc8e7aeb0950fadd355801bae95fba9cdcf224a3e80b82e89e2b333"
+        },
+        "record_state": "completed",
+        "resolved_config_sha256": "f57d2280522b4d41d9e7658affd452a1b6b050fd44022eeaa0c669f35588993f",
+        "run_id": "core-v1-pilot-a03-e2-baseline-s11-train",
+        "run_path": "runs/core-v1-pilot-a03-e2-baseline-s11-train",
+        "selected_step": 9405,
+        "selected_validation_score": 0.00014329688383440953,
+        "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {
+          "src/hydro_pinn/cli.py": "919488e66a5de88a96b612c7d8639cc311119dd662bfe765ee7156f99f22be5a",
+          "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+          "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+          "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+          "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+        },
+        "stop_reason": "finite Adam budget exhausted; convergence not established"
+      },
+      "stage_id": "core-v1-pilot-a03-e2-baseline-s11-train",
+      "state": "completed"
+    },
+    {
+      "actual_run_id": "core-v1-pilot-a03-e2-baseline-s11-predict",
+      "attempts": [
+        {
+          "elapsed_s": 0.1727810410084203,
+          "finished_at_utc": "2026-10-25T16:58:24.779594+00:00",
+          "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+          "result": {
+            "device": {
+              "available": true,
+              "build": "2.14.1",
+              "cpu_threads": 4,
+              "cuda_build": null,
+              "execution_tested": false,
+              "git_version": "5c4886908584029761b579af026dcfb627c84070",
+              "interop_threads": 10,
+              "model": null,
+              "model_reason": "platform.processor does not identify the CPU model",
+              "model_source": "platform.processor",
+              "requested": "cpu"
+            },
+            "diagnostics": {},
+            "files_sha256": {
+              "metadata.json": "581fa6d64601fa3cf510f7f97ecb48c5cb1c86a806ae02705df54233890ddbc9",
+              "outputs.npz": "1fcb0440ac6c86c7f8a6810a7a628124d68c8c2101c013968f52cf4e987bcf14",
+              "protocol_binding.json": "f3fea702de3ea18dff58c5786bfad5b94ce4bc2365675ec555caa54067587746",
+              "resolved_config.json": "14896a3345b85c5c2a25a33d90c5040ba456d07db345e887ce84e33833704d58",
+              "status.json": "a47f83347332c662d0ffcd50ac815ac38d5deb9cfb0a151986a709d5f3df8341"
+            },
+            "metadata_path": "runs/core-v1-pilot-a03-e2-baseline-s11-predict/metadata.json",
+            "output_path": "runs/core-v1-pilot-a03-e2-baseline-s11-predict/outputs.npz",
+            "record_state": "completed",
+            "resolved_config_sha256": "14896a3345b85c5c2a25a33d90c5040ba456d07db345e887ce84e33833704d58",
+            "run_id": "core-v1-pilot-a03-e2-baseline-s11-predict",
+            "run_path": "runs/core-v1-pilot-a03-e2-baseline-s11-predict",
+            "software": {
+              "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+              "implementation": "CPython",
+              "packages": {
+                "hydro-pinn": {
+                  "version": "0.1.0"
+                },
+                "matplotlib": {
+                  "version": "3.11.2"
+                },
+                "numpy": {
+                  "version": "2.5.4"
+                },
+                "pytest": {
+                  "version": "9.1.1"
+                },
+                "ruff": {
+                  "version": "0.17.2"
+                },
+                "scipy": {
+                  "version": "1.18.1"
+                },
+                "torch": {
+                  "version": "2.14.1"
+                }
+              },
+              "python": "3.12.14"
+            },
+            "source_sha256": {},
+            "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+          },
+          "resume_from": null,
+          "run_id": "core-v1-pilot-a03-e2-baseline-s11-predict",
+          "started_at_utc": "2026-10-25T16:58:24.606804+00:00",
+          "state": "completed"
+        }
+      ],
+      "failure_category": null,
+      "frozen_stage": {
+        "case_id": "E2",
+        "depends_on": [
+          "core-v1-pilot-a03-e2-baseline-s11-train"
+        ],
+        "pair_id": null,
+        "run_id": "core-v1-pilot-a03-e2-baseline-s11-predict",
+        "seed": 11,
+        "stage": "predict",
+        "stage_id": "core-v1-pilot-a03-e2-baseline-s11-predict",
+        "training_stage_id": "core-v1-pilot-a03-e2-baseline-s11-train",
+        "variant": "baseline"
+      },
+      "progress": null,
+      "reason": null,
+      "result": {
+        "device": {
+          "available": true,
+          "build": "2.14.1",
+          "cpu_threads": 4,
+          "cuda_build": null,
+          "execution_tested": false,
+          "git_version": "5c4886908584029761b579af026dcfb627c84070",
+          "interop_threads": 10,
+          "model": null,
+          "model_reason": "platform.processor does not identify the CPU model",
+          "model_source": "platform.processor",
+          "requested": "cpu"
+        },
+        "diagnostics": {},
+        "files_sha256": {
+          "metadata.json": "581fa6d64601fa3cf510f7f97ecb48c5cb1c86a806ae02705df54233890ddbc9",
+          "outputs.npz": "1fcb0440ac6c86c7f8a6810a7a628124d68c8c2101c013968f52cf4e987bcf14",
+          "protocol_binding.json": "f3fea702de3ea18dff58c5786bfad5b94ce4bc2365675ec555caa54067587746",
+          "resolved_config.json": "14896a3345b85c5c2a25a33d90c5040ba456d07db345e887ce84e33833704d58",
+          "status.json": "a47f83347332c662d0ffcd50ac815ac38d5deb9cfb0a151986a709d5f3df8341"
+        },
+        "metadata_path": "runs/core-v1-pilot-a03-e2-baseline-s11-predict/metadata.json",
+        "output_path": "runs/core-v1-pilot-a03-e2-baseline-s11-predict/outputs.npz",
+        "record_state": "completed",
+        "resolved_config_sha256": "14896a3345b85c5c2a25a33d90c5040ba456d07db345e887ce84e33833704d58",
+        "run_id": "core-v1-pilot-a03-e2-baseline-s11-predict",
+        "run_path": "runs/core-v1-pilot-a03-e2-baseline-s11-predict",
+        "software": {
+          "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+          "implementation": "CPython",
+          "packages": {
+            "hydro-pinn": {
+              "version": "0.1.0"
+            },
+            "matplotlib": {
+              "version": "3.11.2"
+            },
+            "numpy": {
+              "version": "2.5.4"
+            },
+            "pytest": {
+              "version": "9.1.1"
+            },
+            "ruff": {
+              "version": "0.17.2"
+            },
+            "scipy": {
+              "version": "1.18.1"
+            },
+            "torch": {
+              "version": "2.14.1"
+            }
+          },
+          "python": "3.12.14"
+        },
+        "source_sha256": {},
+        "stop_reason": "selected checkpoint reloaded; physical point predictions saved"
+      },
+      "stage_id": "core-v1-pilot-a03-e2-baseline-s11-predict",
+      "state": "completed"
+    }
+  ],
+  "execution": {
+    "manifest": "docs/final_run_manifest.json",
+    "namespace": null,
+    "output_root": "runs",
+    "parent_protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+    "run_ids": {
+      "core-v1-pilot-a03-e1-adaptive-s11-predict": "core-v1-pilot-a03-e1-adaptive-s11-predict",
+      "core-v1-pilot-a03-e1-adaptive-s11-predict-boundary_flux-1001": "core-v1-pilot-a03-e1-adaptive-s11-predict-boundary_flux-1001",
+      "core-v1-pilot-a03-e1-adaptive-s11-predict-boundary_flux-2001": "core-v1-pilot-a03-e1-adaptive-s11-predict-boundary_flux-2001",
+      "core-v1-pilot-a03-e1-adaptive-s11-predict-volume-2000": "core-v1-pilot-a03-e1-adaptive-s11-predict-volume-2000",
+      "core-v1-pilot-a03-e1-adaptive-s11-predict-volume-4000": "core-v1-pilot-a03-e1-adaptive-s11-predict-volume-4000",
+      "core-v1-pilot-a03-e1-adaptive-s11-train": "core-v1-pilot-a03-e1-adaptive-s11-train",
+      "core-v1-pilot-a03-e1-adaptive-s22-predict": "core-v1-pilot-a03-e1-adaptive-s22-predict",
+      "core-v1-pilot-a03-e1-adaptive-s22-predict-boundary_flux-1001": "core-v1-pilot-a03-e1-adaptive-s22-predict-boundary_flux-1001",
+      "core-v1-pilot-a03-e1-adaptive-s22-predict-boundary_flux-2001": "core-v1-pilot-a03-e1-adaptive-s22-predict-boundary_flux-2001",
+      "core-v1-pilot-a03-e1-adaptive-s22-predict-volume-2000": "core-v1-pilot-a03-e1-adaptive-s22-predict-volume-2000",
+      "core-v1-pilot-a03-e1-adaptive-s22-predict-volume-4000": "core-v1-pilot-a03-e1-adaptive-s22-predict-volume-4000",
+      "core-v1-pilot-a03-e1-adaptive-s22-train": "core-v1-pilot-a03-e1-adaptive-s22-train",
+      "core-v1-pilot-a03-e1-adaptive-s33-predict": "core-v1-pilot-a03-e1-adaptive-s33-predict",
+      "core-v1-pilot-a03-e1-adaptive-s33-predict-boundary_flux-1001": "core-v1-pilot-a03-e1-adaptive-s33-predict-boundary_flux-1001",
+      "core-v1-pilot-a03-e1-adaptive-s33-predict-boundary_flux-2001": "core-v1-pilot-a03-e1-adaptive-s33-predict-boundary_flux-2001",
+      "core-v1-pilot-a03-e1-adaptive-s33-predict-volume-2000": "core-v1-pilot-a03-e1-adaptive-s33-predict-volume-2000",
+      "core-v1-pilot-a03-e1-adaptive-s33-predict-volume-4000": "core-v1-pilot-a03-e1-adaptive-s33-predict-volume-4000",
+      "core-v1-pilot-a03-e1-adaptive-s33-train": "core-v1-pilot-a03-e1-adaptive-s33-train",
+      "core-v1-pilot-a03-e1-baseline-s11-predict": "core-v1-pilot-a03-e1-baseline-s11-predict",
+      "core-v1-pilot-a03-e1-baseline-s11-predict-boundary_flux-1001": "core-v1-pilot-a03-e1-baseline-s11-predict-boundary_flux-1001",
+      "core-v1-pilot-a03-e1-baseline-s11-predict-boundary_flux-2001": "core-v1-pilot-a03-e1-baseline-s11-predict-boundary_flux-2001",
+      "core-v1-pilot-a03-e1-baseline-s11-predict-volume-2000": "core-v1-pilot-a03-e1-baseline-s11-predict-volume-2000",
+      "core-v1-pilot-a03-e1-baseline-s11-predict-volume-4000": "core-v1-pilot-a03-e1-baseline-s11-predict-volume-4000",
+      "core-v1-pilot-a03-e1-baseline-s11-train": "core-v1-pilot-a03-e1-baseline-s11-train",
+      "core-v1-pilot-a03-e1-baseline-s22-predict": "core-v1-pilot-a03-e1-baseline-s22-predict",
+      "core-v1-pilot-a03-e1-baseline-s22-predict-boundary_flux-1001": "core-v1-pilot-a03-e1-baseline-s22-predict-boundary_flux-1001",
+      "core-v1-pilot-a03-e1-baseline-s22-predict-boundary_flux-2001": "core-v1-pilot-a03-e1-baseline-s22-predict-boundary_flux-2001",
+      "core-v1-pilot-a03-e1-baseline-s22-predict-volume-2000": "core-v1-pilot-a03-e1-baseline-s22-predict-volume-2000",
+      "core-v1-pilot-a03-e1-baseline-s22-predict-volume-4000": "core-v1-pilot-a03-e1-baseline-s22-predict-volume-4000",
+      "core-v1-pilot-a03-e1-baseline-s22-train": "core-v1-pilot-a03-e1-baseline-s22-train",
+      "core-v1-pilot-a03-e1-baseline-s33-predict": "core-v1-pilot-a03-e1-baseline-s33-predict",
+      "core-v1-pilot-a03-e1-baseline-s33-predict-boundary_flux-1001": "core-v1-pilot-a03-e1-baseline-s33-predict-boundary_flux-1001",
+      "core-v1-pilot-a03-e1-baseline-s33-predict-boundary_flux-2001": "core-v1-pilot-a03-e1-baseline-s33-predict-boundary_flux-2001",
+      "core-v1-pilot-a03-e1-baseline-s33-predict-volume-2000": "core-v1-pilot-a03-e1-baseline-s33-predict-volume-2000",
+      "core-v1-pilot-a03-e1-baseline-s33-predict-volume-4000": "core-v1-pilot-a03-e1-baseline-s33-predict-volume-4000",
+      "core-v1-pilot-a03-e1-baseline-s33-train": "core-v1-pilot-a03-e1-baseline-s33-train",
+      "core-v1-pilot-a03-e1-reference": "core-v1-pilot-a03-e1-reference",
+      "core-v1-pilot-a03-e1-reference-boundary_flux-1001": "core-v1-pilot-a03-e1-reference-boundary_flux-1001",
+      "core-v1-pilot-a03-e1-reference-boundary_flux-2001": "core-v1-pilot-a03-e1-reference-boundary_flux-2001",
+      "core-v1-pilot-a03-e1-reference-volume-2000": "core-v1-pilot-a03-e1-reference-volume-2000",
+      "core-v1-pilot-a03-e1-reference-volume-4000": "core-v1-pilot-a03-e1-reference-volume-4000",
+      "core-v1-pilot-a03-e1-solve-n100": "core-v1-pilot-a03-e1-solve-n100",
+      "core-v1-pilot-a03-e1-solve-n200": "core-v1-pilot-a03-e1-solve-n200",
+      "core-v1-pilot-a03-e1-solve-n400": "core-v1-pilot-a03-e1-solve-n400",
+      "core-v1-pilot-a03-e1-solve-n800": "core-v1-pilot-a03-e1-solve-n800",
+      "core-v1-pilot-a03-e2-baseline-s11-predict": "core-v1-pilot-a03-e2-baseline-s11-predict",
+      "core-v1-pilot-a03-e2-baseline-s11-predict-boundary_flux-1001": "core-v1-pilot-a03-e2-baseline-s11-predict-boundary_flux-1001",
+      "core-v1-pilot-a03-e2-baseline-s11-predict-boundary_flux-2001": "core-v1-pilot-a03-e2-baseline-s11-predict-boundary_flux-2001",
+      "core-v1-pilot-a03-e2-baseline-s11-predict-volume-2000": "core-v1-pilot-a03-e2-baseline-s11-predict-volume-2000",
+      "core-v1-pilot-a03-e2-baseline-s11-predict-volume-4000": "core-v1-pilot-a03-e2-baseline-s11-predict-volume-4000",
+      "core-v1-pilot-a03-e2-baseline-s11-train": "core-v1-pilot-a03-e2-baseline-s11-train",
+      "core-v1-pilot-a03-e2-reference": "core-v1-pilot-a03-e2-reference",
+      "core-v1-pilot-a03-e2-reference-boundary_flux-1001": "core-v1-pilot-a03-e2-reference-boundary_flux-1001",
+      "core-v1-pilot-a03-e2-reference-boundary_flux-2001": "core-v1-pilot-a03-e2-reference-boundary_flux-2001",
+      "core-v1-pilot-a03-e2-reference-volume-2000": "core-v1-pilot-a03-e2-reference-volume-2000",
+      "core-v1-pilot-a03-e2-reference-volume-4000": "core-v1-pilot-a03-e2-reference-volume-4000",
+      "core-v1-pilot-a03-e2-solve-n100": "core-v1-pilot-a03-e2-solve-n100",
+      "core-v1-pilot-a03-e2-solve-n200": "core-v1-pilot-a03-e2-solve-n200",
+      "core-v1-pilot-a03-e2-solve-n400": "core-v1-pilot-a03-e2-solve-n400",
+      "core-v1-pilot-a03-e2-solve-n800": "core-v1-pilot-a03-e2-solve-n800"
+    }
+  },
+  "finished_at_utc": "2026-10-25T16:58:24.783676+00:00",
+  "owner": {
+    "acquired_at_utc": "2026-10-25T15:02:43.435576+00:00",
+    "hostname": "Kenis-MacBook-Air.local",
+    "pid": 95264,
+    "state": "held"
+  },
+  "protocol_id": "core-v1-pilot-a03",
+  "protocol_path": "/Users/keni/Documents/SKUL/aifox/configs/final_protocol.json",
+  "protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+  "purpose": "final_core_study",
+  "schema_version": 1,
+  "scientific_status": {
+    "E1_classical_comparator": "available",
+    "core_comparison": "available_for_evaluation",
+    "failures": [],
+    "final_accuracy": "not_evaluated"
+  },
+  "updated_at_utc": "2026-10-25T16:58:24.783682+00:00",
+  "workflow_status": "completed"
+}
