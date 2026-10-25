@@ -180,6 +180,43 @@ def build_parser() -> argparse.ArgumentParser:
     pilot.add_argument(
         "--output", type=Path, required=True, help="New findings JSON path."
     )
+    freeze = subparsers.add_parser(
+        "freeze-protocol",
+        help="Validate and freeze the final scientific settings and stage matrix.",
+        description=(
+            "Write a new immutable protocol with scientific source/input hashes, "
+            "paired settings, final evaluation coordinates and conservation axes. "
+            "This command creates no training runs or execution manifest."
+        ),
+    )
+    freeze.add_argument(
+        "--config", type=Path, required=True, help="Candidate JSON path."
+    )
+    freeze.add_argument(
+        "--output", type=Path, required=True, help="New protocol JSON path."
+    )
+    matrix = subparsers.add_parser(
+        "run-matrix",
+        help="Execute or reconcile a frozen matrix with preserved run attempts.",
+        description=(
+            "Check frozen inputs/software/scientific sources before work. Record "
+            "real progress, checkpoints and outcomes in the protocol's manifest. "
+            "Compatible failed/interrupted training may resume under a new run ID. "
+            "A source still marked running is refused; existing runs are preserved."
+        ),
+    )
+    matrix.add_argument(
+        "--protocol", type=Path, required=True, help="Frozen JSON path."
+    )
+    matrix.add_argument(
+        "--resume-stage", help="Frozen training stage ID; requires both resume options."
+    )
+    matrix.add_argument(
+        "--resume-from", help="Compatible terminal source run ID; never overwritten."
+    )
+    matrix.add_argument(
+        "--resume-run-id", help="New attempt ID for the resumed training stage."
+    )
     return parser
 
 
@@ -187,6 +224,70 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command == "freeze-protocol":
+        from hydro_pinn.protocol import freeze_protocol
+
+        try:
+            protocol = freeze_protocol(args.config, args.output)
+        except (ValueError, OSError, RuntimeError) as exc:
+            print(f"Protocol freeze failed: {exc}", file=sys.stderr)
+            return 2
+        print(
+            json.dumps(
+                {
+                    "frozen": True,
+                    "protocol_id": protocol["protocol_id"],
+                    "protocol_sha256": protocol["protocol_sha256"],
+                    "matrix_stages": len(protocol["matrix"]),
+                    "output": str(args.output),
+                },
+                allow_nan=False,
+            )
+        )
+        return 0
+    if args.command == "run-matrix":
+        from hydro_pinn.experiments import run_matrix
+
+        resume = (args.resume_stage, args.resume_from, args.resume_run_id)
+        if any(resume) and not all(resume):
+            print(
+                "Matrix failed: --resume-stage, --resume-from and --resume-run-id "
+                "must be provided together",
+                file=sys.stderr,
+            )
+            return 2
+        try:
+            manifest = run_matrix(
+                args.protocol,
+                resume_stage=args.resume_stage,
+                resume_from=args.resume_from,
+                resume_run_id=args.resume_run_id,
+            )
+        except KeyboardInterrupt:
+            print(
+                "Matrix interrupted; saved attempts remain inspectable.",
+                file=sys.stderr,
+            )
+            return 130
+        except (ValueError, OSError, RuntimeError) as exc:
+            print(f"Matrix failed: {exc}", file=sys.stderr)
+            return 2
+        print(
+            json.dumps(
+                {
+                    "protocol_id": manifest["protocol_id"],
+                    "workflow_status": manifest["workflow_status"],
+                    "scientific_status": manifest["scientific_status"],
+                },
+                allow_nan=False,
+            )
+        )
+        return (
+            0
+            if manifest["workflow_status"]
+            in {"completed", "completed_with_diagnostics"}
+            else 3
+        )
     if args.command in {"doctor", "pilot"}:
         from hydro_pinn.devices import run_pilot, write_doctor
 
