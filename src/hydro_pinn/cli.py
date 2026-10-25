@@ -437,6 +437,33 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     reference_2d.add_argument("--release", type=Path)
+    # BEGIN genuine_2d_neural_registration_v01
+    genuine_2d_run = subparsers.add_parser(
+        "extension-2d-run",
+        help="Prepare a frozen genuine 2D study or run one released neural pilot.",
+        description=(
+            "Freeze the initial state, partitions, operators and precision check "
+            "with --prepare-only. A prepared protocol supports one 25-update "
+            "CPU32 full-workload pilot. Full10000 fitting needs a separate "
+            "matching root release. Pilot outputs receive no quality screening."
+        ),
+    )
+    genuine_2d_run.add_argument("--config", type=Path, required=True)
+    genuine_2d_run.add_argument("--run-id", required=True)
+    genuine_2d_run.add_argument("--protocol", type=Path)
+    genuine_2d_run.add_argument("--release", type=Path)
+    genuine_2d_run.add_argument("--prepare-only", action="store_true")
+    genuine_2d_evaluate = subparsers.add_parser(
+        "extension-2d-evaluate",
+        help="Analyze a separately released full genuine 2D run's saved outputs.",
+        description=(
+            "Read saved full-run operator outputs and the frozen numerical "
+            "reference. Refuse pilots; never fit or select a checkpoint."
+        ),
+    )
+    genuine_2d_evaluate.add_argument("--run", type=Path, required=True)
+    genuine_2d_evaluate.add_argument("--output-dir", type=Path, required=True)
+    # END genuine_2d_neural_registration_v01
     return parser
 
 
@@ -444,6 +471,29 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    # BEGIN genuine_2d_neural_dispatch_v01
+    if args.command in {"extension-2d-run", "extension-2d-evaluate"}:
+        try:
+            if args.command == "extension-2d-run":
+                from hydro_pinn.extensions.experiment_2d import run_experiment
+
+                output = run_experiment(
+                    args.config, args.run_id, protocol_path=args.protocol,
+                    release_path=args.release, prepare_only=args.prepare_only,
+                )
+            else:
+                from hydro_pinn.extensions.evaluate_2d import evaluate_experiment
+
+                output = evaluate_experiment(args.run, args.output_dir)
+        except KeyboardInterrupt:
+            print("Genuine 2D work interrupted; evidence retained.", file=sys.stderr)
+            return 130
+        except (ValueError, OSError, RuntimeError, KeyError) as exc:
+            print(f"Genuine 2D work failed: {exc}", file=sys.stderr)
+            return 2
+        print(json.dumps({"stage": args.command, "output": str(output)}))
+        return 0
+    # END genuine_2d_neural_dispatch_v01
     if args.command == "extension-2d-reference":
         from hydro_pinn.extensions.reference_2d import run_reference
 

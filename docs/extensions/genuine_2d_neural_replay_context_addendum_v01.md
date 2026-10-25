@@ -1,0 +1,11 @@
+The future replay-analysis route is bound to root's adopted contract. The completed pilot handoff remains unchanged. This addendum performs no replay implementation, model query, training, precision comparison or pilot quality analysis.
+
+The frozen evaluator and mass postprocessor compare the complete raw report with summary.raw_queries. A real fresh forward pass records new timings and RSS, so its report must remain visible. After the single authorized fresh pass and exact model/operator/input/array comparisons pass, create a separately labelled derived analysis view. Preserve the canonical archive/run and original summary, report and inventory verbatim.
+
+Only three parts of that view may differ: summary /raw_queries becomes the actual fresh report; raw_queries contains the actual fresh files/report; and its active inventory is regenerated transparently. Preserve every other summary value and all training/checkpoint/Adam/RNG/protocol/metadata/status/membership/operator/precision bytes. Original top-level timing fields remain inherited training observations. Record complete summary-pointer and file-inventory diffs, independent-copy provenance, both actual raw reports and original-tree preservation checks.
+
+Both unchanged analyze_raw and the mass postprocessor must use the same derived run view because the latter reads run/raw_queries. Write fresh analysis and mass-totals destinations, then compare all scientific arrays and report sections exactly. Keep new cost/path/receipt differences and both actual values separate in the external replay receipt. A failed exact comparison remains a finding; it does not authorize substituted reports or another query pass.
+
+Adopted contract: docs/coordination/phase_10_2_neural_replay_context_contract_v01.json. SHA256: 60fc558636fed2f22deae315487d8efddd5db21fe96a24efe875c67b87262922.
+
+Parent pilot handoff JSON SHA256: 48f592852572f2e46998ac4b6df18729b9d20c0f75dfce7f6c7651722b663014. The JSON addendum contains exact frozen source/protocol/mass-reporting bindings, the full route constraints and preservation readback. All 20 prepared files, all 37 pilot files, 33 protected modules, six archives and both original handoff files remain byte-identical. Root will bind the adopted route in a separate full-fit release.
