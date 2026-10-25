@@ -110,7 +110,7 @@ def digest(value: Any, label: str) -> str:
     return value
 
 
-def validate_provenance(metrics: dict, timings: dict) -> tuple[dict, list[Path]]:
+def validate_provenance(metrics: dict, timings: dict) -> tuple[dict, list[Path], dict]:
     require(metrics.get("state") == "completed", "metrics must be completed")
     require(timings.get("state") == "completed", "timings must be completed")
     mp, tp = metrics["provenance"], timings["provenance"]
@@ -133,7 +133,15 @@ def validate_provenance(metrics: dict, timings: dict) -> tuple[dict, list[Path]]
     require(
         protocol.get("protocol_id") == metrics["protocol_id"], "protocol ID changed"
     )
-    manifests = [project_path(document["manifest_path"]) for document in (mp, tp)]
+    execution_manifest = mp["execution"]["manifest"]
+    require(
+        isinstance(execution_manifest, str)
+        and not Path(execution_manifest).is_absolute(),
+        "metrics execution manifest must be project-relative",
+    )
+    # The recorded absolute path belongs to the producing checkout. Resolve the
+    # hash-bound execution path locally; never open the historical absolute path.
+    manifests = [project_path(execution_manifest), project_path(tp["manifest_path"])]
     for path in manifests:
         require(sha(path) == mp["manifest_sha256"], "manifest file changed")
         manifest = read_json(path)
@@ -146,7 +154,15 @@ def validate_provenance(metrics: dict, timings: dict) -> tuple[dict, list[Path]]
             manifest.get("protocol_sha256") == mp["protocol_sha256"],
             "manifest protocol mismatch",
         )
-    return protocol, list(dict.fromkeys([protocol_path, *manifests]))
+    resolution = {
+        "recorded_metrics_manifest_path": mp.get("manifest_path"),
+        "metrics_execution_manifest": execution_manifest,
+        "resolved_local_manifest_path": str(manifests[0].relative_to(ROOT)),
+        "timing_manifest_path": tp["manifest_path"],
+        "manifest_sha256": mp["manifest_sha256"],
+        "historical_absolute_path_read": False,
+    }
+    return protocol, list(dict.fromkeys([protocol_path, *manifests])), resolution
 
 
 def validate_grid(metrics: dict, timings: dict, protocol: dict) -> list[float]:
@@ -245,6 +261,56 @@ def quantile(values: list[float], fraction: float) -> float:
     return ordered[lower] + (index - lower) * (
         ordered[min(lower + 1, len(ordered) - 1)] - ordered[lower]
     )
+
+
+def resolve_dtype(cost: dict, timings: dict) -> tuple[str, dict]:
+    """Use a recorded dtype or the uniquely linked saved integration dtype."""
+    source = cost["run_provenance"]
+    config_hash = digest(source.get("resolved_config_sha256"), "dtype config hash")
+    output_hash = digest(source["files_sha256"].get("outputs.npz"), "dtype output hash")
+    origin, kind = cost, "recorded"
+    if cost.get("dtype") is None:
+        require(
+            cost.get("category") == "resident_classical_cache_reconstruction",
+            "only a saved classical cache may derive a missing dtype",
+        )
+        matches = [
+            candidate
+            for candidate in timings["costs"]
+            if candidate.get("category") == "numerical_integration_and_reconstruction"
+            and all(
+                candidate.get(key) == cost.get(key)
+                for key in ("run_id", "case_id", "cells", "stage_id")
+            )
+            and candidate.get("run_provenance", {}).get("resolved_config_sha256")
+            == config_hash
+            and candidate.get("run_provenance", {})
+            .get("files_sha256", {})
+            .get("outputs.npz")
+            == output_hash
+        ]
+        require(len(matches) == 1, "cache dtype needs one matching integration record")
+        origin, kind = matches[0], "derived_from_matching_integration_record"
+        require(
+            origin.get("state") == "completed"
+            and origin["run_provenance"].get("record_state") == "completed"
+            and origin["run_provenance"].get("run_id") == cost["run_id"],
+            "cache dtype source must be the completed matching run",
+        )
+    saved_dtype = origin.get("dtype")
+    dtype = saved_dtype.removeprefix("torch.") if isinstance(saved_dtype, str) else None
+    require(dtype in {"float32", "float64"}, "timing dtype missing/unsupported")
+    return dtype, {
+        "kind": kind,
+        "run_id": origin["run_id"],
+        "category": origin["category"],
+        "case_id": origin["case_id"],
+        "cells": origin.get("cells"),
+        "stage_id": origin.get("stage_id"),
+        "resolved_config_sha256": config_hash,
+        "outputs_npz_sha256": output_hash,
+        "saved_dtype": saved_dtype,
+    }
 
 
 def points_from_saved(metrics: dict, timings: dict, protocol: dict) -> list[dict]:
@@ -348,11 +414,7 @@ def points_from_saved(metrics: dict, timings: dict, protocol: dict) -> list[dict
             isinstance(cost.get("device"), str) and cost["device"],
             "timing device missing",
         )
-        saved_dtype = cost.get("dtype")
-        dtype = (
-            saved_dtype.removeprefix("torch.") if isinstance(saved_dtype, str) else None
-        )
-        require(dtype in {"float32", "float64"}, "timing dtype missing/unsupported")
+        dtype, dtype_provenance = resolve_dtype(cost, timings)
         points.append(
             {
                 "case_id": run["case_id"],
@@ -365,7 +427,8 @@ def points_from_saved(metrics: dict, timings: dict, protocol: dict) -> list[dict
                 "pooled_depth_rmse_m": pooled_depth(metrics, run, times),
                 "device": cost["device"],
                 "dtype": dtype,
-                "saved_dtype": saved_dtype,
+                "saved_dtype": cost.get("dtype"),
+                "dtype_provenance": dtype_provenance,
                 "measured_repetitions": repetitions,
                 "warmup_repetitions": warmups,
             }
@@ -550,7 +613,9 @@ def main() -> None:
     for destination in destinations:
         require(not destination.exists(), f"destination already exists: {destination}")
     metrics, timings = read_json(metrics_path), read_json(timing_path)
-    protocol, linked_sources = validate_provenance(metrics, timings)
+    protocol, linked_sources, manifest_resolution = validate_provenance(
+        metrics, timings
+    )
     points = points_from_saved(metrics, timings, protocol)
     caption, context = caption_from_saved(points, timings)
     inputs = list(dict.fromkeys([metrics_path, timing_path, *linked_sources]))
@@ -576,6 +641,7 @@ def main() -> None:
             for key in ("protocol_sha256", "protocol_file_sha256", "manifest_sha256")
         },
         "protocol_id": metrics["protocol_id"],
+        "manifest_resolution": manifest_resolution,
         "source_artifacts": source_artifacts,
         "plot_source_sha256": {
             str(Path(__file__).relative_to(ROOT)): sha(Path(__file__))
