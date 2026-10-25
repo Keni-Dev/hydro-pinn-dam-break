@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "state": "planning_only_historical_zero_control_reuse_conditionally_supported",
+  "recorded_at_utc": "2026-10-25T21:15:12.560639+00:00",
+  "source": "Read-only explorer viscosity_control_check, plus current root artifact hash readback",
+  "control_run": "runs/p11_hybrid_full_v01_control",
+  "binding_sha256": {
+    "runs/p11_hybrid_full_v01_control/checkpoint.pt": "2664f1f1fda4bcf175169e9933b88352540d6b29a9779b0835b330e41f64c506",
+    "runs/p11_hybrid_full_v01_control/sampling.npz": "b9bfc53062db02cf2f4c16580e0d3d855100b92a2ff947f642ff9d2259565bbb",
+    "runs/p11_hybrid_full_v01_control/validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499",
+    "runs/p11_hybrid_full_v01_control/resolved_config.json": "2a28beae56884b380c8e9fea98f4c58641ffbdf34918f4742b7f89c09a53dc15",
+    "runs/p11_hybrid_full_v01_control/history.csv": "e210208015a89f8df7e72bcd8b53945083b9ae368c0d56cf76319181f549a9a9"
+  },
+  "initial_parameter_tensor_byte_identity": "827083c31cbc04bae49f321d52e0071d9aedcf2f6f5b2384ffa82cb420c26d33",
+  "identity_qualification": "Concatenated parameter tensor bytes, not an initial checkpoint file hash.",
+  "selected_step": 6512,
+  "selected_score": 0.004653292116927332,
+  "independent_existing_trajectory_comparison": {
+    "shared_columns": 13,
+    "rows": 10000,
+    "exact_equal_scalar_values": 130000,
+    "mismatches": 0,
+    "comparison_to": "Original accepted core E1 baseline; losses, gradient norms, weights, validation and selection columns; no unrecorded intermediate parameter-state claim."
+  },
+  "future_reuse_conditions": [
+    "Exact frictionless E1/scales,4x64tanh/softplus1e-6/q=h*u, seed11 identity, CPUfloat32/fourthreads and parameter order.",
+    "Exact stored sampling and validation bytes including original coordinate multiplicities.",
+    "Fixed1/10/10, Adam.001/defaults,10000steps; no chunks, adaptation, labels, LBFGS or warm start.",
+    "Future viscosity nu=0 code must delegate to accepted component-gradient arithmetic and preserve PDE/IC/BC accumulation order, verified by residual/objective/all-gradient/one-Adam equivalence before any full fit. Existing lambda-zero proof is not proof of unwritten viscosity code.",
+    "Preserve historical control protocol and source guards; use its frozen executable archive for old replay or explicitly bind immutable control inputs and unchanged shared-source hashes as historical inputs to new study. Do not retag it as a current-protocol run.",
+    "Use selected_model_state from6512, not latest10000. Step-zero selection is established by source/review; original history begins at1.",
+    "New comparison queries must use identical declared operators/axes for both models because original hybrid evaluation covers only.4\u2013.5s. Keep historical control training cost separate from new positive-nu timing; no simultaneous speedup claim."
+  ],
+  "actual_viscosity_code_or_fit_released": false,
+  "root_model_solver_test_or_training_executed": false
+}

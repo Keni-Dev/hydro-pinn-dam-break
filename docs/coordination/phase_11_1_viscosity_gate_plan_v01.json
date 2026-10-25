@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "author": "science_audit",
+  "recorded_at_utc": "2026-10-25 21:16:52 UTC",
+  "state": "proposed_planning_only_no_viscosity_gate_or_pair_released",
+  "purpose": "Define the smallest fixed one-factor E1 seed-11 artificial-momentum-diffusion comparison and one representative second-derivative feasibility pilot. Establish implementation/precision/cost evidence before any positive-viscosity accuracy is inspected.",
+  "authority": {
+    "current_task": "Planning only. Only docs/coordination/phase_11_1_viscosity_gate_plan_v01.json is written.",
+    "all_new_experiment_choices": "Proposed, unexecuted and subject to a later explicit root selection/release before implementation/pilot/full execution. No implicit release follows from this file.",
+    "no_source_config_cli_test_or_run_edits": true,
+    "no_model_derivative_solver_reference_test_or_training_execution": true,
+    "no_coefficient_search": true
+  },
+  "basis": {
+    "original_prompt": "prompts/phase_11_training_extensions/01_viscosity_ablation.md",
+    "prd": "project_specification.md Section4.5",
+    "coefficient_support": "Both explicitly propose momentum residual r_q - nu_star*q_star_xstarxstar and an initial positive candidate nu_star=10^-3, leaving continuity unchanged. This plan fixes that single value; the prompt's pre-final pilot allowance is not used for coefficient search.",
+    "actual_interfaces": "losses.residuals accepts scaled coordinates (x/Lc,t/Tc) and returns conservative continuity/momentum residuals. ShallowWaterPINN.forward returns h*=softplus(z_h)+floor and q*=h*u*, while physical_state accepts SI coordinates. Smooth tanh/softplus and the product-defined q are retained.",
+    "accepted_findings_context": "Accepted core findings retain substantial wet/front errors and mixed fixed/adaptive outcomes; later friction findings retain substantial q/velocity/front error despite small global mass imbalance. These observations motivate measuring a tradeoff and do not establish that viscosity helps. No new study will claim improvement before its actual paired outputs.",
+    "scientific_method_label": "Project-specified constant artificial momentum diffusion. No claim of exact replication of an external method or of a known viscous analytical solution."
+  },
+  "proposed_case_and_pair": {
+    "case": "configs/cases/e1_wet.json",
+    "dimension": 1,
+    "domain_m": [
+      -5,
+      5
+    ],
+    "dam_position_m": 0,
+    "h_left_m": 1,
+    "h_right_m": 0.1,
+    "u_initial_m_s": 0,
+    "gravity_m_s2": 9.81,
+    "final_time_s": 0.5,
+    "bed": "flat",
+    "friction": "none; do not combine the separate Manning study",
+    "rainfall": "none",
+    "prescribed_initial_volume_m2_per_unit_width": 5.5,
+    "coefficient_branches": [
+      {
+        "id": "nu0",
+        "nu_star": 0
+      },
+      {
+        "id": "nu0p001",
+        "nu_star": 0.001
+      }
+    ],
+    "seed": 11,
+    "model": "Same four64-unit tanh hidden layers, raw depth/scaled-velocity outputs, softplus nondimensional floor1e-6 and product q*=h*u*.",
+    "backend": "CPU float32, four threads on the available M5 Air",
+    "objective_weights": {
+      "pde": 1,
+      "ic": 10,
+      "bc": 10,
+      "data": 0
+    },
+    "sampling_counts": {
+      "interior": 10000,
+      "initial": 1000,
+      "boundary_each_side": 500
+    },
+    "optimizer": {
+      "kind": "Adam",
+      "learning_rate": 0.001,
+      "updates": 10000,
+      "lbfgs": false
+    },
+    "fixed_factors": "Identical accepted initialization tensors, architecture, Adam hyperparameters/fresh state, sampling arrays/multiplicities, IC/BC targets, validation arrays, precision/backend/thread settings, optimizer budget, component order and gradient-accumulation policy. No adaptive weighting, labels, resampling, embeddings, friction, altered IC smoothing or other regularizer.",
+    "chunk_policy": "No chunks (chunk_size=null), matching the conditionally supported historical control. Preserve accepted component-gradient arithmetic and PDE/IC/BC accumulation order. Do not assume control reuse survives changed floating-point accumulation order.",
+    "discontinuity": "Use the unchanged unsmoothed IC targets with the dam point excluded. PDE collocation is at t>0; do not demand a classical initial derivative at x=0,t=0.",
+    "proposed_ids_not_created": {
+      "pilot": "p11_viscosity_e1_seed11_pilot_v01",
+      "positive_full": "p11_viscosity_e1_seed11_nu0p001_full_v01"
+    }
+  },
+  "control_reuse_conditional": {
+    "state": "Historical full nu=0 reuse is conditionally supported by the completed separate audit; future viscosity-code equivalence is still required before pilot/full acceptance.",
+    "qualifying_run": "runs/p11_hybrid_full_v01_control",
+    "qualifying_audit_path": "docs/coordination/phase_11_1_historical_control_reuse_note.json",
+    "qualifying_audit_sha256": "36975aac569f41876c6d1bf264858c0dc5f8901a395687789ab888dc134d4d97",
+    "historical_control_binding_sha256": {
+      "runs/p11_hybrid_full_v01_control/checkpoint.pt": "2664f1f1fda4bcf175169e9933b88352540d6b29a9779b0835b330e41f64c506",
+      "runs/p11_hybrid_full_v01_control/sampling.npz": "b9bfc53062db02cf2f4c16580e0d3d855100b92a2ff947f642ff9d2259565bbb",
+      "runs/p11_hybrid_full_v01_control/validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499",
+      "runs/p11_hybrid_full_v01_control/resolved_config.json": "2a28beae56884b380c8e9fea98f4c58641ffbdf34918f4742b7f89c09a53dc15",
+      "runs/p11_hybrid_full_v01_control/history.csv": "e210208015a89f8df7e72bcd8b53945083b9ae368c0d56cf76319181f549a9a9"
+    },
+    "initial_parameter_tensor_byte_identity": "827083c31cbc04bae49f321d52e0071d9aedcf2f6f5b2384ffa82cb420c26d33",
+    "initial_identity_qualification": "Concatenated parameter tensor bytes, not an initial checkpoint file hash.",
+    "selected_step": 6512,
+    "selected_score": 0.004653292116927332,
+    "audit_result_reused_not_recomputed": {
+      "shared_columns": 13,
+      "rows": 10000,
+      "exact_equal_scalar_values": 130000,
+      "mismatches": 0,
+      "comparison_to": "Original accepted core E1 baseline; losses, gradient norms, weights, validation and selection columns; no unrecorded intermediate parameter-state claim."
+    },
+    "no_duplicate_audit": "Root bound the completed viscosity_control_check exploration and current artifact hash readback. This plan does not repeat its130000-value trajectory or code audit. Equality of the shared saved scalar history is not a claim that every unrecorded intermediate parameter tensor was compared.",
+    "conditional_route": "Propose only one new positive-nu10000-update fit, using the accepted historical zero control selected_model_state at6512. The positive branch must start from the same seed11 initial parameter tensors with fresh Adam, not selected/latest control weights. Save the new initial tensors and verify their concatenated parameter-byte identity against the audited identity before fitting.",
+    "future_equivalence_requirement": "Unwritten viscosity nu=0 code must delegate to accepted component-gradient arithmetic and pass residual/objective/all-parameter-gradient/one-Adam equivalence with unchanged order. The existing hybrid lambda-zero proof is not evidence for future viscosity code. If this prerequisite fails, hold this route; a new zero fit or changed arithmetic requires a new separately proposed protocol and cost decision.",
+    "historical_guard_preservation": "Keep the historical hybrid protocol/source guards and immutable inputs unchanged. Do not weaken or bypass its old guards, retag it as a current-protocol run, or pretend later additive CLI commands existed in the old executable. Bind its checkpoint/resolved config/sampling/validation/history hashes and unchanged shared scientific-source hashes explicitly as historical inputs to the new viscosity study. Old full replay uses the preserved frozen hybrid executable archive.",
+    "historical_initial_selection_qualification": "The original saved history begins at1. Step-zero selection is established by accepted source/review, not a fabricated extra historical row. Use selected_model_state6512 rather than latest10000. The new positive branch saves explicit step0 plus all10000updates.",
+    "evaluation_condition": "Original hybrid final evaluation covers only.4-.5s. Both selected models therefore need one newly declared matched full.01-.50s pointwise field/front/mass/boundary evaluation under the viscosity-study namespace. Do not treat the old partial hybrid evaluation as the full new zero control. Zero selected-checkpoint pilot query arrays may later be reused exactly under the frozen new axes/checkpoint binding, avoiding duplicate zero forwards.",
+    "cost_condition": "Show historical zero-control training cost separately from newly executed positive pilot/full training and new matched evaluation cost. Do not claim new paired/simultaneous training, zero-cost historical computation or a speedup."
+  },
+  "physics_and_scaling": {
+    "scales": {
+      "H_m": 1,
+      "Lc_m": 5,
+      "Uc_m_s": 3.132091952673165,
+      "Tc_s": 1.5963771420352522
+    },
+    "definitions": "x*=x/Lc, t*=t/Tc, h*=h/H, q*=q/(H Uc), with Tc=Lc/Uc and Uc=sqrt(gH).",
+    "continuity": "r_h = h*_(t*) + q*_(x*), unchanged in both branches.",
+    "inviscid_momentum": "r_q = q*_(t*) + (q*^2/h* + h*^2/2)_(x*).",
+    "modified_momentum": "r_q_nu = r_q - nu_star*q*_(x*x*).",
+    "sign": "r_q_nu=0 implies physical q_t + (q^2/h + g h^2/2)_x = nu*q_xx. Positive nu has the diffusion sign; adding +nu_star*q*_(x*x*) to the left residual would reverse it.",
+    "dimensional_nu_formula": "nu = nu_star*Lc*Uc, in m^2/s",
+    "positive_dimensional_nu_m2_s": 0.015660459763365824,
+    "dimensional_residual_relation": "Physical momentum residual divided by H*Uc^2/Lc equals r_q - [nu/(Lc Uc)]q*_(x*x*). In particular q_xx=(H Uc/Lc^2)q*_(x*x*) and q_x=(H Uc/Lc)q*_(x*).",
+    "derivative_contract": "Differentiate q*=h*u*, including both factors, twice with respect to scaled x on the same owned requires_grad coordinate leaf. Do not differentiate raw velocity alone, omit h derivatives, introduce another affine map or apply SI chain factors a second time to already scaled derivatives.",
+    "graph_contract": "Preserve create_graph through both coordinate derivatives so the objective backpropagates through q_xx into every relevant model parameter. Enable coordinate autograd for validation even under an outer no_grad context; do not use inference_mode there. Handle truly constant/linear derivatives as zero without detaching nonzero parameter dependencies. The nu=0 path must delegate to the accepted core residual/loss and skip all second-derivative work.",
+    "no_energy_or_entropy_guarantee": "Momentum diffusion alone does not guarantee shallow-water mechanical-energy dissipation: its interior energy contribution is -nu*u_x*q_x = -nu*(h*u_x^2 + u*h_x*u_x), whose sign is not fixed. Do not claim entropy selection, positivity/conservation guarantees, unconditional stability or improved shock accuracy."
+  },
+  "boundary_interpretation": {
+    "unchanged_training_constraints": "Retain the existing soft fixed-reservoir IC/BC penalties for both h and q at x=-5,+5. Continuity PDE samples remain interior; no new boundary derivative target is imposed.",
+    "modified_problem_limit": "These unchanged soft constraints define the controlled PINN regularization experiment. They do not establish a unique well-posed mixed hyperbolic/parabolic boundary-value problem; exact prescribed h and q at both ends together with continuity on the boundary can impose additional q_x restrictions. Do not describe the result as a validated exact viscous boundary solution.",
+    "no_hidden_neumann_condition": "Do not add q_x=0, a boundary layer penalty, a new boundary weight or a different reservoir rule to make the positive branch succeed; that would change another factor.",
+    "finite_domain_limit": "The inviscid analytical wave-boundary horizon remains relevant only to its comparison field. Positive diffusion has no strict finite propagation horizon, so it cannot prove that the modified branch has zero boundary influence at T=.5."
+  },
+  "necessary_implementation_checks_proposed_not_run": {
+    "scope": "Only focused extension checks and the minimal directly affected core-interface comparison; no broad repeat of accepted suites or experiments.",
+    "smooth_derivative_fixture": "Use h*(x*,t*)=2+0.1*sin(x*) and q*(x*,t*)=a*x*^3+b*t*^2*x* with trainable a,b on a small deterministic scaled grid away from the IC discontinuity. Expected q*_(x*x*)=6a*x*, and the modified-minus-inviscid momentum residual is -6*nu_star*a*x*. Continuity is exactly unchanged. Verify the derivative of this residual difference with respect to a; this exposes a detached second-derivative parameter graph.",
+    "scaling_fixture": "At nonunit scales, verify the dimensional-residual identity and physical q_xx chain factors independently of the extension expression. Include zero/constant and linear-in-x q fixtures so valid zero second derivatives do not cause an autograd failure.",
+    "nu_zero_equivalence": "Using identical states/samples in CPU float32 and a small CPU float64 fixture, compare nu=0 versus core residual arrays, each complete PDE/IC/BC mean, weighted objective, every parameter gradient including absent-gradient patterns, one fresh Adam update, every parameter tensor and all optimizer moments/step counts. Exact equality is the intended delegation contract, not merely close gradient norms or equal total loss.",
+    "chunk_check": "If the frozen policy uses chunks, include one small nondivisible point-count fixture. Accumulate each chunk mean weighted by its actual point fraction, retain the sum-of-two-residual-squares PDE normalization, and update Adam only after the complete weighted objective. Match the accepted component/accumulation order; do not average chunk means or norms equally.",
+    "invalid_result_handling": "Reject nonfinite derivatives/objectives/gradients or nonpositive/nonfinite states with a retained failure receipt. No clipping, suppressed exception, automatic coefficient reduction or silent retry.",
+    "check_tolerances": {
+      "smooth_cpu_float64": {
+        "rtol": 1e-10,
+        "atol": 1e-11
+      },
+      "smooth_cpu_float32": {
+        "rtol": 5e-05,
+        "atol": 1e-05
+      },
+      "nu_zero_delegation": "exact tensor/gradient/optimizer equality in each dtype with identical inputs"
+    },
+    "note": "These are proposed software/derivative tolerances, not study error targets or proof of correctness over all states."
+  },
+  "training_and_validation_reporting": {
+    "training_PDE_mean": "mean(r_h^2 + r_q_nu^2); IC/BC losses retain the same mean squared sum over nondimensional h,q. Fixed objective=PDE+10*IC+10*BC.",
+    "physics_only": "Strict fitting payload contains coordinates plus prescribed IC/BC targets only. No analytical interior values, final errors or sensor data enter the objective.",
+    "selection": "For each branch select the earliest strict minimum of its own fixed-weight modified-physics/IC/BC validation objective, including step0 and every update1..10000. At nu=0 that objective is the original inviscid objective. The positive branch's modified objective is part of the declared factor; its magnitude is not directly an accuracy ranking against the zero branch.",
+    "validation_coordinates": "Same fixed365 interior PDE,72 initial and10 boundary points from the predeclared baseline validation arrays. Preserve membership hashes and actual cast/scale precision.",
+    "dual_reporting": "On the positive branch log both modified PDE/total validation and original inviscid PDE/total validation at the same states/steps, with continuity and momentum residual summaries separated. Only the modified branch objective selects its checkpoint. At nu=0 its branch-modified and inviscid values are identical and need no second-derivative calculation.",
+    "common_selected_checkpoint_diagnostic": "At final selected checkpoints, evaluate both fixed operators gamma=0 and gamma=.001 on the same365 validation interior coordinates for both branches, saving r_h, r_q, q_xx and r_q_nu summaries/arrays. This supports cross-operator interpretation without requiring an unavailable counterfactual score history for a reused old control. These diagnostics cannot reselect either checkpoint.",
+    "history_and_checkpoint_evidence": "Save initial/latest/selected identities, actual update/validation counts, optimizer parameter membership/moments/counts, full histories, source/configuration/membership hashes and immutable run ancestry. Recompute strict-minimum selection from history and verify saved reloads before final analysis. Historical zero history begins at1 and remains untouched; its accepted step-zero-selection source qualification is retained rather than inventing a row.",
+    "no_retuning": "No further nu, seeds, budgets, point sets, precision, weights or checkpoint rules after final positive-branch accuracy. Retain both favorable and unfavorable field/residual tradeoffs."
+  },
+  "analytical_comparison": {
+    "reference": "The unchanged inviscid wet E1 analytical solution evaluated pointwise at the common400 centres and50 positive times, as in the accepted core operator. Reuse its hash-verified saved outputs when axes/source match.",
+    "interpretation": "Depth/discharge/velocity error measures how the trained modified-equation network approximates the selected inviscid target, including regularization smoothing/bias and optimization error. It is not error against an exact positive-viscosity solution.",
+    "discontinuity_limit": "The inviscid analytical shock has distributional derivatives. Do not evaluate its piecewise classical q_xx while ignoring jump distributions and claim it solves r_q_nu=0.",
+    "paired_claims": "Report the signed positive-minus-zero metric differences for this single predesignated seed, together with actual SI/relative errors and profiles. A reduced front error is a tested approximation tradeoff if observed; a reduced modified residual alone is insufficient. No generalization, convergence or guaranteed entropy/stability claim."
+  },
+  "frozen_final_diagnostics_proposed": {
+    "pointwise_fields": "Same configs/evaluation.json400centres x= -5+(i+.5)*10/400 and50 times .01.. .50. Both PINNs and inviscid reference are pointwise at these coordinates; do not substitute the later friction study's cell-average operator.",
+    "errors": "Per-time and pooled RMSE and relative L2 for h,q,u=q/h over whole, exact reference shock band +/- .1m and outside. Velocity uses the fixed h_ref>.001m mask with count/coverage. Preserve zero/near-zero norm and empty-region null+reason semantics with SI errors; do not choose a prediction-dependent mask.",
+    "front_profiles": "Save complete h/q profiles at .10,.25,.50s from the existing final grid and reference shock position. Preserve all overshoot, displacement and smearing.",
+    "smoothing_diagnostic": "From that same frozen grid/profile window, report maximum absolute adjacent-depth slope in the fixed exact-shock +/- .1m band. Also report10-to90percent transition width only where each of the fixed depth levels hR+.1*(hstar-hR) and hR+.9*(hstar-hR) has one ordered descending crossing in that window; use declared linear interpolation between existing samples. For absent/multiple/out-of-order crossings or a transition extending beyond the fixed window, use null plus reason and retain profiles/counts. The frozen inviscid hstar supplies levels; no fitted thresholds/window or extra model queries. These grid-dependent descriptors may reflect amplitude/position error as well as smoothing and cannot establish shock accuracy alone.",
+    "mass": "Keep continuity's unchanged physical balance M(t)-5.5+integral_0^t(qR-qL)dt. Independent midpoint volume2000/4000cells includes t0 and all50 report times. Actual endpoint boundary trapezoid axes1001/2001include0,T and each report time exactly, using the accepted core protocol's node-replacement rule and saved axes.",
+    "mass_details": "Report prescribed versus predicted initial volume/bias, signed and absolute corrected sampled extrema, final balance, additional bias-subtracted curve, separate left/right signed cumulative and absolute q-mismatch integrals, both h/q boundary mismatches and full raw arrays. Retain paired base/refined volume/flux/balance sensitivity as measured quadrature differences, not bounds or a convergence assertion.",
+    "provenance_and_partitions": "Before pilot freeze training/validation/primary-final memberships, exact final/auxiliary axes and cast/scale behavior. Require primary final coordinates to remain disjoint from fitting/validation. Known IC/BC auxiliary conservation probes can repeat imposed boundary coordinates/times under the accepted core contract; identify them as auxiliary physics diagnostics, not independent held-out solution labels. Never silently filter or move the reused control's auxiliary axes. Both branches use the identical declared arrays.",
+    "no_momentum_budget_in_minimal_study": true,
+    "momentum_budget_condition": "If a later explicitly added momentum budget is reported, use P=integral q dx and flux Fq=q^2/h+g*h^2/2-nu*q_x at both physical endpoints, including its initial integral and actual time quadrature/refinement. q_x=(H Uc/Lc)q*_(x*). Save derivative/flux boundary arrays and added cost. Omitting -nu*q_x would falsely diagnose the modified equation; withhold that budget in the minimal plan rather than add unmeasured derivative-boundary work."
+  },
+  "single_representative_pilot_proposed": {
+    "updates": 25,
+    "branch": "nu_star=.001 only",
+    "backend": "CPU float32, four threads",
+    "start": "Preserved common initial tensors and fresh Adam; never an accepted control's selected state. Full positive run later restarts from the same initial state and fresh optimizer, not the pilot checkpoint.",
+    "workload": "The full10000PDE/1000IC/500-per-side batch or exact frozen matched chunk policy; full second derivatives, parameter backward, Adam, all IC/BC components, initial plus every-update modified and inviscid validation, history append/flush, latest/selected checkpoint writes, terminal trusted reload and strict selection readback.",
+    "precision_check": "One fixed small CPU64 reference calculation at the initial tensor state, using exactly the same float32-representable weights and16 predetermined validation-interior points spread across all365indices (floor(k*364/15),k=0..15), cast to64. Compare residuals, q_xx, objective and every parameter gradient with CPU32, reporting absolute and norm-scaled discrepancies; do not compare only losses or use a cancellation-prone pure relative denominator. This is a small derivative/gradient fixture, not a float64 training run or performance benchmark. For its weighted objective/gradient comparison use those16PDE points plus the unchanged72validation IC and10BC points, keeping targets and1/10/10 weights identical across dtypes.",
+    "representative_precision_tolerances": {
+      "residual_and_qxx": {
+        "rtol": 0.0005,
+        "atol": 5e-06
+      },
+      "objective_and_all_parameter_gradient_elements": {
+        "rtol": 0.001,
+        "atol": 1e-06
+      }
+    },
+    "precision_failure": "Retain failure/discrepancies and withhold pilot acceptance pending a scoped graph/scaling/precision review. No silent float64 backend swap, extra coefficient, shortened full budget or unrecorded rerun. A changed pair requires a new pre-accuracy protocol; do not call an implementation/precision failure physical infeasibility.",
+    "complete_query_and_output_workload": "For the positive pilot, query/save all declared primary point fields20000coordinates, midpoint volumes306000coordinates and endpoint boundary6004coordinates:332004state-query coordinates plus the selected-checkpoint365-point dual-operator derivative diagnostic. Also perform one matched full query/derivative/output pass for the hash-bound historical zero selected checkpoint6512 under the new axes, without training it; preserve those zero arrays for exact later final reuse. Include both checkpoint loads, chunks, residual graph allocations, actual compressed NPZ/JSON/CSV I/O, hashing and reporting. Profile times are already in the primary grid and require no extra query.",
+    "accuracy_exclusion": "Pilot may save raw model states to measure actual query/I/O/storage workload, but does not compute, plot or inspect positive-vs-inviscid/zero errors, front widths or mass-quality summaries. Use fixed shape/reference-only diagnostic serialization fixtures where a final report workload must be timed. Physics-only validation logs remain visible for execution/selection; no final accuracy or quality may choose nu or other settings. Withhold the new zero-query error summaries until the final paired analysis as well; the coefficient and all settings are fixed independently of either new evaluation.",
+    "conditional_control_cost": "The completed historical-control audit supports one new positive full fit only, conditional on future nu=0 exact equivalence. Measure the new zero selected-checkpoint full query/output cost once during the bounded pilot and bind its arrays for later exact reuse. Its historical10000-update training cost remains a separate reused stage; do not add a second zero training pilot or fit.",
+    "measurements": "Actual25-update inclusive wall, component/second-derivative backward/validation/checkpoint/history costs, trusted reload, each complete query/integration/I/O/hash stage, written bytes, process lifetime RSS and contemporaneous host load/precision/thread/library information. Peak RSS is not free memory, instantaneous pressure or a sustained thermal guarantee.",
+    "full_cost_projection": "Report positive per-step mean/median/range times10000 and inclusive25-update training-wall scaling with their exact scopes. Add measured setup/reload, positive full final diagnostics/queries/I/O and the single new historical-control full evaluation, reference reuse/loading and storage/hash costs. Separate already performed pilot costs, historical zero training, and any later fresh positive evaluation so no stage is double-counted. Figure/archive/extraction/replay costs remain separately unmeasured until observed. No invented runtime, confidence bound, device ordering or workload-matched speedup.",
+    "not_a_new_benchmark": "One representative feasibility observation, without repeated fits to obtain a favorable cost. A short pilot does not measure full-run thermal behavior, trained-field compression or selected-checkpoint write frequency."
+  },
+  "proposed_release_decision": {
+    "gate_prerequisites": "Bind the completed historical-control audit and its explicit immutable inputs/unchanged shared scientific sources; future viscosity nu=0 equivalence must still pass. Freeze all one-factor/sample/initialization/validation/evaluation contracts and no-chunk arithmetic; record focused sign/scaling/second-derivative/zero-limit/all-gradient/one-update checks and the single25-update representative precision/cost pilot, preserving failures.",
+    "continuation": "If implementation/precision evidence is valid and measured complete new workload is acceptable for the recorded resources/budget, root may explicitly release exactly one new positive-nu full fit with the conditionally reused historical zero control. This file supplies no resource budget or release and proposes no new zero full fit.",
+    "no_accuracy_gate": "A favorable pilot/final approximation error is not a release condition. Do not require a prechosen accuracy gain, conservation threshold or paper-quality result; a completed unfavorable one-factor result is useful.",
+    "failure_outcome": "A valid but costly or failed precision/resource pilot can complete a bounded feasibility finding while the full comparison remains unexecuted. Distinguish incomplete implementation, resource evidence and scientific unfavorable results; do not erase failures or mark all Phase11 complete.",
+    "next_after_actual_full_outputs": "Bounded independent saved-array error/residual/front/mass/boundary/cost readback, with selected-checkpoint/source/membership hashes, then a few saved-data figures and preserved executable/replay evidence. No new seed/coefficient or accuracy-driven retuning."
+  },
+  "suggested_future_ownership_not_created": {
+    "implementation_files_from_original_prompt": [
+      "src/hydro_pinn/extensions/viscosity.py",
+      "src/hydro_pinn/extensions/viscosity_experiment.py",
+      "configs/extensions/viscosity.json",
+      "tests/test_viscosity.py",
+      "docs/extensions/viscosity_manifest.json",
+      "docs/extensions/viscosity_findings.md"
+    ],
+    "results": "results/extensions/viscosity/",
+    "evidence": "docs/evidence/phase_11/viscosity_v01/",
+    "limits": "Future separately authorized work may add only scoped extension files/CLI registrations, preserving unrelated exports and frozen core/other-extension modules, protocols, arrays, evidence and archives. No such files or directories are created by this planning task."
+  },
+  "observed_input_sha256": {
+    "project_specification.md": "95233f63b8a7c1514c7132ad9d735c8250c26c00aebfe10a0e0f14088d343850",
+    "prompts/phase_11_training_extensions/00_PHASE_OVERVIEW.md": "250a11bacc3979aa0d4c6e083045aecc49a4f79d80ccfcbbcc3b08e74554674a",
+    "prompts/phase_11_training_extensions/01_viscosity_ablation.md": "56e6c29ac9be68c064b99137b337578c38a32d7acf3f1118e4e5f9d91e6ae81b",
+    "prompts/phase_11_training_extensions/99_PHASE_CHECKLIST.md": "8a170aa38c17e3d1fee5e70601bd64e70d621c4472eb8d4fca069d85571d316d",
+    "configs/cases/e1_wet.json": "9736a419f9a63d27310bae03aaf9288f630e8f28ad100c7b1059397952255e1e",
+    "configs/training/baseline.json": "9f9c410fa5eda793fa543d41238ef71191e3987ac0361f782022685833f81a6e",
+    "configs/evaluation.json": "f83827dbf28e993628a73efbcdecec7d16f425f4f3a1bb20feb757305355db3b",
+    "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+    "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+    "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+    "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212",
+    "src/hydro_pinn/conservation.py": "b06bc773ff67a5b28ffa744a095c99a41e0ee3137c14eaed0a849cdf3e3f3931",
+    "src/hydro_pinn/protocol.py": "85009bc307facc04decc86c490ce0f578c7576d480ed50137605511912d62a33",
+    "docs/coordination/phase_06_science_review.json": "214dd7887e7808864ca14123401a61642541854e21c72e67d54cb039108d5289",
+    "docs/coordination/phase_08_terminal_science_review.json": "b191cc5ef378823dc2edf7bbca22aaf75af43af4dd09b830d0b0a37d7329ebe8",
+    "docs/coordination/phase_11_1_historical_control_reuse_note.json": "36975aac569f41876c6d1bf264858c0dc5f8901a395687789ab888dc134d4d97",
+    "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+    "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+    "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40"
+  },
+  "planning_limits": [
+    "No viscosity implementation, pilot, derivative/model/solver call, accuracy screen, test, coefficient search or full pair was executed.",
+    "The completed separate historical-control audit is bound and reused; its130000-value/code comparison was not repeated. Reuse still depends on exact future viscosity nu=0 residual/objective/all-gradient/one-Adam equivalence and preserved historical guards.",
+    "Candidate settings are proposed before new positive-viscosity accuracy. The historical control audit is complete; viscosity implementation, pilot measurements, equivalence, actual outcomes and root release remain pending.",
+    "The second-derivative/sign/scaling and energy-flux statements are direct algebra for the specified project equation; no external empirical viscosity-performance claim is added."
+  ]
+}

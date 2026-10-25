@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "state": "selected_for_necessary_derivative_checks_and_one_representative_pilot_full_fit_not_released",
+  "recorded_at_utc": "2026-10-25T21:21:43.698552+00:00",
+  "authority": "User authorized core then feasible M5 extensions; accepted selected09 gate does not support inverse fitting, so root now selects the optional project-specified viscosity feasibility gate.",
+  "dependencies": [
+    "docs/coordination/phase_09_completion_review.json",
+    "docs/coordination/phase_11_2_completion_review.json",
+    "docs/coordination/remaining_extension_assessment_v01.json"
+  ],
+  "adopted_plan": "docs/coordination/phase_11_1_viscosity_gate_plan_v01.json",
+  "adopted_plan_sha256": "0539decabb36d58b7342716ee2dedc058b8f53e551938ee842c8d5cbc18ba4ca",
+  "control_reuse_note": "docs/coordination/phase_11_1_historical_control_reuse_note.json",
+  "control_reuse_note_sha256": "36975aac569f41876c6d1bf264858c0dc5f8901a395687789ab888dc134d4d97",
+  "scope": "Project-specified constant artificial momentum diffusion on frictionless wet E1, one-factor zero/.001 comparison. Initial release is implementation/focused correctness/precision checks and one25-update positive-nu pilot only.",
+  "fixed_scientific_choices": {
+    "nu_star": 0.001,
+    "dimensional_nu_m2_s": 0.015660459763365824,
+    "residual": "continuity unchanged; r_q_nu=r_q-nu_star*q_star_xstarxstar",
+    "case": "Unchanged wet frictionless flat E1,T.5,seed11; no Manning/rain/topography/dry/hybrid labels/adaptive weights/LBFGS/IC smoothing",
+    "backend": "Available M5 Air CPUfloat32/fourthreads",
+    "model": "Existing4x64tanh,depthfloor1e-6,q=h*u",
+    "weights": "1/10/10",
+    "sampling": "Exact accepted10000PDE/1000IC/500eachBC and matched validation arrays/multiplicities",
+    "optimizer": "Adam.001/defaults,no chunks; proposed10000fullupdates",
+    "selection": "Earliest strict branch-modified physics/IC/BC validation minimum, initial plus every step; dual original-inviscid validation logging without selecting on it"
+  },
+  "historical_control": {
+    "run": "runs/p11_hybrid_full_v01_control",
+    "selected_step": 6512,
+    "binding_sha256": {
+      "runs/p11_hybrid_full_v01_control/checkpoint.pt": "2664f1f1fda4bcf175169e9933b88352540d6b29a9779b0835b330e41f64c506",
+      "runs/p11_hybrid_full_v01_control/sampling.npz": "b9bfc53062db02cf2f4c16580e0d3d855100b92a2ff947f642ff9d2259565bbb",
+      "runs/p11_hybrid_full_v01_control/validation.npz": "b37a018bd958cbd198ada56605c1a9a18c9601a326cb940afdfd0a88ead78499",
+      "runs/p11_hybrid_full_v01_control/resolved_config.json": "2a28beae56884b380c8e9fea98f4c58641ffbdf34918f4742b7f89c09a53dc15",
+      "runs/p11_hybrid_full_v01_control/history.csv": "e210208015a89f8df7e72bcd8b53945083b9ae368c0d56cf76319181f549a9a9"
+    },
+    "initial_parameter_tensor_identity": "827083c31cbc04bae49f321d52e0071d9aedcf2f6f5b2384ffa82cb420c26d33",
+    "reuse_conditional_on_future_exact_nu_zero_equivalence": true,
+    "no_new_zero_training_pilot_or_full_fit": true,
+    "source_guard_contract": "Bind historical immutable inputs and unchanged shared scientific-source hashes as inputs. Do not retag the old run or weaken its old guard. Replay old study with preserved hybrid executable.",
+    "historical_cost_separate": true
+  },
+  "ownership": {
+    "new_modules": [
+      "src/hydro_pinn/extensions/viscosity_physics.py",
+      "src/hydro_pinn/extensions/viscosity_experiment.py"
+    ],
+    "new_config": "configs/extensions/viscosity_experiment.json",
+    "new_tests": [
+      "tests/test_viscosity_physics.py",
+      "tests/test_viscosity_experiment.py"
+    ],
+    "new_docs": "docs/extensions/viscosity*",
+    "new_evidence": "docs/evidence/phase_11/viscosity_v01/",
+    "new_results": "results/extensions/viscosity/",
+    "new_runs": "Fresh p11_viscosity_* namespace only",
+    "existing_file_exception": "Only additive named extension-viscosity-run and extension-viscosity-evaluate parser/dispatch blocks in src/hydro_pinn/cli.py. Preserve every old CLI line/order; no full-file formatting or other edit.",
+    "root_owns": [
+      "coordination",
+      "global status",
+      "Git"
+    ]
+  },
+  "protected_existing_nonCLI_sha256": {
+    "src/hydro_pinn/__init__.py": "7018c26707fca1706efdca11406f591574bcc31abe072bb34edb74a288021a16",
+    "src/hydro_pinn/__main__.py": "49c2417a76f6589478d8efa1c5e9b36191384f423ddf86cfff40c9deeb1dbaef",
+    "src/hydro_pinn/benchmark.py": "2f1e52d0dacf43c2cc3ec1e17bd403ab53fc76fcee46bf82dc704393b043addd",
+    "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+    "src/hydro_pinn/conservation.py": "b06bc773ff67a5b28ffa744a095c99a41e0ee3137c14eaed0a849cdf3e3f3931",
+    "src/hydro_pinn/devices.py": "24305922b64927e41fd85b300f34b08622ec78c60f7f69aacf3b48fda1ae8aa8",
+    "src/hydro_pinn/evaluate.py": "31aa5c9b466c874819b89a15856b7f731d87172a2bbd5cf98acc1172ce663fe2",
+    "src/hydro_pinn/evaluation_workflow.py": "0b9307dbe569d52880f4aa83920993bc8fb0509a534c1144bbffd4a5c40e3bc3",
+    "src/hydro_pinn/experiments.py": "ba7b2d3c968a75a6df4fe276e0e2d96d98a2bf33bc8b5e30a0856a07ad4077c1",
+    "src/hydro_pinn/extensions/__init__.py": "65b2ea146bc3e6cfbb814aad73eb180d1fe85dc173401c12879326e848a0867e",
+    "src/hydro_pinn/extensions/friction_experiment.py": "42e63f008711d64c7d8471a21eb14c55c9b08070da3eb15378108c00e3d6ca60",
+    "src/hydro_pinn/extensions/friction_physics.py": "eed3acce02188253da77864ab11dd55597d1de6af8d57c4c815b66bbbe06bf6d",
+    "src/hydro_pinn/extensions/friction_reference.py": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+    "src/hydro_pinn/extensions/hybrid_data.py": "bf72a5163e66197f57bcc875a6314b6d3b1b7ea3a98e3514aa77bcc9315fd4a3",
+    "src/hydro_pinn/extensions/hybrid_experiment.py": "409fb7a6f5e594eb8dc14889806e573eb8f9b1b68b134fcdc698d8b232307145",
+    "src/hydro_pinn/extensions/inverse_sensitivity.py": "6691e019adc2402fc58b1490e40e766b0d8648af462bcc8d73fc8cae05859d94",
+    "src/hydro_pinn/extensions/model_2d.py": "06b381e659c7a3a3e9aa2a9867f04cef119873a16b588a63f603584718162459",
+    "src/hydro_pinn/extensions/physics_2d.py": "238d322f617df0488500978716186683c3d3e4ff56a213edf4c0f571c56c9339",
+    "src/hydro_pinn/extensions/planar_2d.py": "1e5009b31b24fc7673c428aa421870c38546ac55692ca8dd409bb6d98bc78c4a",
+    "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+    "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+    "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+    "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+    "src/hydro_pinn/plot.py": "74df4c54c87cd2d403d91a6c5fec7f5978df6de072f826c6b9ec8e3487ea616c",
+    "src/hydro_pinn/protocol.py": "85009bc307facc04decc86c490ce0f578c7576d480ed50137605511912d62a33",
+    "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40",
+    "src/hydro_pinn/references.py": "9e23dd1a97f3f63df7be9d493382d263305e233c3be45980fac3c36fd5d9a547",
+    "src/hydro_pinn/reproduce.py": "5675837142ac9de69854289d8b6330568b43ab0f0d04e43227e5779d4a6d6778",
+    "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+    "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+  },
+  "CLI_before_sha256": "0de87ee151e59fa1faf551101b6ec3aa637ce28016a555bf3424e67554de1da6",
+  "protected_archives": {
+    "results/packages/p07_core_candidate_v02.zip": "2888f733ac1245e6ded97c89d9ae1de4a2fa7483a8974967c19ede02d02a7bba",
+    "results/extensions/hybrid/hybrid_e1_seed11_v01.zip": "f5c5bd34f3619374c98fd1f0d1c2896bcbeac215a163c878e1133f1c8bd05f3a",
+    "results/extensions/planar_2d/planar_e1_seed11_v01.zip": "3926c7ace882fd59da416cb6bc7bcf7de7b9e1cf48c4448d7d0029fc0bb103f2",
+    "results/extensions/friction/friction_e1_seed11_v01.zip": "95370247dbe7ecfa33f9c3f02d1bda6b111c8ed026651edd0abfaa7bdaf19427"
+  },
+  "initial_release_conditions": [
+    "Preserve foundations00/01, unrelated files, all original and failed results and every accepted archive. No delete/reset/cleanup/Git mutations by owner. You are not alone in codebase.",
+    "Implement only new modules/config/tests/docs and leased CLI blocks. Reuse core scientific helpers without modifying them; no __init__ edit.",
+    "Necessary smooth/manufactured derivative/sign/chain-scaling/parameter-graph and exactnu0 residual/component objective/all-gradient/one-Adam checks in float32/float64. No chunk branch is selected, so skip unrelated chunk tests.",
+    "Pass the predeclared small32/64 matched-state precision fixture. Retain any implementation/precision failure without silently changing backend/coefficient/settings or rerunning a favorable pilot.",
+    "Prove conditional historical-control reuse, then freeze source/config/control inputs/initial tensors/partitions/final axes and selection rules before any pilot.",
+    "Execute exactly one25-update new positive-nu pilot from common initial tensors/fresh Adam, full second-derivative workload and dual validation/history/checkpoint persistence. No zero fit and no final positive/zero error screening.",
+    "Measure full positive and historical-selected-control state-query/dual-operator/raw-I/O workloads as declared. Bind cached zero arrays for exact final reuse, with no final error/front/mass-quality analysis before released full fit.",
+    "Report inclusive mean/range/scaled-wall projected full costs, reload/query/hash/I/O/storage and observed lifetime RSS/load; figure/archive overhead remains separately unmeasured. Root initial feasibility budget is1200s for new positive full training plus matched final queries/output; actual full release/cost acceptance is separate. No budget or accuracy-driven retuning.",
+    "Use identical declared pointwise analytical comparison and fixed reference-wet/shock operators for both branches. Auxiliary mass probes follow existing core node replacement and may repeat prescribed physics coordinates; identify them as diagnostics rather than held-out solution labels.",
+    "No momentum budget in this minimal study: a valid budget would require the diffusive boundary flux -nu*q_x. No entropy/energy-dissipation/unconditional-stability/validated-viscous-BVP/general-improvement claim.",
+    "Pilot accuracy remains uncomputed. Full10000positiveupdates require a later exact root release after independent source/equivalence/precision/cost/protocol review. Preserve pilot bytes and future unfavorable findings.",
+    "Historical accepted09 source/protocol are preserved by the preceding local Git revision; later CLI additions must not be presented as belonging to that prior guard-bound executable."
+  ],
+  "full_fit_released": false,
+  "genuine2D_or_inverse_fit_released": false
+}
