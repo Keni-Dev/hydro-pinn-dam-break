@@ -79,6 +79,83 @@ def build_parser() -> argparse.ArgumentParser:
     solve.add_argument(
         "--run-id", required=True, help="New safe identifier under runs/; no overwrite."
     )
+    train = subparsers.add_parser(
+        "train",
+        help="Train the physics-only scaled PINN with saved partitions.",
+        description=(
+            "Train the configured 1D PINN, preserving all inputs, loss history, "
+            "separate validation selection, and checkpoint under runs/<run-id>/. "
+            "Use --smoke-config for bounded pipeline checks. A finite budget stop "
+            "does not establish convergence or final accuracy. "
+            "No interior labels are used."
+        ),
+    )
+    train.add_argument(
+        "--case", type=Path, required=True, help="Physical SI case JSON."
+    )
+    train.add_argument(
+        "--training", type=Path, required=True, help="Typed training JSON."
+    )
+    train.add_argument(
+        "--seed",
+        type=int,
+        required=True,
+        help="Explicit shared initialization/sampling seed.",
+    )
+    train.add_argument(
+        "--device",
+        required=True,
+        choices=["cpu", "cuda", "mps"],
+        help="Requested backend; no silent fallback.",
+    )
+    train.add_argument(
+        "--dtype",
+        required=True,
+        choices=["float32", "float64"],
+        help="Explicit floating dtype; MPS float64 is invalid.",
+    )
+    train.add_argument(
+        "--run-id", required=True, help="New safe identifier under runs/."
+    )
+    train.add_argument(
+        "--smoke-config",
+        type=Path,
+        help="Declared bounded overrides and nonfinal coordinates.",
+    )
+    train.add_argument(
+        "--resume-from",
+        help="Trusted local source run ID; saves compatible continuation under new ID.",
+    )
+    train.add_argument(
+        "--chunk-size",
+        type=int,
+        help="Optional fixed chunk count with exact component-mean gradients.",
+    )
+    predict = subparsers.add_parser(
+        "predict",
+        help="Reload a trusted selected checkpoint and save physical h/q.",
+        description=(
+            "Reload a local selected model with its recorded architecture/scales, "
+            "then save pointwise x (m), t (s), h (m), and q (m²/s per unit width) "
+            "to a new runs/<run-id>/ record. Typed smoke uses its evaluation section."
+        ),
+    )
+    predict.add_argument(
+        "--training-run",
+        required=True,
+        help="Completed trusted training run ID under runs/.",
+    )
+    predict.add_argument(
+        "--evaluation",
+        type=Path,
+        required=True,
+        help="Evaluation JSON or typed smoke JSON.",
+    )
+    predict.add_argument(
+        "--run-id",
+        required=True,
+        help="New prediction run ID under runs/; no overwrite.",
+    )
     return parser
 
 
@@ -140,6 +217,34 @@ def main(argv: Sequence[str] | None = None) -> int:
                     "provenance": "numerical_approximation",
                     "run_path": str(path),
                 },
+                allow_nan=False,
+            )
+        )
+        return 0
+    if args.command in {"train", "predict"}:
+        from hydro_pinn.train import predict_run, train_run
+
+        try:
+            if args.command == "train":
+                path = train_run(
+                    args.case,
+                    args.training,
+                    args.seed,
+                    args.device,
+                    args.dtype,
+                    args.run_id,
+                    smoke_path=args.smoke_config,
+                    resume_from=args.resume_from,
+                    chunk_size=args.chunk_size,
+                )
+            else:
+                path = predict_run(args.training_run, args.evaluation, args.run_id)
+        except (ValueError, OSError, RuntimeError) as exc:
+            print(f"{args.command.capitalize()} failed: {exc}", file=sys.stderr)
+            return 2
+        print(
+            json.dumps(
+                {"completed": True, "stage": args.command, "run_path": str(path)},
                 allow_nan=False,
             )
         )
