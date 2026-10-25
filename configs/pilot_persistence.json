@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "purpose": "bounded_hardware_pilot",
+  "case": "configs/cases/e1_wet.json",
+  "training": {
+    "baseline": "configs/training/baseline.json",
+    "adaptive": "configs/training/adaptive.json"
+  },
+  "seed": 11,
+  "cpu_threads": 4,
+  "output_root": "runs",
+  "precision": {
+    "sampling": {
+      "interior_points": 32,
+      "initial_points": 16,
+      "boundary_points_per_side": 8
+    },
+    "chunk_size": 13,
+    "tolerances": {
+      "float32": {
+        "atol": 2e-05,
+        "rtol": 0.002
+      },
+      "float64": {
+        "atol": 1e-10,
+        "rtol": 1e-08
+      }
+    },
+    "candidates": [
+      {
+        "device": "cpu",
+        "dtype": "float64",
+        "run_id": "p04_a03_precision_cpu64"
+      },
+      {
+        "device": "cpu",
+        "dtype": "float32",
+        "run_id": "p04_a03_precision_cpu32"
+      }
+    ]
+  },
+  "workloads": [
+    {
+      "run_id": "p04_a03_rep_cpu32_baseline",
+      "kind": "representative",
+      "variant": "baseline",
+      "device": "cpu",
+      "dtype": "float32",
+      "steps": 100,
+      "warmup_steps": 5,
+      "chunk_size": null,
+      "sampling": {
+        "interior_points": 10000,
+        "initial_points": 1000,
+        "boundary_points_per_side": 500
+      }
+    },
+    {
+      "run_id": "p04_a03_rep_cpu32_adaptive",
+      "kind": "representative",
+      "variant": "adaptive",
+      "device": "cpu",
+      "dtype": "float32",
+      "steps": 100,
+      "warmup_steps": 5,
+      "chunk_size": null,
+      "sampling": {
+        "interior_points": 10000,
+        "initial_points": 1000,
+        "boundary_points_per_side": 500
+      }
+    },
+    {
+      "run_id": "p04_a03_e2_rep_cpu32",
+      "kind": "representative",
+      "case": "configs/cases/e2_dry.json",
+      "variant": "baseline",
+      "device": "cpu",
+      "dtype": "float32",
+      "steps": 20,
+      "warmup_steps": 3,
+      "chunk_size": null,
+      "sampling": {
+        "interior_points": 10000,
+        "initial_points": 1000,
+        "boundary_points_per_side": 500
+      }
+    }
+  ]
+}

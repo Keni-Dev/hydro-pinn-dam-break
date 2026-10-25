@@ -156,6 +156,30 @@ def build_parser() -> argparse.ArgumentParser:
         required=True,
         help="New prediction run ID under runs/; no overwrite.",
     )
+    doctor = subparsers.add_parser(
+        "doctor",
+        help="Inspect observed software, devices, memory bytes and storage bytes.",
+        description=(
+            "Write local observed hardware/software inventory as JSON. Reported "
+            "specifications and inaccessible devices remain separate from observations."
+        ),
+    )
+    doctor.add_argument(
+        "--output", type=Path, required=True, help="New JSON output path."
+    )
+    pilot = subparsers.add_parser(
+        "pilot",
+        help="Execute bounded precision, chunk and synchronized training checks.",
+        description=(
+            "Run the declared hardware pilot, preserving attempts under new runs/<id>/ "
+            "paths. Write findings JSON with numerical tolerances, actual steps, "
+            "timings in seconds and memory in bytes; no final analytical error tuning."
+        ),
+    )
+    pilot.add_argument("--config", type=Path, required=True, help="Pilot JSON path.")
+    pilot.add_argument(
+        "--output", type=Path, required=True, help="New findings JSON path."
+    )
     return parser
 
 
@@ -163,6 +187,24 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command in {"doctor", "pilot"}:
+        from hydro_pinn.devices import run_pilot, write_doctor
+
+        try:
+            if args.command == "doctor":
+                write_doctor(args.output)
+            else:
+                run_pilot(args.config, args.output)
+        except (ValueError, OSError, RuntimeError) as exc:
+            print(f"{args.command.capitalize()} failed: {exc}", file=sys.stderr)
+            return 2
+        print(
+            json.dumps(
+                {"completed": True, "stage": args.command, "output": str(args.output)},
+                allow_nan=False,
+            )
+        )
+        return 0
     if args.command == "validate-config":
         from hydro_pinn.config import ConfigError, load_config
 

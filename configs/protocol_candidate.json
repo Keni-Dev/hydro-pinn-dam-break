@@ -1,0 +1,218 @@
+{
+  "adam_steps": 10000,
+  "auxiliary_conservation_records": {
+    "bind_checkpoint_and_evaluation_config_hashes": true,
+    "boundary_endpoints": [
+      -5.0,
+      5.0
+    ],
+    "freeze_before_final_training": true,
+    "include_t0_and_all_reported_times": true,
+    "native_solver_mass": "saved native cell sums and actual stepwise interface flux",
+    "separate_volume_and_boundary_records": true
+  },
+  "benchmark_candidate": {
+    "include_numerical_reconstruction": true,
+    "measured_repetitions": 30,
+    "separate_training_inference_and_end_to_end_costs": true,
+    "warmup_repetitions": 10
+  },
+  "candidate_id": "core-v1-pilot-a03",
+  "cases": {
+    "E1": "configs/cases/e1_wet.json",
+    "E2": "configs/cases/e2_dry.json"
+  },
+  "checkpoint_selection": {
+    "final_analytical_errors_used": false,
+    "rule": "minimum_separate_validation_physics_ic_bc_loss",
+    "selection_weights": {
+      "bc": 10.0,
+      "ic": 10.0,
+      "pde": 1.0
+    },
+    "tie_handling": "earliest step; strict validation improvement only",
+    "validation": {
+      "config_type": "evaluation",
+      "grid": {
+        "cells": 73,
+        "domain_m": [
+          -5.0,
+          5.0
+        ],
+        "kind": "cell_centres"
+      },
+      "mass_quadrature": {
+        "boundary_flux": {
+          "include_final_time": true,
+          "include_reported_times": true,
+          "include_t0": true,
+          "nodes": [
+            101,
+            201
+          ],
+          "rule": "trapezoid",
+          "spatial_locations": "domain_endpoints"
+        },
+        "volume": {
+          "cells": [
+            128,
+            256
+          ],
+          "include_reported_times": true,
+          "include_t0": true,
+          "rule": "midpoint"
+        }
+      },
+      "partition": "validation",
+      "profile_times_s": [
+        0.071,
+        0.311,
+        0.487
+      ],
+      "schema_version": 1,
+      "times_s": [
+        0.019,
+        0.071,
+        0.173,
+        0.311,
+        0.487
+      ],
+      "velocity_wet_threshold_m": 0.001,
+      "wave_band_half_width_m": 0.1
+    }
+  },
+  "chunk_size": null,
+  "coverage_reductions": [],
+  "cpu_threads": 4,
+  "device": "cpu",
+  "diagnostic_front_depth_threshold_m": 0.001,
+  "dtype": "float32",
+  "e2_diagnostic_seed": 11,
+  "evaluation": "configs/evaluation.json",
+  "evidence": [
+    "docs/pilot_findings.json",
+    "docs/evidence/phase_04/pilot_followup_cpu32.json",
+    "docs/evidence/phase_04/pilot_persistence.json",
+    "docs/device_report.json",
+    "docs/evidence/phase_04/targeted_tests.json",
+    "docs/evidence/phase_04/persistence_tests.json",
+    "docs/evidence/phase_04/projected_costs.json"
+  ],
+  "final_runs_launched": false,
+  "input_sha256": {
+    "configs/cases/e1_wet.json": "9736a419f9a63d27310bae03aaf9288f630e8f28ad100c7b1059397952255e1e",
+    "configs/cases/e2_dry.json": "4f994a80e0103ad431b57abbd5e531e0fb8e3f0bda61dd4afcbab86c57cf9176",
+    "configs/evaluation.json": "f83827dbf28e993628a73efbcdecec7d16f425f4f3a1bb20feb757305355db3b",
+    "configs/pilot.json": "4b50a446897154e4f371a65e6061fbbfcd7d4f09bb83662de9595ecc542b8f80",
+    "configs/pilot_cpu32_followup.json": "6d1963cef7160eb5e104669f69ffcec53eb07e05888c98b82047b61b007f00a6",
+    "configs/pilot_persistence.json": "d75a6a7811d43143a5dffcd27528d09467130e79030cd7b4ee90bb31e96ceb76",
+    "configs/training/adaptive.json": "18f3f55277c5a6f17b5a0ec044d1488d91ddfb58b05ca6ec82c692834a49752f",
+    "configs/training/baseline.json": "9f9c410fa5eda793fa543d41238ef71191e3987ac0361f782022685833f81a6e"
+  },
+  "lbfgs": {
+    "enabled": false,
+    "freeze_points_and_weights": true,
+    "history_size": 100,
+    "max_iterations": 500
+  },
+  "learning_rate": 0.001,
+  "mass_quadrature": {
+    "boundary_flux": {
+      "include_final_time": true,
+      "include_reported_times": true,
+      "include_t0": true,
+      "nodes": [
+        1001,
+        2001
+      ],
+      "rule": "trapezoid",
+      "spatial_locations": "domain_endpoints"
+    },
+    "volume": {
+      "cells": [
+        2000,
+        4000
+      ],
+      "include_reported_times": true,
+      "include_t0": true,
+      "rule": "midpoint"
+    }
+  },
+  "network": {
+    "activation": "tanh",
+    "depth_floor_nd": 1e-06,
+    "depth_transform": "softplus",
+    "hidden_layers": [
+      64,
+      64,
+      64,
+      64
+    ],
+    "inputs": [
+      "x_over_Lc",
+      "t_over_Tc"
+    ],
+    "outputs": [
+      "raw_depth",
+      "scaled_velocity"
+    ]
+  },
+  "numerical": {
+    "cells": [
+      100,
+      200,
+      400,
+      800
+    ],
+    "cfl": 0.45,
+    "reconstruction": "piecewise constant; right cell at internal face; no time interpolation"
+  },
+  "pair_fairness": [
+    "same case, seed and fixed generated coordinates",
+    "same initialization, architecture, dtype and backend",
+    "same10000 Adam steps and learning rate",
+    "same validation coordinates and checkpoint selection",
+    "only weighting mode differs; exact clipping/EMA/common-P rule retained"
+  ],
+  "pilot_revisions": [
+    {
+      "basis": "Passed declared residual/gradient tolerances; lower measured rates in initial and followup CPU pilots; CPU contention makes ordering variable",
+      "change": "CPU float32 selected from verified native candidates"
+    },
+    {
+      "basis": "Material measured history growth; root-authorized optimization; exact scientific-state equivalence required",
+      "change": "Append CSV history per step; final/failure full rewrite retained"
+    }
+  ],
+  "sampling": {
+    "algorithm": "numpy_pcg64_uniform_fixed",
+    "boundary_points_per_side": 500,
+    "initial_discontinuity": "unsmoothed_exclude_dam_point",
+    "initial_points": 1000,
+    "interior_labels": false,
+    "interior_points": 10000,
+    "interior_time": "strictly_positive"
+  },
+  "schema_version": 1,
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "status": "candidate_pending_root_technical_review_and_phase05_freeze",
+  "stopping_rules": {
+    "finite_budget": "record completed budget; convergence not established",
+    "nonfinite": "stop with diagnostics and last valid checkpoint",
+    "unsupported_backend": "no silent CPU fallback"
+  },
+  "training": {
+    "adaptive": "configs/training/adaptive.json",
+    "baseline": "configs/training/baseline.json"
+  },
+  "unresolved": [
+    "Submission dates, roster and available sessions unknown",
+    "Victus/RTX2050 unavailable and untested",
+    "Sustained full-budget costs and scientific accuracy/conservation untested"
+  ],
+  "verification": "configs/verification.json"
+}
