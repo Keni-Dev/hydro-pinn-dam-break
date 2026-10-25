@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "reviewer": "science_audit",
+  "state": "qualified_source_and_reference_component_pass_full_pipeline_not_reviewed",
+  "recorded_at_utc": "2026-10-25T20:45:34.053841+00:00",
+  "scope": "Read-only Phase08 wet flat-bed n=0.03 source/reference component review, using static mathematics, existing focused-check receipts, saved native arrays and pinned local primary-source copies. The evolving forward-PINN training/evaluation module is excluded.",
+  "recommendation": "No material source/reference defect found. This component pass supports the separately reviewed forward-PINN pilot and later protocol review; it is not a full-fit or full-pipeline release.",
+  "material_findings": [],
+  "observed_sha256": {
+    "src/hydro_pinn/extensions/friction_physics.py": "eed3acce02188253da77864ab11dd55597d1de6af8d57c4c815b66bbbe06bf6d",
+    "src/hydro_pinn/extensions/friction_reference.py": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+    "tests/test_friction_physics.py": "613fa64248ea6e094f214470132ebecb931ff947ba8faa18f89b4cbbb43287b5",
+    "tests/test_friction_reference.py": "e9f25948519cb36ee5f3118fb235477a09d79e6330e0aa8e803537f622d353c7",
+    "configs/extensions/friction_reference.json": "6528c32b40264a0054e5e7197b237cd3d755ca08d43c04feb6415eb324eac52f",
+    "docs/extensions/friction_physics_checks.md": "17f8fae7528d3ff289c9b5814961cd8f818a367c7db8ca4bcca685c55de859d1",
+    "docs/extensions/friction_physics_verification_v01.json": "e159b56472042a8324989a9caa1e8125adaf78b5f7bced818f256e8e93443bb0",
+    "docs/extensions/friction_reference_checks.md": "74c45ec79e3556bfeb4192595092432c512c671c4bbdf72f6cec099906b80f8b",
+    "docs/extensions/friction_reference_handoff_v01.json": "f3b88a465544c8349cd5945842e37db17e436ef03ccdf8ef30a7816af36236bf",
+    "docs/evidence/phase_08/friction_v01/zero_n_reference_check.json": "b2d8734221eeadc3af0445533cb63f3c1ed8843ce8086e1dbc18c4a3732074c3",
+    "docs/evidence/phase_08/friction_v01/reference_tests_stdout.log": "aa9e087b22ffa19cba7c67de660443d09a48fcc53f39fc5646d334be0f7b6c4e",
+    "docs/evidence/phase_08/friction_v01/friction_reference_source_v01.py": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+    "results/extensions/friction/reference_v01/protocol.json": "de949da992106dd6247046e3432bccd94a74c5d94847ba35370d74ca19c82a4b",
+    "results/extensions/friction/reference_v01/reference_provenance.json": "9fe1826528ab73d8999bca48dd9f534dd276d92a263f1553dcb99b0fad115806",
+    "results/extensions/friction/reference_v01/summary.json": "d0788d7e7c0e34e970ff8306d9e9ce852a6f255c4d506f2e1ffbe1e12c031387",
+    "results/extensions/friction/reference_v01/common_reference.npz": "36b44a1cc4cde5183e051fe5eba357113443a8d6594efc915292a375cfdde91c",
+    "results/extensions/friction/reference_v01/status.json": "d6763e54b71de03f94513e02eabaae44ec094cc4f0ea4dbb200adf0830ae1de8",
+    "results/extensions/friction/reference_v01/n1600_cfl0p45/outputs.npz": "700d937595f67c7089f3804672352e06d5be653e18aeccc13a71dfde28d8526c",
+    "results/extensions/friction/reference_v01/n3200_cfl0p225/outputs.npz": "620b80ccf2d25296b6a853361c9e10b36949c3273a82dc95c8b0761c785d4822",
+    "results/extensions/friction/reference_v01/n3200_cfl0p45/outputs.npz": "6de131027d1ab599ce6e45a8e814bd6065ed9bf0bd3d04e882d39cbb1b494f42",
+    "results/extensions/friction/reference_v01/n800_cfl0p45/outputs.npz": "eaba3e67178670b86cec2a66bcfe055ca0e9ba9107e961a2cbb6a9e63783308e",
+    "docs/evidence/phase_08/friction_v01/reference_sources/riemann_book_Shallow_water_approximate.ipynb": "f3f0106c76a006e2e54d8ce27c4fc4cc68d62188854e391251d6b9d334100985",
+    "docs/evidence/phase_08/friction_v01/reference_sources/riemann_book_LICENSE-CODE": "82e755a0379339dd6d1d9464ebe7cf5f4bdbf1c45af77d45d58b4c0cc7a2a07e",
+    "docs/evidence/phase_08/friction_v01/reference_sources/geoclaw_src2.f90": "ef2c4fd07774494f1a70a0a6b0a10d4a41e10f82b7365892e6d1eb074c93bc1d",
+    "docs/evidence/phase_08/friction_v01/reference_sources/geoclaw_LICENSE": "668317944192d8217d63c0fd0730f889bd07f759b69ed6b657e1fb9902145ebe",
+    "docs/evidence/phase_08/friction_v01/reference_sources/riemann_book_source_version_LICENSE-CODE": "82e755a0379339dd6d1d9464ebe7cf5f4bdbf1c45af77d45d58b4c0cc7a2a07e",
+    "docs/evidence/phase_08/friction_v01/reference_sources/geoclaw_source_version_LICENSE": "668317944192d8217d63c0fd0730f889bd07f759b69ed6b657e1fb9902145ebe"
+  },
+  "exact_reviewed_source_sha256": {
+    "friction_physics": "eed3acce02188253da77864ab11dd55597d1de6af8d57c4c815b66bbbe06bf6d",
+    "friction_reference": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8"
+  },
+  "source_snapshot_equal_current_reference": true,
+  "mathematical_review": {
+    "physical_source": {
+      "pass": true,
+      "source_lines": "friction_physics.py:124-188; friction_reference.py:43-56",
+      "slope": "Sf=n^2*q*abs(q)/h^(10/3)",
+      "momentum_source": "Sq=-g*n^2*q*abs(q)/h^(7/3)",
+      "units": "n[s/m^(1/3)], Sf dimensionless, Sq[m^2/s^2]",
+      "notes": "Drag opposes either discharge sign and vanishes at q=0 or n=0. Holding h fixed integrates q_new=q_old/(1+dt*g*n^2*abs(q_old)/h^(7/3)), preserving sign and reducing magnitude. There is no mass source."
+    },
+    "nondimensional_residual": {
+      "pass": true,
+      "coefficient": "C=g*n^2*Lc/H^(4/3)",
+      "formula": "r_h=r_h_core; r_q=r_q_core+C*q_star*abs(q_star)/h_star^(7/3)",
+      "derivation": "Divide physical Sq by Qc/Tc with Qc=H*Uc, Tc=Lc/Uc, Uc^2=gH. Coordinates remain x/Lc,t/Tc; no additional affine map is applied.",
+      "notes": "Tensor n and source h/q preserve parameter graphs. Uneven PDE chunks are weighted by their point fractions and IC/BC delegate to the unchanged core."
+    },
+    "zero_n_limits": {
+      "pass_static_and_existing_receipts": true,
+      "source_lines": "friction_physics.py:177-180,208-213",
+      "pinn": "Scalar n=0 delegates directly to the unchanged core residual/component-loss paths. Existing CPU32 and CPU64 focused fixtures check exact residuals, PDE/IC/BC, weighted objective, all parameter gradients, one Adam update and optimizer state.",
+      "finite_volume": "Zero-n source update is the identity. The independent HLLE reference approaches source-free analytical E1 cell averages under the saved200/400/800 refinement check; it need not equal the separate frozen Lax-Wendroff comparator.",
+      "limitation": "Existing focused-check evidence is accepted with source/test hashes. No zero-n model or numerical solve was rerun; the saved zero-n receipt, not newly regenerated raw zero-n fields, is the evidence here."
+    },
+    "numerical_method": {
+      "pass": true,
+      "source_lines": "friction_reference.py:59-237",
+      "notes": "Piecewise-constant conservative HLLE with the pinned Einfeldt/Roe-average speed bounds, forward Euler homogeneous update and exact fixed-h drag after it. This is first-order Lie splitting. All actual interface speeds determine CFL<=0.5; steps hit requested times directly. Strictly positive finite input/intermediate/homogeneous/source states are required; no floor, clipping, retry or interpolation is present."
+    },
+    "primary_context": {
+      "pass": true,
+      "records_verified": 6,
+      "notes": "Saved pinned Clawpack Riemann-book cells match the HLLE wave estimates/intermediate state. Saved GeoClaw source has the7/3 denominator and1+dt*gamma decay denominator. GeoClaw depth switches, dry rules, speed limits, spherical and2D behavior are explicitly excluded; this review makes no general GeoClaw-equivalence claim."
+    }
+  },
+  "saved_array_readback": {
+    "method": "Python/NumPy only; no production solver/source/model/reference functions were imported or called. Recomputed cumulative actual numerical boundary flux times each accepted dt, momentum source impulse, step and snapshot balances, conservative width-weighted native-cell coarsening, refinement differences and numerical fronts.",
+    "checks_by_group": {
+      "native_budget": 12,
+      "step_axes": 16,
+      "snapshot_axes": 4,
+      "snapshot_totals": 4,
+      "initial_prescription": 4,
+      "saved_summary": 12,
+      "positive_wet": 8,
+      "projection_axes": 4,
+      "projection_conservation": 8,
+      "selected_common": 2,
+      "refinement": 12,
+      "front_refinement": 3,
+      "uncertainty_cells": 2,
+      "uncertainty_stats": 4,
+      "front": 4,
+      "provenance": 4,
+      "zero_receipt": 2
+    },
+    "maximum_absolute_difference_by_group": {
+      "native_budget": 0,
+      "step_axes": 2.7755575615628914e-17,
+      "snapshot_axes": 0,
+      "snapshot_totals": 4.503064587879635e-13,
+      "initial_prescription": 4.547473508864641e-13,
+      "saved_summary": 0,
+      "positive_wet": 0,
+      "projection_axes": 0,
+      "projection_conservation": 9.769962616701378e-15,
+      "selected_common": 1.0247358517290195e-13,
+      "refinement": 1.0111356196773613e-13,
+      "front_refinement": 0,
+      "uncertainty_cells": 2.5041080320420406e-13,
+      "uncertainty_stats": 7.355227538141662e-14,
+      "front": 0,
+      "provenance": 0,
+      "zero_receipt": 0
+    },
+    "failed_checks": 0,
+    "failures": [],
+    "native_runs": {
+      "n800_cfl0p45": {
+        "steps": 399,
+        "max_abs_mass_budget_defect_m2": 4.529709940470639e-14,
+        "max_abs_momentum_budget_defect_m3_s": 4.055783486833775e-15,
+        "final_source_impulse_m3_s": -0.029376733740937258,
+        "final_boundary_momentum_integral_m3_s": -2.427974999999998,
+        "final_momentum_m3_s": 2.3985982662590617,
+        "minimum_depth_m": 0.1,
+        "source_impulse_nonpositive": true,
+        "output_sha_matches": true,
+        "actual_boundary_mass_flux_zero": true
+      },
+      "n1600_cfl0p45": {
+        "steps": 798,
+        "max_abs_mass_budget_defect_m2": 4.618527782440651e-14,
+        "max_abs_momentum_budget_defect_m3_s": 4.871103520542874e-15,
+        "final_source_impulse_m3_s": -0.0297126899823529,
+        "final_boundary_momentum_integral_m3_s": -2.4279750000000013,
+        "final_momentum_m3_s": 2.398262310017649,
+        "minimum_depth_m": 0.1,
+        "source_impulse_nonpositive": true,
+        "output_sha_matches": true,
+        "actual_boundary_mass_flux_zero": true
+      },
+      "n3200_cfl0p45": {
+        "steps": 1548,
+        "max_abs_mass_budget_defect_m2": 1.616484723854228e-13,
+        "max_abs_momentum_budget_defect_m3_s": 6.522560269672795e-15,
+        "final_source_impulse_m3_s": -0.029922313892863095,
+        "final_boundary_momentum_integral_m3_s": -2.4279749999999996,
+        "final_momentum_m3_s": 2.3980526861071354,
+        "minimum_depth_m": 0.1,
+        "source_impulse_nonpositive": true,
+        "output_sha_matches": true,
+        "actual_boundary_mass_flux_zero": true
+      },
+      "n3200_cfl0p225": {
+        "steps": 3046,
+        "max_abs_mass_budget_defect_m2": 1.6076029396572267e-13,
+        "max_abs_momentum_budget_defect_m3_s": 6.581540867856006e-15,
+        "final_source_impulse_m3_s": -0.02989962979610077,
+        "final_boundary_momentum_integral_m3_s": -2.427975,
+        "final_momentum_m3_s": 2.3980753702039,
+        "minimum_depth_m": 0.1,
+        "source_impulse_nonpositive": true,
+        "output_sha_matches": true,
+        "actual_boundary_mass_flux_zero": true
+      }
+    },
+    "native_balance_formulas": {
+      "mass": "M(t)-M_initial+sum_dt(F_right_mass-F_left_mass)",
+      "momentum": "P(t)-P_initial+sum_dt(F_right_momentum-F_left_momentum)-sum(actual_source_impulse)"
+    },
+    "native_balance_interpretation": "All saved step defects and cumulative source impulses agree exactly. Largest mass defect is1.6165e-13m² and momentum defect6.5816e-15m³/s. The selected final momentum2.3980753702m³/s combines the actual boundary contribution-2.427975m³/s and drag impulse-0.0298996298m³/s with the correct signs. Conservation is the discrete performed-scheme identity, not independent proof of continuum accuracy.",
+    "native_roundoff_note": "Saved initial mixed-state sums differ from the exact prescribed5.5m² by up to4.55e-13; independent snapshot summation order differs by up to4.51e-13. These are reported floating-order differences, not physical initial bias or hidden mass adjustment.",
+    "selected_reference": "n3200_cfl0p225",
+    "common_cell_operator": {
+      "pass": true,
+      "common_cells": 400,
+      "state_location": "cell_average",
+      "independent_operator": "Width-weighted sum of exactly aligned native cells over each common cell. This independently checks the implemented cumulative-integral/interpolated-edge conservative projection.",
+      "selected_field_max_abs_difference": 1.0247358517290195e-13,
+      "conservation_max_abs_difference": 9.769962616701378e-15,
+      "requirement_for_later_pinn": "Neural predictions must be integrated over these same common cells with a declared converged quadrature; point predictions at centres are a different comparison operator and are not accepted by this component pass."
+    },
+    "refinement": [
+      {
+        "front_max_difference_m": 0.018749999999999822,
+        "h_m": {
+          "max_abs": 0.036755506530888604,
+          "rmse": 0.0027553443806519772
+        },
+        "pair": "spatial800_1600",
+        "q_m2_s": {
+          "max_abs": 0.1449934720409709,
+          "rmse": 0.007836326302739834
+        }
+      },
+      {
+        "front_max_difference_m": 0.0031250000000007105,
+        "h_m": {
+          "max_abs": 0.026312074860897483,
+          "rmse": 0.0015974952043213665
+        },
+        "pair": "spatial1600_3200",
+        "q_m2_s": {
+          "max_abs": 0.10384406717797612,
+          "rmse": 0.004820849790887158
+        }
+      },
+      {
+        "front_max_difference_m": 0.0031250000000007105,
+        "h_m": {
+          "max_abs": 0.005014849549631523,
+          "rmse": 0.00031448755443968493
+        },
+        "pair": "time3200",
+        "q_m2_s": {
+          "max_abs": 0.017485730952522704,
+          "rmse": 0.0008892785949587667
+        }
+      }
+    ],
+    "uncertainty_indicator": {
+      "independent_stats": {
+        "h_m": {
+          "rmse": 0.001868494179122639,
+          "max_abs": 0.030602109985696624
+        },
+        "q_m2_s": {
+          "rmse": 0.005650060587106157,
+          "max_abs": 0.12131054277153153
+        }
+      },
+      "cellwise_rule": "abs(N3200,CFL.45-N1600,CFL.45)+abs(N3200,CFL.225-N3200,CFL.45), each on the conservative common-cell operator",
+      "maximum_independent_cellwise_difference": 2.5041080320420406e-13,
+      "interpretation": "Measured discretization-sensitivity indicator only. It is neither a rigorous error bound nor a statistical uncertainty interval; these runs do not establish an asymptotic convergence order."
+    },
+    "numerical_front": {
+      "rule": "First downstream native interface attaining maximum negative adjacent-cell depth slope",
+      "selected_and_all_refinement_fronts_exact": true,
+      "maximum_position_indicator_m": 0.02187499999999982,
+      "frozen_half_width_m": 0.1,
+      "notes": "Across-run maximum front differences plus one selected dx define the position indicator. No analytical positive-friction shock trajectory is claimed."
+    },
+    "bound_hash_failures": [],
+    "zero_n_existing_receipt": {
+      "errors": [
+        {
+          "cells": 200,
+          "h_l1_m": 0.006470444036591153,
+          "q_l1_m2_s": 0.014272792686065367,
+          "solve_wall_s": 0.005369708989746869
+        },
+        {
+          "cells": 400,
+          "h_l1_m": 0.0036846278848645607,
+          "q_l1_m2_s": 0.00812623272117194,
+          "solve_wall_s": 0.012429499998688698
+        },
+        {
+          "cells": 800,
+          "h_l1_m": 0.002066003107574125,
+          "q_l1_m2_s": 0.0046104351512322415,
+          "solve_wall_s": 0.03220958402380347
+        }
+      ],
+      "h_decreases": true,
+      "q_decreases": true,
+      "quadrature": "16-node Gauss per native cell, exact E1 pointwise integrand"
+    },
+    "packet_wall_s": 1.311370374984108
+  },
+  "existing_verification": {
+    "physics_receipt": "docs/extensions/friction_physics_verification_v01.json",
+    "physics_focused_cases_passed": 5,
+    "reference_final_log": ".....                                                                    [100%]\n5 passed in 0.93s",
+    "reference_focused_cases_passed": 5,
+    "reviewer_reran_tests": false,
+    "scope": "Existing checks cover source signs/units/nonunit scales/manufactured residual and derivatives, core zero-n equality, fixed-h decay/ODE comparison, constant flat still water, actual drag budget, source-free refinement and projection. They are not evidence for nonflat well-balancing, dry states or inverse identifiability."
+  },
+  "provenance_qualifications": [
+    "The embedded case object is the immutable source-free E1 geometry/base-case record and still carries its original friction=none assumption. The governing n=.03 override is explicit in the extension config/protocol and source; later full-pipeline metadata must retain that distinction rather than presenting this as unchanged source-free E1 physics.",
+    "Per-cell homogeneous and post-source states at every internal step are not persisted. This review independently verifies the saved actual-step flux/impulse balances; source-update correctness also relies on the frozen implementation and existing decay/manufactured checks, not a forbidden solver replay.",
+    "Only source/reference components and their exact observed hashes were reviewed. No evolving forward training/evaluation module, full neural accuracy, final comparison quadrature or fit release is accepted here.",
+    "Prescribed illustrative n=.03 is not fitted, calibrated to a field site or shown identifiable. The problem remains flat, wet, source-free in mass and without rainfall/topography.",
+    "Reference is numerical with retained refinement indicators, not analytical friction ground truth. The isolated exact source substep does not make the coupled shallow-water solution exact."
+  ],
+  "reviewer_helper_note": "An initial saved-file comparison helper attempted numeric allclose on SHA strings near the end of the readback. It was corrected to compare strings by equality, and only the saved-array readback was repeated. No model, solver or test was rerun, and the failed helper attempt wrote no file.",
+  "preservation": "Only this new review JSON was written. Existing source, config, reference arrays, receipts, core modules, archives and evolving experiment files were not edited."
+}

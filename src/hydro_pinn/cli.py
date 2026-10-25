@@ -358,6 +358,42 @@ def build_parser() -> argparse.ArgumentParser:
     )
     planar.add_argument("--config", type=Path, required=True)
     planar.add_argument("--run-id", required=True)
+    friction_reference = subparsers.add_parser(
+        "extension-friction-reference",
+        help="Create a separate wet flat-bed HLLE/Manning refinement packet (SI).",
+        description=(
+            "Run the fixed CPU64 reference matrix, storing native cell averages, "
+            "actual mass/momentum budgets and common-cell uncertainty under a "
+            "fresh runs/<run-id>/. No clipping or core-comparator changes."
+        ),
+    )
+    friction_reference.add_argument("--config", type=Path, required=True)
+    friction_reference.add_argument("--run-id", required=True)
+    friction_run = subparsers.add_parser(
+        "extension-friction-run",
+        help="Run the single 25-update wet flat-bed Manning cost pilot.",
+        description=(
+            "Freeze the additive forward protocol and measure full CPU32 query, "
+            "conservation and output costs. No pilot neural accuracy screening. "
+            "Full10000updates require --protocol and a hash-bound root --release."
+        ),
+    )
+    friction_run.add_argument("--config", type=Path, required=True)
+    friction_run.add_argument("--manifest", type=Path, required=True)
+    friction_run.add_argument("--run-id", required=True)
+    friction_run.add_argument("--protocol", type=Path)
+    friction_run.add_argument("--release", type=Path)
+    friction_evaluate = subparsers.add_parser(
+        "extension-friction-evaluate",
+        help="Evaluate a completed released friction fit using common-cell averages.",
+        description=(
+            "Save separate h/q/reference-wet cell-ratio velocity errors, numerical "
+            "front bands, two-boundary mass correction and quadrature sensitivity. "
+            "Refuses pilots and never reselects checkpoints."
+        ),
+    )
+    friction_evaluate.add_argument("--manifest", type=Path, required=True)
+    friction_evaluate.add_argument("--output-dir", type=Path, required=True)
     return parser
 
 
@@ -365,6 +401,44 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command in {
+        "extension-friction-reference",
+        "extension-friction-run",
+        "extension-friction-evaluate",
+    }:
+        try:
+            if args.command == "extension-friction-reference":
+                from hydro_pinn.extensions.friction_reference import run_reference
+                from hydro_pinn.records import validate_run_id
+
+                validate_run_id(args.run_id)
+                if not args.run_id.startswith("p08_friction_"):
+                    raise ValueError("fresh p08_friction_ run prefix required")
+                output = Path("runs") / args.run_id
+                run_reference(args.config, output)
+            elif args.command == "extension-friction-run":
+                from hydro_pinn.extensions.friction_experiment import run_friction
+
+                output = run_friction(
+                    args.config,
+                    args.manifest,
+                    run_id=args.run_id,
+                    protocol_path=args.protocol,
+                    release_path=args.release,
+                )
+            else:
+                from hydro_pinn.extensions.friction_experiment import evaluate_friction
+
+                output = evaluate_friction(args.manifest, args.output_dir)
+        except KeyboardInterrupt:
+            print("Friction extension interrupted; evidence retained.", file=sys.stderr)
+            return 130
+        except (ValueError, OSError, RuntimeError, KeyError) as exc:
+            print(f"Friction extension failed: {exc}", file=sys.stderr)
+            return 2
+        print(json.dumps({"completed": True, "stage": args.command,
+                          "output": str(output)}))
+        return 0
     if args.command == "extension-2d-planar":
         from hydro_pinn.extensions.planar_2d import run_planar
 
