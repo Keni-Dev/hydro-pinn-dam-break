@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "state": "accepted_technical_complete_for_selected_wet_flat_fixed_n_forward_experiment",
+  "recorded_at_utc": "2026-10-25T21:08:09.334056+00:00",
+  "scope": "Selected08 wet flat-bed Manning reference and one forward PINN; broader dry/topography/inverse/Phase08 scope not claimed",
+  "scientific_outcome": "Incomplete flow recovery with substantial numerical-front and cell-ratio velocity errors",
+  "handoff": "docs/extensions/friction_full_handoff_v01.json",
+  "handoff_sha256": "a689e86683c37b996f2856f54e175336524dc3ee531ea000fe6c75feef0e0b70",
+  "review_sha256": {
+    "docs/coordination/phase_08_terminal_foundation_review.json": "dbb11e7688c2d52ccd35d099289a7e05189b2980870880c24c16ed1122452e23",
+    "docs/coordination/phase_08_terminal_science_review.json": "b191cc5ef378823dc2edf7bbca22aaf75af43af4dd09b830d0b0a37d7329ebe8",
+    "docs/coordination/phase_08_figures_claims_review.json": "8d230d139ee460d5436ad9ef4c6ea5e93a45330ca1beadc6faecb611859f61e6",
+    "docs/coordination/phase_08_replay_archive_review.json": "3dc1be75810c1e6c28a3e852931187ef099f6bd9cf9d51cba8a2887419f9e4e0",
+    "docs/coordination/phase_08_full_handoff_root_readback.json": "a046a985d3f96f152659f650de9fb61147fbb5caa53d00cad6db57be8e307b9b"
+  },
+  "actual_execution": {
+    "reference_runs_before_fit": 4,
+    "single_cost_pilot_updates": 25,
+    "focused_checks": 17,
+    "fresh_full_updates": 10000,
+    "history_rows": 10001,
+    "selected_step": 9857,
+    "training_wall_s": 278.34602324996376,
+    "fit_wrapper_wall_s": 280.2169637909974,
+    "no_new_reference_solves_in_full_stage": true,
+    "full_eval_points": 20000,
+    "canonical_figures": 3,
+    "single_extracted_checkpoint_replay_arrays": 28,
+    "single_extracted_checkpoint_replay_NPZ_files": 6,
+    "scientific_replay_JSON_reports": 4
+  },
+  "qualified_findings": {
+    "whole_h_q_cell_ratio_velocity_relative_L2_pct": [
+      6.7124202881669515,
+      33.77655493255071,
+      78.57151938935641
+    ],
+    "front_h_q_cell_ratio_velocity_relative_L2_pct": [
+      55.20105694430638,
+      73.522674112842,
+      134.18541434406146
+    ],
+    "refined_max_abs_corrected_mass_m2": 0.027161125055761477,
+    "refined_mass_relative_initial_pct": 0.4938386373774814,
+    "refined_initial_volume_bias_m2": -0.02463824716396701,
+    "reference_uncertainty_RMS_h_m": 0.0018684941791235307,
+    "reference_uncertainty_RMS_q_m2_s": 0.005650060587106191,
+    "near_zero_relative_denominators": "Huge finite early outside-band q/velocity percentages retained with SI RMSE and readable symlog v02 display.",
+    "comparison": "Conservative common-cell averages and Gauss3/5 neural integration; velocity qbar/hbar is cell-ratio velocity, not a point reading or averaged point velocity.",
+    "numerical_uncertainty": "Measured spatial/time differences and quadrature sensitivities are not rigorous bounds."
+  },
+  "archive": {
+    "snapshot": "results/extensions/friction/full_snapshot_v01",
+    "archive": "results/extensions/friction/friction_e1_seed11_v01.zip",
+    "archive_sha256": "95370247dbe7ecfa33f9c3f02d1bda6b111c8ed026651edd0abfaa7bdaf19427",
+    "archive_bytes": 9609867,
+    "archive_members": 184,
+    "snapshot_inventory_sha256": "961e056f22cda45e1ae26dc510d8dbd1ba3d987bf52668afbe3b246b411e3d5c",
+    "zip_CRC_member_hashes_and_extraction_verified": true,
+    "source_config_lock_protocol_reference_fullrun_evaluation_figures_included": true,
+    "build_receipt": "results/extensions/friction/full_snapshot_v01_build_receipt.json",
+    "no_later_CLI_edit_before_archive": true
+  },
+  "preservation": {
+    "all26protected_nonCLI_modules_unchanged": true,
+    "accepted_core_hybrid_planar_archives_unchanged": {
+      "results/packages/p07_core_candidate_v02.zip": "2888f733ac1245e6ded97c89d9ae1de4a2fa7483a8974967c19ede02d02a7bba",
+      "results/extensions/hybrid/hybrid_e1_seed11_v01.zip": "f5c5bd34f3619374c98fd1f0d1c2896bcbeac215a163c878e1133f1c8bd05f3a",
+      "results/extensions/planar_2d/planar_e1_seed11_v01.zip": "3926c7ace882fd59da416cb6bc7bcf7de7b9e1cf48c4448d7d0029fc0bb103f2"
+    },
+    "all24pilot_files_unchanged": true,
+    "reference_sources_and_packet_unchanged": true,
+    "pilot_handoff_unchanged": true,
+    "root_coordination_globalstatus_Git_untouched": true,
+    "no_cleanup_or_old_fits_tests": true
+  },
+  "limits": [
+    "Fixed illustrative n=.03, one wet flat E1 case and seed; no fitted coefficient or field, dry/topographic, inverse or generalization claim.",
+    "Historical generic metadata/template bytes remain; full interpretation sidecar and frozen extension protocol/status/summary/native records identify actual positive-n numerical physics.",
+    "Exact replay uses extracted project sources with the existing same-M5 locked interpreter and dependencies; not retraining or OS/filesystem isolation.",
+    "Figure display repair and executed helper cosmetic Ruff findings are recorded; numerical arrays/denominators and prior v01 evidence were not changed.",
+    "Human participation, native-application course acceptance, recording/captions/credits/rehearsal/measured video duration, publication and submission remain separate."
+  ],
+  "next_gate": "Predeclared depth-sensor positive-n sensitivity assessment only; no inverse dataset or trainer until evidence supports a separately frozen inverse pilot."
+}

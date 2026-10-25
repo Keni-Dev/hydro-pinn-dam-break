@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "state": "released_selected_bounded_sensitivity_gate_only",
+  "recorded_at_utc": "2026-10-25T21:08:09.334056+00:00",
+  "authority": "User authorized core then feasible M5 extensions; root accepted selected08 forward study and now adopts the predeclared sensitivity gate before deciding whether inverse fitting is informative.",
+  "dependencies": [
+    "docs/coordination/phase_08_completion_review.json",
+    "docs/coordination/remaining_extension_assessment_v01.json"
+  ],
+  "adopted_plan": "docs/coordination/phase_09_sensitivity_gate_plan_v01.json",
+  "adopted_plan_sha256": "298ebfd506094ceb42e9997d1c78602b87cadb52384e5469f4ee82eb4646a05c",
+  "scope": "Deterministic numerical depth-response sensitivity screening, not an observation/noise dataset, fitted parameter or neural inverse study.",
+  "frozen_design": {
+    "n_values": [
+      0.02,
+      0.025,
+      0.03,
+      0.035,
+      0.04
+    ],
+    "fixed_truth_n": 0.03,
+    "new_solves": 12,
+    "reuse_accepted_truth_records": 3,
+    "levels": "1600/.45,3200/.45,3200/.225 for four nontruth candidates; identical full50time schedule before extracting15 gauge means",
+    "gauge_common_cell_indices": [
+      220,
+      240,
+      260
+    ],
+    "time_row_indices": [
+      9,
+      19,
+      29,
+      39,
+      49
+    ],
+    "sigma_m": 0.01,
+    "all_unordered_pairs": 10,
+    "primary_truth_vs_local_neighbors": [
+      0.025,
+      0.035
+    ],
+    "primary_adjusted_aggregate_noise_distance_threshold": 1.0,
+    "threshold_interpretation": "Weak one-noise-unit screen only, no confidence or recovery guarantee."
+  },
+  "ownership": {
+    "new_module": "src/hydro_pinn/extensions/inverse_sensitivity.py",
+    "new_config": "configs/extensions/inverse_sensitivity.json",
+    "new_test": "tests/test_inverse_sensitivity.py",
+    "new_docs": "docs/extensions/inverse_sensitivity*",
+    "evidence": "docs/evidence/phase_09/sensitivity_v01/",
+    "results": "results/extensions/inverse_sensitivity/",
+    "existing_file_edits": "None; use a standalone new module entrypoint, no CLI or __init__ change.",
+    "root_owns": [
+      "coordination",
+      "global status",
+      "Git"
+    ]
+  },
+  "protected_nonCLI_sha256": {
+    "src/hydro_pinn/__init__.py": "7018c26707fca1706efdca11406f591574bcc31abe072bb34edb74a288021a16",
+    "src/hydro_pinn/__main__.py": "49c2417a76f6589478d8efa1c5e9b36191384f423ddf86cfff40c9deeb1dbaef",
+    "src/hydro_pinn/benchmark.py": "2f1e52d0dacf43c2cc3ec1e17bd403ab53fc76fcee46bf82dc704393b043addd",
+    "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+    "src/hydro_pinn/conservation.py": "b06bc773ff67a5b28ffa744a095c99a41e0ee3137c14eaed0a849cdf3e3f3931",
+    "src/hydro_pinn/devices.py": "24305922b64927e41fd85b300f34b08622ec78c60f7f69aacf3b48fda1ae8aa8",
+    "src/hydro_pinn/evaluate.py": "31aa5c9b466c874819b89a15856b7f731d87172a2bbd5cf98acc1172ce663fe2",
+    "src/hydro_pinn/evaluation_workflow.py": "0b9307dbe569d52880f4aa83920993bc8fb0509a534c1144bbffd4a5c40e3bc3",
+    "src/hydro_pinn/experiments.py": "ba7b2d3c968a75a6df4fe276e0e2d96d98a2bf33bc8b5e30a0856a07ad4077c1",
+    "src/hydro_pinn/extensions/__init__.py": "65b2ea146bc3e6cfbb814aad73eb180d1fe85dc173401c12879326e848a0867e",
+    "src/hydro_pinn/extensions/friction_experiment.py": "42e63f008711d64c7d8471a21eb14c55c9b08070da3eb15378108c00e3d6ca60",
+    "src/hydro_pinn/extensions/friction_physics.py": "eed3acce02188253da77864ab11dd55597d1de6af8d57c4c815b66bbbe06bf6d",
+    "src/hydro_pinn/extensions/friction_reference.py": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+    "src/hydro_pinn/extensions/hybrid_data.py": "bf72a5163e66197f57bcc875a6314b6d3b1b7ea3a98e3514aa77bcc9315fd4a3",
+    "src/hydro_pinn/extensions/hybrid_experiment.py": "409fb7a6f5e594eb8dc14889806e573eb8f9b1b68b134fcdc698d8b232307145",
+    "src/hydro_pinn/extensions/model_2d.py": "06b381e659c7a3a3e9aa2a9867f04cef119873a16b588a63f603584718162459",
+    "src/hydro_pinn/extensions/physics_2d.py": "238d322f617df0488500978716186683c3d3e4ff56a213edf4c0f571c56c9339",
+    "src/hydro_pinn/extensions/planar_2d.py": "1e5009b31b24fc7673c428aa421870c38546ac55692ca8dd409bb6d98bc78c4a",
+    "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+    "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+    "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+    "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+    "src/hydro_pinn/plot.py": "74df4c54c87cd2d403d91a6c5fec7f5978df6de072f826c6b9ec8e3487ea616c",
+    "src/hydro_pinn/protocol.py": "85009bc307facc04decc86c490ce0f578c7576d480ed50137605511912d62a33",
+    "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40",
+    "src/hydro_pinn/references.py": "9e23dd1a97f3f63df7be9d493382d263305e233c3be45980fac3c36fd5d9a547",
+    "src/hydro_pinn/reproduce.py": "5675837142ac9de69854289d8b6330568b43ab0f0d04e43227e5779d4a6d6778",
+    "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+    "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+  },
+  "protected_CLI_sha256": "0de87ee151e59fa1faf551101b6ec3aa637ce28016a555bf3424e67554de1da6",
+  "protected_archives": {
+    "results/packages/p07_core_candidate_v02.zip": "2888f733ac1245e6ded97c89d9ae1de4a2fa7483a8974967c19ede02d02a7bba",
+    "results/extensions/hybrid/hybrid_e1_seed11_v01.zip": "f5c5bd34f3619374c98fd1f0d1c2896bcbeac215a163c878e1133f1c8bd05f3a",
+    "results/extensions/planar_2d/planar_e1_seed11_v01.zip": "3926c7ace882fd59da416cb6bc7bcf7de7b9e1cf48c4448d7d0029fc0bb103f2",
+    "results/extensions/friction/friction_e1_seed11_v01.zip": "95370247dbe7ecfa33f9c3f02d1bda6b111c8ed026651edd0abfaa7bdaf19427"
+  },
+  "conditions": [
+    "Read local instructions and adopted plan first; preserve foundations00/01, every prior result and failed attempt. No deletions, cleanup, reset, source guard weakening or silent overwrite.",
+    "Freeze source/input/operator/config/protocol hashes and exact axes BEFORE the12 new solves. Reuse accepted parameterized solver/conservative projection without edits and hash-check the3 truth records rather than regenerate them.",
+    "Use only necessary gauge-ordering/distance and frozen-input/no-overwrite checks; no broad old-study test or training run.",
+    "Execute exactly the finite12-solve matrix once, storing every native output and actual steps/CFL/positivity/mass/momentum budgets/costs plus selected15means at each level. No observation noise draws or neural fitting.",
+    "Preserve all ten signed pair contrasts, separate mesh/time indicators, raw/adjusted noise distances, finite-difference response and all weak/unfavorable outcomes.",
+    "Do not alter n/T/noise/gauges/times/thresholds or add refinements after results. A failed/missing case makes the gate incomplete and must remain recorded.",
+    "Use M5 CPU64 reference only and serialize numerical execution; do not use unavailable Victus or paid hardware.",
+    "Use a60-second elapsed numerical matrix budget checked between solves, comfortably above measured same-case reference costs; if crossed preserve completed/failed states and report a budget-limited gate, not intrinsic infeasibility.",
+    "Produce only a small useful saved-data profile figure, honest findings and a hash-bound handoff. Do not generate a fitting/validation/final observation dataset, inverse trainer, extra neural pilot, or release later candidates."
+  ],
+  "actual_execution_started_at_release": false
+}

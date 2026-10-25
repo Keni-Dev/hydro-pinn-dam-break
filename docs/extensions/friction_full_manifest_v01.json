@@ -1,0 +1,8 @@
+{
+  "mode": "full",
+  "protocol": "runs/p08_friction_e1_seed11_full_v01/protocol.json",
+  "protocol_sha256": "b49eac414c46959d4d0ff0fb376de19c1c6cca3b2dc939ec2a1420357dbb2360",
+  "run": "runs/p08_friction_e1_seed11_full_v01",
+  "state": "completed",
+  "summary": "runs/p08_friction_e1_seed11_full_v01/summary.json"
+}
