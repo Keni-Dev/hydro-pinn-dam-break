@@ -95,7 +95,19 @@ def _series(ax: plt.Axes, x: Any, y: Any, label: str, **kwargs: Any) -> bool:
     # NaN keeps each missing observation as a break in the line.
     if not np.isfinite(x).all() or np.any(np.diff(x) <= 0):
         raise PlotError(f"{label}: curve coordinates must be finite and increasing")
-    ax.plot(x, y, label=label, **kwargs)
+    (line,) = ax.plot(x, y, label=label, **kwargs)
+    finite = np.isfinite(y)
+    isolated = finite & ~np.r_[False, finite[:-1]] & ~np.r_[finite[1:], False]
+    if np.any(isolated):
+        ax.plot(
+            x[isolated],
+            y[isolated],
+            linestyle="none",
+            marker="o",
+            markersize=3,
+            color=line.get_color(),
+            label="_nolegend_",
+        )
     return bool(np.isfinite(y).any())
 
 
@@ -117,9 +129,71 @@ class _Exporter:
             for run_id in run_ids
             for line in textwrap.wrap(f"Run: {run_id}", width=145)
         )
-        bottom = min(0.3, 0.035 + 0.015 * len(footer.splitlines()))
-        fig.text(0.012, 0.008, footer, va="bottom", fontsize=6.5, family="monospace")
-        fig.tight_layout(rect=(0, bottom, 1, 0.94))
+        # Keep all evidence identifiers and legends outside the plotted axes.
+        # Allocate inches so a tall list cannot overrun a short figure's labels.
+        width, content_height = fig.get_size_inches()
+        legend_groups = []
+        signatures = set()
+        for ax in fig.axes:
+            legend = ax.get_legend()
+            if legend is None:
+                continue
+            handles, labels = ax.get_legend_handles_labels()
+            signature = tuple(
+                (
+                    label,
+                    str(getattr(handle, "get_color", lambda: "")()),
+                    str(getattr(handle, "get_linestyle", lambda: "")()),
+                )
+                for handle, label in zip(handles, labels, strict=True)
+            )
+            legend.remove()
+            if signature in signatures:
+                continue
+            signatures.add(signature)
+            title = ax.get_title() or ax.get_ylabel()
+            legend_groups.append((handles, labels, title))
+        columns = 3 if width >= 10 else 2
+        footer_height = 0.18 + len(footer.splitlines()) * 8.5 / 72
+        legend_heights = [
+            ((len(labels) + columns - 1) // columns) * 12 / 72
+            + (0.22 if len(legend_groups) > 1 else 0)
+            + 0.12
+            for _, labels, _ in legend_groups
+        ]
+        extra_height = footer_height + sum(legend_heights) + 0.3
+        total_height = content_height + extra_height
+        fig.set_size_inches(width, total_height)
+        fig.text(
+            0.012,
+            0.08 / total_height,
+            footer,
+            va="bottom",
+            fontsize=6.5,
+            family="monospace",
+        )
+        anchor = extra_height - 0.12
+        for (handles, labels, title), height in zip(
+            legend_groups, legend_heights, strict=True
+        ):
+            legend = fig.legend(
+                handles,
+                labels,
+                loc="upper left",
+                bbox_to_anchor=(0.055, anchor / total_height),
+                ncol=columns,
+                fontsize=8,
+                frameon=False,
+                borderaxespad=0,
+                handlelength=2.5,
+                columnspacing=1.6,
+                title=title if len(legend_groups) > 1 else None,
+            )
+            legend.get_title().set_fontsize(8)
+            anchor -= height
+        fig.tight_layout(
+            rect=(0, extra_height / total_height, 1, 1 - 0.45 / total_height)
+        )
         artifacts = []
         for extension in ("png", "pdf"):
             target = self.path / f"{name}.{extension}"
@@ -261,6 +335,15 @@ def _errors(
     export: _Exporter, case: str, sources: list[dict], rows: list[dict]
 ) -> None:
     regions = ("whole", "wave_band", "outside_wave_band")
+    width = export.report.get("evaluation", {}).get("wave_band_half_width_m", 0.1)
+    region_labels = {
+        "whole": "whole domain",
+        "wave_band": f"within ±{width:g} m shock/front",
+        "outside_wave_band": f"outside ±{width:g} m shock/front",
+    }
+    times = export.report.get("evaluation", {}).get("times_s", [])
+    if not times:
+        times = sorted({item["time_s"] for item in rows})
     for metric in ("rmse", "relative_l2"):
         fig, axes = plt.subplots(3, 3, figsize=(12, 10), squeeze=False)
         for row, field in enumerate(FIELDS):
@@ -298,7 +381,13 @@ def _errors(
                     if metric == "relative_l2"
                     else FIELDS[field]
                 )
-                ax.set(title=f"{field}: {region}", xlabel="Time (s)", ylabel=unit)
+                ax.set(
+                    title=f"{field}: {region_labels[region]}",
+                    xlabel="Time (s)",
+                    ylabel=unit,
+                )
+                if len(times) > 1:
+                    ax.set_xlim(times[0], times[-1])
                 ax.grid(alpha=0.2)
                 if not found:
                     message = "; ".join(sorted(reason for reason in reasons if reason))
@@ -307,6 +396,20 @@ def _errors(
                         f"Undefined: {message}"
                         if message
                         else "No defined saved metric",
+                    )
+                elif reasons:
+                    reason_text = (
+                        "Gaps: no reference-wet points"
+                        if reasons == {"no_selected_points"} and field == "u_m_s"
+                        else "Gaps: undefined saved metric"
+                    )
+                    ax.text(
+                        0.02,
+                        0.03,
+                        reason_text,
+                        transform=ax.transAxes,
+                        fontsize=7,
+                        bbox={"facecolor": "white", "alpha": 0.8, "edgecolor": "none"},
                     )
         _legend(axes[0, 0])
         fig.suptitle(f"{case}: {metric}; velocity uses reference h > 0.001 m")
@@ -364,6 +467,12 @@ def _coverage(
     export: _Exporter, case: str, sources: list[dict], rows: list[dict]
 ) -> None:
     fig, axes = plt.subplots(1, 3, figsize=(12, 4.5))
+    width = export.report.get("evaluation", {}).get("wave_band_half_width_m", 0.1)
+    region_labels = {
+        "whole": "whole domain",
+        "wave_band": f"within ±{width:g} m shock/front",
+        "outside_wave_band": f"outside ±{width:g} m shock/front",
+    }
     for ax, region in zip(
         axes, ("whole", "wave_band", "outside_wave_band"), strict=True
     ):
@@ -387,7 +496,7 @@ def _coverage(
                     **_style(data),
                 )
         ax.set(
-            title=region,
+            title=region_labels[region],
             xlabel="Time (s)",
             ylabel="Selected / total grid points",
             ylim=(-0.02, 1.02),
