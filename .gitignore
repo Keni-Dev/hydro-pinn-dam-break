@@ -1,0 +1,24 @@
+# Local environments, package caches, and generated build products.
+.venv/
+.venv-*/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.DS_Store
+
+# Local credentials. Research inputs/configs/results/runs remain visible to Git.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Checkpoints remain local by default; retain their hashes and packaging location
+# in each run before a later course reproduction package is assembled.
+runs/**/checkpoint*.pt
+*.tmp
