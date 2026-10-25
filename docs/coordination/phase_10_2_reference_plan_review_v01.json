@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T22:01:19.052059+00:00",
+  "state": "ready_for_bounded_additive_implementation_with_prelaunch_protocol_clarifications",
+  "material_design_blockers": [],
+  "owned_file": "docs/coordination/phase_10_2_reference_plan_review_v01.json",
+  "scope": "Read-only pre-implementation review of the existing genuine wet 2D reference proposal and completed pinned primary provenance. No execution, source/CLI lease or scientific setting change is granted by this review.",
+  "reviewed_sha256": {
+    "docs/coordination/phase_10_2_reference_gate_plan_v01.json": "34b109f80db906316bfdc534006244837b8edba38153df523220ed74236fd1a4",
+    "docs/coordination/phase_10_2_source_preflight_v01.json": "b45bc836b4af62c44494d0de29026c7ac62e9e372ce0e07e19029c3d0d28d4bf",
+    "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/manifest.json": "f162b410a555b48a7a22f09a8b2b3ea459f33fa08058d582b3f64fb96a158300",
+    "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/rpn2_shallow_hlle.f90": "9d2b334c8d5056ca8ec99e444237ba8d5ec4a554a86228d91c4e8ce598e2280f",
+    "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/LICENSE": "668317944192d8217d63c0fd0730f889bd07f759b69ed6b657e1fb9902145ebe",
+    "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/source_interpretation.json": "89ce3563d6a45692ec6d9b6852093093e0eb1057f2990af2d78a6e79315690b4",
+    "docs/coordination/phase_11_1_replay_archive_review.json": "d351a80f2db6ed0f7e9155369e57bc2da71cbdf56f724a187d377d3777c5701a"
+  },
+  "decision": {
+    "implementation_lease_readiness": "Yes, with the explicit depth-only positivity clarification in the lease. One new reference_2d.py, new case_2d.json, one focused test file and dedicated provenance/docs/results are a reviewable finite scope. After preservation of the accepted viscosity executable snapshot, only the named additive extension-2d-reference parser/dispatch may change the current CLI.",
+    "canonical_run_readiness": "Not yet. Source, focused-check, frozen-protocol and first-cell release readbacks must precede the actual 80x80 full-horizon cell. The clarifications below belong in that immutable implementation protocol before launch.",
+    "only_first_cell_proposed_for_later_release": "80x80, sum-CFL .45, float64 CPU, T=.25 s, initial plus 50 positive snapshots. Initial numerical wall cap 60 s checked between steps, with retained partial evidence. This is not authorization to run it now.",
+    "unreleased": "The other three predeclared cells, numerical-reference acceptance, any NN prototype/pilot/training, alternative geometry/coefficient/horizon or new external lookup remain unreleased.",
+    "no_infeasibility_inference": "Missing reference code and incomplete planar neural recovery do not establish infeasibility. Positivity, boundary safety, refinement, actual cost and any future neural recovery remain empirical questions."
+  },
+  "design_assessment": {
+    "geometry_and_initial_volume": "The finite centered 2 m by 1 m reservoir is genuinely y-dependent and explicitly allowed by the original rectangular-or-circular scope. Domain [-5,5]^2 has 100 m^2 area; high-depth area is 2 m^2. Volume=0.1*100+0.9*2=11.8 m^3. Initial qx=qy=0. All selected grids align with reservoir faces.",
+    "grid_alignment_arithmetic": [
+      {
+        "nx": 80,
+        "ny": 80,
+        "dx_m": 0.125,
+        "inside_x_cells": 16,
+        "inside_y_cells": 8,
+        "deep_area_m2": 2.0
+      },
+      {
+        "nx": 160,
+        "ny": 160,
+        "dx_m": 0.0625,
+        "inside_x_cells": 32,
+        "inside_y_cells": 16,
+        "deep_area_m2": 2.0
+      },
+      {
+        "nx": 320,
+        "ny": 320,
+        "dx_m": 0.03125,
+        "inside_x_cells": 64,
+        "inside_y_cells": 32,
+        "deep_area_m2": 2.0
+      }
+    ],
+    "initial_average_semantics": "Exact rectangle-overlap cell averages remove uncertain circular cut-cell geometry. The half-open point helper convention has zero-area effect and must stay distinct from cell-average initialization. The mathematical volume11.8 m^3 is not a promise of exact binary floating summation; do not alter depths to force a bit-exact total.",
+    "boundaries": "Four reflective slip walls are fully specified: mirror h/tangential discharge and reverse normal discharge; double corner reflections commute. Closed walls model their own pressure forces. Actual numerical mass flux should be near zero while normal momentum flux is generally nonzero.",
+    "horizon": "The .25 s horizon is finite and plausible as a planning choice, not yet boundary-safe by evidence. The existing travel and outer-strip diagnostics appropriately qualify any early unreflected-wave claim; a failed diagnostic must not be silently cropped away.",
+    "numerical_method": "A first-order unsplit Cartesian finite-volume update with full three-component HLLE fluxes and dt=C/(a_x/dx+a_y/dy) is a definite implementable method. It has neither directional sweeps nor source terms/limiters/floors. It remains a proposed independent local advance, not an execution of PyClaw or a proved positivity method for this case.",
+    "reference_independence": "The numerical reference contains no neural weights or solution labels from a model. Pinned Clawpack normal-interface construction supports the speed and transverse-momentum flux interpretation. Still-water/planar/failure/operator checks and actual refinement are still required.",
+    "four_run_design": "80^2,160^2,320^2 at sum-CFL .45 plus 320^2 at .225 provide a finite coupled-mesh/time comparison and a separate fixed-grid timestep sensitivity. Preselecting the finest half-CFL result prevents result-based choice. The constant-CFL sequence is not pure spatial convergence or an observed asymptotic order.",
+    "common_operator": "The 80x80 common-cell area-overlap operator is conservative and nested for all four grids. It compares h,qx,qy cell averages; nearest-centre/bilinear values and pointwise neural outputs cannot be substituted. Separate velocity diagnostics must retain the distinction between q_bar/h_bar and an area average of q/h.",
+    "uncertainty": "Signed refinement differences and D_space+D_time are useful sensitivity diagnostics, not a certified error bound or confidence interval. A lone 80x80 run can be a completed coarse matrix cell but cannot establish a refinement-accepted final reference.",
+    "six_check_families": "The existing six families are proportionate and cover geometry/axes, still water, two-axis planar reduction, nonzero flux bookkeeping/conservative projection, representative invalid-state persistence and the actual finite four-run gate. No broad new case sweep, wet/dry method, extra seed or neural accuracy test is needed at this stage."
+  },
+  "primary_provenance_readback": {
+    "payload_files_checked": 9,
+    "mismatches": [],
+    "commit": "c29dcab4af30913fc16e4406fe56fe5f0a322b1f",
+    "source_sha256": "9d2b334c8d5056ca8ec99e444237ba8d5ec4a554a86228d91c4e8ce598e2280f",
+    "license_sha256": "668317944192d8217d63c0fd0730f889bd07f759b69ed6b657e1fb9902145ebe",
+    "license": "BSD-3-Clause",
+    "resolved_prior_gap": "The original plan retains its historical pending-pin text. The separate completed source_preflight_v01 record resolves that item without overwriting earlier evidence. Include both in the new protocol.",
+    "interpretation": "Pinned lines 38-45 rotate normal/tangential momentum; lines 48-69 define wet states and speed estimates; lines 72-74 include the transverse conserved component; lines 88-100 return wave fluctuations. A future conservative numerical flux is not amdq/apdq alone. The existing source interpretation records the full HLL flux translation.",
+    "attribution": "Retain the exact same-commit LICENSE and source provenance with any adaptation. Identify the local unsplit update/CFL/boundaries/projection as local choices. No extra external source lookup or downloaded-code execution is needed for this preparation."
+  },
+  "definitions_to_freeze_before_first_canonical_launch": [
+    {
+      "id": "P0_depth_only_positivity",
+      "importance": "Necessary clarification of ambiguous plan wording before the implementation lease.",
+      "requirement": "Strict positivity applies only to depth h at initial/input/ghost/HLLE-middle/updated stages. All three conserved components must be finite, but qx and qy may be zero, positive or negative. Initial zero momenta, reflected negative normal momentum and signed transverse flow are valid. Interpret the original nonpositive/nonfinite updated-state phrase as h<=0 or any nonfinite component; never reject qx<=0 or qy<=0 and never floor/clip momenta. This is a wording correction, not a new physical case or positivity guarantee."
+    },
+    {
+      "id": "P1_diagnostic_formula",
+      "importance": "Required protocol detail, not an implementation-lease blocker.",
+      "requirement": "Choose and save an exact boundary travel formula. A direct reading of the plan is D_x=sum(dt*a_x), D_y=sum(dt*a_y), D_max=sum(dt*max(a_x,a_y)), with D_max<4m as the predeclared conservative diagnostic. Save all three rather than ambiguously interchanging max(sum(...)) with sum(max(...)). Use actual old-state face speeds and capped dt from the executed steps. Define each side departure as max over its outermost physical-cell strip of abs(h-.1)/Hc, abs(qx)/(Hc*Uc), abs(qy)/(Hc*Uc), with the existing 1e-10 threshold applied to every saved step. Keep the wall-model and non-rigorous diagnostic qualifications."
+    },
+    {
+      "id": "P2_array_units_and_norms",
+      "importance": "Required before immutable protocol; prevents reusing misleading 1D metadata.",
+      "requirement": "Freeze native/common h_m,qx_m2_s,qy_m2_s arrays with(time,y,x) orientation, both edge arrays, cell areas, exact 51 stored times and cell-average metadata. Use a genuinely 2D case/method label rather than authoritative E1/Stoker metadata. Volume integral has m^3 units; each integral of qx or qy over area has m^4/s units, not the 1D m^3/s momentum-integral unit. Boundary vector rates have components m^3/s,m^4/s^2,m^4/s^2. Freeze norm normalization/time weighting: distinguish area-mean MAE/RMSE from integral L1/L2 and state undefined relative-denominator rules. Equal weights over 50 positive snapshots are a simple available convention; the initial state is separate volume/IC evidence."
+    },
+    {
+      "id": "P3_numerical_tolerances",
+      "importance": "Required before inspecting actual runs, not an extra accuracy target.",
+      "requirement": "Record float64 arithmetic tolerances for geometry, projection coverage/integral preservation, constant-state/planar equality, parity and cumulative mass/momentum budgets. Scale budget tolerances by physical units, summation/step counts and machine precision rather than demanding bit-exact global conservation or selecting a tolerance after results. Record raw defects alongside pass/fail. These checks test implementation arithmetic; they do not promise physical reference accuracy or a convergence rate."
+    },
+    {
+      "id": "P4_runtime_and_partial_persistence",
+      "importance": "Required before the 60 s canonical-cell launch.",
+      "requirement": "Freeze the timer origin and included setup/initialization/step-diagnostics/output stages. Check elapsed wall before each new step; report final actual wall because a last step/final write can overshoot a between-step cap. Save last accepted t/U, completed requested snapshots, dt/face-speed and four-boundary vector-flux histories, volume/momentum budgets and completion counts on cap or interruption. Use existing RunRecord lifecycle states plus explicit termination_kind=budget_limit/interrupt/numerical_failure, rather than inventing an unsupported status or treating budget exhaustion as physical infeasibility. Preserve invalid intermediate/update arrays and location/stage before raising. Never fill missing requested times, silently interpolate, restart or relax the cap."
+    },
+    {
+      "id": "P5_planar_and_failure_fixture_scope",
+      "importance": "Narrow clarification within existing R3/R5 families.",
+      "requirement": "Planar reduction must use identical normal ghost states and imposed dt sequences as its 1D comparator. The accepted 1D wrapper has fixed reservoir ghosts whereas the new physical case has reflective walls; compare one/few small matched updates or fluxes with compatible ghosts, not unrelated adaptive whole histories. A nonzero transverse momentum interface fixture should exercise its conservative transport within the existing orientation/flux checks. The representative persistence fixture should exercise an invalid intermediate/update capture, not only reject an invalid config before a run exists. No new full 1D solver study or broad failure sweep is required."
+    },
+    {
+      "id": "P6_release_namespace_and_preservation",
+      "importance": "Required before any canonical numerical execution.",
+      "requirement": "Freeze source/config/pinned-source/license/input/axes/operator/protocol hashes and exclusive run/output destinations before the first solve. Separate future matrix design from the execution release: only the exact 80x80/.45/.25s cell may run after a root code/check/protocol release; the CLI must not automatically execute all four cells. Bind the 60 s policy and preserve attempts/last state; other three cells require a later measured cost decision. Do not silently reuse an old result with different method/config/source hashes or overwrite a completed/failed run."
+    }
+  ],
+  "preservation_and_lease_conditions": {
+    "baseline": "Root will preserve all 33 existing source-module bytes and five accepted archives before work. The viscosity archive/extracted replay has a completed independent review with an acceptable verdict within its recorded same-environment limits. This review binds that prior review without rerunning archive/replay checks; root acceptance and the implementation lease remain separate.",
+    "allowed_current_source_exception": "Only named additive extension-2d-reference CLI blocks, preserving every old line/order, plus one new reference_2d.py. The other 32 current non-CLI modules remain unchanged. Do not edit the frozen core config/schema/records or existing 2D/1D scientific modules to accommodate the new JSON; validate the new dedicated case locally.",
+    "old_guard_behavior": "Later additive CLI edits will deliberately invalidate current-root execution of prior guard-bound protocols. Old replay uses preserved immutable executables/archives. Never weaken guards, rewrite old protocols or relabel later commands as part of an older executable.",
+    "evidence_labels": "New reference case dimension/source/units and numerical cell-average meaning must be authoritative in its protocol/status/output metadata. Reuse generic record infrastructure without importing analytical 1D assumptions as scientific truth.",
+    "pending": "Actual coarse cost/RSS, positivity, boundary-safety and convergence remain unmeasured. Small fixtures and then a separately released canonical 80x80 cell are the next stages; no new full reference matrix or NN work is accepted now."
+  },
+  "work_performed": "Only this new planning-review JSON is written. Local plan/provenance/pinned-source reads, hash/size readback and geometry/dimensional reasoning only. No external lookup, solver/reference/model/autograd/test/pilot/training/query/benchmark or CLI/source edit was performed.",
+  "material_wording_corrections_before_lease": [
+    "Write depth-only strict positivity explicitly in the lease/protocol; the original updated-state wording must not be applied componentwise to signed momenta."
+  ]
+}
