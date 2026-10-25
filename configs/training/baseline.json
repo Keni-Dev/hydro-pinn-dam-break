@@ -1,0 +1,116 @@
+{
+  "config_type": "training",
+  "schema_version": 1,
+  "status": "proposed_until_pilot_and_protocol_freeze",
+  "network": {
+    "hidden_layers": [
+      64,
+      64,
+      64,
+      64
+    ],
+    "activation": "tanh",
+    "inputs": [
+      "x_over_Lc",
+      "t_over_Tc"
+    ],
+    "outputs": [
+      "raw_depth",
+      "scaled_velocity"
+    ],
+    "depth_transform": "softplus",
+    "depth_floor_nd": 1e-06
+  },
+  "sampling": {
+    "interior_points": 10000,
+    "initial_points": 1000,
+    "boundary_points_per_side": 500,
+    "algorithm": "numpy_pcg64_uniform_fixed",
+    "interior_time": "strictly_positive",
+    "initial_discontinuity": "unsmoothed_exclude_dam_point",
+    "interior_labels": false
+  },
+  "optimizer": {
+    "kind": "adam",
+    "steps": 10000,
+    "learning_rate": 0.001
+  },
+  "lbfgs": {
+    "enabled": false,
+    "max_iterations": 500,
+    "history_size": 100,
+    "freeze_points_and_weights": true
+  },
+  "weighting": {
+    "mode": "fixed",
+    "lambda_pde": 1.0,
+    "lambda_ic": 10.0,
+    "lambda_bc": 10.0,
+    "lambda_data": 0.0,
+    "update_interval": 100,
+    "ema_decay": 0.9,
+    "target_bounds": [
+      0.01,
+      100.0
+    ],
+    "denominator_epsilon": 1e-12,
+    "gradient_norm": "l2_over_sqrt_parameter_count_absent_gradients_zero",
+    "update_before_step": true,
+    "detach_statistics": true
+  },
+  "seeds": [
+    11,
+    22,
+    33
+  ],
+  "checkpoint_selection": "minimum_separate_validation_physics_ic_bc_loss",
+  "validation": {
+    "config_type": "evaluation",
+    "schema_version": 1,
+    "partition": "validation",
+    "grid": {
+      "kind": "cell_centres",
+      "domain_m": [
+        -5.0,
+        5.0
+      ],
+      "cells": 73
+    },
+    "times_s": [
+      0.019,
+      0.071,
+      0.173,
+      0.311,
+      0.487
+    ],
+    "profile_times_s": [
+      0.071,
+      0.311,
+      0.487
+    ],
+    "velocity_wet_threshold_m": 0.001,
+    "wave_band_half_width_m": 0.1,
+    "mass_quadrature": {
+      "volume": {
+        "rule": "midpoint",
+        "cells": [
+          128,
+          256
+        ],
+        "include_t0": true,
+        "include_reported_times": true
+      },
+      "boundary_flux": {
+        "rule": "trapezoid",
+        "nodes": [
+          101,
+          201
+        ],
+        "include_t0": true,
+        "include_final_time": true,
+        "include_reported_times": true,
+        "spatial_locations": "domain_endpoints"
+      }
+    }
+  }
+}
