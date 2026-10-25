@@ -1,0 +1,63 @@
+{
+  "phase": "04",
+  "state": "accepted",
+  "recorded_at_utc": "2026-10-25T14:44:15.457565+00:00",
+  "candidate_id": "core-v1-pilot-a03",
+  "candidate_sha256": "0c8eda8bb24ef10f766a4c59965962a000052fca26b258cd9387d0f730f52317",
+  "evidence": [
+    "docs/pilot_decision.md",
+    "docs/evidence/phase_04/independent_readback.json",
+    "docs/evidence/phase_04/projected_costs.json",
+    "docs/coordination/phase_04_static_review.json",
+    "docs/coordination/phase_04_persistence_review.json"
+  ],
+  "root_checks": [
+    "Verified independent audit source hashes live",
+    "Read actual19training/9precisionattempt outcomes and nativeMPS evidence",
+    "Read preserved exact persistence-state equivalence and honest resume",
+    "Checked complete unchanged coverage, separate validation, mass quadrature and projection arithmetic scope"
+  ],
+  "selected": {
+    "device": "cpu",
+    "dtype": "float32",
+    "threads": 4,
+    "adam_steps": 10000,
+    "seeds": [
+      11,
+      22,
+      33
+    ],
+    "training_jobs": 7
+  },
+  "projected_training_seconds": [
+    7360.195330689061,
+    22390.75948151647
+  ],
+  "limits": [
+    "Observed-rate envelope2.04\u20136.22h is a projection, not sustained measurement or guarantee",
+    "Fresh paper reproduction repeats training cost",
+    "Heavy observed host contention; no causal adaptive speedup",
+    "Victus/CUDA untested",
+    "No final accuracy or conservation evaluation yet"
+  ],
+  "source_sha256": {
+    "configs/pilot.json": "4b50a446897154e4f371a65e6061fbbfcd7d4f09bb83662de9595ecc542b8f80",
+    "configs/pilot_cpu32_followup.json": "6d1963cef7160eb5e104669f69ffcec53eb07e05888c98b82047b61b007f00a6",
+    "configs/pilot_persistence.json": "d75a6a7811d43143a5dffcd27528d09467130e79030cd7b4ee90bb31e96ceb76",
+    "configs/protocol_candidate.json": "0c8eda8bb24ef10f766a4c59965962a000052fca26b258cd9387d0f730f52317",
+    "src/hydro_pinn/__init__.py": "7018c26707fca1706efdca11406f591574bcc31abe072bb34edb74a288021a16",
+    "src/hydro_pinn/__main__.py": "49c2417a76f6589478d8efa1c5e9b36191384f423ddf86cfff40c9deeb1dbaef",
+    "src/hydro_pinn/cli.py": "9a138530329135ac8187f8732c82acae559f9427b5ffac3830ac2fccaaa274af",
+    "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+    "src/hydro_pinn/devices.py": "24305922b64927e41fd85b300f34b08622ec78c60f7f69aacf3b48fda1ae8aa8",
+    "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+    "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+    "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+    "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+    "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40",
+    "src/hydro_pinn/references.py": "9e23dd1a97f3f63df7be9d493382d263305e233c3be45980fac3c36fd5d9a547",
+    "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+    "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212",
+    "tests/test_devices.py": "abb4ce695566b27e5c6ec0b11af4377283ace9f245d0a9bf41b8a494f47737e1"
+  }
+}

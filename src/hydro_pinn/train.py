@@ -18,6 +18,7 @@ import pickle
 import random
 import tempfile
 import time
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -330,6 +331,8 @@ def train_run(
     output_root: str | Path = "runs",
     chunk_size: int | None = None,
     overrides: dict | None = None,
+    step_observer: Callable[[dict], None] | None = None,
+    synchronize_steps: bool = False,
 ) -> Path:
     """Execute a bounded or explicit Adam budget with validation-only selection."""
     if chunk_size is not None and (
@@ -399,6 +402,7 @@ def train_run(
             "weights; no analytical interior labels"
         ),
         "chunk_size": chunk_size,
+        "synchronized_step_timings": synchronize_steps,
         "resume_ancestry": ancestry,
         "source_sha256": {
             f"src/hydro_pinn/{name}": _hash(Path(__file__).with_name(name))
@@ -466,6 +470,24 @@ def train_run(
                 writer.writeheader()
                 writer.writerows(history)
 
+        def append_history() -> None:
+            # Checkpoints and history still persist after every completed step.
+            # The full in-memory log supports final stop-reason/failure rewrites;
+            # ordinary steps append once instead of repeatedly writing all rows.
+            destination = run.path / "history.csv"
+            new_file = not destination.exists()
+            with destination.open("a", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=HISTORY_FIELDS)
+                if new_file:
+                    writer.writeheader()
+                writer.writerow(history[-1])
+
+        def synchronize() -> None:
+            if synchronize_steps and device == "cuda":
+                torch.cuda.synchronize()
+            elif synchronize_steps and device == "mps":
+                torch.mps.synchronize()
+
         try:
             initial_score = _validation(
                 model, validation, selection_weights, chunk_size
@@ -478,6 +500,8 @@ def train_run(
                 )
             _save_checkpoint(run.path / "checkpoint.pt", checkpoint())
             for attempted_step in range(step + 1, training["optimizer"]["steps"] + 1):
+                synchronize()
+                step_started = time.perf_counter()
                 values, gradients, norms = {}, {}, {}
                 for name in COMPONENTS:
                     values[name], gradients[name] = component_gradients(
@@ -506,6 +530,8 @@ def train_run(
                         step,
                         _cpu_tree(model.state_dict()),
                     )
+                synchronize()
+                compute_finished = time.perf_counter()
                 history.append(
                     {
                         "phase": "adam",
@@ -524,7 +550,22 @@ def train_run(
                     }
                 )
                 _save_checkpoint(run.path / "checkpoint.pt", checkpoint())
-                save_history()
+                append_history()
+                synchronize()
+                step_finished = time.perf_counter()
+                if step_observer is not None:
+                    step_observer(
+                        {
+                            "step": step,
+                            "compute_s": compute_finished - step_started,
+                            "checkpoint_io_s": step_finished - compute_finished,
+                            "total_s": step_finished - step_started,
+                            "weights_updated": weights_changed,
+                            "weights": weights.copy(),
+                            "gradient_rms": norms.copy(),
+                            "loss_total": history[-1]["loss_total"],
+                        }
+                    )
             if training["lbfgs"]["enabled"]:
                 lbfgs = torch.optim.LBFGS(
                     model.parameters(),
