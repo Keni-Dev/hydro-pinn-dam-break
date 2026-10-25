@@ -50,6 +50,35 @@ def build_parser() -> argparse.ArgumentParser:
     reference.add_argument(
         "--run-id", required=True, help="New safe identifier under runs/; no overwrite."
     )
+    solve = subparsers.add_parser(
+        "solve",
+        help="Run unlimited two-step Lax-Wendroff on native cell averages.",
+        description=(
+            "Integrate flat-bed source-free SWE on CPU float64 with fixed reservoir "
+            "ghost states. Save native cell-average h (m), q (m²/s), x (m), "
+            "edges (m), exact requested t (s), and diagnostics under runs/<run-id>/. "
+            "No clipping or limiter is applied. Numerical failure saves diagnostics "
+            "and last valid state, exits 3, and creates no successful outputs.npz."
+        ),
+    )
+    solve.add_argument(
+        "--config", type=Path, required=True, help="Physical case JSON path."
+    )
+    solve.add_argument(
+        "--evaluation",
+        type=Path,
+        default=Path("configs/verification.json"),
+        help="Requested output times/grid JSON (default: configs/verification.json).",
+    )
+    solve.add_argument(
+        "--cells",
+        type=int,
+        required=True,
+        help="Even native cell count N; dx=(b-a)/N metres.",
+    )
+    solve.add_argument(
+        "--run-id", required=True, help="New safe identifier under runs/; no overwrite."
+    )
     return parser
 
 
@@ -87,6 +116,30 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(
             json.dumps(
                 {"completed": True, "provenance": "analytical", "run_path": str(path)},
+                allow_nan=False,
+            )
+        )
+        return 0
+    if args.command == "solve":
+        from hydro_pinn.lax_wendroff import NumericalRunFailed, generate_solver_run
+
+        try:
+            path = generate_solver_run(
+                args.config, args.evaluation, args.cells, args.run_id
+            )
+        except NumericalRunFailed as exc:
+            print(f"Numerical simulation failed: {exc}", file=sys.stderr)
+            return 3
+        except (ValueError, OSError) as exc:
+            print(f"Solver failed: {exc}", file=sys.stderr)
+            return 2
+        print(
+            json.dumps(
+                {
+                    "completed": True,
+                    "provenance": "numerical_approximation",
+                    "run_path": str(path),
+                },
                 allow_nan=False,
             )
         )
