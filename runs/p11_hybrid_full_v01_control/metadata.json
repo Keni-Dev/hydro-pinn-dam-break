@@ -1,0 +1,198 @@
+{
+  "case": "E1",
+  "code": {
+    "dirty": true,
+    "dirty_reason": null,
+    "revision": "9b5776fa45457bbf910a31acc5e1b85c828d581a",
+    "revision_reason": null,
+    "working_tree_status": "M docs/coordination/orchestration.json\n?? .agents/\n?? .chart-data-FuXZId/\n?? .chart-data-Ui7rOC/\n?? .chart-data-ssDiNV/\n?? .chart-data-yAzh2t/\n?? .chart-data-zfGjEJ/\n?? .proposal-work/\n?? configs/resource_reassessment/\n?? docs/deliverables/paper_results_v01/\n?? docs/deliverables/paper_results_v02/\n?? docs/evidence/phase_04/acceptance_handoff.json\n?? docs/evidence/phase_04/resource_reassessment/\n?? docs/evidence/phase_07/production_integration_01/artifact_progress.json\n?? docs/evidence/phase_07/production_integration_01/paper_stdout.log\n?? docs/evidence/phase_07/production_integration_01/paper_tool_session.json\n?? docs/evidence/phase_07/production_integration_01/readme_preservation.json\n?? docs/evidence/phase_11/hybrid_full_v01/\n?? docs/final_run_manifest.lock\n?? results/extensions/hybrid/p11_hybrid_full_v01.json\n?? results/extracted/\n?? results/packages/\n?? results/reproduction/p07_paper_m5_01/report.json\n?? runs/p04_a01_e2_rep_cpu32/\n?? runs/p04_a01_e2_rep_cpu64/\n?? runs/p04_a01_e2_rep_mps32/\n?? runs/p04_a01_precision_cpu32/\n?? runs/p04_a01_precision_cpu64/\n?? runs/p04_a01_precision_cuda32_unavailable/\n?? runs/p04_a01_precision_mps32/\n?? runs/p04_a01_precision_mps64_unsupported/\n?? runs/p04_a01_rep_cpu32_adaptive/\n?? runs/p04_a01_rep_cpu32_baseline/\n?? runs/p04_a01_rep_cpu64_adaptive/\n?? runs/p04_a01_rep_cpu64_baseline/\n?? runs/p04_a01_rep_mps32_adaptive/\n?? runs/p04_a01_rep_mps32_baseline/\n?? runs/p04_a01_rep_mps32_chunk2048/\n?? runs/p04_a01_smoke_cpu32/\n?? runs/p04_a01_smoke_cpu64/\n?? runs/p04_a01_smoke_mps32/\n?? runs/p04_a02_e2_rep_cpu32/\n?? runs/p04_a02_history_cost/\n?? runs/p04_a02_precision_cpu32/\n?? runs/p04_a02_precision_cpu64/\n?? runs/p04_a02_rep_cpu32_adaptive/\n?? runs/p04_a02_rep_cpu32_baseline/\n?? runs/p04_a03_e2_rep_cpu32/\n?? runs/p04_a03_history_append_cost/\n?? runs/p04_a03_precision_cpu32/\n?? runs/p04_a03_precision_cpu64/\n?? runs/p04_a03_rep_cpu32_adaptive/\n?? runs/p04_a03_rep_cpu32_baseline/\n?? runs/p04b_resource_cpu32_threads1_baseline/\n?? runs/p04b_resource_cpu32_threads1_precision_cpu32/\n?? runs/p04b_resource_cpu32_threads1_precision_cpu64/\n?? runs/p04b_resource_cpu32_threads2_baseline/\n?? runs/p04b_resource_cpu32_threads2_precision_cpu32/\n?? runs/p04b_resource_cpu32_threads2_precision_cpu64/\n?? runs/p04b_resource_mps32_threads4_baseline/\n?? runs/p04b_resource_mps32_threads4_precision_cpu64/\n?? runs/p04b_resource_mps32_threads4_precision_mps32/"
+  },
+  "created_at_utc": "2026-10-25T19:28:18.921013+00:00",
+  "data_partitions": {
+    "evaluation": null,
+    "validation": {
+      "config_type": "evaluation",
+      "grid": {
+        "cells": 73,
+        "domain_m": [
+          -5.0,
+          5.0
+        ],
+        "kind": "cell_centres"
+      },
+      "mass_quadrature": {
+        "boundary_flux": {
+          "include_final_time": true,
+          "include_reported_times": true,
+          "include_t0": true,
+          "nodes": [
+            101,
+            201
+          ],
+          "rule": "trapezoid",
+          "spatial_locations": "domain_endpoints"
+        },
+        "volume": {
+          "cells": [
+            128,
+            256
+          ],
+          "include_reported_times": true,
+          "include_t0": true,
+          "rule": "midpoint"
+        }
+      },
+      "partition": "validation",
+      "profile_times_s": [
+        0.071,
+        0.311,
+        0.487
+      ],
+      "schema_version": 1,
+      "times_s": [
+        0.019,
+        0.071,
+        0.173,
+        0.311,
+        0.487
+      ],
+      "velocity_wet_threshold_m": 0.001,
+      "wave_band_half_width_m": 0.1
+    }
+  },
+  "device": {
+    "available": true,
+    "build": "2.14.1",
+    "cpu_threads": 4,
+    "cuda_build": null,
+    "execution_tested": false,
+    "git_version": "5c4886908584029761b579af026dcfb627c84070",
+    "interop_threads": 10,
+    "model": null,
+    "model_reason": "platform.processor does not identify the CPU model",
+    "model_source": "platform.processor",
+    "requested": "cpu"
+  },
+  "dtype": "float32",
+  "execution": {
+    "elapsed_timings_s": {
+      "record_lifetime": 378.4752277500229,
+      "training_wall_s": 378.3678932910552
+    },
+    "function_evaluations": {
+      "reason": "not reported by this stage",
+      "value": null
+    },
+    "iterations": 10000,
+    "stopping_reason": "finite exploratory Adam budget exhausted; convergence not established"
+  },
+  "hardware": {
+    "logical_cpu_count": 10,
+    "machine": "arm64",
+    "physical_memory_bytes": {
+      "source": "os.sysconf physical pages and page size",
+      "value": 25769803776
+    },
+    "platform": "macOS-27.0.1-arm64-arm-64bit"
+  },
+  "input_hashes": {
+    "configs/cases/e1_wet.json": "9736a419f9a63d27310bae03aaf9288f630e8f28ad100c7b1059397952255e1e",
+    "configs/extensions/hybrid.json": "21132897bcb3c7d477cbc0854785991c77759e089a671ac71e731cba92897876",
+    "configs/training/baseline.json": "9f9c410fa5eda793fa543d41238ef71191e3987ac0361f782022685833f81a6e"
+  },
+  "loss_weights": {
+    "denominator_epsilon": 1e-12,
+    "detach_statistics": true,
+    "ema_decay": 0.9,
+    "gradient_norm": "l2_over_sqrt_parameter_count_absent_gradients_zero",
+    "lambda_bc": 10.0,
+    "lambda_data": 0.0,
+    "lambda_ic": 10.0,
+    "lambda_pde": 1.0,
+    "mode": "fixed",
+    "target_bounds": [
+      0.01,
+      100.0
+    ],
+    "update_before_step": true,
+    "update_interval": 100
+  },
+  "numerical_floor": 1e-06,
+  "provenance": {},
+  "reference_provenance": {
+    "kind": "wet_bed",
+    "root_max_iterations": 200,
+    "root_tolerance_m": 1e-12,
+    "source_url": "https://faculty.washington.edu/rjl/riemann_book/Shallow_water.html"
+  },
+  "resolved_config_sha256": "2a28beae56884b380c8e9fea98f4c58641ffbdf34918f4742b7f89c09a53dc15",
+  "run_id": "p11_hybrid_full_v01_control",
+  "schema_version": 1,
+  "seed": 11,
+  "software": {
+    "executable": "/Users/keni/Documents/SKUL/aifox/.venv/bin/python3",
+    "implementation": "CPython",
+    "packages": {
+      "hydro-pinn": {
+        "version": "0.1.0"
+      },
+      "matplotlib": {
+        "version": "3.11.2"
+      },
+      "numpy": {
+        "version": "2.5.4"
+      },
+      "pytest": {
+        "version": "9.1.1"
+      },
+      "ruff": {
+        "version": "0.17.2"
+      },
+      "scipy": {
+        "version": "1.18.1"
+      },
+      "torch": {
+        "version": "2.14.1"
+      }
+    },
+    "python": "3.12.14"
+  },
+  "stage_metadata": {
+    "final_solution_values_generated": false,
+    "interior_labels": false,
+    "lambda_data": 0.0,
+    "selection_rule": "minimum_separate_validation_physics_ic_bc_loss",
+    "source_sha256": {
+      "src/hydro_pinn/__init__.py": "7018c26707fca1706efdca11406f591574bcc31abe072bb34edb74a288021a16",
+      "src/hydro_pinn/__main__.py": "49c2417a76f6589478d8efa1c5e9b36191384f423ddf86cfff40c9deeb1dbaef",
+      "src/hydro_pinn/benchmark.py": "2f1e52d0dacf43c2cc3ec1e17bd403ab53fc76fcee46bf82dc704393b043addd",
+      "src/hydro_pinn/cli.py": "b095e2e5ea0db5324e46c4f23a0167efb72d674d77ce5e076193d6b4a3d8ff16",
+      "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+      "src/hydro_pinn/conservation.py": "b06bc773ff67a5b28ffa744a095c99a41e0ee3137c14eaed0a849cdf3e3f3931",
+      "src/hydro_pinn/devices.py": "24305922b64927e41fd85b300f34b08622ec78c60f7f69aacf3b48fda1ae8aa8",
+      "src/hydro_pinn/evaluate.py": "31aa5c9b466c874819b89a15856b7f731d87172a2bbd5cf98acc1172ce663fe2",
+      "src/hydro_pinn/evaluation_workflow.py": "0b9307dbe569d52880f4aa83920993bc8fb0509a534c1144bbffd4a5c40e3bc3",
+      "src/hydro_pinn/experiments.py": "ba7b2d3c968a75a6df4fe276e0e2d96d98a2bf33bc8b5e30a0856a07ad4077c1",
+      "src/hydro_pinn/extensions/__init__.py": "65b2ea146bc3e6cfbb814aad73eb180d1fe85dc173401c12879326e848a0867e",
+      "src/hydro_pinn/extensions/hybrid_data.py": "bf72a5163e66197f57bcc875a6314b6d3b1b7ea3a98e3514aa77bcc9315fd4a3",
+      "src/hydro_pinn/extensions/hybrid_experiment.py": "409fb7a6f5e594eb8dc14889806e573eb8f9b1b68b134fcdc698d8b232307145",
+      "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+      "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+      "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+      "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+      "src/hydro_pinn/plot.py": "74df4c54c87cd2d403d91a6c5fec7f5978df6de072f826c6b9ec8e3487ea616c",
+      "src/hydro_pinn/protocol.py": "85009bc307facc04decc86c490ce0f578c7576d480ed50137605511912d62a33",
+      "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40",
+      "src/hydro_pinn/references.py": "9e23dd1a97f3f63df7be9d493382d263305e233c3be45980fac3c36fd5d9a547",
+      "src/hydro_pinn/reproduce.py": "5675837142ac9de69854289d8b6330568b43ab0f0d04e43227e5779d4a6d6778",
+      "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+      "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+    },
+    "stage": "hybrid_extension_training",
+    "validation_solution_labels_used": false,
+    "variant": "control"
+  },
+  "variant": "baseline",
+  "variant_reason": null,
+  "variant_source": "training variant/name or weighting.mode"
+}
