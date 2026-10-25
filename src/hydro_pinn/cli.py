@@ -309,6 +309,43 @@ def build_parser() -> argparse.ArgumentParser:
         required=True,
         help="New report directory; original runs and results remain preserved.",
     )
+    hybrid_labels = subparsers.add_parser(
+        "extension-hybrid-labels",
+        help="Save separate analytical E1 labels and held-out axes (SI units).",
+        description=(
+            "Generate analytical h [m] and q [m²/s] labels at declared x [m], "
+            "t [s] partitions under new runs/<run-id>/. Final axes have no values."
+        ),
+    )
+    hybrid_labels.add_argument("--config", type=Path, required=True)
+    hybrid_labels.add_argument("--run-id", required=True)
+    hybrid_run = subparsers.add_parser(
+        "extension-hybrid-run",
+        help="Run the separate E1 seed11 physics-only/hybrid matched pair.",
+        description=(
+            "Freeze the additive protocol and save new matched runs under runs/. "
+            "Default budget is 10000 Adam steps each. --pilot-steps bounds a "
+            "full-coverage feasibility run; pilots cannot be evaluated for accuracy."
+        ),
+    )
+    hybrid_run.add_argument("--config", type=Path, required=True)
+    hybrid_run.add_argument("--labels-run", required=True)
+    hybrid_run.add_argument("--manifest", type=Path, required=True)
+    hybrid_run.add_argument("--pilot-steps", type=int, help="1..30 steps per variant.")
+    hybrid_run.add_argument(
+        "--protocol", type=Path, help="Existing immutable protocol."
+    )
+    hybrid_evaluate = subparsers.add_parser(
+        "extension-hybrid-evaluate",
+        help="Evaluate a completed full pair on its frozen label-held-out grid.",
+        description=(
+            "Write separate final h/q and reference-wet velocity errors, shock "
+            "diagnostics, mass/boundary balance, arrays and costs in a new directory. "
+            "No fitting or checkpoint reselection; pilot evaluation is refused."
+        ),
+    )
+    hybrid_evaluate.add_argument("--manifest", type=Path, required=True)
+    hybrid_evaluate.add_argument("--output-dir", type=Path, required=True)
     return parser
 
 
@@ -316,6 +353,42 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command in {
+        "extension-hybrid-labels",
+        "extension-hybrid-run",
+        "extension-hybrid-evaluate",
+    }:
+        try:
+            if args.command == "extension-hybrid-labels":
+                from hydro_pinn.extensions.hybrid_data import generate_labels
+
+                output = generate_labels(args.config, args.run_id)
+            elif args.command == "extension-hybrid-run":
+                from hydro_pinn.extensions.hybrid_experiment import run_pair
+
+                output = run_pair(
+                    args.config,
+                    args.labels_run,
+                    args.manifest,
+                    pilot_steps=args.pilot_steps,
+                    protocol_path=args.protocol,
+                )
+            else:
+                from hydro_pinn.extensions.hybrid_experiment import evaluate_pair
+
+                output = evaluate_pair(args.manifest, args.output_dir)
+        except KeyboardInterrupt:
+            print("Hybrid extension interrupted; evidence retained.", file=sys.stderr)
+            return 130
+        except (ValueError, OSError, RuntimeError, KeyError) as exc:
+            print(f"Hybrid extension failed: {exc}", file=sys.stderr)
+            return 2
+        print(
+            json.dumps(
+                {"completed": True, "stage": args.command, "output": str(output)}
+            )
+        )
+        return 0
     if args.command == "reproduce":
         from hydro_pinn.reproduce import reproduce
 
