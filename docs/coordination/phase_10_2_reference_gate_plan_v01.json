@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T21:04:12.710972+00:00",
+  "state": "proposed_reference_gate_only_no_implementation_or_execution_release",
+  "owned_file": "docs/coordination/phase_10_2_reference_gate_plan_v01.json",
+  "scope": "One finite, genuinely y-dependent, strictly wet rectangular-reservoir case. Plan the independent numerical reference and its acceptance evidence before any new PINN pilot or fit.",
+  "authority_and_preservation": {
+    "basis": "The original Phase 10.2 prompt and PRD Section 5.3 expressly permit either a circular or rectangular reservoir. A grid-aligned rectangle removes circular cut-cell geometry uncertainty without reducing the problem to a planar extrusion.",
+    "not_a_course_requirement": "Geometry, grid levels, horizon and numerical gates below are proposed research settings, not additional FCO requirements or measured performance claims.",
+    "no_release": "This document does not release source edits, CLI registration, reference runs, model pilots, training, evaluation, or changes to any accepted experiment.",
+    "preserve": [
+      "All core, hybrid, planar and friction inputs, source snapshots, results, failures, source guards and archives.",
+      "Keep Phase 10.1 as its own planar consistency study; do not relabel it genuine 2D or overwrite its incomplete-recovery finding.",
+      "Use new case/version/run IDs and exclusive destinations for later authorized work. Save failed attempts; revise a case through a new protocol rather than editing old evidence."
+    ],
+    "input_sha256": {
+      "prompts/phase_10_two_dimensional/00_PHASE_OVERVIEW.md": "0f4284a34974fd7a2bb69f1b2945d3c599443dda1400232bd14cb691d4b762ce",
+      "prompts/phase_10_two_dimensional/02_genuine_2d_case_and_reference.md": "93b8a124900a487e6ca198af73ec911bd45e20ea3020b51a4b26408bcac60c51",
+      "prompts/phase_10_two_dimensional/99_PHASE_CHECKLIST.md": "6e3708dc4b65152fa5c1fc7b9aee7adf42775eaf274326b5f48addb2fe8629c3",
+      "docs/coordination/extension_selection_guidance.md": "0e7f74b4d49f537f436e495570ee9f0313e128dfa9b56b79cd69786a9bea0e35",
+      "docs/coordination/phase_10_1_completion_review.json": "ce3c8b5a253176459b8852a9fdf85739253bad8137b218aad0c715db8484bca6",
+      "docs/coordination/phase_10_1_terminal_foundation_review.json": "a8b67185606af94df5497958f365dadf91e7f161784eabdb0f1ac2ad91405a04",
+      "project_specification.md": "95233f63b8a7c1514c7132ad9d735c8250c26c00aebfe10a0e0f14088d343850",
+      "src/hydro_pinn/extensions/physics_2d.py": "238d322f617df0488500978716186683c3d3e4ff56a213edf4c0f571c56c9339",
+      "src/hydro_pinn/extensions/model_2d.py": "06b381e659c7a3a3e9aa2a9867f04cef119873a16b588a63f603584718162459",
+      "src/hydro_pinn/extensions/planar_2d.py": "1e5009b31b24fc7673c428aa421870c38546ac55692ca8dd409bb6d98bc78c4a",
+      "src/hydro_pinn/extensions/friction_reference.py": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+      "src/hydro_pinn/references.py": "9e23dd1a97f3f63df7be9d493382d263305e233c3be45980fac3c36fd5d9a547",
+      "docs/evidence/phase_08/friction_v01/reference_sources/provenance.json": "9fe1826528ab73d8999bca48dd9f534dd276d92a263f1553dcb99b0fad115806"
+    }
+  },
+  "existing_evidence_and_limits": {
+    "planar": "docs/coordination/phase_10_1_completion_review.json accepts technical completion of one exploratory planar seed with incomplete neural recovery. It does not establish accurate genuine 2D performance.",
+    "interpretation": "The original prerequisite for successful planar checks must retain the distinction between verified residual/workflow checks and incomplete neural recovery. Independent reference feasibility can be investigated without claiming that the neural planar finding passed an accuracy gate. Any later genuine-2D neural experiment needs its own root release.",
+    "physics_interface": "physics_2d.py already represents (h,qx,qy), physical x/y conservative fluxes, and scaled (x,y,t) derivatives. Its source-free equations match this proposed case.",
+    "model_interface": "model_2d.py supplies three inputs/three outputs with positive depth and unconstrained two-direction velocity; that is an available interface, not evidence of trainability or accuracy for this case.",
+    "existing_reference_limit": "references.py supplies exact 1D Stoker/Ritter cases. friction_reference.py supplies a checked 1D two-state wet HLLE route and conservative 1D projection. Neither is an existing genuine 2D reference.",
+    "additive_implementation": "If later released, place the independent reference in the Phase 10.2 reference_2d.py/config path. Do not modify planar_2d.py to represent a different scientific case or use neural output as reference."
+  },
+  "physical_case": {
+    "case_id": "wet_rectangular_reservoir_2d_v01_proposed",
+    "coordinate_units": {
+      "x": "m",
+      "y": "m",
+      "t": "s",
+      "h": "m",
+      "qx": "m^2/s",
+      "qy": "m^2/s",
+      "volume": "m^3"
+    },
+    "domain": {
+      "x": [
+        -5.0,
+        5.0
+      ],
+      "y": [
+        -5.0,
+        5.0
+      ],
+      "area_m2": 100.0
+    },
+    "reservoir": {
+      "x": [
+        -1.0,
+        1.0
+      ],
+      "y": [
+        -0.5,
+        0.5
+      ],
+      "area_m2": 2.0,
+      "shape": "Centered non-square rectangle, 2 m by 1 m."
+    },
+    "initial_depth_inside_m": 1.0,
+    "initial_depth_outside_m": 0.1,
+    "initial_qx_m2_s": 0.0,
+    "initial_qy_m2_s": 0.0,
+    "gravity_m_s2": 9.81,
+    "bed_elevation_m": 0.0,
+    "manning_n": 0.0,
+    "rainfall_m_s": 0.0,
+    "initial_volume": {
+      "formula": "0.1*100 + (1.0-0.1)*2",
+      "exact_m3": 11.8,
+      "interpretation": "Finite area water volume, not the 1D volume per unit width."
+    },
+    "initial_cell_averages": "Integrate the piecewise-constant rectangle by exact rectangle/cell area overlap. At all selected native levels its edges align with cell faces, so all native cells are exactly inside or outside. Check the overlap area sum is exactly 2 m^2 within floating arithmetic tolerance. Never initialize by an approximate circular mask or center sampling of a misaligned shape.",
+    "initial_point_boundary_convention": "For any pointwise initial-label helper, assign the deep state on [-1,1) x [-0.5,0.5) and the shallow state elsewhere; face/corner ownership has zero area and cannot alter volume. This convention is separate from finite-volume cell averages.",
+    "why_genuine_2d": "Depth changes across both finite x faces and finite y faces. Both directional Riemann problems and their corner interactions are represented. A single 1D extrusion cannot represent this geometry.",
+    "equations": [
+      "h_t + (qx)_x + (qy)_y = 0",
+      "(qx)_t + (qx^2/h + g*h^2/2)_x + (qx*qy/h)_y = 0",
+      "(qy)_t + (qx*qy/h)_x + (qy^2/h + g*h^2/2)_y = 0"
+    ],
+    "scales": {
+      "Hc_m": 1.0,
+      "Lc_m": 10.0,
+      "Uc_definition": "sqrt(g*Hc)",
+      "Tc_definition": "Lc/Uc",
+      "qx_qy_scale": "Hc*Uc",
+      "shared_xy_length": true,
+      "note": "Record resolved scale values if a later PINN uses the existing scaling interface. The reference advances physical float64 conserved quantities."
+    },
+    "time": {
+      "final_s": 0.25,
+      "initial_snapshot": true,
+      "positive_snapshot_rule": "t_k=0.005*k seconds for k=1,...,50. Cap the last step to each output time; do not interpolate in time.",
+      "status": "Proposed horizon, not yet verified boundary-safe."
+    },
+    "four_boundaries": {
+      "left_x_minus5": {
+        "physical": "Impermeable slip wall, qx=0 normal discharge.",
+        "ghost": "Copy adjacent h and qy; negate adjacent qx."
+      },
+      "right_x_plus5": {
+        "physical": "Impermeable slip wall, qx=0 normal discharge.",
+        "ghost": "Copy adjacent h and qy; negate adjacent qx."
+      },
+      "bottom_y_minus5": {
+        "physical": "Impermeable slip wall, qy=0 normal discharge.",
+        "ghost": "Copy adjacent h and qx; negate adjacent qy."
+      },
+      "top_y_plus5": {
+        "physical": "Impermeable slip wall, qy=0 normal discharge.",
+        "ghost": "Copy adjacent h and qx; negate adjacent qy."
+      },
+      "corners": "Apply both normal reflections, which commute; do not turn a corner into an open boundary.",
+      "budget_convention": "Retain the actual numerical three-component flux on every face. Wall mass flux should vanish to floating arithmetic tolerance; normal momentum pressure flux is generally nonzero and must not be replaced by zero.",
+      "later_neural_boundary_labels": "If a neural experiment is separately selected, impose the compatible wall condition on normal discharge. Do not silently prescribe both depth and tangential discharge along the wall as extra physical conditions."
+    },
+    "boundary_safety_gate": {
+      "modeling": "All four walls are explicit physical boundaries, so any wall response is modeled by the declared reference. The intended early-time comparison additionally excludes material reflected-wave influence.",
+      "planning_geometry": "The smallest initial reservoir-to-wall distance is 4 m. sqrt(g*1 m) is about 3.1321 m/s; 2*sqrt(g*1 m)*0.25 s is about 1.566 m. This 1D planning estimate is not a proved 2D speed bound or executed check.",
+      "required_record": "Save per-step global directional HLLE speed extrema, their cumulative travel estimates, and max depth/discharge departure from the initial outside state in the outermost physical-cell strip on each side at every step. Include the coarse grid as well as the selected finest run.",
+      "proposed_operational_gate": "For the intended early-time claim, require the cumulative max-direction speed travel diagnostic to remain below 4 m and each boundary-adjacent state departure to remain below 1e-10 in units scaled by Hc and Hc*Uc. Report actual values and roundoff assumptions. These are discrete safety diagnostics, not an analytical error bound.",
+      "if_gate_fails": "Preserve the run and report modeled wall effects. Do not call the interval boundary-independent. A shorter horizon or larger domain requires a new case/protocol and renewed reference checks before neural final evaluation; do not silently crop the saved run."
+    }
+  },
+  "independent_reference_route": {
+    "choice": "Independent NumPy float64 first-order unsplit finite-volume HLLE solver for three conserved quantities on a Cartesian grid. No neural components, source terms, reconstruction limiter, depth floor, wet/dry treatment, or Lax-Wendroff repair.",
+    "reason": "A small auditable vector-flux implementation keeps the new dependency/runtime surface bounded while following an established normal 2D shallow-water Riemann construction. First order is deliberately disclosed; a refined numerical reference is not exact truth.",
+    "local_primary_evidence": "The pinned Riemann-book source and license in the friction reference packet support the existing wet 1D HLLE wave-speed choice. They do not alone document the transverse-momentum rotation used by a 2D interface.",
+    "additional_primary_source": {
+      "project": "Clawpack riemann",
+      "version_read": "v5.12.0 tag; source and matching license were readable through the web tool.",
+      "source_url": "https://raw.githubusercontent.com/clawpack/riemann/v5.12.0/src/rpn2_shallow_hlle.f90",
+      "license_url": "https://raw.githubusercontent.com/clawpack/riemann/v5.12.0/LICENSE",
+      "support": "The primary 2D HLLE routine has three conserved components and rotates normal/tangential momenta by interface direction. It provides the wet-state speed estimates and the transverse-momentum middle state. The implementation would adapt the normal flux, not claim to run PyClaw or reproduce its full time integrator.",
+      "license": "BSD-3-Clause, copyright Clawpack Developers. Preserve the actual matching copyright, conditions and disclaimer with any adapted source.",
+      "pin_status": "Exact commit and raw-byte hashes have not been obtained in this planning-only task. Before accepting an implementation, resolve v5.12.0 to an exact commit, retain that source and same-commit LICENSE, hash their bytes, record retrieval/version and adaptation notes, and preserve them with the executable snapshot. A mutable branch or an unverified tag alone is insufficient provenance.",
+      "lookup_limits": "Official source/license URLs were inspected; GitHub commit/tag API/history requests did not return usable commit information through the web tool. No reference files were downloaded into the project."
+    },
+    "method_definition": {
+      "state_layout": "U[...,0]=h; U[...,1]=qx; U[...,2]=qy. Native arrays are (time,y,x), with x increasing rightward and y upward.",
+      "normal_flux": "For an x face, use normal qx and tangential qy; for a y face rotate those roles and rotate the output back. Include cross momentum qx*qy/h. Use the entire three-vector HLL flux, including the tangential component.",
+      "speed_definition": "For each wet interface use c=sqrt(g*h), h_hat=(hL+hR)/2 and sqrt(h)-weighted normal u_hat. sL=min(uL-cL,u_hat-sqrt(g*h_hat)); sR=max(uR+cR,u_hat+sqrt(g*h_hat)). Record actual extrema. Use the appropriate upwind flux when both speeds have one sign.",
+      "update": "U_new = U - (dt/dx)*(F_right-F_left) - (dt/dy)*(G_top-G_bottom), using the same old-time state for both directional fluxes. No directional sweep or Strang splitting is being claimed.",
+      "timestep": "a_x=max over all x faces of max(abs(sL),abs(sR)); a_y analogously. dt_CFL=C/(a_x/dx+a_y/dy). Set dt=min(dt_CFL,next_requested_time-t). Record both directional rates and their sum, including boundary ghost interfaces.",
+      "positivity_and_failure": "Reject nonfinite or nonpositive input/ghost depth, invalid HLLE denominators, nonpositive/nonfinite intermediate depth, or any nonpositive/nonfinite updated state. Preserve offending old state, raw intermediate/update and location/step/time/CFL. Do not floor depth, clip flux, retry with smaller dt silently, or relabel a failed reference as completed.",
+      "validity_limit": "This is a strictly wet-case design. A wet HLLE formulation and conservative CFL are not by themselves executed positivity evidence or a general wetting/drying guarantee."
+    }
+  },
+  "predeclared_reference_matrix": {
+    "spatial_levels": [
+      {
+        "id": "ref_rect80_c045_v01",
+        "nx": 80,
+        "ny": 80,
+        "dx_m": 0.125,
+        "dy_m": 0.125,
+        "cfl_sum": 0.45
+      },
+      {
+        "id": "ref_rect160_c045_v01",
+        "nx": 160,
+        "ny": 160,
+        "dx_m": 0.0625,
+        "dy_m": 0.0625,
+        "cfl_sum": 0.45
+      },
+      {
+        "id": "ref_rect320_c045_v01",
+        "nx": 320,
+        "ny": 320,
+        "dx_m": 0.03125,
+        "dy_m": 0.03125,
+        "cfl_sum": 0.45
+      }
+    ],
+    "separate_timestep_level": {
+      "id": "ref_rect320_c0225_v01",
+      "nx": 320,
+      "ny": 320,
+      "dx_m": 0.03125,
+      "dy_m": 0.03125,
+      "cfl_sum": 0.225
+    },
+    "selected_reference_before_results": "ref_rect320_c0225_v01, if all required validity checks pass. No selection according to a later model error.",
+    "interpretation": "At constant CFL, spatial refinement also changes dt; report those three runs as coupled mesh/time refinement. The fourth run holds the finest grid fixed and halves the CFL to provide a separate timestep sensitivity. Do not claim observed asymptotic order or a pure spatial-error estimate from three constant-CFL runs.",
+    "repetitions": "One deterministic run per matrix cell; no seeds or repeated solver timing batch is needed for this reference gate. Any retry is a preserved new attempt.",
+    "settings_shared": "Identical physical geometry, exact initial average rule, boundaries, horizon, 51 snapshots, float64 and numerical method. Only the declared mesh/CFL factors differ.",
+    "status": "All four runs unexecuted."
+  },
+  "comparison_and_uncertainty": {
+    "common_grid": "80 by 80 area cells on [-5,5]^2, edges shared with every native level. Save common edges and cell areas; compare all runs at exactly the same 50 positive times.",
+    "operator": "P(U)[J,I] = sum over native cells of (x-overlap length)*(y-overlap length)*U[j,i] / common_cell_area. Implement separable conservative overlap weights; verify coverage and total integral preservation independently. With the selected nested grids this is exact grouping of native cell averages. Do not confuse a center sample or bilinear interpolation with this operator.",
+    "fields": "Compare h, qx, qy as conserved cell averages. Compute velocity only through explicitly labeled reference-wet diagnostics; dividing cell-average q by cell-average h is an averaged diagnostic, not the average of pointwise velocity.",
+    "metrics": "Per time and over the fixed time set, report area-weighted absolute RMSE, L1 and L2 norms for all three conserved fields, plus relative L2 only where the reference norm is defined. Preserve undefined relative values. Record field units and time weighting.",
+    "refinement_differences": "Save P(U160,.45)-P(U80,.45), P(U320,.45)-P(U160,.45), and P(U320,.225)-P(U320,.45), including signed maps and area-weighted norms. Report whether differences decrease; do not force a convergence label when they do not.",
+    "uncertainty_operator": "For each field/time/common cell, save D_space=abs(P(U320,.45)-P(U160,.45)) and D_time=abs(P(U320,.225)-P(U320,.45)); D_sum=D_space+D_time. This is a sensitivity envelope, not a certified error bar, statistical confidence interval, Richardson extrapolation, or proof that the selected reference is accurate to D_sum.",
+    "if_sensitivity_is_material": "Keep the reference labeled provisional and report the actual spatial/time differences. Compare any later neural discrepancy against those differences; do not infer a model ranking where numerical-reference uncertainty dominates. Additional resolution or a different method requires an explicit new bounded decision.",
+    "fronts": "Show common-grid depth and both fluxes with fixed physical axes and a reference-gradient map. A gradient ridge is a diagnostic of this numerical reference, not an exact 2D front location. Any quantitative front-band threshold/dilation must be frozen using reference-only evidence before neural final evaluation; no neural final errors may set that mask.",
+    "later_neural_operator": "If training is separately released, compare neural predictions to these cell averages by tensor-product 3x3 Gauss area quadrature, with 5x5 area-quadrature sensitivity. Pointwise neural center values may be shown separately but cannot be mislabeled common cell averages. Budget these queries before a neural pilot.",
+    "mass": "For each native run, M(t)=sum(h*dx*dy), M0_exact=11.8 m^3. Retain initial-volume discrepancy separately from B(t)=M(t)-M(0)+sum_steps(dt*outward_boundary_mass_flux). Outward flux is sum_y dy*(F_right-F_left)+sum_x dx*(G_top-G_bottom); retain all four signed contributions.",
+    "momentum": "Apply the same discrete boundary-flux accounting to qx and qy integrals using the actual full flux vectors. Walls supply pressure force; zero wall mass flux does not justify zero momentum flux.",
+    "later_neural_balance": "Use independent area and edge/time quadrature for neural volume/four-sided flux, with separate spatial and temporal sensitivities. Do not substitute the conservative reference balance for evidence about neural conservation."
+  },
+  "only_necessary_reference_checks": [
+    {
+      "id": "R1_geometry_layout",
+      "purpose": "Verify exact rectangle/cell overlap, 2 m^2 deep area, 11.8 m^3 initial volume, x/y orientation, time,y,x shape and axis-specific qx/qy rotation on one small deterministic fixture."
+    },
+    {
+      "id": "R2_constant_wet_state",
+      "purpose": "A uniform wet lake with zero q must remain unchanged with all four reflective walls. Check depth and both momenta; use a short small-grid execution rather than a new refinement study."
+    },
+    {
+      "id": "R3_planar_reduction",
+      "purpose": "Check x-varying and y-varying wet planar updates with compatible transverse boundaries. Compare against the accepted 1D homogeneous n=0 HLLE flux/update at the same imposed dt sequence and geometry, including transverse zero momentum. The 2D sum-CFL generally chooses smaller dt than the 1D CFL, so unmatched independent adaptive histories are not an equality test. This checks reference orientation/reduction, not a new neural run."
+    },
+    {
+      "id": "R4_flux_budget_operator",
+      "purpose": "Use a small deterministic nonzero vector-flux bookkeeping fixture to check all four outward signs, edge lengths and all three component balances; a closed still-water case alone cannot test those signs. Verify conservative projection integral/coverage on a nonconstant small field."
+    },
+    {
+      "id": "R5_invalid_state_persistence",
+      "purpose": "One representative invalid wet-state input/update must fail explicitly with raw state, step/location and failure receipt preserved. Reject unsupported zero depth rather than testing or claiming a dry solver. Check exclusive output/run IDs and saved input/source/output hashes through the existing record contract."
+    },
+    {
+      "id": "R6_actual_four_run_gate",
+      "purpose": "On the one actual case, check every step finite/positive, recorded sum-CFL/output caps, actual boundary safety, discrete mass/momentum budgets, symmetry parity and saved refinement differences. Reflection parity is h even in x/y, qx odd in x and even in y, qy even in x and odd in y. The non-square reservoir does not require 90-degree axis-exchange symmetry. No duplicate case sweep is proposed."
+    }
+  ],
+  "cost_and_staging": {
+    "measured_costs": null,
+    "observed_reference_runs": 0,
+    "runtime_memory_and_disk": "Unmeasured for this method/case. The 1D friction reference and planar PINN timings cannot establish its 2D solver or neural cost.",
+    "storage_arithmetic_only": {
+      "four_native_state_histories_raw_bytes": 289843200,
+      "definition": "Sum of 80^2 + 160^2 + 320^2 + 320^2 cells, times 51 snapshots, times three float64 fields. Excludes coordinates, flux/time diagnostics, checks, failure states, packaging and compression. This is arithmetic, not a measured disk or peak-RAM observation.",
+      "one_finest_native_state_history_raw_bytes": 125337600,
+      "four_common_state_histories_raw_bytes": 31334400
+    },
+    "proposed_next_release": "After this plan is reviewed, root may lease only additive reference/config/provenance work and the necessary small checks. Resolve and retain the exact primary source/license pin before reference acceptance. No CLI lease or execution is granted here.",
+    "first_measured_matrix_cell": "After code/provenance review, propose releasing only the 80x80 CFL .45 run first through the full .25 s horizon, as the first actual matrix cell. Instrument setup, loop/flux/update, validation/diagnostics, output/persistence and complete wall time, peak memory, step count and actual dt range. Freeze any operational wall/step cap before launch; a cap interruption remains an incomplete preserved attempt.",
+    "remaining_matrix_gate": "Use that actual full coarse record to estimate the other three cells, disclose the approximate O(N^3) work scaling for fixed horizon/CFL and its limits, and obtain a root release of a concrete measured budget before launching them. Keep the valid coarse run rather than repeating it merely to rename it a final run. The finest-grid memory and speed still require actual observation.",
+    "neural_gate": "Only after the independent reference and uncertainties are accepted should a separate proposal freeze genuine-2D sampling/validation/final-evaluation partitions, network/budget/device and one bounded neural pilot. No 10,000-step fit, inverse study, method tuning or accuracy claim follows from this reference plan."
+  },
+  "acceptance_packet_proposed": [
+    "Exact immutable case/protocol/config and primary source/license provenance; frozen executed source snapshot with hashes.",
+    "One canonical run per actual matrix cell, stage/failure statuses, exact IC/edges/times, complete dt/CFL/min-depth/flux/mass/momentum and wall-safety diagnostics.",
+    "Native and conservative common-cell h/qx/qy fields; exact operators and signed spatial/timestep differences plus sensitivity envelope.",
+    "Only the focused check outcomes above, with commands/exits and measured full coarse cost before the remaining matrix release.",
+    "Independent readback of scientific balances/refinement and code/persistence/provenance before treating the packet as an accepted numerical reference.",
+    "Current reference-gate status and boundaries of any later neural experiment; retain unrun/incomplete/failed evidence explicitly."
+  ],
+  "open_items_not_blocking_this_plan": [
+    "No genuine 2D reference source exists yet; this is implementation work, not evidence of infeasibility.",
+    "No actual coarse runtime, finest memory, positivity, boundary-safety or refinement result is available.",
+    "The new Clawpack v5.12.0 source/license route still needs exact-commit and raw-byte provenance capture before implementation acceptance.",
+    "The accepted planar neural recovery remains incomplete. A later genuine 2D neural result cannot inherit an accuracy claim from technical planar completion."
+  ],
+  "work_performed": "Read-only local input/interface review, primary-source web inspection and planning arithmetic. Wrote only this new coordination JSON. No solver, neural forward, fit, test, benchmark or pilot was executed."
+}

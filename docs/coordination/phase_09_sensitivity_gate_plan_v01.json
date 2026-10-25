@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "author": "science_audit",
+  "recorded_at_utc": "2026-10-25T20:56:34Z",
+  "state": "proposed_planning_only_not_executed_or_released",
+  "ownership": "Only this new planning JSON is owned and written. Other agents retain their source, configuration, evidence, result and coordination files.",
+  "purpose": "Propose the smallest bounded numerical depth-response screen that can decide whether a later inverse-specific pilot merits consideration for the fixed wet flat E1 case. Separate roughness signal, measured discretization differences and a fixed illustrative noise assumption before generating any inverse dataset or fitting any network.",
+  "authority": {
+    "current_authority": "Planning only while the separately released fixed-roughness forward fit runs.",
+    "all_new_choices_below": "Proposed and unexecuted. They are predeclarations for a possible later gate, not observed results or an instructor requirement.",
+    "no_execution_release": true,
+    "no_inverse_dataset_release": true,
+    "no_inverse_fit_release": true,
+    "no_source_or_cli_change": true
+  },
+  "accepted_basis": {
+    "component_review": "docs/coordination/phase_08_reference_science_review.json",
+    "component_review_sha256": "d790296e1db8499d692bcbdf6ce0c7fee1148e45c821b2e47b81a24f6435d1eb",
+    "component_review_reused_without_rerun": true,
+    "reference_packet": "results/extensions/friction/reference_v01",
+    "reference_is": "Verified numerical wet-flat HLLE/Manning reference with retained spatial/time differences; it is not an analytical positive-friction solution or field truth.",
+    "forward_full_fit": "Its outcome is outside this planning file. A neural forward error does not measure physical roughness sensitivity and will not select this gate's n values, gauges, times or noise.",
+    "original_phase_09": "The original prompt requires positive constant n, finer verified synthetic generation, explicit noise, disjoint fitting/validation/holdout, sensitivity before recovery claims, several starts and retained failures. This proposed gate precedes observation generation and addresses sensitivity only; it cannot complete Phase 09 or release 09.2."
+  },
+  "fixed_case": {
+    "status": "proposed reuse of accepted physical case; no case alteration",
+    "base_case": "configs/cases/e1_wet.json",
+    "source_override": "Positive constant Manning drag overrides the source-free case template; geometry, IC, BC and scales remain those of E1.",
+    "domain_m": [-5.0, 5.0],
+    "dam_position_m": 0.0,
+    "left_depth_m": 1.0,
+    "right_depth_m": 0.1,
+    "initial_velocity_m_s": 0.0,
+    "gravity_m_s2": 9.81,
+    "final_time_s": 0.5,
+    "bed_elevation_m": 0.0,
+    "rainfall_m_s": 0.0,
+    "boundary": "Both fixed reservoir ghost states from the accepted E1 case, refreshed for every homogeneous step.",
+    "initial_volume_m2_per_unit_width": 5.5,
+    "source_momentum_m2_s2": "Sq = -g n^2 q |q| / h^(7/3)",
+    "mass_source": 0.0,
+    "all_other_physical_inputs": "Known and fixed. No joint initial-depth, boundary, bed, rainfall, sensor-location or timing calibration."
+  },
+  "roughness_profile": {
+    "status": "proposed fixed five-point profile",
+    "units": "s m^(-1/3)",
+    "illustrative_truth": 0.03,
+    "candidate_values": [0.02, 0.025, 0.03, 0.035, 0.04],
+    "candidate_ids": ["n0p020", "n0p025", "n0p030", "n0p035", "n0p040"],
+    "primary_local_contrasts": [[0.025, 0.03], [0.03, 0.035]],
+    "context_truth_contrasts": [[0.02, 0.03], [0.03, 0.04]],
+    "all_pair_count": 10,
+    "reason": "The two nearby contrasts test the predeclared absolute n increment 0.005 around the existing illustrative truth. The two outer values show limited-range nonlinearity or competing responses. All n values are positive; zero n is not an inverse start and the source remains proportional to n squared.",
+    "claim_limit": "This finite profile can screen local and grid-level sensitivity on [0.02,0.04]. It does not establish continuous/global identifiability or a recovery percentage."
+  },
+  "numerical_matrix": {
+    "status": "proposed minimal matrix required by the accepted uncertainty indicator",
+    "method": "Accepted independent NumPy float64 CPU first-order finite-volume HLLE with Einfeldt speeds, homogeneous forward Euler followed by exact fixed-h Manning decay, strictly wet stages, no depth floor, clipping, retries or time interpolation.",
+    "levels_per_candidate": [
+      {"id": "n1600_cfl0p45", "cells": 1600, "cfl": 0.45},
+      {"id": "n3200_cfl0p45", "cells": 3200, "cfl": 0.45},
+      {"id": "n3200_cfl0p225", "cells": 3200, "cfl": 0.225}
+    ],
+    "selected_level": "n3200_cfl0p225",
+    "output_schedule": "Copy the exact accepted reference t_s array: 50 positive requested times displayed as 0.01 through 0.50 s. Every candidate and level uses that full schedule, then the gate extracts rows 9,19,29,39,49. Do not solve with only the five gate times: shortening steps at all requested outputs affects the discrete trajectory and would change the accepted truth computation.",
+    "truth_reuse": "Reuse the three hash-matched n=.03 native output files and their stored axes. Do not rerun or overwrite them. The existing n=.03 800-cell level remains a retained accepted convergence diagnostic, not a new gate run.",
+    "new_candidates": 4,
+    "proposed_new_solves": 12,
+    "total_logical_candidate_level_records_including_reuse": 15,
+    "why_no_new_800_cell_sweeps": "The accepted method already has its 800/1600/3200 and half-CFL source/reference check at n=.03. The specified sensor indicator needs only 1600/3200 at CFL .45 plus 3200 at CFL .225 for each new n. Adding 800 for every n is not necessary to calculate this screening indicator. No convergence order or error bound will be inferred from the reduced candidate matrix.",
+    "existing_wrapper_constraint": "friction_reference.run_reference is intentionally frozen to n=.03 and the full Phase-08 matrix. A later separately owned Phase-09 driver would call the accepted parameterized solve_reference and conservative_project functions without changing the Phase-08 wrapper, source or CLI now.",
+    "failure_policy": "Retain every candidate/level and any nonfinite/nonpositive-stage failure. A missing/failed candidate level makes the gate incomplete; do not omit that n, repair by clipping, replace it with a successful value or silently refine/retry."
+  },
+  "depth_observation_operator": {
+    "status": "proposed numerical gauges; no observation dataset exists",
+    "common_grid": "The same 400 equal cells on [-5,5] m used by the accepted reference. Use stored common edges; indices are zero based.",
+    "width_m": 0.025,
+    "gauges": [
+      {"id": "G1", "common_cell_index": 220, "display_interval_m": [0.5, 0.525], "display_center_m": 0.5125},
+      {"id": "G2", "common_cell_index": 240, "display_interval_m": [1.0, 1.025], "display_center_m": 1.0125},
+      {"id": "G3", "common_cell_index": 260, "display_interval_m": [1.5, 1.525], "display_center_m": 1.5125}
+    ],
+    "gate_times_display_s": [0.1, 0.2, 0.3, 0.4, 0.5],
+    "accepted_schedule_row_indices": [9, 19, 29, 39, 49],
+    "vector_order": "Time-major ascending, then G1,G2,G3. Exactly 15 scalar depth means for every candidate/level; no dropping unresponsive samples.",
+    "formula": "mu_(n,l,j,k) = (1 / |I_j|) integral_(I_j) h_(n,l)(x,t_k) dx, using conservative overlap integration of the native piecewise-constant cell averages.",
+    "operator_implementation": "Use the accepted conservative_project onto the fixed 400 common cells and select the declared cells/rows. At 1600/3200 native cells this averages four/eight aligned native cells per gauge. Save native and common edges and actual times; no nearest-centre point lookup, spatial interpolation or change to point-depth semantics.",
+    "time_identity": "Extract by the declared rows from stored t_s, verify the five display times within the accepted roundoff tolerance 1e-15 s, and save actual floating-point axes. Never use nearest-time interpolation.",
+    "design_rationale": "Three fixed downstream intervals and five times sample several space/time locations within the already selected half-second dam-break case. Their sensitivity and wave-arrival usefulness are hypotheses to assess, not claims used to select favorable coordinates.",
+    "quantity_name": "Synthetic numerical gauge-interval mean depth, in metres. It is not a point reading, discharge observation, measured sensor response or field observation.",
+    "holdout_policy": "These 15 design-screen coordinates cannot be relabeled a final inverse holdout. No prospective final-holdout reference values are queried by this gate. Any later dataset proposal must freeze disjoint fitting/validation/final coordinates, truth separation and selection rules before generation; it may retain these as design/fitting coordinates only with explicit ancestry."
+  },
+  "illustrative_noise": {
+    "status": "proposed fixed assumption; no RNG draw, noise array or synthetic observation dataset",
+    "model": "epsilon_i independently distributed as Gaussian with mean zero and standard deviation sigma for each of the 15 gauge/time means.",
+    "alpha": 0.01,
+    "depth_scale_H_m": 1.0,
+    "sigma_m": 0.01,
+    "covariance": "sigma^2 times the 15 by 15 identity matrix",
+    "source_of_choice": "The PRD and original Phase-09 prompt offer sigma=alpha H with alpha in {0,.01,.05}; this gate preselects alpha=.01 only.",
+    "comparison_denominator": "Use sigma, not sqrt(2)*sigma: deterministic candidate responses are compared against one hypothetical noisy observation vector, not two independently noisy measured vectors.",
+    "excluded_uncertainties": "No field calibration, common sensor bias, correlated noise, timing/position uncertainty, censoring or device accuracy claim. Independence and 1 cm noise are illustrative assumptions; do not reduce sigma by averaging times or report them as measured hardware specifications.",
+    "no_posthoc_noise_selection": "Do not add a smaller sigma or select alpha=0 after viewing the profile to turn a negative noisy-sensitivity screen into a positive result. A later zero-noise computational illustration would need an explicit new purpose and proposal."
+  },
+  "proposed_analysis": {
+    "reference_depth_indicator_per_candidate": "e_n,i = abs(mu_n,3200_CFL.45,i - mu_n,1600_CFL.45,i) + abs(mu_n,3200_CFL.225,i - mu_n,3200_CFL.45,i). Compute differences after applying the same gauge-mean operator.",
+    "pair_definitions": {
+      "delta_i_m": "mu_b,selected,i - mu_a,selected,i for each of all ten unordered candidate pairs (a,b).",
+      "combined_indicator_U_i_m": "e_a,i + e_b,i",
+      "adjusted_magnitude_s_i_m": "max(abs(delta_i) - U_i, 0)",
+      "raw_noise_distance": "d_raw = sqrt(sum_i delta_i^2) / sigma",
+      "adjusted_noise_distance": "d_adj = sqrt(sum_i s_i^2) / sigma",
+      "interpretation_of_adjustment": "s and d_adj are screening adjustments using measured numerical differences. They are not lower bounds, guaranteed conservative distances, statistical confidence limits or corrected physical responses."
+    },
+    "retain_for_every_pair": [
+      "Signed selected-level depth differences for all 15 fixed samples, in metres.",
+      "Signed pair contrasts at all three resolution/CFL levels; never infer a signal from selected-level magnitudes alone.",
+      "Each candidate's spatial and time difference vectors separately, their sum e, and pair sum U.",
+      "Raw depth-difference RMS and maximum, L2(delta), L2(U), adjusted RMS and maximum, and the count of samples with abs(delta)>U.",
+      "d_raw, d_adj and max(s)/sigma, with no component-threshold condition that would discard legitimate accumulation under the declared independent-noise model.",
+      "Separate numerical-indicator comparison L2(delta)<=L2(U), and raw/adjusted noise-unit flags; the numerical and noise flags may both be negative."
+    ],
+    "local_descriptive_response": {
+      "formula": "J_i = (mu_0.035,selected,i - mu_0.025,selected,i) / 0.010; report also J_i * n_truth / H and the central second difference mu_.035 + mu_.025 - 2*mu_.030.",
+      "units_J": "m per (s m^(-1/3))",
+      "limits": "A finite-difference response and nonlinearity diagnostic only. It is not an exact derivative, parameter-gradient check, Fisher-information confidence interval or proof of identifiability. Do not replace the declared pair profile with this derivative."
+    },
+    "optional_profile_display_without_new_runs": "Display the five selected numerical response vectors and zero-noise mean-square mismatch to n=.03 over the fixed 15 means, together with the fixed numerical indicators and sigma. The zero at the known generator truth is tautological; it is not parameter recovery, a noisy fitted optimum or independent validation."
+  },
+  "proposed_decision_rule": {
+    "status": "Advisory predeclared screen for considering a later inverse-specific pilot; no fit is automatically released.",
+    "threshold": "d_adj >= 1 means only passes a one-noise-unit aggregate sensitivity screen under the fixed illustrative model. It does not mean reliable parameter discrimination, a 68/95 percent statement, an attainable recovery percentage or field identifiability.",
+    "primary_local_screen": "Both truth-versus-.025 and truth-versus-.035 must meet the fixed d_adj>=1 screen to call the predeclared local increment .005 informative by this criterion. Report either failing side; an outer n contrast cannot rescue it.",
+    "range_check": "Also report truth-versus-.020 and truth-versus-.040 and all other pairs. Any truth-versus-outer candidate failing the screen is a competing response on the declared grid and prevents a range-level informative claim even if both local sides pass. Small distances among other nontruth pairs remain visible as grid-level ambiguity.",
+    "independent_numerical_axis": "For each pair report whether L2(delta)<=L2(U), without treating the two norms as a certified error comparison. If a nominal pass changes under the numerical adjustment or is indicator-dominated, label that limitation explicitly; do not call the source physically unidentifiable or the reference exact.",
+    "outcome_categories": [
+      "Numerical differences dominate or materially change the screen: sensitivity is unresolved at this reference resolution/operator; no noisy recovery claim is supported.",
+      "Numerically visible response but d_raw<1 and/or d_adj<1: the declared .005 increment is weak at the fixed 1 cm illustrative noise scale. This does not prove intrinsic nonidentifiability.",
+      "Both local sides survive the one-unit adjusted screen: a later inverse-specific design/gradient/cost pilot may be considered, with range/pair ambiguity and numerical qualifications retained. Reliable recovery remains untested.",
+      "Missing or failed numerical evidence: gate incomplete, with the exact failed candidate/level retained."
+    ],
+    "useful_negative_outcome": "Complete and report the bounded sensitivity assessment, retain every response and failure, and leave the observation dataset and inverse trainer uncreated/unreleased. State the tested case, interval, operator, .005 increment and 1 cm assumption. This can be an extension limitation in the paper without marking all Phase 09 complete.",
+    "positive_outcome_next_gate": "Before any future inverse fit, separately freeze disjoint observation partitions, generator truth isolation, noise RNG, positive parameter bounds/start values, physics/data weights, multiple starts and selected noise cases. Verify parameter gradients and measure the complete inverse-specific workload. This planning file supplies no such release."
+  },
+  "nonadaptation_and_preservation": {
+    "frozen_for_this_proposed_gate": "n grid, truth, T=.5, geometry/IC/BC, three gauge intervals, five gate times, full reference output schedule, three numerical levels, selected fine level, sigma=.01 m, all-pair reporting and one-unit screen.",
+    "no_result_driven_rescue": "Do not enlarge n, extend T, add/move/drop gauges or times, choose only favorable samples/pairs, reduce noise, add new refinements or redefine a threshold after viewing results. No automatic follow-on profile search is part of this gate.",
+    "later_science": "A different physical/sensor question may be proposed later as a new explicitly authorized version with a stated reason and this unfavorable/original result preserved. It cannot overwrite this screen or be presented as its preregistered outcome.",
+    "protected": "All accepted core, hybrid, planar and Phase-08 source/configuration/protocol/reference/neural results, reviews and archives retain their bytes. No source/CLI implementation, solver, model, test, benchmark, label or observation generation occurs in this planning task."
+  },
+  "proposed_future_evidence_contract": {
+    "before_execution": "Root must explicitly select/release this bounded gate after required Phase-08 forward/reference acceptance, bind this plan and reused input hashes, and identify the separate additive driver/outputs. Current planning authority alone is insufficient.",
+    "suggested_gate_root_not_created": "results/extensions/inverse_sensitivity/gate_v01",
+    "suggested_evidence_root_not_created": "docs/evidence/phase_09/sensitivity_gate_v01",
+    "required_records": [
+      "Frozen plan/config/source hashes, candidate IDs, actual n units, case/source override, numerical method, dtype/device, exact output axes, explicit reused-versus-new candidate/level matrix and no-overwrite run IDs.",
+      "Native numerical output and actual-step dt, flux, source-impulse, wet-state/CFL and mass/momentum balance records for every new solve, using the accepted reference budget semantics. Native mass alone cannot verify drag.",
+      "Exact gauge-window edges, common-grid cell indices, time rows/order and conservative averaging operator; fixture/operator evidence scoped to any genuinely new extraction code, without rerunning the accepted science suite.",
+      "All 15 depth means at all three levels for all five candidates, all spatial/time indicators, all ten signed pair profiles and declared numerical/noise summaries, including unsuccessful/ambiguous outcomes.",
+      "A final decision receipt separating executed numerical evidence, illustrative noise assumptions, screen outcome, limits and the still-unreleased inverse dataset/fit.",
+      "Actual total wall time, per-solve time, extraction/reporting/storage cost and observed process/host memory context. Preserve any failed attempts and provenance; no invented runtime, thermal guarantee or unmeasured device ordering."
+    ],
+    "not_outputs_of_this_task": "No gate directories, sensor dataset, labels, solver arrays, source/test/config/CLI files or inverse-fit manifests are created now."
+  },
+  "observed_input_sha256": {
+    "project_specification.md": "95233f63b8a7c1514c7132ad9d735c8250c26c00aebfe10a0e0f14088d343850",
+    "prompts/phase_09_inverse_roughness/00_PHASE_OVERVIEW.md": "74ea90f0b6c3dbb620adb03dd8a6c915a40d7af0a0a875cf0e05e3e3b6f944a8",
+    "prompts/phase_09_inverse_roughness/01_synthetic_sensors_and_identifiability.md": "14787a685815f439e971aebfe55ad93230b7b4008a4ecc3731787987605929c1",
+    "prompts/phase_09_inverse_roughness/02_inverse_fit_noise_and_holdout.md": "058ce8e3842320ef776ce22230b58c95d7f4727fa43f98208fe0b9ff6a4f8751",
+    "src/hydro_pinn/extensions/friction_physics.py": "eed3acce02188253da77864ab11dd55597d1de6af8d57c4c815b66bbbe06bf6d",
+    "src/hydro_pinn/extensions/friction_reference.py": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+    "configs/cases/e1_wet.json": "9736a419f9a63d27310bae03aaf9288f630e8f28ad100c7b1059397952255e1e",
+    "configs/extensions/friction_reference.json": "6528c32b40264a0054e5e7197b237cd3d755ca08d43c04feb6415eb324eac52f",
+    "docs/extensions/friction_protocol_v01.md": "61c47bb1e12b601b5b1aba4ec98a6b9f2d6a947de1401a3a97db9d8126db24ce",
+    "docs/extensions/friction_reference_checks.md": "74c45ec79e3556bfeb4192595092432c512c671c4bbdf72f6cec099906b80f8b",
+    "docs/extensions/friction_reference_handoff_v01.json": "f3b88a465544c8349cd5945842e37db17e436ef03ccdf8ef30a7816af36236bf",
+    "docs/coordination/phase_08_reference_science_review.json": "d790296e1db8499d692bcbdf6ce0c7fee1148e45c821b2e47b81a24f6435d1eb",
+    "results/extensions/friction/reference_v01/protocol.json": "de949da992106dd6247046e3432bccd94a74c5d94847ba35370d74ca19c82a4b",
+    "results/extensions/friction/reference_v01/common_reference.npz": "36b44a1cc4cde5183e051fe5eba357113443a8d6594efc915292a375cfdde91c",
+    "results/extensions/friction/reference_v01/summary.json": "d0788d7e7c0e34e970ff8306d9e9ce852a6f255c4d506f2e1ffbe1e12c031387",
+    "results/extensions/friction/reference_v01/reference_provenance.json": "9fe1826528ab73d8999bca48dd9f534dd276d92a263f1553dcb99b0fad115806",
+    "results/extensions/friction/reference_v01/n1600_cfl0p45/outputs.npz": "700d937595f67c7089f3804672352e06d5be653e18aeccc13a71dfde28d8526c",
+    "results/extensions/friction/reference_v01/n3200_cfl0p45/outputs.npz": "6de131027d1ab599ce6e45a8e814bd6065ed9bf0bd3d04e882d39cbb1b494f42",
+    "results/extensions/friction/reference_v01/n3200_cfl0p225/outputs.npz": "620b80ccf2d25296b6a853361c9e10b36949c3273a82dc95c8b0761c785d4822"
+  },
+  "planning_validation": {
+    "independent_mathematical_critique": "A separate read-only agent challenged the proposed indicator/noise definitions. Adopted corrections: d_adj is heuristic, numerical/noise flags remain separate, sigma applies to one hypothetical noisy vector, all ten pairs are retained, the nearby contrasts remain primary and the threshold makes no confidence claim.",
+    "computations_performed_now": "Input-file hashing, source/prompt/record reading and elementary design arithmetic only. No model or solver was called, no reference/sensor values were generated or screened and no tests were run.",
+    "results": null,
+    "reason_results_null": "Proposed sensitivity gate has not been selected, implemented, released or executed."
+  }
+}
