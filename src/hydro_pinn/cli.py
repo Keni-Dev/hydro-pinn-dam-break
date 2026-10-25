@@ -217,6 +217,71 @@ def build_parser() -> argparse.ArgumentParser:
     matrix.add_argument(
         "--resume-run-id", help="New attempt ID for the resumed training stage."
     )
+    evaluate = subparsers.add_parser(
+        "evaluate",
+        help="Evaluate a complete frozen matrix and save physical error/mass metrics.",
+        description=(
+            "After the coordinating root releases evaluation, verify the terminal "
+            "manifest and source hashes; save common-grid errors plus separate "
+            "checkpoint-bound dense conservation records. No training or checkpoint "
+            "selection occurs. Preserve prior JSON/CSV results."
+        ),
+    )
+    evaluate.add_argument(
+        "--manifest", type=Path, required=True, help="Complete run manifest JSON."
+    )
+    evaluate.add_argument(
+        "--output",
+        type=Path,
+        required=True,
+        help="New metrics JSON; sibling CSV also written.",
+    )
+    plot = subparsers.add_parser(
+        "plot",
+        help="Regenerate figures from saved metrics and hash-checked run arrays.",
+        description=(
+            "Save PNG/PDF figures with SI units, run provenance, failed-run status, "
+            "and exact profile times. Existing figure directories/manifests are "
+            "preserved. This command does not retrain or generate new model outputs."
+        ),
+    )
+    plot.add_argument(
+        "--manifest", type=Path, required=True, help="Complete run manifest JSON."
+    )
+    plot.add_argument(
+        "--output-dir", type=Path, required=True, help="New figure export directory."
+    )
+    plot.add_argument(
+        "--metrics",
+        type=Path,
+        default=Path("results/metrics.json"),
+        help="Matching metrics JSON (default: results/metrics.json).",
+    )
+    plot.add_argument(
+        "--figure-manifest",
+        type=Path,
+        default=Path("docs/figure_manifest.json"),
+        help="New figure provenance JSON (default: docs/figure_manifest.json).",
+    )
+    benchmark = subparsers.add_parser(
+        "benchmark",
+        help="Measure matched physical h/q workloads after all study training stops.",
+        description=(
+            "After the coordinating root releases an idle timing window, require a "
+            "complete frozen manifest. Measure 400 centres by 50 times with ten "
+            "warmups and thirty repetitions, device synchronization, raw samples, "
+            "median/IQR, and separate setup/training/cache costs."
+        ),
+    )
+    benchmark.add_argument(
+        "--protocol", type=Path, required=True, help="Frozen protocol JSON."
+    )
+    benchmark.add_argument(
+        "--manifest", type=Path, help="Optional namespaced replay manifest JSON."
+    )
+    benchmark.add_argument(
+        "--output", type=Path, required=True, help="New raw timing/summary JSON."
+    )
     return parser
 
 
@@ -224,6 +289,55 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command in {"evaluate", "plot", "benchmark"}:
+        try:
+            if args.command == "evaluate":
+                from hydro_pinn.evaluation_workflow import evaluate_manifest
+
+                report = evaluate_manifest(
+                    args.manifest, args.output, operationally_ready=True
+                )
+                summary = {
+                    "state": report["state"],
+                    "rows": len(report["rows"]),
+                    "scientific_status": report["scientific_status"],
+                    "output": str(args.output),
+                }
+            elif args.command == "plot":
+                from hydro_pinn.evaluation_workflow import plot_manifest
+
+                report = plot_manifest(
+                    args.manifest,
+                    args.output_dir,
+                    metrics_path=args.metrics,
+                    figure_manifest_path=args.figure_manifest,
+                )
+                summary = {
+                    "state": "completed",
+                    "figures": len(report["figures"]),
+                    "output_dir": str(args.output_dir),
+                }
+            else:
+                from hydro_pinn.benchmark import benchmark_protocol
+
+                report = benchmark_protocol(
+                    args.protocol,
+                    args.output,
+                    manifest_path=args.manifest,
+                    operationally_ready=True,
+                )
+                summary = {"state": report["state"], "output": str(args.output)}
+        except KeyboardInterrupt:
+            print(
+                f"{args.command.capitalize()} interrupted; saved evidence retained.",
+                file=sys.stderr,
+            )
+            return 130
+        except (ValueError, OSError, RuntimeError) as exc:
+            print(f"{args.command.capitalize()} failed: {exc}", file=sys.stderr)
+            return 2
+        print(json.dumps(summary, allow_nan=False))
+        return 0 if summary["state"] == "completed" else 3
     if args.command == "freeze-protocol":
         from hydro_pinn.protocol import freeze_protocol
 
