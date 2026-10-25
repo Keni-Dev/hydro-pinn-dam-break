@@ -1,0 +1,9 @@
+{
+  "diagnostics": {},
+  "run_id": "p11_hybrid_full_v01_control",
+  "schema_version": 1,
+  "started_at_utc": "2026-10-25T19:28:18.921013+00:00",
+  "state": "completed",
+  "stopping_reason": "finite exploratory Adam budget exhausted; convergence not established",
+  "updated_at_utc": "2026-10-25T19:34:37.310668+00:00"
+}

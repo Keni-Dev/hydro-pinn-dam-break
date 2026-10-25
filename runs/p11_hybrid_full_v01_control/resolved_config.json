@@ -1,0 +1,202 @@
+{
+  "case": {
+    "array_units": {
+      "h_m": "m",
+      "q_m2_s": "m^2/s",
+      "t_s": "s",
+      "x_m": "m"
+    },
+    "assumptions": {
+      "bed": "flat",
+      "channel_width_convention": "per_unit_width",
+      "friction": "none",
+      "rainfall": "none"
+    },
+    "boundary": {
+      "kind": "fixed_reservoir",
+      "left_h_m": 1.0,
+      "left_q_m2_s": 0.0,
+      "right_h_m": 0.1,
+      "right_q_m2_s": 0.0
+    },
+    "case_id": "E1",
+    "config_type": "case",
+    "dam_position_m": 0.0,
+    "description": "Idealized wet-bed dam break; generated benchmark per unit width.",
+    "domain_m": [
+      -5.0,
+      5.0
+    ],
+    "final_time_s": 0.5,
+    "gravity_m_s2": 9.81,
+    "grid": {
+      "cell_counts": [
+        100,
+        200,
+        400,
+        800
+      ],
+      "cfl": 0.45,
+      "state_location": "cell_average",
+      "time_output_policy": "hit_requested_times"
+    },
+    "left_depth_m": 1.0,
+    "left_velocity_m_s": 0.0,
+    "reference": {
+      "kind": "wet_bed",
+      "root_max_iterations": 200,
+      "root_tolerance_m": 1e-12,
+      "source_url": "https://faculty.washington.edu/rjl/riemann_book/Shallow_water.html"
+    },
+    "right_depth_m": 0.1,
+    "right_velocity_m_s": 0.0,
+    "scales": {
+      "H_m": 1.0,
+      "Lc_m": 5.0,
+      "Tc_s": 1.5963771420352522,
+      "Uc_m_s": 3.132091952673165
+    },
+    "schema_version": 1
+  },
+  "execution_settings": {
+    "chunk_size": null,
+    "cpu_threads": 4
+  },
+  "extension": {
+    "fitting_payload": null,
+    "labels_run": null,
+    "lambda_data": 0.0,
+    "mode": "full",
+    "steps": 10000,
+    "variant": "control"
+  },
+  "input_hashes": {
+    "configs/cases/e1_wet.json": "9736a419f9a63d27310bae03aaf9288f630e8f28ad100c7b1059397952255e1e",
+    "configs/extensions/hybrid.json": "21132897bcb3c7d477cbc0854785991c77759e089a671ac71e731cba92897876",
+    "configs/training/baseline.json": "9f9c410fa5eda793fa543d41238ef71191e3987ac0361f782022685833f81a6e"
+  },
+  "protocol_sha256": "be55cd1c5dfc3e57481be5ede94add2ca256135c362990b849dcb98adaccd80b",
+  "request": {
+    "device": "cpu",
+    "dtype": "float32",
+    "run_id": "p11_hybrid_full_v01_control",
+    "seed": 11
+  },
+  "schema_version": 1,
+  "training": {
+    "checkpoint_selection": "minimum_separate_validation_physics_ic_bc_loss",
+    "config_type": "training",
+    "lbfgs": {
+      "enabled": false,
+      "freeze_points_and_weights": true,
+      "history_size": 100,
+      "max_iterations": 500
+    },
+    "network": {
+      "activation": "tanh",
+      "depth_floor_nd": 1e-06,
+      "depth_transform": "softplus",
+      "hidden_layers": [
+        64,
+        64,
+        64,
+        64
+      ],
+      "inputs": [
+        "x_over_Lc",
+        "t_over_Tc"
+      ],
+      "outputs": [
+        "raw_depth",
+        "scaled_velocity"
+      ]
+    },
+    "optimizer": {
+      "kind": "adam",
+      "learning_rate": 0.001,
+      "steps": 10000
+    },
+    "sampling": {
+      "algorithm": "numpy_pcg64_uniform_fixed",
+      "boundary_points_per_side": 500,
+      "initial_discontinuity": "unsmoothed_exclude_dam_point",
+      "initial_points": 1000,
+      "interior_labels": false,
+      "interior_points": 10000,
+      "interior_time": "strictly_positive"
+    },
+    "schema_version": 1,
+    "seeds": [
+      11,
+      22,
+      33
+    ],
+    "status": "proposed_until_pilot_and_protocol_freeze",
+    "validation": {
+      "config_type": "evaluation",
+      "grid": {
+        "cells": 73,
+        "domain_m": [
+          -5.0,
+          5.0
+        ],
+        "kind": "cell_centres"
+      },
+      "mass_quadrature": {
+        "boundary_flux": {
+          "include_final_time": true,
+          "include_reported_times": true,
+          "include_t0": true,
+          "nodes": [
+            101,
+            201
+          ],
+          "rule": "trapezoid",
+          "spatial_locations": "domain_endpoints"
+        },
+        "volume": {
+          "cells": [
+            128,
+            256
+          ],
+          "include_reported_times": true,
+          "include_t0": true,
+          "rule": "midpoint"
+        }
+      },
+      "partition": "validation",
+      "profile_times_s": [
+        0.071,
+        0.311,
+        0.487
+      ],
+      "schema_version": 1,
+      "times_s": [
+        0.019,
+        0.071,
+        0.173,
+        0.311,
+        0.487
+      ],
+      "velocity_wet_threshold_m": 0.001,
+      "wave_band_half_width_m": 0.1
+    },
+    "weighting": {
+      "denominator_epsilon": 1e-12,
+      "detach_statistics": true,
+      "ema_decay": 0.9,
+      "gradient_norm": "l2_over_sqrt_parameter_count_absent_gradients_zero",
+      "lambda_bc": 10.0,
+      "lambda_data": 0.0,
+      "lambda_ic": 10.0,
+      "lambda_pde": 1.0,
+      "mode": "fixed",
+      "target_bounds": [
+        0.01,
+        100.0
+      ],
+      "update_before_step": true,
+      "update_interval": 100
+    }
+  }
+}
