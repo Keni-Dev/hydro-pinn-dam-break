@@ -282,6 +282,33 @@ def build_parser() -> argparse.ArgumentParser:
     benchmark.add_argument(
         "--output", type=Path, required=True, help="New raw timing/summary JSON."
     )
+    reproduce = subparsers.add_parser(
+        "reproduce",
+        help="Run reduced smoke or fresh frozen-budget paper reproduction.",
+        description=(
+            "Validate frozen inputs, code, environment, and parent manifest. "
+            "Smoke executes declared reductions and cannot establish paper "
+            "reproduction. Paper requires completed parent metrics/timings and "
+            "executes the full matrix under new IDs. Reports preserve ancestry, "
+            "saved-output replay scope, numerical differences, and failures. "
+            "Existing destinations are refused."
+        ),
+    )
+    reproduce.add_argument(
+        "--protocol", type=Path, required=True, help="Frozen parent protocol JSON."
+    )
+    reproduce.add_argument(
+        "--mode",
+        choices=["smoke", "paper"],
+        required=True,
+        help="Explicit reduced pipeline check or unchanged paper-budget execution.",
+    )
+    reproduce.add_argument(
+        "--output-dir",
+        type=Path,
+        required=True,
+        help="New report directory; original runs and results remain preserved.",
+    )
     return parser
 
 
@@ -289,6 +316,36 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command == "reproduce":
+        from hydro_pinn.reproduce import reproduce
+
+        try:
+            report = reproduce(args.protocol, args.mode, args.output_dir)
+        except KeyboardInterrupt:
+            print(
+                "Reproduction interrupted; report and runs retained.", file=sys.stderr
+            )
+            return 130
+        except (ValueError, OSError, RuntimeError) as exc:
+            print(f"Reproduction failed: {exc}", file=sys.stderr)
+            return 2
+        print(
+            json.dumps(
+                {
+                    "state": report["state"],
+                    "mode": report["mode"],
+                    "paper_reproduction_established": report[
+                        "paper_reproduction_established"
+                    ],
+                    "execution_namespace": report["execution_namespace"],
+                    "report": str(args.output_dir / "report.json"),
+                },
+                allow_nan=False,
+            )
+        )
+        return (
+            0 if report["state"] in {"completed", "completed_with_diagnostics"} else 3
+        )
     if args.command in {"evaluate", "plot", "benchmark"}:
         try:
             if args.command == "evaluate":
