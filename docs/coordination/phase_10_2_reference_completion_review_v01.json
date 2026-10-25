@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "state": "accepted_checked_refined_numerical_reference_with_material_sensitivity",
+  "recorded_at_utc": "2026-10-25T23:02:55.424480+00:00",
+  "owner": "root",
+  "scope": "Completed predeclared four-cell genuine wet2D numerical reference, R6 analysis/two figures, executable archive and exactly one extracted saved-data projection/analysis replay. No neural execution or full Phase10 completion.",
+  "case": "Centered2m by1m wet rectangular reservoir on[-5,5]^2,flat/frictionless,g9.81,reflective slipwalls,T.25s,mathematicalM0=11.8m3.",
+  "canonical_runs": {
+    "ref_rect80_c045_v01": 50,
+    "ref_rect160_c045_v01": 100,
+    "ref_rect320_c045_v01": 176,
+    "ref_rect320_c0225_v01": 321
+  },
+  "selected_reference": "ref_rect320_c0225_v01 conservative80x80 common cell means at50positive times plus initial",
+  "verification": "Independent native output/recorded intermediate diagnostic positivity,CFL,schedule,four-edge fullvector budgets,parity,wall diagnostics,conservative projection and signed R6 comparisons pass. No unsaved intermediate states were reconstructed.",
+  "review_and_handoff_sha256": {
+    "docs/coordination/phase_10_2_reference_matrix_foundation_review_v01.json": "2210720fffd8586443934a2fe826e907cba629f72542c96361afe4a52f88896c",
+    "docs/coordination/phase_10_2_reference_matrix_science_review_v01.json": "5e5dd3ababae7e5d466982f396eb76b31c9936c237fcff3b97ad67249ac18804",
+    "docs/coordination/phase_10_2_reference_figures_claims_review_v01.json": "cf32c60e278068f32a0a650eb6088db28a5056cf416d294e5715675be67ab321",
+    "docs/coordination/phase_10_2_reference_archive_replay_review_v01.json": "bb1daab8af8485e9fae9e2e9ff21b7e41fe37cb452e22968df7cc7936b6c37ff",
+    "docs/extensions/genuine_2d_reference_matrix_handoff_v01.json": "88d8cdb2b22c7e7bb609054fd84cc68acf8707a0f4640a3dfbd0cf8561c00661",
+    "docs/extensions/genuine_2d_reference_extracted_replay_handoff_v01.json": "5454c6c77c6032ace4e3b329dfb8430959178f29e9fa3ddfa2e70ed1ed2462d2",
+    "docs/extensions/genuine_2d_reference_matrix_findings_v02.md": "496af4bc348e01449749421642ecf5816db3a2e1ba1bd0d247c5a4b9c725e4d2",
+    "docs/evidence/phase_10/genuine_reference_replay_v01/terminal_v01.json": "43a2dc806fd60724be8729e6d104aaa4e23512d0f312ff0448832d0c0aba5b13"
+  },
+  "archive": {
+    "path": "results/extensions/two_dimensional/genuine_2d_reference_v01.zip",
+    "sha256": "5346679a435eebb1198d69ebc3208d92b250b725433fc5a7e2529b9b205809b5",
+    "bytes": 44808558,
+    "payload_inventory_files": 314,
+    "members": 315
+  },
+  "actual_observations": {
+    "complete_matrix_internal_s": 20.418395,
+    "complete_matrix_wrapper_s": 21.417547,
+    "reference_records_bytes": 35360124,
+    "maximum_process_lifetime_RSS_bytes": 762478592,
+    "replay_wrapper_s": 15.74290358403232,
+    "replay_exit": 0,
+    "replay_attempts": 1,
+    "fresh_projection_arrays_exact": 36,
+    "R6_arrays_exact": 31,
+    "scientific_JSON_exact_files": 3,
+    "PNG_files_byte_identical": 2,
+    "PDF_files_nonidentical_bytes": 2
+  },
+  "scientific_qualification": {
+    "finer_coupled_pooled_relative_L2_percent_h_qx_qy": [
+      2.913264,
+      9.700796,
+      8.742646
+    ],
+    "fixed_grid_time_percent_h_qx_qy": [
+      0.278895,
+      0.891017,
+      0.827279
+    ],
+    "early_coupled_nondecrease_times_s": {
+      "h": [
+        0.005,
+        0.01
+      ],
+      "qx": [
+        0.005
+      ],
+      "qy": [
+        0.005
+      ]
+    },
+    "Dtime_exceeds_Dspace_positive_cell_times_h_qx_qy": [
+      768,
+      13344,
+      7676
+    ],
+    "indicator_limit": "Mesh/time changes are sensitivity indicators, not exact error bounds or asymptotic order. The selected numerical reference is suitable for a disclosed bounded model comparison, not exact truth or certified physical validity.",
+    "gradient_limit": "Reference-only numerical gradient region, not exact shock/front truth."
+  },
+  "preservation": "32 prior nonCLI modules, five prior accepted archives, frozen current reference source/CLI/config/protocol/axes, failed launcher/recovery and all canonical bytes match independent review.",
+  "limits": [
+    "Unknown first failed-launcher child exit/cause/unrecorded work and cost remain unknown, excluded from measured totals without treating as zero.",
+    "One extracted saved-state projection/R6 replay, zero PDE integrations/neural queries/training. Same M5/existing locked environment; original root source remains OS-accessible, no OS/root-exclusion or dependency-installation isolation.",
+    "Scientific arrays/reports and PNGs exact; PDF bytes differ, cause/native rendering equivalence unconfirmed.",
+    "One idealized wet case, no field/dry/topography/inverse/general neural recovery or wholePhase10 acceptance."
+  ],
+  "successor_authority": "This acceptance alone does not release neural work; a separate selected implementation/necessary-check/singlecost-pilot lease is required."
+}

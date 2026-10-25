@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "owner": "root",
+  "recorded_at_utc": "2026-10-25T23:03:38.862860+00:00",
+  "state": "released_additive_implementation_necessary_checks_and_one25_update_fullcost_pilot_only",
+  "thread_id": "01a1749e-f8d5-7cf3-ae7a-97e03e4a53a2",
+  "scope": "One genuine wet2D physics-only PINN cost feasibility pilot after accepted numerical reference; no full10000fit release.",
+  "adopted_contract_sha256": {
+    "docs/coordination/phase_10_2_neural_study_plan_v01.json": "d2326214203774278330f0c7e832f852653dfbbe3e27baf30fd4730a1a60a27c",
+    "docs/coordination/phase_10_2_neural_pre_freeze_clarifications_v01.json": "2db45663e6279bd62a0f23a21e99659ea0067007e00c4e707d6fa2b7b8d77860",
+    "docs/coordination/phase_10_2_neural_plan_science_review_v01.json": "255a656c03b0cc6bbde7e2c3a9b437ac4f38fd95830ff38f3406450bc7ece4d0",
+    "docs/coordination/phase_10_2_neural_plan_cost_review_v01.json": "81a29ad92335046b92b722cea27c2e82a47860a0744d8bd5818bb4ad433b5a87",
+    "docs/coordination/phase_10_2_reference_completion_review_v01.json": "34eb18e9317967ebd9d1bdecc97c6dd2265fc1e5f53aeb5a1de5b6277f57b0c6"
+  },
+  "lease": {
+    "new_files": [
+      "src/hydro_pinn/extensions/experiment_2d.py",
+      "src/hydro_pinn/extensions/evaluate_2d.py",
+      "configs/extensions/genuine_2d_neural.json",
+      "tests/test_genuine_2d_experiment.py"
+    ],
+    "new_namespaces": [
+      "runs/p10_genuine_2d_*",
+      "results/extensions/two_dimensional/neural_*",
+      "docs/extensions/genuine_2d_neural_*",
+      "docs/evidence/phase_10/genuine_neural_v01"
+    ],
+    "only_existing_file_edit": "src/hydro_pinn/cli.py: named additive extension-2d-run and extension-2d-evaluate blocks only; all older lines/order/AST unchanged. No __init__ edit.",
+    "root_ownership": "All coordination/global status/Git. Preserve unrelated work, foundations00/01, every prior failed/run result and unfavorable finding.",
+    "not_leased": "No existing scientific module/config/protocol/reference/core artifact edit, no other test/model/seed/parametersearch. No cross-chat messages; local handoff only."
+  },
+  "protected_nonCLI_sha256": {
+    "src/hydro_pinn/__init__.py": "7018c26707fca1706efdca11406f591574bcc31abe072bb34edb74a288021a16",
+    "src/hydro_pinn/__main__.py": "49c2417a76f6589478d8efa1c5e9b36191384f423ddf86cfff40c9deeb1dbaef",
+    "src/hydro_pinn/benchmark.py": "2f1e52d0dacf43c2cc3ec1e17bd403ab53fc76fcee46bf82dc704393b043addd",
+    "src/hydro_pinn/config.py": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+    "src/hydro_pinn/conservation.py": "b06bc773ff67a5b28ffa744a095c99a41e0ee3137c14eaed0a849cdf3e3f3931",
+    "src/hydro_pinn/devices.py": "24305922b64927e41fd85b300f34b08622ec78c60f7f69aacf3b48fda1ae8aa8",
+    "src/hydro_pinn/evaluate.py": "31aa5c9b466c874819b89a15856b7f731d87172a2bbd5cf98acc1172ce663fe2",
+    "src/hydro_pinn/evaluation_workflow.py": "0b9307dbe569d52880f4aa83920993bc8fb0509a534c1144bbffd4a5c40e3bc3",
+    "src/hydro_pinn/experiments.py": "ba7b2d3c968a75a6df4fe276e0e2d96d98a2bf33bc8b5e30a0856a07ad4077c1",
+    "src/hydro_pinn/extensions/__init__.py": "65b2ea146bc3e6cfbb814aad73eb180d1fe85dc173401c12879326e848a0867e",
+    "src/hydro_pinn/extensions/friction_experiment.py": "42e63f008711d64c7d8471a21eb14c55c9b08070da3eb15378108c00e3d6ca60",
+    "src/hydro_pinn/extensions/friction_physics.py": "eed3acce02188253da77864ab11dd55597d1de6af8d57c4c815b66bbbe06bf6d",
+    "src/hydro_pinn/extensions/friction_reference.py": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+    "src/hydro_pinn/extensions/hybrid_data.py": "bf72a5163e66197f57bcc875a6314b6d3b1b7ea3a98e3514aa77bcc9315fd4a3",
+    "src/hydro_pinn/extensions/hybrid_experiment.py": "409fb7a6f5e594eb8dc14889806e573eb8f9b1b68b134fcdc698d8b232307145",
+    "src/hydro_pinn/extensions/inverse_sensitivity.py": "6691e019adc2402fc58b1490e40e766b0d8648af462bcc8d73fc8cae05859d94",
+    "src/hydro_pinn/extensions/model_2d.py": "06b381e659c7a3a3e9aa2a9867f04cef119873a16b588a63f603584718162459",
+    "src/hydro_pinn/extensions/physics_2d.py": "238d322f617df0488500978716186683c3d3e4ff56a213edf4c0f571c56c9339",
+    "src/hydro_pinn/extensions/planar_2d.py": "1e5009b31b24fc7673c428aa421870c38546ac55692ca8dd409bb6d98bc78c4a",
+    "src/hydro_pinn/extensions/reference_2d.py": "8faf9b43eda550d3284883082450dd080787d604d096d8b5ec0392af8a145b34",
+    "src/hydro_pinn/extensions/viscosity_experiment.py": "208159821abb8fa6269cd539f7f8351babfdf39c0204d44ed4b4509537f50cab",
+    "src/hydro_pinn/extensions/viscosity_physics.py": "7118ecb0304de0e50a2ace26c22d0ec4ddb02020aa30706dbe4620896533ff09",
+    "src/hydro_pinn/lax_wendroff.py": "4de2ccebf09520a006e6818a349273183e0f87761e21fe8d10f89967fdd20c4b",
+    "src/hydro_pinn/losses.py": "2689bfbd0f1c16400405c4672baba39afc705d431d4e81ce53f8131547f84609",
+    "src/hydro_pinn/model.py": "67a118c52c7372119e044d9769de01ffcc2a74ed5d56ba89955bf134d7b730c8",
+    "src/hydro_pinn/physics.py": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+    "src/hydro_pinn/plot.py": "74df4c54c87cd2d403d91a6c5fec7f5978df6de072f826c6b9ec8e3487ea616c",
+    "src/hydro_pinn/protocol.py": "85009bc307facc04decc86c490ce0f578c7576d480ed50137605511912d62a33",
+    "src/hydro_pinn/records.py": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40",
+    "src/hydro_pinn/references.py": "9e23dd1a97f3f63df7be9d493382d263305e233c3be45980fac3c36fd5d9a547",
+    "src/hydro_pinn/reproduce.py": "5675837142ac9de69854289d8b6330568b43ab0f0d04e43227e5779d4a6d6778",
+    "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1",
+    "src/hydro_pinn/train.py": "997ac46817dce0400a5b9954e3449f05a5eae4211c5351d1401e48cb098d1212"
+  },
+  "protected_archives_sha256": {
+    "results/packages/p07_core_candidate_v02.zip": "2888f733ac1245e6ded97c89d9ae1de4a2fa7483a8974967c19ede02d02a7bba",
+    "results/extensions/hybrid/hybrid_e1_seed11_v01.zip": "f5c5bd34f3619374c98fd1f0d1c2896bcbeac215a163c878e1133f1c8bd05f3a",
+    "results/extensions/planar_2d/planar_e1_seed11_v01.zip": "3926c7ace882fd59da416cb6bc7bcf7de7b9e1cf48c4448d7d0029fc0bb103f2",
+    "results/extensions/friction/friction_e1_seed11_v01.zip": "95370247dbe7ecfa33f9c3f02d1bda6b111c8ed026651edd0abfaa7bdaf19427",
+    "results/extensions/viscosity/viscosity_e1_seed11_v01.zip": "860f9f421a2cbba8b25ff91fbc957a5a9ff4e3059fdb299c1e844aa935f1e0cf",
+    "results/extensions/two_dimensional/genuine_2d_reference_v01.zip": "5346679a435eebb1198d69ebc3208d92b250b725433fc5a7e2529b9b205809b5"
+  },
+  "CLI_before_sha256": "35b4c1737e7f1c3f7f93c86969cd56b4677ed54a8384a8a9b7ae57df9601463d",
+  "allowed_execution": [
+    "Implement full fit/evaluation paths in new modules with all final scientific definitions ready before protocol freeze.",
+    "Run only necessary small geometry/BC/operator/scaling/membership/persistence/precision checks in adopted plan/clarifications; retain every failed attempt and necessary fixes before freeze. No broad suite.",
+    "Freeze actual immutable source/config/initialmodel/freshAdam/partition/operators/schema/reference/mask/hash-bound protocol BEFORE pilot. Recheck33 protected modules/six archives/all oldCLIlines.",
+    "If every required check passes, perform exactlyONE fresh25-update CPUfloat32/fourthread fullworkload pilot, step0..25, validation/selection/history/checkpoint/reload, one full13,639,680-state rawquery/IO pass. No final neural-reference error/mass/parity/gradientquality analysis or accuracy-driven repeat.",
+    "Return measured complete timing/querycount/outputbytes/RSS/projections and local implementation/check/protocol/pilot handoff. Stop on material failure, preserve evidence; root decides full fit after independent review."
+  ],
+  "not_released": [
+    "Full10000update fit",
+    "Any neural output quality screening in pilot",
+    "Additional reference solve",
+    "Extra neural pilot/device sweep/reseed/precisionthresholdtuning",
+    "Media generation/remote publication/paid hardware"
+  ],
+  "budget_scope": "Adopt clarified1200s complete-new-full prelaunch decision budget including later freshcheckpoint replay, two fullquerypasses. Pilot/reference costs already-paid separately; this release is not a runtime/accuracy guarantee.",
+  "human_acceptance_gaps": "Real participation/credits/consultation/recording/captions/rehearsal/measured video duration/nativeapp acceptance/publication/submission remain unfilled."
+}

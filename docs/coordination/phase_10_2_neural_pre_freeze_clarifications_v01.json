@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "state": "adopted_root_pre_freeze_clarifications_no_neural_execution_release",
+  "owner": "root",
+  "recorded_at_utc": "2026-10-25 23:02:10 UTC",
+  "plan": {
+    "path": "docs/coordination/phase_10_2_neural_study_plan_v01.json",
+    "sha256": "d2326214203774278330f0c7e832f852653dfbbe3e27baf30fd4730a1a60a27c"
+  },
+  "adopted_reviews": [
+    "docs/coordination/phase_10_2_neural_plan_science_review_v01.json",
+    "docs/coordination/phase_10_2_neural_plan_cost_review_v01.json"
+  ],
+  "sampling": {
+    "order": "Within train110201 then independent validation110202: PDE x/y/t; five IC strata in plan order then one fixed permutation; left/right/bottom/top wall tangent/time. Freeze exact call/index metadata.",
+    "walls": "Exact normal SI coordinate ±5; tangential uniform(-5,5),time uniform(0,.25); no corners/t0. Execute SIcast32 then divide by float32 scales. Check declared support and IC labels in actual model-input32; fixed failure is preserved without regeneration.",
+    "IC_rectangles": "deep[-1,1)x[-.5,.5);left[-5,-1)x[-5,5);right[1,5]x[-5,5);middlebelow[-1,1)x[-5,-.5);middleabove[-1,1)x[.5,5]. Uniform draws in open interiors; saved half-open convention governs classification; no boundary draw is required.",
+    "scales": "Construct Scales with all H_m=1,Lc_m=10,Uc_m_s=sqrt(9.81),Tc_s=10/sqrt(9.81), derive from identities not displayed rounded values. Residuals consume scaled coords/model.forward, physical_state consumes SI coords.",
+    "membership": "Memory bounded: retain/hash smaller train/validation row sets in each named representation; stream final Gauss coordinates in fixed-size chunks or exact node-axis membership. Never form pairwise Cartesian distances or a Python tuple union of10.56M nodes. Canonicalize signed zero consistently; document exact row-byte policy."
+  },
+  "precision": {
+    "subset": "Frozen deterministic indices32PDE,32eachwall,100IC with strata2/40/40/9/9 chosen before differences. Same SI64 coords and exact CPU32 initial tensors cast64; identical actual transforms/reductions.",
+    "objective_relative_lt": 0.00002,
+    "gradient_relative_L2_lt": 0.0002,
+    "element_rtol": 0.002,
+    "element_atol": 0.00002,
+    "residuals": "Each of three residual component arrays allclose rtol2e-3,atol2e-5. Record raw arrays/discrepancies/all named parameter gradients and component objectives.",
+    "zero_norms": "relative=null reason zero_cpu64_norm, no epsilon. For zero objective absolute discrepancy<=2e-5; zero gradient/residual norms use element atol2e-5. One arithmetic/autograd check, not trajectory/physics accuracy."
+  },
+  "raw_query_contract": {
+    "state_coordinates_total": 13639680,
+    "batch_size": 20000,
+    "mode": "torch.no_grad() for state queries; CPU32 inputs/outputs, convert predicted conserved fields to float64 for all SI geometry weights/reductions/storage. No query dedup; all3volume passes separate.",
+    "generation_order": "Freeze explicit order by rule3,rule5, massbase/massspatial/masstemporal; time ascending,y thenx,Gauss y thenx; walls left/right/bottom/top,time then tangent. Query lazily; last short batch explicit.",
+    "Gauss_mean": "1/4 weighted tensor-product Legendre sum, no second area multiplication. Store both float64(time50,y80,x80,component3) conserved means and exactSI axes/nodes/weights; no point-velocity means.",
+    "volume_storage": "For each of3operators store float64 queried depth(time51,yN,xN) plus exact axes/area weights and input representation hash. All3returned conserved fields are computed but onlyh needed for mass persistence.",
+    "edge_storage": "For eachoperator/wall store float64 normal discharge(timeNodes,tangentN) plus coordinate/normals/length weights. Signed normal data supports outward rate and absolute mismatch, no extra queries.",
+    "persistence": "CompressedNPZ, one file peroperator/querycategory plus JSON hashes/schema/expected actual query counts; freeze exact key/dtype/shape map beforepilot. Preserve checkpoint/initial/optimizer/history/reload provenance."
+  },
+  "mass": {
+    "times": "t_out=.005*k,k0..50. For501nodes start .25*j/500,replace index10*k with exactt_out[k];1001nodes start .25*j/1000,replace20*k. Save/hash exactSI64 and actualCPU32 transforms; strictly increasing, endpoints0/.25, no near-coincident union.",
+    "weights": "Float64 SI midpoint volume100/N²,edge10/N; prefix trapezoidal weights from actual frozenSI64 differences, use exactoutputindices, no interpolation. Volume3passes separately evenidenticalbase/temporal.",
+    "outward": "left−qx,right+qx,bottom−qy,top+qy. Each Qabs=sum(lengthweight*abs(qnormal))m³/s and cumulativeabs trapezoid m³. Save signed separate edges, net/absolute totals and maxabsqm²/s.",
+    "balance": "B=M−11.8+Iout;initialbiasB0;additional=B−B0. Report spatial and temporal deltaM,deltaIout,deltaB separately. Spatial changes volume+edge rules; no isolated volume-error claim."
+  },
+  "metrics": {
+    "per_time_region": "AtregionR_t withA_t: MAE=sum(A absd)/A_t,RMSE=sqrt(sum(A d²)/A_t). Whole/gradient/complement; no model-dependent drop.",
+    "pooled": "Equal positive-time meanMAE and sqrt(mean(per-timeRMSE²)); pooledintegralrelative100sqrt(sum_t,R A d² /sum_t,R A ref²), explicitly not ratioofarea-normalizedRMS whenregionareachanges.",
+    "nulls": "Empty region/null+reason,zero refnorm relative null+reason while SIerrorsretained; no eps or silenttime omission.",
+    "wet_velocity": "All accepted numerical mean depths>=.1m included. qbar/hbar and corresponding NN ratios; never exclude lowNNdepth/largeerrors. FrozenDspace/Dtime/Dsum conserved-field-only units, no velocityindicatorclaim.",
+    "t0": "No extra t0Gauss error query in countedworkload; initialdiagnostic is frozenIC/mass and not independent final labels."
+  },
+  "budget": {
+    "new_full_decision_budget_s": 1200,
+    "type": "Prelaunch feasibility decision budget, not guaranteed runtime bound or automatic kill timeout.",
+    "included": "Fresh10000-update training plusstep0/setup/validation/history/checkpoints, one completefinalrawquery+output+scientificanalysis, source snapshot/archive/extraction, mandatoryfreshselected-checkpointfull13,639,680-state replay and comparison; import/startupIO included in actual inclusive observations. Human/agent review latency and already-paidpilot/referencework excluded.",
+    "projection": "10000*observed completecyclemean/median/max separately +measuredstep0/setup +2*measured fullrawquery/reload/IOpass +namedone-timecosts. Reserve120s explicit unmeasuredanalysis/figures/packaging/extraction/startup allowance as a planning assumption, notmeasurement/bound; replace by actual stage costs at closeout. No complete-study-under1200 claim from an incomplete timersum.",
+    "execution": "Ifactualcostmateriallyexceedsforecast report/preservefailure or overrun withoutautomaticretuning/retry. Fullfitrequiresseparaterelease afteractualpilot review. Original+replayrawstates27,279,360;pilotaddsone13,639,680 pass."
+  },
+  "note": "Planning clarifications only. No source/module/test/model query/pilot/fullfit authority until separate root selection after reference replay acceptance."
+}
