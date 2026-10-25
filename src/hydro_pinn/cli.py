@@ -346,6 +346,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     hybrid_evaluate.add_argument("--manifest", type=Path, required=True)
     hybrid_evaluate.add_argument("--output-dir", type=Path, required=True)
+    planar = subparsers.add_parser(
+        "extension-2d-planar",
+        help="Run the single bounded planar E1 consistency pilot (SI x,y,t).",
+        description=(
+            "Freeze the proposed full protocol and save a 25-step CPU32 pilot "
+            "with three residuals, four boundaries, validation and query costs. "
+            "Final analytical model errors are not computed. Full fitting needs "
+            "a separate hash-bound root technical release."
+        ),
+    )
+    planar.add_argument("--config", type=Path, required=True)
+    planar.add_argument("--run-id", required=True)
     return parser
 
 
@@ -353,6 +365,20 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command == "extension-2d-planar":
+        from hydro_pinn.extensions.planar_2d import run_planar
+
+        try:
+            output = run_planar(args.config, args.run_id)
+        except KeyboardInterrupt:
+            print("Planar extension interrupted; evidence retained.", file=sys.stderr)
+            return 130
+        except (ValueError, OSError, RuntimeError, KeyError) as exc:
+            print(f"Planar extension failed: {exc}", file=sys.stderr)
+            return 2
+        print(json.dumps({"completed": True, "stage": args.command,
+                          "output": str(output)}))
+        return 0
     if args.command in {
         "extension-hybrid-labels",
         "extension-hybrid-run",
