@@ -6,6 +6,7 @@ import copy
 import json
 import shutil
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -234,6 +235,17 @@ def test_paper_forwards_same_frozen_budget_and_new_destinations(
             {"rows": [], "runs": [], "provenance": {"source_files": []}},
             {"state": "completed"},
         ),
+    )
+    monkeypatch.setattr(
+        reproduce,
+        "_rendering_bindings",
+        lambda *args: {
+            "source_sha256": {},
+            "preserved_files_sha256": {},
+            "parent_canonical_ledger": {},
+            "parent_core_ledger": {},
+            "parent_export_resolutions": [],
+        },
     )
     monkeypatch.setattr(
         evaluation_workflow,
@@ -528,3 +540,109 @@ def test_additive_evaluation_source_drift_stops_before_retraining(
     with pytest.raises(ValueError, match="additive implementation changed"):
         reproduce._result_dependencies(protocol, root)
     assert not (root / "runs").exists()
+
+
+def test_timing_figure_integration_preserves_core_and_writes_complete_ledger(
+    tmp_path, monkeypatch
+):
+    """Only the shared utility invocation is mocked; no rendering or timing runs."""
+    root = tmp_path.resolve()
+    output = root / "results/paper-fixture"
+    figures = output / "fresh_figures"
+    figures.mkdir(parents=True)
+    sources = {}
+    for name in ("src/hydro_pinn/plot.py", reproduce.TIMING_FIGURE_HELPER):
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("# Explicit integration fixture; not the accepted renderer.\n")
+        sources[name] = reproduce._sha(path)
+    provenance = {
+        "protocol_sha256": "a" * 64,
+        "protocol_file_sha256": "b" * 64,
+        "manifest_sha256": "c" * 64,
+    }
+    run_ids = [f"fixture-run-{index}" for index in range(11)]
+    metrics = {
+        "state": "completed",
+        "provenance": provenance,
+        "runs": [{"run_id": run_id} for run_id in run_ids],
+    }
+    write_json_atomic(output / "fresh_metrics.json", metrics)
+    write_json_atomic(output / "fresh_timings.json", {"state": "completed"})
+    core = {"plot_source_sha256": sources["src/hydro_pinn/plot.py"], "figures": []}
+    for index in range(34):
+        artifacts = []
+        for suffix in ("png", "pdf"):
+            path = figures / f"core-{index}.{suffix}"
+            path.write_bytes(f"fixture-{index}-{suffix}".encode())
+            artifacts.append(
+                {"path": str(path.relative_to(root)), "sha256": reproduce._sha(path)}
+            )
+        core["figures"].append({"figure_id": f"core-{index}", "artifacts": artifacts})
+    write_json_atomic(output / "fresh_figure_manifest.json", core)
+    write_json_atomic(figures / "figure_manifest.json", core)
+    before = reproduce._sha(output / "fresh_figure_manifest.json")
+    calls = []
+
+    def utility(command, **kwargs):
+        calls.append(command)
+        assert command[0] == reproduce.sys.executable
+        assert command[1] == str(root / reproduce.TIMING_FIGURE_HELPER)
+        assert kwargs == {
+            "cwd": root,
+            "capture_output": True,
+            "text": True,
+            "check": False,
+        }
+        assert (
+            json.loads((output / "fresh_timings.json").read_text())["state"]
+            == "completed"
+        )
+        artifacts = []
+        for suffix in ("png", "pdf"):
+            path = figures / f"timing_accuracy.{suffix}"
+            path.write_bytes(f"mock-utility-{suffix}".encode())
+            artifacts.append(
+                {"path": str(path.relative_to(root)), "sha256": reproduce._sha(path)}
+            )
+        evidence = {
+            "state": "completed",
+            "figure_id": "timing_accuracy",
+            "kind": "timing_and_accuracy",
+            "points": [{"run_id": run_ids[index % 11]} for index in range(13)],
+            "run_ids": run_ids,
+            "artifacts": artifacts,
+            "provenance": provenance,
+            "plot_source_sha256": {
+                reproduce.TIMING_FIGURE_HELPER: sources[reproduce.TIMING_FIGURE_HELPER]
+            },
+            "performance_measurements_executed_by_renderer": False,
+            "source_artifacts": [
+                {
+                    "path": str((output / name).relative_to(root)),
+                    "sha256": reproduce._sha(output / name),
+                }
+                for name in ("fresh_metrics.json", "fresh_timings.json")
+            ],
+        }
+        write_json_atomic(output / "fresh_timing_figure_evidence.json", evidence)
+        return SimpleNamespace(
+            returncode=0, stdout="mocked utility invocation", stderr=""
+        )
+
+    monkeypatch.setattr(reproduce.subprocess, "run", utility)
+    report = reproduce._timing_figure_complete_manifest(root, output, sources)
+    complete = json.loads((output / "fresh_figure_manifest_complete.json").read_text())
+    assert len(calls) == 1
+    assert len(complete["figures"]) == 35
+    assert sum(len(row["artifacts"]) for row in complete["figures"]) == 70
+    assert reproduce._sha(output / "fresh_figure_manifest.json") == before
+    assert reproduce._sha(figures / "figure_manifest.json") == before
+    assert report["count"] == 35 and report["exports"] == 70
+    assert report["visual_inspection"] == "pending_root_review"
+    assert complete["supplemental_plot_source_sha256"] == {
+        reproduce.TIMING_FIGURE_HELPER: sources[reproduce.TIMING_FIGURE_HELPER]
+    }
+    with pytest.raises(FileExistsError):
+        reproduce._timing_figure_complete_manifest(root, output, sources)
+    assert len(calls) == 1

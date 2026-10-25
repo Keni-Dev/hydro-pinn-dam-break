@@ -10,6 +10,8 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import subprocess
+import sys
 from datetime import UTC, datetime
 from functools import partial
 from pathlib import Path
@@ -32,6 +34,15 @@ from hydro_pinn.references import generate_reference_run
 from hydro_pinn.train import load_training_checkpoint, predict_run, train_run
 
 ROOT = Path(__file__).resolve().parents[2]
+TIMING_FIGURE_HELPER = "docs/evidence/phase_06/rebuild_timing_accuracy.py"
+ACCEPTED_RENDERER_SHA256 = {
+    "src/hydro_pinn/plot.py": (
+        "74df4c54c87cd2d403d91a6c5fec7f5978df6de072f826c6b9ec8e3487ea616c"
+    ),
+    TIMING_FIGURE_HELPER: (
+        "4103a9fb9576eec3a89985eac48a4b7f56967132940d04beb5400c4ae2a9e47e"
+    ),
+}
 TOLERANCES = {
     "coordinates": {"rtol": 0.0, "atol": 1e-13},
     "reference_and_solver": {"rtol": 1e-10, "atol": 1e-12},
@@ -732,6 +743,263 @@ def _paper_comparison(parent: dict, fresh: dict, protocol: dict, root: Path) -> 
     }
 
 
+def _rendering_bindings(root: Path) -> dict:
+    """Bind the accepted parent ledgers, all exports, and current renderer bytes."""
+    canonical_path = root / "docs/figure_manifest.json"
+    canonical = _read(canonical_path)
+    entries = canonical["figures"]
+    if len(entries) != 35 or len({row["figure_id"] for row in entries}) != 35:
+        raise ValueError(
+            "paper reproduction requires the complete 35-figure parent ledger"
+        )
+    exports = [artifact for row in entries for artifact in row["artifacts"]]
+    if len(exports) != 70:
+        raise ValueError("paper reproduction requires all 70 parent exports")
+    sources = {
+        name: _sha(_path(root, name))
+        for name in ("src/hydro_pinn/plot.py", TIMING_FIGURE_HELPER)
+    }
+    if sources != ACCEPTED_RENDERER_SHA256:
+        raise ValueError("figure renderer differs from the root-accepted source bytes")
+    if sources["src/hydro_pinn/plot.py"] != canonical["plot_source_sha256"]:
+        raise ValueError(
+            "core plot implementation differs from accepted parent figures"
+        )
+    preserved = {"docs/figure_manifest.json": _sha(canonical_path), **sources}
+    core_path = root / "results/figures/figure_manifest.json"
+    core = _read(core_path)
+    if len(core["figures"]) != 34:
+        raise ValueError("parent core exporter ledger must retain its 34 figures")
+    preserved[str(core_path.relative_to(root))] = _sha(core_path)
+    archived_core = canonical["core_export_manifest"]
+    if _sha(_path(root, archived_core["path"])) != archived_core["sha256"]:
+        raise ValueError("parent archived core figure ledger changed")
+    preserved[archived_core["path"]] = archived_core["sha256"]
+    resolutions = []
+    for artifact in exports:
+        recorded = Path(artifact["path"])
+        # Historical absolute artifact paths may belong to the producing
+        # checkout. Only the fixed local export directory is considered after
+        # relocation, and its bytes must still match the accepted ledger.
+        relocated = recorded.is_absolute() and not recorded.is_relative_to(root)
+        local = (
+            root / "results/figures" / recorded.name
+            if relocated
+            else _path(root, recorded)
+        )
+        local = _path(root, local)
+        if _sha(local) != artifact["sha256"]:
+            raise ValueError(f"parent figure export changed: {artifact['path']}")
+        name = str(local.relative_to(root))
+        if name in preserved:
+            raise ValueError("parent figure ledger repeats an export path")
+        preserved[name] = artifact["sha256"]
+        resolutions.append(
+            {
+                "recorded_path": str(recorded),
+                "local_path": name,
+                "sha256": artifact["sha256"],
+                "relocated": relocated,
+            }
+        )
+    return {
+        "source_sha256": sources,
+        "preserved_files_sha256": preserved,
+        "parent_canonical_ledger": {
+            "path": "docs/figure_manifest.json",
+            "sha256": _sha(canonical_path),
+        },
+        "parent_core_ledger": {
+            "path": str(core_path.relative_to(root)),
+            "sha256": _sha(core_path),
+        },
+        "parent_export_resolutions": resolutions,
+    }
+
+
+def _timing_figure_complete_manifest(
+    root: Path, output: Path, sources: dict[str, str]
+) -> dict:
+    """Invoke the shared saved-data utility after benchmarking, then add a ledger."""
+    metrics_path, timing_path = (
+        output / "fresh_metrics.json",
+        output / "fresh_timings.json",
+    )
+    core_path = output / "fresh_figure_manifest.json"
+    core_internal_path = output / "fresh_figures/figure_manifest.json"
+    evidence_path = output / "fresh_timing_figure_evidence.json"
+    complete_path = output / "fresh_figure_manifest_complete.json"
+    command_path = output / "fresh_timing_figure_command.json"
+    for path in (evidence_path, complete_path, command_path):
+        if path.exists():
+            raise FileExistsError(
+                f"preserve existing supplemental figure artifact: {path}"
+            )
+    metrics, timing, core = _read(metrics_path), _read(timing_path), _read(core_path)
+    if metrics.get("state") != "completed" or timing.get("state") != "completed":
+        raise ValueError("timing figure requires completed fresh metrics and benchmark")
+    if (
+        len(core["figures"]) != 34
+        or core["plot_source_sha256"] != sources["src/hydro_pinn/plot.py"]
+    ):
+        raise ValueError("fresh core ledger or renderer binding differs")
+    core_sha = _sha(core_path)
+    if _sha(core_internal_path) != core_sha:
+        raise ValueError("fresh core exporter ledgers differ")
+    input_hashes = {
+        str(path.relative_to(root)): _sha(path)
+        for path in (metrics_path, timing_path, core_path, core_internal_path)
+    }
+    for name, digest in sources.items():
+        if _sha(_path(root, name)) != digest:
+            raise ValueError(
+                f"figure renderer changed after reproduction preflight: {name}"
+            )
+    command = [
+        sys.executable,
+        str(_path(root, TIMING_FIGURE_HELPER)),
+        "--metrics",
+        str(metrics_path),
+        "--timings",
+        str(timing_path),
+        "--output-dir",
+        str(output / "fresh_figures"),
+        "--evidence-output",
+        str(evidence_path),
+    ]
+    invocation = {
+        "state": "running",
+        "command": command,
+        "cwd": str(root),
+        "source_sha256": sources,
+        "input_sha256": input_hashes,
+        "performance_measurements_executed": False,
+    }
+    write_json_atomic(command_path, invocation)
+    try:
+        completed = subprocess.run(
+            command, cwd=root, capture_output=True, text=True, check=False
+        )
+        invocation.update(
+            state="completed" if completed.returncode == 0 else "failed",
+            exit_code=completed.returncode,
+            stdout=completed.stdout,
+            stderr=completed.stderr,
+        )
+        write_json_atomic(command_path, invocation, overwrite=True)
+        if completed.returncode:
+            raise ValueError(f"timing figure utility failed; see {command_path}")
+    except BaseException as exc:
+        invocation.update(state="failed", reason=f"{type(exc).__name__}: {exc}")
+        write_json_atomic(command_path, invocation, overwrite=True)
+        raise
+    evidence = _read(evidence_path)
+    if (
+        evidence.get("state") != "completed"
+        or evidence.get("figure_id") != "timing_accuracy"
+        or len(evidence.get("points", [])) != 13
+        or len(evidence.get("run_ids", [])) != 11
+        or {point.get("run_id") for point in evidence.get("points", [])}
+        != set(evidence.get("run_ids", []))
+        or not set(evidence.get("run_ids", [])).issubset(
+            {row["run_id"] for row in metrics["runs"]}
+        )
+        or evidence.get("performance_measurements_executed_by_renderer") is not False
+        or evidence.get("plot_source_sha256")
+        != {TIMING_FIGURE_HELPER: sources[TIMING_FIGURE_HELPER]}
+    ):
+        raise ValueError(
+            "supplemental figure evidence has incomplete coverage or source binding"
+        )
+    for key in ("protocol_sha256", "protocol_file_sha256", "manifest_sha256"):
+        if evidence["provenance"][key] != metrics["provenance"][key]:
+            raise ValueError("supplemental figure belongs to another fresh attempt")
+    source_artifacts = {
+        row["path"]: row["sha256"] for row in evidence["source_artifacts"]
+    }
+    for path in (metrics_path, timing_path):
+        key = str(path.relative_to(root))
+        if source_artifacts.get(key) != input_hashes[key]:
+            raise ValueError(
+                "supplemental figure does not bind the fresh metric/timing inputs"
+            )
+    for name, digest in {**input_hashes, **sources, **source_artifacts}.items():
+        if _sha(_path(root, name)) != digest:
+            raise ValueError(f"supplemental figure input/source changed: {name}")
+    exports = [artifact for row in core["figures"] for artifact in row["artifacts"]]
+    exports.extend(evidence["artifacts"])
+    expected_supplement = {
+        str((output / "fresh_figures" / f"timing_accuracy.{suffix}").relative_to(root))
+        for suffix in ("png", "pdf")
+    }
+    if {row["path"] for row in evidence["artifacts"]} != expected_supplement or len(
+        exports
+    ) != 70:
+        raise ValueError(
+            "fresh figure exports must include 68 core and two timing artifacts"
+        )
+    destinations = set()
+    for artifact in exports:
+        path = _path(root, artifact["path"])
+        if path in destinations or _sha(path) != artifact["sha256"]:
+            raise ValueError("fresh figure export is duplicated or its hash changed")
+        destinations.add(path)
+    complete = copy.deepcopy(core)
+    complete["figures"].append(evidence)
+    complete.update(
+        core_export_manifest={
+            "path": str(core_path.relative_to(root)),
+            "sha256": core_sha,
+        },
+        supplemental_plot_source_sha256={
+            TIMING_FIGURE_HELPER: sources[TIMING_FIGURE_HELPER]
+        },
+        supplemental_evidence_artifact={
+            "path": str(evidence_path.relative_to(root)),
+            "sha256": _sha(evidence_path),
+        },
+        timing_source_artifact={
+            "path": str(timing_path.relative_to(root)),
+            "sha256": input_hashes[str(timing_path.relative_to(root))],
+        },
+        artifact_counts={
+            "core_figures": 34,
+            "supplemental_figures": 1,
+            "figures": 35,
+            "exports": 70,
+        },
+        visual_inspection={
+            "state": "pending_root_review",
+            "scope": (
+                "generated artifacts and hashes checked; visual acceptance is separate"
+            ),
+        },
+    )
+    write_json_atomic(complete_path, complete)
+    if _sha(core_path) != core_sha or _sha(core_internal_path) != core_sha:
+        raise ValueError("supplemental integration changed a preserved core ledger")
+    return {
+        "state": "generated_hash_verified_visual_review_pending",
+        "count": 35,
+        "exports": 70,
+        "core_count": 34,
+        "supplemental_points": 13,
+        "supplemental_distinct_run_ids": 11,
+        "core_manifest": {"path": str(core_path.relative_to(root)), "sha256": core_sha},
+        "canonical_manifest": {
+            "path": str(complete_path.relative_to(root)),
+            "sha256": _sha(complete_path),
+        },
+        "supplemental_evidence": {
+            "path": str(evidence_path.relative_to(root)),
+            "sha256": _sha(evidence_path),
+        },
+        "command_record": str(command_path.relative_to(root)),
+        "source_sha256": sources,
+        "visual_inspection": "pending_root_review",
+    }
+
+
 def _paper(protocol: dict, root: Path, output: Path, report: dict) -> None:
     from hydro_pinn.benchmark import benchmark_protocol
     from hydro_pinn.evaluation_workflow import evaluate_manifest, plot_manifest
@@ -751,12 +1019,23 @@ def _paper(protocol: dict, root: Path, output: Path, report: dict) -> None:
     }
     preserved.update(metrics["provenance"].get("evaluation_source_sha256", {}))
     preserved.update(timing.get("provenance", {}).get("source_sha256", {}))
+    rendering = _rendering_bindings(root)
+    preserved.update(rendering["preserved_files_sha256"])
+    report["rendering_sources"] = rendering["source_sha256"]
+    report["parent"]["figures"] = {
+        "canonical_manifest": rendering["parent_canonical_ledger"],
+        "core_manifest": rendering["parent_core_ledger"],
+        "figure_count": 35,
+        "export_count": len(rendering["parent_export_resolutions"]),
+        "exports": rendering["parent_export_resolutions"],
+    }
     for name in (
         protocol["paths"]["manifest"],
         "results/metrics.json",
         "results/timings.json",
     ):
         preserved[name] = _sha(_path(root, name))
+    _save(output / "report.json", report)
     saved = output / "saved_output_replay"
     saved.mkdir()
     replay_metrics = evaluate_manifest(
@@ -888,6 +1167,11 @@ def _paper(protocol: dict, root: Path, output: Path, report: dict) -> None:
             "parent_state": timing["state"],
         },
     )
+    _save(output / "report.json", report)
+    report["fresh_execution"]["figures"] = _timing_figure_complete_manifest(
+        root, output, rendering["source_sha256"]
+    )
+    _save(output / "report.json", report)
     report["comparison"] = _paper_comparison(parent, fresh, protocol, root)
     report["comparison"].update(
         physical_metrics=_compare_metrics(metrics, fresh_metrics, parent, protocol),
