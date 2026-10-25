@@ -1,0 +1,329 @@
+{
+  "axis_records": {
+    "boundary_1001": {
+      "all_reported_times_members_exact": true,
+      "replacement_count_changing_float_bits": 0,
+      "replacement_details": [],
+      "state_queries": 2002,
+      "t_count": 1001,
+      "t_sha256": "505303b8ebf3825d005b4e9bc5751e5f3106199aa109353e8956f25f291f849e",
+      "x_count": 2,
+      "x_sha256": "734831e4e50ab19095c1def7e4f83220403ad8661f682d0a47473ff0e99dbb65"
+    },
+    "boundary_2001": {
+      "all_reported_times_members_exact": true,
+      "replacement_count_changing_float_bits": 0,
+      "replacement_details": [],
+      "state_queries": 4002,
+      "t_count": 2001,
+      "t_sha256": "a1a589b8a13d73fb36946d1947a5ecc93bc08b61b663b602e42e5c3737facbf3",
+      "x_count": 2,
+      "x_sha256": "734831e4e50ab19095c1def7e4f83220403ad8661f682d0a47473ff0e99dbb65"
+    },
+    "volume_2000": {
+      "state_queries": 102000,
+      "t_count": 51,
+      "t_sha256": "ae26402633029d777c42e01939a9c17fa1e15550be494cb189d283e3ddba5909",
+      "x_count": 2000,
+      "x_sha256": "88d21c37c76b40d9b26b117c0fa88b5f9fd160d5149075d3eadd360a718b1d58"
+    },
+    "volume_4000": {
+      "state_queries": 204000,
+      "t_count": 51,
+      "t_sha256": "ae26402633029d777c42e01939a9c17fa1e15550be494cb189d283e3ddba5909",
+      "x_count": 4000,
+      "x_sha256": "5b9ba49f481eea2ed08280e4fdfb46404ba28a37dd6befbc230090f6546587dd"
+    }
+  },
+  "dual_operator": {
+    "construction": "73 equal nondimensional cell centres crossed with5 declared nonfinal validation times; use same365 points for both inviscid and viscous operators, without solution labels.",
+    "coordinate_sha256": "01be1ac8a072e3766901f691bd727b45d7587b6353723cee06ce15031054b722",
+    "coordinate_system": "nondimensional x/Lc,t/Tc",
+    "count_interpretation": "365 coordinate locations for two operators; derivative/operator work is separate from332004 state-query locations.",
+    "grid_cells": 73,
+    "locations": 365,
+    "shape": [
+      365,
+      2
+    ],
+    "times_s": [
+      0.019,
+      0.071,
+      0.173,
+      0.311,
+      0.487
+    ]
+  },
+  "exact_algorithms": {
+    "arithmetic_warning": "Do not replace multiply-then-divide x arithmetic with precomputed dx; exact-axis checks can detect bit differences.",
+    "boundary_rule": "Replace existing nodes; do not union/append nearby floating-point times. Exactly1001 or2001 nodes remain.",
+    "boundary_t": "axis=[i*0.5/(nodes-1) for i in range(nodes)]; for each volume time: index=round(time_s/0.5*(nodes-1)); require math.isclose(axis[index],time_s,rel_tol=0,abs_tol=1e-14); assign axis[index]=time_s",
+    "boundary_x": "[left,right], exactly[-5.0,5.0]",
+    "mass_membership": "np.searchsorted(boundary_t,volume_t); require np.array_equal(boundary_t[indices],volume_t), increasing finite axes, t0 and final0.5 membership.",
+    "primary_t": "np.asarray(evaluation[times_s],dtype=np.float64), using the literal JSON values",
+    "primary_x": "left+(np.arange(400,dtype=np.float64)+0.5)*(right-left)/400, in this operation order",
+    "volume_t": "[0.0,*evaluation[times_s]] giving51 distinct times",
+    "volume_x": "[left+(i+0.5)*(right-left)/cells for i in range(cells)] for cells=2000,4000"
+  },
+  "limits": [
+    "Private _conservation is a frozen core helper, so bind its source hash if imported by the additive extension.",
+    "This review checks axes, headers, hashes and declared provenance only; it does not revalidate analytical values or inspect any model accuracy.",
+    "Core data and every existing source/config/result file remained unchanged."
+  ],
+  "recommended_interfaces": {
+    "auxiliary_axes": "hydro_pinn.protocol._conservation([], evaluation, file_sha256(configs/evaluation.json)); read volume_axes and boundary_axes; no records generated with empty matrix",
+    "auxiliary_record_limitation": "Existing auxiliary_record reloads core checkpoints through load_training_checkpoint for predict sources; use its frozen axes and pure mass functions for a new viscosity checkpoint schema, not its core loader unchanged.",
+    "dual_operator_coordinates": "hydro_pinn.sampling.generate_validation_samples(case, baseline_training,11)[interior_xt_nd]",
+    "mass": "hydro_pinn.conservation.quadrature_mass(case, volume, boundary) and quadrature_sensitivity(base,doubled)",
+    "primary_axes": "hydro_pinn.evaluate.evaluation_axes(evaluation)"
+  },
+  "recorded_at_utc": "2026-10-25T21:24:04.203887+00:00",
+  "saved_matching_reference_auxiliary": {
+    "core-v1-pilot-a03-e1-reference-boundary_flux-1001": {
+      "array_headers": {
+        "h_m": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            1001,
+            2
+          ]
+        },
+        "q_m2_s": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            1001,
+            2
+          ]
+        },
+        "t_s": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            1001
+          ]
+        },
+        "x_m": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            2
+          ]
+        }
+      },
+      "axis_membership_exact": true,
+      "output_path": "runs/core-v1-pilot-a03-e1-reference-boundary_flux-1001/outputs.npz",
+      "outputs_manifest_sha256": "e8f1f747c5a799e4a462fefa8c09a7edbb4ea70942e5c5cde1634b84933197f4",
+      "outputs_sha256": "3b422894a99e534f1b44779360bd4c1d109dc38f6c6e19cb9c8add4ca72ef8de",
+      "resolved_config_sha256": "22887aaf5a6c2d96d5c62e096d2fcbd5cb3cabee0eba7b0da6b5350d8acfc8c3"
+    },
+    "core-v1-pilot-a03-e1-reference-boundary_flux-2001": {
+      "array_headers": {
+        "h_m": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            2001,
+            2
+          ]
+        },
+        "q_m2_s": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            2001,
+            2
+          ]
+        },
+        "t_s": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            2001
+          ]
+        },
+        "x_m": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            2
+          ]
+        }
+      },
+      "axis_membership_exact": true,
+      "output_path": "runs/core-v1-pilot-a03-e1-reference-boundary_flux-2001/outputs.npz",
+      "outputs_manifest_sha256": "b6df3be500086a173434980a50b330298b9ed29dc1712683706f0d22c55449a5",
+      "outputs_sha256": "8888c9144a4d7b98428f4d86c010c49b7fa6d3e531c4b3defe427b96a474c60d",
+      "resolved_config_sha256": "6e7a77d75a014e1edd779cc8641f5509930078d66ca7e12ce367d83a910cf15c"
+    },
+    "core-v1-pilot-a03-e1-reference-volume-2000": {
+      "array_headers": {
+        "h_m": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            51,
+            2000
+          ]
+        },
+        "q_m2_s": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            51,
+            2000
+          ]
+        },
+        "t_s": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            51
+          ]
+        },
+        "x_m": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            2000
+          ]
+        }
+      },
+      "axis_membership_exact": true,
+      "output_path": "runs/core-v1-pilot-a03-e1-reference-volume-2000/outputs.npz",
+      "outputs_manifest_sha256": "eb672f43bff6f592944e99ef36f4ed865c9363fc4ddce734dae5573edb2b9f89",
+      "outputs_sha256": "8620da8bee818a441cf2de4c0f68e9212a40f3d8ab60c74bea5642debcca7e96",
+      "resolved_config_sha256": "52bf6737680d3d3b7329a868c561275a95dd0347dd68488929d245d65b727e89"
+    },
+    "core-v1-pilot-a03-e1-reference-volume-4000": {
+      "array_headers": {
+        "h_m": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            51,
+            4000
+          ]
+        },
+        "q_m2_s": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            51,
+            4000
+          ]
+        },
+        "t_s": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            51
+          ]
+        },
+        "x_m": {
+          "dtype": "float64",
+          "fortran_order": false,
+          "shape": [
+            4000
+          ]
+        }
+      },
+      "axis_membership_exact": true,
+      "output_path": "runs/core-v1-pilot-a03-e1-reference-volume-4000/outputs.npz",
+      "outputs_manifest_sha256": "ec6e7b2a557b5c8178694c4b60cff7541c5c13333394b12377aa32f85b924316",
+      "outputs_sha256": "6a5857c07981a071a555f19fe124df8ffd278008d357d615fddd43e6bc7bee1a",
+      "resolved_config_sha256": "1cc829d6a54a49996f5fc8cd1b55634db9fc5a845e9795236a86182f18ae9078"
+    }
+  },
+  "saved_primary_reference": {
+    "array_headers": {
+      "h_m": {
+        "dtype": "float64",
+        "fortran_order": false,
+        "shape": [
+          50,
+          400
+        ]
+      },
+      "q_m2_s": {
+        "dtype": "float64",
+        "fortran_order": false,
+        "shape": [
+          50,
+          400
+        ]
+      },
+      "t_s": {
+        "dtype": "float64",
+        "fortran_order": false,
+        "shape": [
+          50
+        ]
+      },
+      "u_m_s": {
+        "dtype": "float64",
+        "fortran_order": false,
+        "shape": [
+          50,
+          400
+        ]
+      },
+      "velocity_valid": {
+        "dtype": "bool",
+        "fortran_order": false,
+        "shape": [
+          50,
+          400
+        ]
+      },
+      "x_m": {
+        "dtype": "float64",
+        "fortran_order": false,
+        "shape": [
+          400
+        ]
+      }
+    },
+    "core_protocol_sha256": "e73e9a1bd6973cebaeb62435cb3e96da57f3bf6308afb0694a2c36bc916216db",
+    "data_origin": "analytical_generated_idealized_E1",
+    "files_sha256": {
+      "checks.json": "1a6aa8362164ac1c5a64e3ada1d911b6abc87c2fe2efe18011648c4a47906288",
+      "metadata.json": "e21c31e57a97a5d11dbaf243923f325f8a28f66646bc8701de5a4c989f5041a3",
+      "outputs.npz": "5e8816b6f20fb3caa930fe3c8d62ca4821ab61db2043e18596099947311f4516",
+      "protocol_binding.json": "3de44aae474dd235872a91cbe33876c5137ee2ff80f232a2725c55206922d370",
+      "reference_provenance.json": "bbb852babf57122dde943bb5fdf8351c652d0255bff72737c544970a04949065",
+      "resolved_config.json": "6512ef29484cb673c8ea10b75461cd59a8c97a5c4716a7317b135c74df912df6",
+      "status.json": "a5a704b9227a315288b061b86e8e075ccd9592e2ba532302a91419a2f6e26e77"
+    },
+    "final_evaluation_sha256": "f83827dbf28e993628a73efbcdecec7d16f425f4f3a1bb20feb757305355db3b",
+    "future_reuse": "Read existing outputs.npz only after protocol/reference binding checks. No regeneration or error computation was performed for this review.",
+    "outputs_path": "runs/core-v1-pilot-a03-e1-reference/outputs.npz",
+    "primary_axes_bitwise_equal": true,
+    "run_id": "core-v1-pilot-a03-e1-reference",
+    "run_path": "runs/core-v1-pilot-a03-e1-reference",
+    "state_location": "point_value",
+    "units": "x:m,t:s,h:m,q:m^2/s per unit width"
+  },
+  "schema_version": 1,
+  "scope": "No model, analytical reference, training, residual or scientific-quality computation; only pure coordinate generation, saved metadata/header/axis reads and hashes.",
+  "source_sha256": {
+    "configs/cases/e1_wet.json": "9736a419f9a63d27310bae03aaf9288f630e8f28ad100c7b1059397952255e1e",
+    "configs/evaluation.json": "f83827dbf28e993628a73efbcdecec7d16f425f4f3a1bb20feb757305355db3b",
+    "configs/final_protocol.json": "1382e09f2acb3d6da92e8089f36dbfe0cd12719e79f91d813791cb7f877c9904",
+    "configs/training/baseline.json": "9f9c410fa5eda793fa543d41238ef71191e3987ac0361f782022685833f81a6e",
+    "docs/final_run_manifest.json": "8f8b755024877061e119e8b9befcf0e2fd8d63bcb5f3031d21440f8850c77f2d",
+    "src/hydro_pinn/conservation.py": "b06bc773ff67a5b28ffa744a095c99a41e0ee3137c14eaed0a849cdf3e3f3931",
+    "src/hydro_pinn/evaluate.py": "31aa5c9b466c874819b89a15856b7f731d87172a2bbd5cf98acc1172ce663fe2",
+    "src/hydro_pinn/protocol.py": "85009bc307facc04decc86c490ce0f578c7576d480ed50137605511912d62a33",
+    "src/hydro_pinn/references.py": "9e23dd1a97f3f63df7be9d493382d263305e233c3be45980fac3c36fd5d9a547",
+    "src/hydro_pinn/sampling.py": "c3c1a85cce6e142f5f4fafdb6af40fa14c9c3b5dd1c367a1e7ba38b0ea3c2cf1"
+  },
+  "state": "verified_static_interfaces_and_saved_axes_only",
+  "workload_counts_per_model": {
+    "all_state_queries": 332004,
+    "boundary": 6004,
+    "primary": 20000,
+    "volume": 306000
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "state": "source_interpretation_only_no_implementation_or_numerical_validation",
+  "source": {
+    "repository": "https://github.com/clawpack/riemann",
+    "tag_observed": "v5.12.0",
+    "commit": "c29dcab4af30913fc16e4406fe56fe5f0a322b1f",
+    "path": "src/rpn2_shallow_hlle.f90",
+    "local_path": "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/rpn2_shallow_hlle.f90",
+    "sha256": "9d2b334c8d5056ca8ec99e444237ba8d5ec4a554a86228d91c4e8ce598e2280f",
+    "line_numbers": "One based, counted from the preserved raw source including blank lines."
+  },
+  "interface_and_flux_interpretation": [
+    {
+      "lines": [
+        2,
+        22
+      ],
+      "observation": "Fortran rpn2 returns two waves, two speeds and three-component negative/positive fluctuations amdq/apdq. The conserved components are depth, x momentum and y momentum. This file is a normal Riemann interface routine, not a complete two-dimensional time advance."
+    },
+    {
+      "lines": [
+        31,
+        45
+      ],
+      "observation": "Gravity comes from the cparam common block. For ixy=1, normal momentum is component2 and tangential momentum component3; the other direction exchanges them. A later standalone NumPy method must rotate both input/output momentum roles consistently."
+    },
+    {
+      "lines": [
+        47,
+        65
+      ],
+      "observation": "At interface i, the left state is qr(:,i-1), and the right state is ql(:,i). The code divides momenta by depth and takes square roots directly. It forms h_hat=(hL+hR)/2 and sqrt(h)-weighted normal u_hat, with c_hat=sqrt(g*h_hat). Positive finite depth and valid gravity are assumptions; this file supplies no dry-state guards."
+    },
+    {
+      "lines": [
+        67,
+        74
+      ],
+      "observation": "The speeds are sL=min(uL-cL,u_hat-c_hat) and sR=max(uR+cR,u_hat+c_hat). The middle state includes depth, normal momentum and tangential momentum, so a two-state h/normal-q adaptation would discard a required conservative component."
+    },
+    {
+      "lines": [
+        76,
+        100
+      ],
+      "observation": "The two wave jumps sum to the full three-state difference. Each speed times its wave contributes to amdq for negative speed, or apdq otherwise; zero-speed contribution is zero."
+    }
+  ],
+  "algebraic_flux_translation_for_a_future_implementation": {
+    "status": "Source-based algebraic interpretation, not implemented or numerically compared in this preflight.",
+    "normal_physical_flux": "For U=(h,q_n,q_t), F_n(U)=(q_n,q_n^2/h + g*h^2/2,q_n*q_t/h). Rotate this vector back for a y face.",
+    "HLL_middle_state": "U_star=(sR*UR-sL*UL-(F_R-F_L))/(sR-sL), equivalent to the three component middle-state expressions in preserved lines72-74.",
+    "conservative_flux": "Use F_L when sL>=0, F_R when sR<=0, and (sR*F_L-sL*F_R+sL*sR*(UR-UL))/(sR-sL) when the speeds straddle zero. Source fluctuations correspond to F_star=F_L+amdq=F_R-apdq. The existing predeclared reference tests would need to verify a future implementation, including full tangential transport.",
+    "important_distinction": "Do not label amdq or apdq alone as the boundary numerical flux. They are one-sided fluctuations; the physical flux term is needed for conservative wall and budget accounting."
+  },
+  "what_this_source_does_not_establish": [
+    "It does not specify the proposed unsplit forward-Euler Cartesian update, summed directional CFL cap, snapshot schedule, wall ghost states, exact rectangular initial averages or conservative area projection. Those remain separately documented local design choices.",
+    "It does not validate positivity for the proposed run, guarantee a boundary-safe horizon, supply refinement errors or establish reference accuracy.",
+    "It includes no bed, Manning friction, rainfall, wet/dry treatment or dry-state validation in this routine.",
+    "It does not establish a measured M5 runtime, memory budget, a neural solution or successful genuine 2D comparison."
+  ],
+  "license_and_attribution": {
+    "license": "BSD-3-Clause",
+    "copyright": "Copyright (c) 1994-2018, Clawpack Developers",
+    "same_commit_license_path": "docs/evidence/phase_10/genuine_reference_sources_preflight_v01/LICENSE",
+    "same_commit_license_sha256": "668317944192d8217d63c0fd0730f889bd07f759b69ed6b657e1fb9902145ebe",
+    "obligations_summary": "Retain the actual copyright, conditions and disclaimer with source redistribution; include the notice and terms with binary documentation/materials; do not imply endorsement by copyright holders or contributors.",
+    "attribution_to_use_only_if_adapted": "Normal wet-state shallow-water HLLE interface adapted from Clawpack riemann, src/rpn2_shallow_hlle.f90, commit c29dcab4af30913fc16e4406fe56fe5f0a322b1f (v5.12.0 observed). BSD-3-Clause notice retained. Any local unsplit finite-volume advance and verification must be identified separately.",
+    "current_use": "Provenance preservation and source reading only. No downloaded Fortran or translated reference code was compiled, imported or executed."
+  }
+}
