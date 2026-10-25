@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "extension": "planar_e1_consistency_v01",
+  "case": "configs/cases/e1_wet.json",
+  "domain_y_m": [-5.0, 5.0],
+  "seed": 11,
+  "device": "cpu",
+  "dtype": "float32",
+  "cpu_threads": 4,
+  "hidden_layers": [64, 64, 64, 64],
+  "depth_floor_nd": 0.000001,
+  "adam_lr": 0.001,
+  "full_steps": 10000,
+  "pilot_steps": 25,
+  "weights": {"pde": 1.0, "ic": 10.0, "bc": 10.0},
+  "sampling": {
+    "algorithm": "numpy_PCG64_fixed_uniform",
+    "training": {"seed": 110101, "pde": 10000, "ic": 1000, "per_edge": 500},
+    "validation": {"seed": 110102, "pde": 2000, "ic": 400, "per_edge": 200}
+  },
+  "evaluation": {
+    "nx": 400,
+    "ny": 21,
+    "nt": 50,
+    "first_time_s": 0.01,
+    "last_time_s": 0.5,
+    "wet_threshold_m": 0.001,
+    "shock_band_half_width_m": 0.1,
+    "volume_nx": [800, 1600],
+    "volume_ny": [21, 42],
+    "edge_nx": [400, 800],
+    "edge_ny": [21, 42],
+    "edge_time_nodes": [1001, 2001],
+    "query_chunk_size": 8192
+  }
+}
