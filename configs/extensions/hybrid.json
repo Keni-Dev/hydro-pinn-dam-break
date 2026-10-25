@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "extension": "hybrid_analytical_e1_v01",
+  "case": "configs/cases/e1_wet.json",
+  "training": "configs/training/baseline.json",
+  "seed": 11,
+  "device": "cpu",
+  "dtype": "float32",
+  "cpu_threads": 4,
+  "steps": 10000,
+  "lambda_data": 1.0,
+  "labels": {
+    "seed": 110211,
+    "training_count": 256,
+    "validation_count": 128,
+    "training_window_s": [0.0, 0.35],
+    "validation_window_s": [0.35, 0.40],
+    "final_window_s": [0.40, 0.50],
+    "final_n_x": 400,
+    "final_n_t": 11
+  },
+  "evaluation": {
+    "velocity_wet_threshold_m": 0.001,
+    "wave_band_half_width_m": 0.1,
+    "volume_cells": [2000, 4000],
+    "boundary_nodes": [1001, 2001]
+  },
+  "claims": {
+    "scope": "exploratory single predesignated E1 seed11 matched pair",
+    "label_source": "idealized analytical solution; no field observations",
+    "held_out": "solution labels only; PDE collocation covers the full 0<t<0.5 s domain",
+    "checkpoint_selection": "minimum separate physics/IC/BC validation with fixed 1/10/10 weights, including step zero; earliest strict improvement",
+    "data_validation": "post-fit diagnostic only; never fit, select checkpoints or tune settings",
+    "generalization": "no new-case or field-validation claim"
+  }
+}
