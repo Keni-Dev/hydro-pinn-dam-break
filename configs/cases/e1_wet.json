@@ -1,0 +1,59 @@
+{
+  "config_type": "case",
+  "schema_version": 1,
+  "case_id": "E1",
+  "description": "Idealized wet-bed dam break; generated benchmark per unit width.",
+  "domain_m": [
+    -5.0,
+    5.0
+  ],
+  "dam_position_m": 0.0,
+  "gravity_m_s2": 9.81,
+  "final_time_s": 0.5,
+  "left_depth_m": 1.0,
+  "right_depth_m": 0.1,
+  "left_velocity_m_s": 0.0,
+  "right_velocity_m_s": 0.0,
+  "reference": {
+    "kind": "wet_bed",
+    "source_url": "https://faculty.washington.edu/rjl/riemann_book/Shallow_water.html",
+    "root_tolerance_m": 1e-12,
+    "root_max_iterations": 200
+  },
+  "assumptions": {
+    "bed": "flat",
+    "friction": "none",
+    "rainfall": "none",
+    "channel_width_convention": "per_unit_width"
+  },
+  "boundary": {
+    "kind": "fixed_reservoir",
+    "left_h_m": 1.0,
+    "left_q_m2_s": 0.0,
+    "right_h_m": 0.1,
+    "right_q_m2_s": 0.0
+  },
+  "scales": {
+    "H_m": 1.0,
+    "Lc_m": 5.0,
+    "Uc_m_s": 3.132091952673165,
+    "Tc_s": 1.5963771420352522
+  },
+  "grid": {
+    "cell_counts": [
+      100,
+      200,
+      400,
+      800
+    ],
+    "state_location": "cell_average",
+    "cfl": 0.45,
+    "time_output_policy": "hit_requested_times"
+  },
+  "array_units": {
+    "x_m": "m",
+    "t_s": "s",
+    "h_m": "m",
+    "q_m2_s": "m^2/s"
+  }
+}

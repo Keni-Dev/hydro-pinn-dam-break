@@ -1,0 +1,114 @@
+{
+  "config_type": "smoke",
+  "schema_version": 1,
+  "purpose": "bounded_pipeline_check_not_paper_reproduction",
+  "training_overrides": {
+    "sampling": {
+      "interior_points": 128,
+      "initial_points": 64,
+      "boundary_points_per_side": 32
+    },
+    "optimizer": {
+      "steps": 20
+    },
+    "lbfgs": {
+      "enabled": false
+    }
+  },
+  "validation": {
+    "config_type": "evaluation",
+    "schema_version": 1,
+    "partition": "validation",
+    "grid": {
+      "kind": "cell_centres",
+      "domain_m": [
+        -5.0,
+        5.0
+      ],
+      "cells": 31
+    },
+    "times_s": [
+      0.023,
+      0.083,
+      0.193,
+      0.373,
+      0.493
+    ],
+    "profile_times_s": [
+      0.083,
+      0.373,
+      0.493
+    ],
+    "velocity_wet_threshold_m": 0.001,
+    "wave_band_half_width_m": 0.1,
+    "mass_quadrature": {
+      "volume": {
+        "rule": "midpoint",
+        "cells": [
+          128,
+          256
+        ],
+        "include_t0": true,
+        "include_reported_times": true
+      },
+      "boundary_flux": {
+        "rule": "trapezoid",
+        "nodes": [
+          101,
+          201
+        ],
+        "include_t0": true,
+        "include_final_time": true,
+        "include_reported_times": true,
+        "spatial_locations": "domain_endpoints"
+      }
+    }
+  },
+  "evaluation": {
+    "config_type": "evaluation",
+    "schema_version": 1,
+    "partition": "smoke_evaluation",
+    "grid": {
+      "kind": "cell_centres",
+      "domain_m": [
+        -5.0,
+        5.0
+      ],
+      "cells": 64
+    },
+    "times_s": [
+      0.05,
+      0.15,
+      0.3,
+      0.5
+    ],
+    "profile_times_s": [
+      0.15,
+      0.5
+    ],
+    "velocity_wet_threshold_m": 0.001,
+    "wave_band_half_width_m": 0.1,
+    "mass_quadrature": {
+      "volume": {
+        "rule": "midpoint",
+        "cells": [
+          128,
+          256
+        ],
+        "include_t0": true,
+        "include_reported_times": true
+      },
+      "boundary_flux": {
+        "rule": "trapezoid",
+        "nodes": [
+          101,
+          201
+        ],
+        "include_t0": true,
+        "include_final_time": true,
+        "include_reported_times": true,
+        "spatial_locations": "domain_endpoints"
+      }
+    }
+  }
+}

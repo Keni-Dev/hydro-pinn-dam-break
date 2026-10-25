@@ -1,0 +1,50 @@
+{
+  "config_type": "evaluation",
+  "schema_version": 1,
+  "partition": "implementation_verification",
+  "grid": {
+    "kind": "cell_centres",
+    "domain_m": [
+      -5.0,
+      5.0
+    ],
+    "cells": 129
+  },
+  "times_s": [
+    0.037,
+    0.113,
+    0.229,
+    0.347,
+    0.463,
+    0.5
+  ],
+  "profile_times_s": [
+    0.113,
+    0.347,
+    0.5
+  ],
+  "velocity_wet_threshold_m": 0.001,
+  "wave_band_half_width_m": 0.1,
+  "mass_quadrature": {
+    "volume": {
+      "rule": "midpoint",
+      "cells": [
+        2000,
+        4000
+      ],
+      "include_t0": true,
+      "include_reported_times": true
+    },
+    "boundary_flux": {
+      "rule": "trapezoid",
+      "nodes": [
+        1001,
+        2001
+      ],
+      "include_t0": true,
+      "include_final_time": true,
+      "include_reported_times": true,
+      "spatial_locations": "domain_endpoints"
+    }
+  }
+}
