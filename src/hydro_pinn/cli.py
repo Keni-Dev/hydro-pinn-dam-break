@@ -418,6 +418,25 @@ def build_parser() -> argparse.ArgumentParser:
     )
     viscosity_evaluate.add_argument("--manifest", type=Path, required=True)
     viscosity_evaluate.add_argument("--output-dir", type=Path, required=True)
+    reference_2d = subparsers.add_parser(
+        "extension-2d-reference",
+        help="Run one explicitly released wet rectangular 2D reference cell.",
+        description=(
+            "Advance one named float64 NumPy HLLE cell after a matching root "
+            "protocol release. Preserve partial states on budget/failure. "
+            "This command never runs the four-cell matrix automatically."
+        ),
+    )
+    reference_2d.add_argument("--config", type=Path, required=True)
+    reference_2d.add_argument("--run-id", required=True)
+    reference_2d.add_argument(
+        "--protocol", type=Path,
+        default=Path(
+            "results/extensions/two_dimensional/reference_v01/"
+            "candidate_protocol_v01/protocol.json"
+        ),
+    )
+    reference_2d.add_argument("--release", type=Path)
     return parser
 
 
@@ -425,6 +444,26 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Dispatch CLI commands and give actionable errors without tracebacks."""
     parser = build_parser()
     args = parser.parse_args(argv)
+    if args.command == "extension-2d-reference":
+        from hydro_pinn.extensions.reference_2d import run_reference
+
+        try:
+            output = run_reference(
+                args.config, args.run_id, protocol_path=args.protocol,
+                release_path=args.release,
+            )
+            state = json.loads((output / "status.json").read_text())["state"]
+        except KeyboardInterrupt:
+            print(
+                "2D reference interrupted; partial evidence retained.", file=sys.stderr
+            )
+            return 130
+        except (ValueError, OSError, RuntimeError, KeyError) as exc:
+            print(f"2D reference failed: {exc}", file=sys.stderr)
+            return 2
+        print(json.dumps({"stage": args.command, "state": state,
+                          "output": str(output)}))
+        return 0 if state == "completed" else 3
     if args.command in {"extension-viscosity-run", "extension-viscosity-evaluate"}:
         try:
             if args.command == "extension-viscosity-run":
