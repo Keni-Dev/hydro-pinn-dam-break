@@ -9,20 +9,23 @@ other inputs.
 
 This is implementation verification dated October 25, 2026. The accepted
 Phase 01 analytical references supply the comparison; the final evaluation
-configuration was not used. The method follows PRD Section 4.6 and
-`prompts/appendix/A_IMPLEMENTATION_CONTRACTS.md`. Mathematical reference
-provenance and the independent exact-solver checks remain in
-`docs/evidence/phase_01/`.
+configuration was not used. The method is the prescribed unlimited two-step
+Lax-Wendroff scheme, with pointwise analytical comparison after the declared
+piecewise-constant reconstruction. Mathematical reference provenance is listed
+in [references](references.md).
 
 The canonical runs are `p02_solver_e1_n100`, `p02_solver_e2_n100`, and
 `p02_refine_e1_n200/n400/n800`, `p02_refine_e2_n200/n400/n800` (each suffix names
 its own run). All metadata/status/arrays were read back. Their physical inputs,
 resolved-configuration snapshots, and recorded source hashes match the current
 files. Run metadata records foundation revision `d113cae` with a dirty working
-tree; per-file SHA256 values identify the actual solver source. Complete hashes,
-commands/exits, and failure-interface checks are in
-[`solver_checks.json`](evidence/phase_02/solver_checks.json) and
-[`refinement_checks.json`](evidence/phase_02/refinement_checks.json).
+tree; per-file SHA256 values identify the actual solver source. Complete hashes, commands/exits and failure-interface checks were recorded in
+the historical `docs/evidence/phase_02/solver_checks.json` and
+`docs/evidence/phase_02/refinement_checks.json`. These early implementation
+verification artifacts are not distributed in the publication bundles. The
+accepted final-study outputs have a separate [saved-results replay route](../REPRODUCIBILITY.md)
+and [artifact inventory](../ARTIFACTS.json); they are not substitutes for the
+early verification records summarized here.
 
 Native states are cell averages on N cells with dx=10/N m. Initial averages
 represent the dam-aligned jump exactly, with prescribed volumes 5.5 m² for E1
@@ -104,30 +107,23 @@ corrector, zero-wave-speed, and near-dry-overflow diagnostics in
 `solver_checks.json` are explicitly diagnostic test inputs, not failures of the
 canonical E1/E2 matrix.
 
-The saved whole profiles were inspected at 0.113, 0.347, and 0.5 s:
-[E1 profiles](evidence/phase_02/e1_verification_profiles.png),
-[E2 profiles](evidence/phase_02/e2_verification_profiles.png).
+The saved whole profiles were inspected at 0.113, 0.347, and 0.5 s in the
+historical `docs/evidence/phase_02/e1_verification_profiles.png` and
+`docs/evidence/phase_02/e2_verification_profiles.png` records.
 Selected analytical points through the rarefaction, intermediate state, shock
 sides, dry-front sides, and far fields are retained in `refinement_checks.json`.
 Both references give h=4/9 m and q=0.9280272452364934 m²/s at x=0 and t=0.5 s.
 The diagnostic reconstruction arrays are
-[`reconstructed_verification.npz`](evidence/phase_02/reconstructed_verification.npz);
+the historical `docs/evidence/phase_02/reconstructed_verification.npz`;
 the canonical native arrays remain under their original run IDs.
 
-The executed analysis command was:
+The historical analysis used `docs/evidence/phase_02/analyze_refinement.py`
+and wrote new output directories rather than replacing records. That helper
+and the early analysis attempts are not publication runtime inputs. The three
+analysis attempts changed diagnostic wording/formatting, plot-boundary
+connectors and the analytical threshold comparison; no canonical numerical
+simulation was rerun or altered for those edits.
 
-```sh
-rtk proxy env MPLCONFIGDIR=/private/tmp/aifox-p02-mpl XDG_CACHE_HOME=/private/tmp/aifox-p02-xdg uv run --frozen python docs/evidence/phase_02/analyze_refinement.py
-```
-
-To repeat the readback, pass `--output-dir` with a new directory under the
-project; the helper refuses to replace existing outputs. Analysis iterations
-are preserved under `docs/evidence/phase_02/analysis_attempt_01/` through
-`analysis_attempt_03/`. Their changes were diagnostic wording/formatting,
-plot-boundary connectors, and addition of the analytical threshold comparison;
-no canonical numerical simulation was rerun or altered for those edits.
-
-The E1 comparator is available for the next phase with its oscillations and
-errors disclosed. E2 supplies an executed dry-bed diagnostic with front
+The E1 comparator completed with its oscillations and errors disclosed. E2 supplies an executed dry-bed diagnostic with front
 limitations. No final-protocol accuracy, runtime comparison, GPU behavior,
 PINN training outcome, field validation, or course acceptance is established.

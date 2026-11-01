@@ -1,6 +1,6 @@
 # Frozen core study findings
 
-Recorded October 26, 2026 (Asia/Manila). These are local results from the completed frozen study. Full fresh paper reproduction and human/course acceptance remain pending.
+Recorded October 26, 2026 (Asia/Manila). These are local results from the completed frozen core study. This dated report distinguishes original execution from saved-output replay and fresh training reproduction; current instructions are in the [reproducibility guide](../REPRODUCIBILITY.md).
 
 Within each case, the N=400 Lax–Wendroff comparator has lower pooled depth and discharge errors than its tested PINN runs. Adaptive weighting improves pooled errors for seed 33 and worsens them for seeds 11 and 22. The trained networks produce the requested fields faster than fresh integration in this timing window, while cached classical reconstruction and exact-reference generation are cheaper. Host load, precision, training cost, and approximation quality limit that timing comparison.
 
@@ -10,7 +10,7 @@ The protocol is `core-v1-pilot-a03`, digest `e73e9a1bd6973cebaeb62435cb3e96da57f
 
 The comparison uses 400 common centres and 50 times from 0.01 to 0.5 s. Reference and PINN outputs are point values; numerical cell averages use the prescribed right-cell piecewise-constant reconstruction. All three E1 seed pairs are retained. E2 has one baseline seed and supports a diagnostic result only.
 
-Saved evidence: [metrics JSON](../results/metrics.json), [metrics CSV](../results/metrics.csv), [timings with raw samples](../results/timings.json), [figure manifest](figure_manifest.json), [pooled summary and definitions](evidence/phase_06/production_summary.json), and [independent metric readback](evidence/phase_06/production_metric_readback.json).
+Saved scientific records: [metrics JSON](../results/metrics.json), [metrics CSV](../results/metrics.csv), [timings with raw samples](../results/timings.json), and [figure manifest](figure_manifest.json). The historical pooled-summary and independent-readback records are not distributed separately; metric definitions, source bindings and raw records are retained in the listed scientific files and the `core-data` bundle in [ARTIFACTS.json](../ARTIFACTS.json).
 
 ## RQ-01: Depth and discharge accuracy
 
@@ -70,7 +70,7 @@ The analytical E1 reference also shows midpoint-quadrature sensitivity at its mo
 
 All comparable workloads produce physical h and q at the same 400×50 coordinates. Each repeated group has ten warmups and thirty measured samples, with median/IQR and every raw sample retained. Device synchronization brackets the measured interval; CPU execution is synchronous. Numerical timing includes fresh prescribed-state integration, its implemented diagnostics, and reconstruction. Network timing uses resident coordinates and the selected model; loading and copies are separate. Plotting and error calculation are excluded.
 
-The available machine is identified by the user/root hardware clarification as the M5 Air. The benchmark records CPU execution, four PyTorch threads, ten interop threads, and ten logical CPUs; its platform CPU-model probe returned no model. A separate sandboxed sysctl read was unavailable. Both methods use this local CPU, with float64 numerical arrays and float32 networks. No CUDA/Victus result is inferred.
+The available machine is identified in the recorded hardware clarification as the M5 Air. The benchmark records CPU execution, four PyTorch threads, ten interop threads, and ten logical CPUs; its platform CPU-model probe returned no model. A separate system-model query was unavailable. Both methods use this local CPU, with float64 numerical arrays and float32 networks. No CUDA/Victus result is inferred.
 
 Host contention limits these timings. Study training, rendering, and reproduction were stopped, but sampled 1-minute load averages ranged from 16.95 to 20.37 on ten logical CPUs (18.27 before and 17.53 after). Load averages lag and do not identify competing processes. Other host processes were not controlled. Workloads ran sequentially, and several IQRs are large. These observations do not isolate algorithmic speed, precision effects, or a stable hardware-independent latency.
 
@@ -113,8 +113,8 @@ The direction of the error difference changes with seed. Conservation and approx
 
 ## Verification, preservation, and remaining acceptance
 
-The independent metric review checked all CSV/JSON rows, all 347 source hashes, all 36 auxiliary records, sampled error arithmetic, fixed masks, and all 17 mass records. Core figure QA opened all 34 final PNGs and verified their 68 PNG/PDF hashes. Separate supplemental QA inspected the timing-versus-accuracy PNG, its two artifact hashes, and all 13 plotted points. The canonical manifest therefore records 35 figures and 70 exports. The core exporter's own manifest retains its original 34 entries. The first renders and their manifests remain preserved; only display layout and marker clarity were repaired. Metrics and source solution arrays were unchanged. [Metric readback](evidence/phase_06/production_metric_readback.json), [core figure QA](evidence/phase_06/production_figure_qa.json), [supplemental figure QA](evidence/phase_06/production_timing_figure_qa.json), and [timing readback](evidence/phase_06/production_timing_readback.json) state their scope.
+The independent metric review checked all CSV/JSON rows, all 347 source hashes, all 36 auxiliary records, sampled error arithmetic, fixed masks, and all 17 mass records. Core figure QA opened all 34 final PNGs and verified their 68 PNG/PDF hashes. Separate supplemental QA inspected the timing-versus-accuracy PNG, its two artifact hashes, and all 13 plotted points. The canonical manifest therefore records 35 figures and 70 exports. The core exporter's own manifest retains its original 34 entries. The first renders and their manifests remain preserved; only display layout and marker clarity were repaired. Metrics and source solution arrays were unchanged. Those historical review records are not distributed separately; the scientific records and figure manifest linked above retain the reported values, definitions and artifact hashes.
 
 These are idealized, source-free, flat-bed generated cases with fixed initial/boundary conditions. The network is a coordinate solution for each case. No held-out scenario, field dataset, 2D/inverse extension, operational flood forecast, collaborator rerun, human rehearsal, instructor acceptance, or grade has been established. Finite optimizer budgets do not establish convergence.
 
-Phase 07 must distinguish saved-output replay from a fresh full paper reproduction. Its current reproduction route automatically rebuilds the 34 core figures; the supplemental timing figure needs the explicit post-benchmark route in the [production handoff](evidence/phase_06/production_handoff.md). Root technical acceptance of this Phase 06 handoff remains separate from that reproduction and from human/course acceptance.
+Saved-output replay and fresh full-study reproduction are separate routes in the [reproducibility guide](../REPRODUCIBILITY.md). Replay rebuilds the 34 core figures, with the supplemental timing figure rebuilt explicitly from saved timings and metrics. It does not retrain the frozen experiments or establish an independent environment or course acceptance.

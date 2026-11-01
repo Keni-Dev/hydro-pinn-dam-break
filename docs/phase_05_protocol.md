@@ -1,6 +1,6 @@
-# Phase05 protocol and runner handoff
+# Frozen core protocol and runner
 
-The frozen final matrix completed on October 26, 2026 (Asia/Manila). All 24 stages and 70,000 planned Adam steps passed independent saved-record readback. Phase05 is completed locally and awaits root closeout review; analytical accuracy and conservation remain Phase06 work. The preparation and recovery details below describe the unchanged protocol used for this execution.
+The frozen final matrix completed on October 26, 2026 (Asia/Manila). All 24 stages and 70,000 planned Adam steps passed independent saved-record readback. This execution report precedes the analytical accuracy and conservation evaluation recorded in [core findings](findings.md). The preparation and recovery details below describe the unchanged protocol used for this execution.
 
 ## Frozen study
 
@@ -26,7 +26,7 @@ A compatible failed/interrupted training attempt can resume explicitly with `--r
 
 `execution_plan(protocol, namespace=..., output_root=..., manifest_path=...)` maps all 60 core/auxiliary IDs while retaining the parent protocol digest. `run_matrix` accepts the corresponding optional `execution_namespace`, `output_root` and `manifest_path` arguments. Destinations stay inside the project. Overrides require a namespace; a completed namespace cannot be presented as a fresh execution.
 
-The ordinary CLI retains its main-study destinations. A future paper caller can choose, for example, namespace `paper-v1`, output root `reproduction/paper-v1/runs` and manifest `reproduction/paper-v1/manifest.json`. This derives new actual IDs and destinations from the same frozen stage identities and scientific settings. Resumed actual checkpoint bindings remain execution-specific. The namespace fixture proves original/fresh scientific checkpoint agreement and preservation of the original protocol and main outputs. No actual paper reproduction was launched.
+The ordinary CLI retains its main-study destinations. A future paper caller can choose, for example, namespace `paper-v1`, output root `reproduction/paper-v1/runs` and manifest `reproduction/paper-v1/manifest.json`. This derives new actual IDs and destinations from the same frozen stage identities and scientific settings. Resumed actual checkpoint bindings remain execution-specific. The namespace fixture proves original/fresh scientific checkpoint agreement and preservation of the original protocol and main outputs. No full training reproduction was launched at this execution stage. Current replay and optional fresh-execution instructions are in the [reproducibility guide](../REPRODUCIBILITY.md).
 
 ## Verification and boundary
 
@@ -34,11 +34,11 @@ Ten protocol checks passed in 21.57 s; eight final runner checks passed in 52.05
 
 CLI help and incomplete-resume argument checks passed. The actual freeze command exited 0. Independent readback verified 24 core stages, three pairs, 70,000 planned Adam steps, 36 auxiliary specifications, exact quadrature axes, all scientific hashes and absence of final execution. All 364 original inventory files and 366 files from prior runs remain unchanged. Scoped Ruff/format and Git diff checks passed.
 
-Preparation evidence is under `docs/evidence/phase_05/`: test records, CLI/freeze command outputs, `freeze_readback.json`, preservation inventory and executed checklist copy. These prelaunch records retain their historical state. Root owns technical acceptance and commits.
+The historical prelaunch records include test records, CLI/freeze command outputs, `freeze_readback.json` and preservation inventories. They retain their original preparation-stage state and are not distributed runtime inputs; the frozen protocol and scientific run manifest remain the publication's execution inputs.
 
 ## Actual matrix execution and independent readback
 
-Root accepted the launch in `docs/coordination/phase_05_launch_review.json` at source commit `aca15d3df406fc906ae5b2a51804e83ed52a8bef`. The unchanged command `rtk proxy uv run --frozen python -m hydro_pinn run-matrix --protocol configs/final_protocol.json` exited 0 at `2026-10-25T16:58:25.567746+00:00`. Its measured command wall time was 6,955.021 s (1 h 55 min 55 s). The append-only combined output, launch/session records and command result remain under `docs/evidence/phase_05/`.
+The recorded launch used source commit `aca15d3df406fc906ae5b2a51804e83ed52a8bef`. Its `run-matrix --protocol configs/final_protocol.json` command exited 0 at `2026-10-25T16:58:25.567746+00:00`. Measured command wall time was 6,955.021 s (1 h 55 min 55 s). These are historical execution observations; fresh execution must use the separate destination route in the [reproducibility guide](../REPRODUCIBILITY.md).
 
 `docs/final_run_manifest.json` reports all 24 expected stages completed, with no failed, blocked or interrupted stage and no retry or resume. Both references, all eight numerical grids, seven full training jobs and seven predictions have saved records. All four E1 classical comparators are valid for later evaluation.
 
@@ -60,4 +60,4 @@ Training and saving totaled 6,930.311 s; manifest training-attempt wall time inc
 
 Readback verified all 364 original inventory files and 366 prior-run files against their saved hashes. It tracked 167 main-run artifacts and confirmed that neither these artifacts nor the terminal manifest changed during verification. The protocol digest and frozen scientific modules remain unchanged. CLI provenance records the additive Phase06/07 work that was permitted during training.
 
-The full conservation specification and 36 auxiliary destinations remain frozen. Actual auxiliary predictions, analytical errors, conservation metrics, figures and comparative timing remain for Phase06 production execution after root review. This closeout establishes execution and saved-record integrity; it does not establish model quality, scientific superiority, reproduction, collaborator rerun or course acceptance.
+The full conservation specification and 36 auxiliary destinations remained frozen for subsequent evaluation. Actual auxiliary predictions, analytical errors, conservation metrics, figures and comparative timings are reported in [core findings](findings.md). This execution record establishes saved-record integrity; it does not by itself establish model quality, scientific superiority, an independent reproduction or course acceptance.

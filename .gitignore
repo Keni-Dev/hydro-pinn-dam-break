@@ -22,3 +22,14 @@ dist/
 # in each run before a later course reproduction package is assembled.
 runs/**/checkpoint*.pt
 *.tmp
+
+# Local working notes and publication downloads.
+.agents/
+prompts/
+.impeccable/
+.proposal-work/
+.submission_checks/
+.publication-validation/
+results/publication-*/
+runs/
+results/extensions/

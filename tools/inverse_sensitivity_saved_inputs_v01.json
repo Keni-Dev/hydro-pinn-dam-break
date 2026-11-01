@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "purpose": "saved_sensitivity_scientific_inputs_only",
+  "created_at_utc": "2026-11-01T07:06:00.145638+00:00",
+  "baseline_manifest": {
+    "path": "docs/extensions/inverse_sensitivity_manifest_v01.json",
+    "sha256": "413e5d90f058ce77b7449dd7208ce664898d040ee0f176c6d6c1dfabdd454479"
+  },
+  "files": [
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/protocol.json",
+      "sha256": "090de1dd15fed9830945e0a8378c84bcce4a076a1b288f6e3d71c1fcb47b2b2e",
+      "bytes": 26157,
+      "hash_authority": "accepted sensitivity manifest"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/protocol.sha256",
+      "sha256": "a2015389bcccdd34d0b403e85ecb69f88f88e7d5efd4d07b4699bd34cce87874",
+      "bytes": 65,
+      "hash_authority": "accepted sensitivity manifest"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/matrix.json",
+      "sha256": "d990afdb0ba0cfeaa7f5059f18eb1eaa6ca855589b0eec8bfde753460b555d32",
+      "bytes": 29973,
+      "hash_authority": "accepted sensitivity manifest"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/analysis.json",
+      "sha256": "09fbc39c2fb64b27196344b0ce79f14b7c3794808b01218260e7c06f0395e0d4",
+      "bytes": 101441,
+      "hash_authority": "accepted sensitivity manifest"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/frozen_axes.npz",
+      "sha256": "874b6356bf8a49dd8a1ba7775371ce4abe72f5e33712a395953a5fe200df72c3",
+      "bytes": 11694,
+      "hash_authority": "accepted sensitivity manifest"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/gauge_means.npz",
+      "sha256": "58e66302f2e4d30af08a248dca1ad6c974bae512fd4a457d8134828f35e251af",
+      "bytes": 2579,
+      "hash_authority": "accepted sensitivity manifest"
+    },
+    {
+      "path": "configs/extensions/inverse_sensitivity.json",
+      "sha256": "b144ef24dd91c7a2eaf3083d4392ff96638dc9d5a045672534b2c4b761611d53",
+      "bytes": 1633,
+      "hash_authority": "accepted sensitivity manifest"
+    },
+    {
+      "path": "src/hydro_pinn/__init__.py",
+      "sha256": "7018c26707fca1706efdca11406f591574bcc31abe072bb34edb74a288021a16",
+      "bytes": 156,
+      "hash_authority": "frozen protocol input hash"
+    },
+    {
+      "path": "src/hydro_pinn/extensions/__init__.py",
+      "sha256": "65b2ea146bc3e6cfbb814aad73eb180d1fe85dc173401c12879326e848a0867e",
+      "bytes": 82,
+      "hash_authority": "frozen protocol input hash"
+    },
+    {
+      "path": "src/hydro_pinn/config.py",
+      "sha256": "040e4edbdea320e297996a07cdfa10e874a01daf5f05bf4b5a498b91815813d8",
+      "bytes": 32576,
+      "hash_authority": "frozen protocol input hash"
+    },
+    {
+      "path": "src/hydro_pinn/records.py",
+      "sha256": "bb6042702983817bd0880727fd32e3b18d9f4d3c60ae9808e50bf0e9e5babd40",
+      "bytes": 21917,
+      "hash_authority": "frozen protocol input hash"
+    },
+    {
+      "path": "src/hydro_pinn/references.py",
+      "sha256": "9e23dd1a97f3f63df7be9d493382d263305e233c3be45980fac3c36fd5d9a547",
+      "bytes": 14700,
+      "hash_authority": "frozen protocol input hash"
+    },
+    {
+      "path": "src/hydro_pinn/extensions/friction_reference.py",
+      "sha256": "cab35b4a5674176efc79556a5f416cc26d76e46af23c0ebd90da71ec134c90f8",
+      "bytes": 19878,
+      "hash_authority": "frozen protocol input hash"
+    },
+    {
+      "path": "src/hydro_pinn/extensions/inverse_sensitivity.py",
+      "sha256": "6691e019adc2402fc58b1490e40e766b0d8648af462bcc8d73fc8cae05859d94",
+      "bytes": 27880,
+      "hash_authority": "accepted sensitivity manifest"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p020/n1600_cfl0p45/outputs.npz",
+      "sha256": "1e1a7d45afe172dc50ac0f0ee1406bade15e130aab326541cbe041352532bcd2",
+      "bytes": 294946,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p020/n3200_cfl0p45/outputs.npz",
+      "sha256": "fcc509c6378b51b132e27a0ba47dd0b8b489182b7d828fa67d1f222fb7b91d61",
+      "bytes": 533022,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p020/n3200_cfl0p225/outputs.npz",
+      "sha256": "6fde83b2b8abc065830ccde195986ca2bcbab4330cf79eabfefd745640b81bf0",
+      "bytes": 608833,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p025/n1600_cfl0p45/outputs.npz",
+      "sha256": "6f8ebbde28cb740f3bb682e186c6901c0d8ec8d0bbd2abead9339041f66bf155",
+      "bytes": 297007,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p025/n3200_cfl0p45/outputs.npz",
+      "sha256": "a3e385d96470d29512438266b047dacfa5cab786a50b0c73bbb63a5bc8ac6ce0",
+      "bytes": 535059,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p025/n3200_cfl0p225/outputs.npz",
+      "sha256": "61b1d6427e4c6551d9e17d89560a35ab117c1ea921ed692fd17fbc9d101f44ad",
+      "bytes": 610484,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/friction/reference_v01/n1600_cfl0p45/outputs.npz",
+      "sha256": "700d937595f67c7089f3804672352e06d5be653e18aeccc13a71dfde28d8526c",
+      "bytes": 299037,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/friction/reference_v01/n3200_cfl0p45/outputs.npz",
+      "sha256": "6de131027d1ab599ce6e45a8e814bd6065ed9bf0bd3d04e882d39cbb1b494f42",
+      "bytes": 537989,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/friction/reference_v01/n3200_cfl0p225/outputs.npz",
+      "sha256": "620b80ccf2d25296b6a853361c9e10b36949c3273a82dc95c8b0761c785d4822",
+      "bytes": 612962,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p035/n1600_cfl0p45/outputs.npz",
+      "sha256": "23ae74c67339542992b118d8c39baafba6a8ef11fa1882514c5b098aa7357868",
+      "bytes": 299577,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p035/n3200_cfl0p45/outputs.npz",
+      "sha256": "589b5b00325bb8f6afcb4bd50434cffcf911bf1ffbfe4580ce38911e4073fd11",
+      "bytes": 541478,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p035/n3200_cfl0p225/outputs.npz",
+      "sha256": "932c06958cc7c48ee365c113eeddf7560087f74fe8771bd68020058328596697",
+      "bytes": 616516,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p040/n1600_cfl0p45/outputs.npz",
+      "sha256": "e689fe750a813bfa07f7e7994ab4609a3b596ee61ce3e0e4beaedb0f78db05b6",
+      "bytes": 299536,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p040/n3200_cfl0p45/outputs.npz",
+      "sha256": "b3c19a02e0af23b916ea71140c46c1a7a136b4c2449f1dede2bdcb2636a6146b",
+      "bytes": 545134,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "results/extensions/inverse_sensitivity/gate_v01/n0p040/n3200_cfl0p225/outputs.npz",
+      "sha256": "0d66aea557be89ccec656205dd9fd7582be6611f4b5d55117104e6775e9909e1",
+      "bytes": 620106,
+      "hash_authority": "accepted matrix output hash"
+    },
+    {
+      "path": "src/hydro_pinn/physics.py",
+      "sha256": "6d00f5e5e2b6a8d61811f76494cbb9c5ebff2c67811fa3106054c69d07cacd79",
+      "bytes": 9670,
+      "hash_authority": "frozen protocol input hash; references-module import dependency"
+    }
+  ],
+  "native_matrix_records": 15,
+  "new_solver_executions": 0,
+  "scope": "This derivative inventory binds the inputs needed for saved-output numerical reanalysis. It does not certify the historical source/archive preservation conditions required by the original prepare/execute interface."
+}

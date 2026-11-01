@@ -12,7 +12,7 @@ import numpy as np
 import pytest
 
 from hydro_pinn import experiments, reproduce
-from hydro_pinn.protocol import load_protocol
+from hydro_pinn.protocol import environment_snapshot, load_protocol, protocol_digest
 from hydro_pinn.records import write_json_atomic
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,9 +20,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 @pytest.fixture
 def project(tmp_path: Path) -> tuple[Path, dict]:
-    """Copy the real frozen inputs; only the explicit smoke budget is reduced."""
+    """Derive a current-runtime fixture from the unchanged frozen inputs."""
     root = tmp_path.resolve()
-    protocol = json.loads((ROOT / "configs/final_protocol.json").read_text())
+    protocol = load_protocol(
+        "configs/final_protocol.json", project_root=ROOT, check_current=False
+    )
     paths = {"configs/final_protocol.json", "configs/smoke.json"}
 
     def inputs(value):
@@ -46,6 +48,15 @@ def project(tmp_path: Path) -> tuple[Path, dict]:
         target = root / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / name, target)
+    # This temporary protocol is a unit-test fixture, not an execution of the
+    # accepted study under another runtime. All ordinary strict checks remain on.
+    protocol["fixture_provenance"] = {
+        "purpose": "portable_unit_test_only",
+        "source_protocol_sha256": protocol["protocol_sha256"],
+    }
+    protocol["environment"] = environment_snapshot()
+    protocol["protocol_sha256"] = protocol_digest(protocol)
+    write_json_atomic(root / "configs/final_protocol.json", protocol, overwrite=True)
     # This typed smoke config is not a paper input. The network remains the
     # frozen 4x64 architecture; two steps keep pipeline verification bounded.
     smoke_path = root / "configs/smoke.json"
