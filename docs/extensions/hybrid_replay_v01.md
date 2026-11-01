@@ -1,13 +1,13 @@
 # Hybrid saved-checkpoint replay
 
-This route packages the completed E1 seed-11 hybrid pair and evaluates its saved selected checkpoints from an extracted evidence tree. It does not reproduce training. The original core study and archive remain separate.
+This historical route packaged the completed E1 seed-11 hybrid pair and evaluates its saved selected checkpoints from an extracted evidence tree. It does not reproduce training. The original core study and archive remain separate. The historical builder and archive described below are not publication downloads. For the supported saved-checkpoint route, use the [reproducibility guide](../../REPRODUCIBILITY.md) and the `hybrid-data` bundle in [ARTIFACTS.json](../../ARTIFACTS.json).
 
 Run the builder only after both 10,000-step fits and their original full evaluation have completed. It refuses incomplete runs, changed frozen source/configuration hashes, inconsistent checkpoint or label bindings, existing destinations, and evaluation payload hash mismatches. Actual execution status belongs in its saved build and replay receipts.
 
-From the project root, use the existing locked environment:
+The original builder command was:
 
 ```sh
-rtk proxy uv run --frozen --offline python docs/evidence/phase_11/hybrid_full_v01/build_replay_snapshot.py \
+uv run --frozen --offline python docs/evidence/phase_11/hybrid_full_v01/build_replay_snapshot.py \
   --manifest results/extensions/hybrid/p11_hybrid_full_v01.json \
   --evaluation-dir results/extensions/hybrid/p11_hybrid_evaluation_v01
 ```

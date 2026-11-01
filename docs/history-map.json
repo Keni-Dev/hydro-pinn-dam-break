@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "source_tip": "877886d986cfe3bf9bf0206423726b5084d354e0",
+  "projected_tip_before_publication_files": "67eafeb473285430154e420d51bc57ece4f93a4e",
+  "source_commit_count": 42,
+  "retained_commit_count": 29,
+  "original_author_and_committer_dates_preserved": true,
+  "foundation_separated": true,
+  "mapping": [
+    {
+      "original_commit": "d113cae1b51b4e1804fd6f1898ea85e6d4c26e47",
+      "original_subject": "Establish reproducible research foundation and exact dam-break references",
+      "status": "split_foundation",
+      "mapped_to": "cf31968b12e0c20b1557e3ae25ea46a9fa35b4c0",
+      "published_commits": [
+        {
+          "commit": "f055b16f6be37ff8ef7f38c5f3f40a0027e44223",
+          "scope": "setup"
+        },
+        {
+          "commit": "8f3d5014c03a419b11738c84f8f76cb3fc3f6b09",
+          "scope": "science"
+        },
+        {
+          "commit": "cf31968b12e0c20b1557e3ae25ea46a9fa35b4c0",
+          "scope": "tests"
+        }
+      ]
+    },
+    {
+      "original_commit": "57a4239be26fcb60ec4feefe0ec1c09770644bc5",
+      "original_subject": "Implement conservative Lax-Wendroff comparator and verify grid refinement",
+      "status": "retained",
+      "mapped_to": "a4668f17d14a8a054850b6d2b77e8755372ececd",
+      "published_commits": [
+        {
+          "commit": "a4668f17d14a8a054850b6d2b77e8755372ececd",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "56a305f599c7a022dc73524228854628daad5553",
+      "original_subject": "Implement verified PINN training and checkpoint prediction workflow",
+      "status": "retained",
+      "mapped_to": "e20fa311cd6adcaffe51ac871e05bfde8942bfef",
+      "published_commits": [
+        {
+          "commit": "e20fa311cd6adcaffe51ac871e05bfde8942bfef",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "593c5d230494d32409d8b35af4ae7cd24a484a27",
+      "original_subject": "Measure native hardware and optimize training history persistence",
+      "status": "retained",
+      "mapped_to": "28a864366659f8b81a4f3e35004e1fa34506d76a",
+      "published_commits": [
+        {
+          "commit": "28a864366659f8b81a4f3e35004e1fa34506d76a",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "a41326ff020bcef92c83baa3e09442a6b13eaa5d",
+      "original_subject": "Add focused history persistence and recovery regression checks",
+      "status": "retained",
+      "mapped_to": "8cd806eb8a4436e8258c82d8eb445c34522b56f4",
+      "published_commits": [
+        {
+          "commit": "8cd806eb8a4436e8258c82d8eb445c34522b56f4",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "aca15d3df406fc906ae5b2a51804e83ed52a8bef",
+      "original_subject": "Freeze full dam-break experiment protocol and verified matrix runner",
+      "status": "retained",
+      "mapped_to": "eb8358f0153a4e7f946c2f840b7a549c78cb2485",
+      "published_commits": [
+        {
+          "commit": "eb8358f0153a4e7f946c2f840b7a549c78cb2485",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "1015b5007829f70b785df247f3135dbc9b21e529",
+      "original_subject": "Implement checked evaluation conservation plots and timing workflow",
+      "status": "retained",
+      "mapped_to": "ff1e3e22ecd675760ea1c0d3ae3e901a2356b6ab",
+      "published_commits": [
+        {
+          "commit": "ff1e3e22ecd675760ea1c0d3ae3e901a2356b6ab",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "9ca7e12746cb41a2614c31184a0f833d0122a7b1",
+      "original_subject": "Fix hash-bound protocol validation for relocated packages",
+      "status": "retained",
+      "mapped_to": "cd4422cf8809bf81a0e0c60851d9afe3434e1605",
+      "published_commits": [
+        {
+          "commit": "cd4422cf8809bf81a0e0c60851d9afe3434e1605",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "ceb7f9a7a49a01a7b099a30ae83bed24e92c97ad",
+      "original_subject": "Prepare bounded reproduction and reviewed course artifact drafts",
+      "status": "retained",
+      "mapped_to": "4ce7dba06e18889ff8a63697ab270325864eec3d",
+      "published_commits": [
+        {
+          "commit": "4ce7dba06e18889ff8a63697ab270325864eec3d",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "fb34073f50d2958ce617a2063ca4feebeebe7f98",
+      "original_subject": "Record approved follow-up and next production handoff",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "4ce7dba06e18889ff8a63697ab270325864eec3d",
+      "published_commits": []
+    },
+    {
+      "original_commit": "0e0d4f986eb6407c74494b5a55b097e72280fa03",
+      "original_subject": "Add reviewed English and Taglish FCO video production plans",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "4ce7dba06e18889ff8a63697ab270325864eec3d",
+      "published_commits": []
+    },
+    {
+      "original_commit": "3d7396401306d9485313a5e067582bb8373c2285",
+      "original_subject": "Record current M5-only execution constraint",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "4ce7dba06e18889ff8a63697ab270325864eec3d",
+      "published_commits": []
+    },
+    {
+      "original_commit": "fc949c178112ace2653950dc6d2566e292d79d9a",
+      "original_subject": "Record complete frozen core experiment and verified checkpoints",
+      "status": "retained",
+      "mapped_to": "1b036763588aa7064d8d9104f3e4b4ad4627955a",
+      "published_commits": [
+        {
+          "commit": "1b036763588aa7064d8d9104f3e4b4ad4627955a",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "35513e5d0ca45f1432a33724c0394a12b9f08922",
+      "original_subject": "Record accepted core metrics conservation figures and loaded-host timings",
+      "status": "retained",
+      "mapped_to": "5ab0a5035433401e7c4e8e9add62f6959fa4e0c1",
+      "published_commits": [
+        {
+          "commit": "5ab0a5035433401e7c4e8e9add62f6959fa4e0c1",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "885b44d7a36f33908ffd33450a79fc227ae17de4",
+      "original_subject": "Fix supplemental renderer saved-schema and relocation handling",
+      "status": "retained",
+      "mapped_to": "a38bfa33dbea51ad663dfd1ee3eb4c4ad18fd7b3",
+      "published_commits": [
+        {
+          "commit": "a38bfa33dbea51ad663dfd1ee3eb4c4ad18fd7b3",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "1cf7cd63001f042587f683502d60582d805d1d8c",
+      "original_subject": "Integrate complete paper figures and verify full reproduction launch",
+      "status": "retained",
+      "mapped_to": "db0b3552d9ee04ea04e6679b90392e498195e86d",
+      "published_commits": [
+        {
+          "commit": "db0b3552d9ee04ea04e6679b90392e498195e86d",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "2691dc0c6917ccac3c0d8bbf07bfb3dcd1976d6a",
+      "original_subject": "Add reviewed English and Taglish video scripts with final findings",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "db0b3552d9ee04ea04e6679b90392e498195e86d",
+      "published_commits": []
+    },
+    {
+      "original_commit": "176424ab067f7806dff6ae523991363a6d4deb37",
+      "original_subject": "Preserve reviewed results paper, deck and portable packaging evidence",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "db0b3552d9ee04ea04e6679b90392e498195e86d",
+      "published_commits": []
+    },
+    {
+      "original_commit": "b0f639c698417dc79cbe4d780fd8fb15bf461485",
+      "original_subject": "Verify and retain complete unchanged full-study reproduction",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "db0b3552d9ee04ea04e6679b90392e498195e86d",
+      "published_commits": []
+    },
+    {
+      "original_commit": "98970ded2607dbb03e712a3c42cb3e20b3fbeb96",
+      "original_subject": "Complete verified core course package and select isolated hybrid extension",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "db0b3552d9ee04ea04e6679b90392e498195e86d",
+      "published_commits": []
+    },
+    {
+      "original_commit": "9b5776fa45457bbf910a31acc5e1b85c828d581a",
+      "original_subject": "Add reviewed hybrid E1 protocol and measured pilot",
+      "status": "retained",
+      "mapped_to": "1c4fb76f422a477675401fe872acf8db2afbba0a",
+      "published_commits": [
+        {
+          "commit": "1c4fb76f422a477675401fe872acf8db2afbba0a",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "d28881a276b79e9c18ab647556354f18def0f8f7",
+      "original_subject": "Record verified hybrid full-pair launch and next feasibility plan",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "1c4fb76f422a477675401fe872acf8db2afbba0a",
+      "published_commits": []
+    },
+    {
+      "original_commit": "b3a16bd73dd139c75f3fcf8c9863b54560bf3083",
+      "original_subject": "Retain accepted hybrid full study, exact saved replay and planar pilot scope",
+      "status": "retained",
+      "mapped_to": "5dbff625302368405cbb98e99b28eb6e2cb31cde",
+      "published_commits": [
+        {
+          "commit": "5dbff625302368405cbb98e99b28eb6e2cb31cde",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "e7153c8ec53aeabd5a40a4c2e5a1912c56be27a9",
+      "original_subject": "Add reviewed planar 2D equations, single cost pilot and full-fit release",
+      "status": "retained",
+      "mapped_to": "de456bf6cb4f92f499996f71830f7efbd5c1732b",
+      "published_commits": [
+        {
+          "commit": "de456bf6cb4f92f499996f71830f7efbd5c1732b",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "dc5309fb0cae8e48fd51db813a83c1ea19de0d9f",
+      "original_subject": "Record verified planar full-fit launch and next feasibility note",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "de456bf6cb4f92f499996f71830f7efbd5c1732b",
+      "published_commits": []
+    },
+    {
+      "original_commit": "7762adb9900bbbc1020916d76c59d89d7400342b",
+      "original_subject": "Retain accepted planar study, exact replay payload and wet friction pilot scope",
+      "status": "retained",
+      "mapped_to": "c7f1be8ecbfb08951005f8ad91e85e6983a0e490",
+      "published_commits": [
+        {
+          "commit": "c7f1be8ecbfb08951005f8ad91e85e6983a0e490",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "0ed121f8f8f235b236644b54d21eb85f8a05b64b",
+      "original_subject": "Add verified wet-friction reference and frozen forward-fit release",
+      "status": "retained",
+      "mapped_to": "9e53b23bdc4732d420c65fc5561a6aa4554cd6e4",
+      "published_commits": [
+        {
+          "commit": "9e53b23bdc4732d420c65fc5561a6aa4554cd6e4",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "8182a5732a17dc9d9fc08e19728fd2bdc3b93e47",
+      "original_subject": "Preserve accepted friction study and exact executable replay",
+      "status": "retained",
+      "mapped_to": "b23f277a4c80f567235ab4ddde757d6f14a813dc",
+      "published_commits": [
+        {
+          "commit": "b23f277a4c80f567235ab4ddde757d6f14a813dc",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "10083fedbcb2539724bcc74721d3e177a778430e",
+      "original_subject": "Accept unfavorable roughness sensitivity gate and scope viscosity pilot",
+      "status": "retained",
+      "mapped_to": "3f0a4af781abd1870e5b460f0d8cada1a29769cd",
+      "published_commits": [
+        {
+          "commit": "3f0a4af781abd1870e5b460f0d8cada1a29769cd",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "e51274a4733d07119a4a0f98910f4d1b775ae0eb",
+      "original_subject": "Preserve reviewed viscosity pilot and release one positive fit",
+      "status": "retained",
+      "mapped_to": "67fba136b5bc67e4a7c26ca48ca13b0f13700c81",
+      "published_commits": [
+        {
+          "commit": "67fba136b5bc67e4a7c26ca48ca13b0f13700c81",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "b8519c57e44d33f455e57f31080e2f1097b3bd90",
+      "original_subject": "Accept selected viscosity study and exact checkpoint replay",
+      "status": "retained",
+      "mapped_to": "bc29946d73eae3db4366939307aa8237a86f4633",
+      "published_commits": [
+        {
+          "commit": "bc29946d73eae3db4366939307aa8237a86f4633",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "582d87747ad2eddf7d5e273ee73927e1a595102c",
+      "original_subject": "Select bounded genuine 2D reference implementation gate",
+      "status": "retained",
+      "mapped_to": "38dd9bac806111a31017fc6a3a20280fc1411454",
+      "published_commits": [
+        {
+          "commit": "38dd9bac806111a31017fc6a3a20280fc1411454",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "8eabdb319af02a6bd75cdc637762ef3fa544c9d2",
+      "original_subject": "Freeze reviewed genuine 2D reference and release first coarse cell",
+      "status": "retained",
+      "mapped_to": "b7accca7cbd2060e50b58705d0681c58f7637274",
+      "published_commits": [
+        {
+          "commit": "b7accca7cbd2060e50b58705d0681c58f7637274",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "a6f9b7baab455cab98ccc541391a7839adb7816b",
+      "original_subject": "Accept actual coarse reference and release finite refinement matrix",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "b7accca7cbd2060e50b58705d0681c58f7637274",
+      "published_commits": []
+    },
+    {
+      "original_commit": "39e9e33e2e2e2482a7f0c19a5d16ba168cc57d9d",
+      "original_subject": "Accept refined genuine 2D reference and extracted replay",
+      "status": "retained",
+      "mapped_to": "cc5e43ef63a2b6f9769774211cd3bc8df0c377c6",
+      "published_commits": [
+        {
+          "commit": "cc5e43ef63a2b6f9769774211cd3bc8df0c377c6",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "e3f93618308bdeeb186176061af5fb028773aa31",
+      "original_subject": "Freeze genuine 2D neural pilot and release bounded full fit",
+      "status": "retained",
+      "mapped_to": "c2317b0ef440f2ede274c249f55b73030bb6a868",
+      "published_commits": [
+        {
+          "commit": "c2317b0ef440f2ede274c249f55b73030bb6a868",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "9cc4620235ce47c3a47fa315e335bc4a4bd2db10",
+      "original_subject": "Accept genuine 2D study and exact extracted checkpoint replay",
+      "status": "retained",
+      "mapped_to": "67eafeb473285430154e420d51bc57ece4f93a4e",
+      "published_commits": [
+        {
+          "commit": "67eafeb473285430154e420d51bc57ece4f93a4e",
+          "scope": "original"
+        }
+      ]
+    },
+    {
+      "original_commit": "4686b603002c129606a518a98db0d9bd687a453e",
+      "original_subject": "Consolidate accepted extension findings and course handoff",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "67eafeb473285430154e420d51bc57ece4f93a4e",
+      "published_commits": []
+    },
+    {
+      "original_commit": "d6a9641f0a92d7ca663774feadec021897c1777c",
+      "original_subject": "Preserve optional bilingual video note before clarity edits",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "67eafeb473285430154e420d51bc57ece4f93a4e",
+      "published_commits": []
+    },
+    {
+      "original_commit": "8580e82ace0361f5820babeda833b8dff4a0da55",
+      "original_subject": "Complete selected implementation and bilingual video handoff",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "67eafeb473285430154e420d51bc57ece4f93a4e",
+      "published_commits": []
+    },
+    {
+      "original_commit": "0ad643cfbcae01575eaa812db4dc28f1e720ce64",
+      "original_subject": "Apply required mini-paper template in a preserved draft edition",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "67eafeb473285430154e420d51bc57ece4f93a4e",
+      "published_commits": []
+    },
+    {
+      "original_commit": "877886d986cfe3bf9bf0206423726b5084d354e0",
+      "original_subject": "Add confirmed six-author roster to the required-template paper",
+      "status": "omitted_empty_after_path_filter",
+      "mapped_to": "67eafeb473285430154e420d51bc57ece4f93a4e",
+      "published_commits": []
+    }
+  ]
+}

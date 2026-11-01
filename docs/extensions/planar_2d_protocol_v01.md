@@ -1,6 +1,6 @@
 # Planar E1 consistency protocol v01
 
-This is an exploratory consistency test using one independently trained seed11 model. The 25-update pilot measures feasibility. The 10,000-update fit requires a separate root technical release tied to the saved protocol hash. No genuine two-dimensional benchmark is included.
+This is an exploratory consistency test using one independently trained seed11 model. The 25-update pilot measures feasibility. This protocol records the pilot-stage design; the subsequent 10,000-update result is in [full findings v01](planar_2d_full_findings_v01.md). No genuine two-dimensional benchmark is included.
 
 The physical square is x,y in [-5,5] m. At t=0, depth is 1 m for x<0 and 0.1 m for x>0, with u=v=0. The horizon is 0.5 s, gravity is 9.81 m/s², and the bed is flat with no friction or rain. The prescribed initial volume is 55 m³. The existing verified E1 reference and wave-safety implementation are reused without modification. Its bibliography and acceptance evidence remain in the core records.
 
@@ -30,4 +30,4 @@ Conservation uses volume at t=0 and all 50 reporting times. Base/refined volume 
 
 Dense neural queries stream one time slab and at most 8,192 points per forward pass. The pilot executes the complete final/reference and base/refined volume/four-edge query and compressed-output workload. It does not compute analytical neural-model errors. Diagnostic/JSON overhead is measured separately using analytical reference against itself, with no network fields in that fixture. Raw step costs, memory/load observations, checkpoint writes and query costs support the complete-cost projection. Memory is a process-lifetime peak RSS observation; it does not measure system pressure or every allocator peak. The single pilot is not repeated to improve timing.
 
-The machine constraint is the available M5 Air. The unavailable Victus/RTX2050, CUDA and paid cloud are not prerequisites. All existing core/hybrid modules, runs, archives and course artifacts remain protected. Only the named additive CLI registration changes an existing module. The full fit, any final accuracy finding, genuine 2D, friction and inverse work remain outside this pilot release.
+The machine constraint is the available M5 Air. The unavailable Victus/RTX2050, CUDA and paid cloud are not prerequisites. All existing core/hybrid modules, runs and archives remain protected. Only the named additive CLI registration changes an existing module. The full fit, any final accuracy finding, genuine 2D, friction and inverse work were outside the pilot scope.

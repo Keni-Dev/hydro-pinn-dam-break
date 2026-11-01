@@ -1,14 +1,14 @@
-"""Relocated strict protocol and a real minimal complete record fixture.
+"""Relocate current-runtime fixtures derived from unchanged frozen inputs.
 
-The one-stage fixture substitutes only the fixed final-core matrix shape. The
-ordinary loader still checks canonical digest, environment, every input and
-scientific source; record verification and analytical execution are real.
+The one-stage fixture also substitutes the fixed final-core matrix shape. The
+ordinary loader still checks each fixture's digest, environment, every input and
+scientific source; record verification and analytical execution are real. These
+checks do not establish reproduction of the accepted study in another runtime.
 """
 
 from __future__ import annotations
 
 import copy
-import json
 import shutil
 from pathlib import Path
 
@@ -17,14 +17,21 @@ import pytest
 from hydro_pinn import evaluation_workflow as workflow
 from hydro_pinn import experiments
 from hydro_pinn import protocol as protocol_module
-from hydro_pinn.protocol import file_sha256, protocol_digest
+from hydro_pinn.protocol import (
+    environment_snapshot,
+    file_sha256,
+    load_protocol,
+    protocol_digest,
+)
 from hydro_pinn.records import write_json_atomic
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def copy_frozen_project(root: Path) -> dict:
-    protocol = json.loads((ROOT / "configs/final_protocol.json").read_text())
+    protocol = load_protocol(
+        "configs/final_protocol.json", project_root=ROOT, check_current=False
+    )
     paths = {"configs/final_protocol.json", *protocol["scientific_source_sha256"]}
 
     def collect(value):
@@ -43,6 +50,14 @@ def copy_frozen_project(root: Path) -> dict:
         destination = root / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / name, destination)
+    protocol["fixture_provenance"] = {
+        "purpose": "portable_unit_test_only",
+        "source_protocol_sha256": protocol["protocol_sha256"],
+    }
+    protocol["environment"] = environment_snapshot()
+    protocol["protocol_sha256"] = protocol_digest(protocol)
+    write_json_atomic(root / "configs/final_protocol.json", protocol, overwrite=True)
+    assert load_protocol("configs/final_protocol.json", project_root=root) == protocol
     return protocol
 
 

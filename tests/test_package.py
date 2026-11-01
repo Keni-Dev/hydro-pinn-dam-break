@@ -29,12 +29,11 @@ def test_installed_import_and_version() -> None:
     assert result.stdout.strip() == hydro_pinn.__version__
 
 
-def test_help_only_advertises_implemented_command() -> None:
+def test_help_lists_implemented_commands() -> None:
     result = invoke("--help")
     assert result.returncode == 0
-    assert "validate-config" in result.stdout
-    for future_command in ("reference --", "solve --", "train --", "reproduce --"):
-        assert future_command not in result.stdout
+    for command in ("validate-config", "reference", "solve", "train", "reproduce"):
+        assert command in result.stdout
     child = invoke("validate-config", "--help")
     assert child.returncode == 0
     assert "metres" in child.stdout
@@ -63,9 +62,16 @@ def test_cli_reports_missing_and_invalid_inputs(tmp_path: Path) -> None:
 
 
 def test_cli_rejects_unimplemented_command() -> None:
-    result = invoke("train")
+    result = invoke("not-a-command")
     assert result.returncode == 2
     assert "invalid choice" in result.stderr
+
+
+def test_registered_training_command_requires_its_inputs() -> None:
+    result = invoke("train")
+    assert result.returncode == 2
+    assert "the following arguments are required" in result.stderr
+    assert "invalid choice" not in result.stderr
 
 
 def test_scientific_stack_cpu_float64(

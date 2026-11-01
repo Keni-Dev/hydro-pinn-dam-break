@@ -1,6 +1,6 @@
 # Genuine 2D reference matrix findings v01
 
-All four predeclared reference cells completed through 0.25 s with 51 exact output times. Independent saved-data reviews pass the numerical, conservation, boundary, source-preservation and R6 analysis checks. The preselected reference remains `ref_rect320_c0225_v01`. Root retains its adequacy and uncertainty review.
+All four predeclared reference cells completed through 0.25 s with 51 exact output times. Independent saved-data reviews pass the numerical, conservation, boundary, source-preservation and R6 analysis checks. The preselected reference remains `ref_rect320_c0225_v01`. Reference adequacy remains limited by the measured mesh/time sensitivity.
 
 | Cell | Sum-CFL | Steps | Internal observation | Wrapper wall |
 | --- | ---: | ---: | ---: | ---: |
@@ -31,6 +31,6 @@ Exactly two logical figures are saved as PNG/PDF: `01_selected_reference_maps` a
 
 Saved-data analysis took 13.101455208 s of wrapper wall and 1.325461500 s from analyze() entry through its commit observation; module imports/startup sit outside the latter timer. It ran zero solver updates, area operators or neural queries. Its script was hash-frozen before use. All 533 independent analysis checks pass; input/output/figure hashes, 20 frozen bindings, 32 protected modules and five prior archives match.
 
-The reference payload targets `results/extensions/two_dimensional/reference_payload_v01` and `results/extensions/two_dimensional/genuine_2d_reference_v01.zip`; the separate package receipt records byte verification. The layout retains executable source/CLI/config/lock, exact protocol/axes/operators, four complete records, analysis/figures and original/incident/recovery/launch/readback evidence. Packaging performs no simulation. A fresh-extraction saved-data replay remains a proposal.
+The reference payload targets `results/extensions/two_dimensional/reference_payload_v01` and `results/extensions/two_dimensional/genuine_2d_reference_v01.zip`; the separate package receipt records byte verification. The layout retains executable source/CLI/config/lock, exact protocol/axes/operators, four complete records, analysis/figures and original/incident/recovery/launch/readback evidence. Packaging performs no simulation. At this v01 snapshot, a fresh-extraction saved-data replay was proposed; [findings v02](genuine_2d_reference_matrix_findings_v02.md) records its subsequent completion. These original archive paths are historical provenance; the publication supplies curated numerical inputs through the `genuine-2d-reference-data` bundle in [ARTIFACTS.json](../../ARTIFACTS.json).
 
-Root retains any later bounded neural-pilot decision. This packet contains no genuine-2D neural model, pilot, training or inference and does not complete all Phase10.
+This reference packet contains no genuine-2D neural model, pilot, training or inference. The neural study is documented separately in [neural full findings v01](genuine_2d_neural_full_findings_v01.md).

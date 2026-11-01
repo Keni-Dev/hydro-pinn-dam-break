@@ -1,6 +1,6 @@
 # Phase09 depth-response sensitivity gate v01
 
-This gate follows the adopted plan with SHA256 `298ebfd506094ceb42e9997d1c78602b87cadb52384e5469f4ee82eb4646a05c` and the separate release in `docs/coordination/extension_inverse_sensitivity_selection.json`. It screens numerical depth response before any inverse observation dataset or trainer. The selected08 forward experiment remains accepted with incomplete flow recovery.
+This gate follows the adopted plan with SHA256 `298ebfd506094ceb42e9997d1c78602b87cadb52384e5469f4ee82eb4646a05c` and its separately recorded execution release. It screens numerical depth response before any inverse observation dataset or trainer. The selected08 forward experiment remains accepted with incomplete flow recovery.
 
 The fixed wet E1 case has x=[-5,5] m, dam=0, hL=1 m, hR=.1 m, initial u=0, g=9.81 m/s² and T=.5 s. Positive constant Manning drag overrides the source-free template metadata. Bed and rain are zero; fixed reservoir ghost states refresh at every homogeneous step. The existing float64 CPU HLLE/Manning solver and conservative projection are imported unchanged. The Phase08 n=.03 wrapper remains frozen.
 
@@ -18,12 +18,12 @@ Preparation saves the source/config/operator/input hashes, full time and grid ax
 
 The 60-second matrix budget includes native storage and extraction and is checked before each new solve. If crossed, remaining records stay explicitly unexecuted and the gate is budget-limited incomplete. Failed or missing levels remain incomplete evidence. No old result or failed attempt is replaced. Focused tests cover overlap/order extraction, pair adjustment and protection/no-overwrite guards; old science suites and neural fits are excluded.
 
-Commands, from the project root with the existing interpreter:
+Historical verification and launch commands (these legacy guards require original preservation archives not distributed in the publication):
 
 ```sh
-rtk proxy .venv/bin/python -m pytest tests/test_inverse_sensitivity.py -q
-rtk proxy .venv/bin/python -m hydro_pinn.extensions.inverse_sensitivity prepare
-rtk proxy .venv/bin/python -m hydro_pinn.extensions.inverse_sensitivity execute
+.venv/bin/python -m pytest tests/test_inverse_sensitivity.py -q
+.venv/bin/python -m hydro_pinn.extensions.inverse_sensitivity prepare
+.venv/bin/python -m hydro_pinn.extensions.inverse_sensitivity execute
 ```
 
-The execute command is a one-time released numerical action. Saved-data analysis and the profile figure do not generate more reference solutions. The final decision records weak/unresolved outcomes, costs, failure state and unchanged protected hashes. Any inverse observation partitions, noise draws, gradients, fitting or broader Phase09 completion require a separate frozen proposal and release.
+For portable saved-data analysis, use the [saved-reanalysis guide](../inverse_sensitivity_saved_reanalysis.md). The historical execute command was a one-time released numerical action. Saved-data analysis and the profile figure do not generate more reference solutions. The final decision records weak/unresolved outcomes, costs, failure state and unchanged protected hashes. Any inverse observation partitions, noise draws, gradients, fitting or broader Phase09 completion require a separate frozen proposal and release.
