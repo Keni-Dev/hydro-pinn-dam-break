@@ -2,7 +2,20 @@
 
 This project compares a physics-informed neural network (PINN) with analytical shallow-water solutions and an unlimited two-step Lax–Wendroff solver. It studies water depth, discharge per unit width, mass balance, and computational cost in controlled dam-break cases.
 
-The repository contains the research implementation, frozen configurations, tests, generated scientific data, saved results, and reproduction materials. [Contributions](CONTRIBUTIONS.md) lists the six project members and their roles.
+The repository contains the research implementation, frozen configurations, tests, generated scientific data, saved results, and reproduction materials.
+
+## Project team
+
+| Member | Contribution |
+| --- | --- |
+| [Kenny Ivan Zamora](https://github.com/Keni-Dev) | Code and implementation; project setup and testing |
+| [Lorenz Velasco](https://github.com/marina21-cs) | Code and implementation |
+| [Laurice Ann San Jose](https://github.com/laurice15) | Research and data gathering |
+| [Kristian Clint Autor](https://github.com/keyziii-phy) | Research and data gathering |
+| Alexis Mae Reyes | Video production |
+| Ellariecia Valencia | Video production |
+
+[Contributions](CONTRIBUTIONS.md) describes the shared implementation work.
 
 ## Study and findings
 
