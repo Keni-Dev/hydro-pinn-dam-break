@@ -10,3 +10,5 @@
 | Ellariecia Valencia | Video production |
 
 Kenny and Lorenz worked on the implementation together. This repository contains the scientific implementation and reproducibility materials for the course project.
+
+The 23 shared implementation commits credit Kenny and Lorenz jointly. Setup, dedicated test changes and retained verification records keep their existing attribution. Joint credit covers the shared change; it does not assign every file to both authors.
